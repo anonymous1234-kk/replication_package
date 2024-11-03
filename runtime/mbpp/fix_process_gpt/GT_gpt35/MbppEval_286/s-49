@@ -1,0 +1,77 @@
+task_id:MbppEval/286
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    '''
+    Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    '''
+    Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.
+    '''
+
+    if k == 1:
+        return max_sub_array_sum(a, n)
+    
+    max_suffix_sum = max_prefix_sum = max_suffix_sum_total = max_prefix_sum_total = 0
+    total_sum = sum(a) * k
+    
+    for i in range(n):
+        max_prefix_sum = max(max_prefix_sum + a[i], 0)
+        max_prefix_sum_total = max(max_prefix_sum_total, max_prefix_sum)
+        
+    for i in range(n - 1, -1, -1):
+        max_suffix_sum = max(max_suffix_sum + a[i], 0)
+        max_suffix_sum_total = max(max_suffix_sum_total, max_suffix_sum)
+        
+    return max(max_suffix_sum_total + max_prefix_sum_total, total_sum)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_sub_array_sum_repeated([-2, -3, 4, -1, -2, 1, 5, -3],8,3) == 7
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert max_sub_array_sum_repeated([1, 2, 3, 4, 5],5,3) == 45
+assert max_sub_array_sum_repeated([1, 2, 3, 4, 5],5,2) == 30
+assert max_sub_array_sum_repeated([2, -1, 2],3,3) == 9
+assert max_sub_array_sum_repeated([8, -1, -1, 8],4,2) == 28
+assert max_sub_array_sum_repeated([2, -1, -1, 2],4,2) == 4
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    if k == 1:
+        return max_sub_array_sum(a, n)
+    
+    max_suffix_sum = max_prefix_sum = max_suffix_sum_total = max_prefix_sum_total = 0
+    total_sum = sum(a) * k
+    
+    for i in range(n):
+        max_prefix_sum = max(max_prefix_sum + a[i], 0)
+        max_prefix_sum_total = max(max_prefix_sum_total, max_prefix_sum)
+        
+    for i in range(n - 1, -1, -1):
+        max_suffix_sum = max(max_suffix_sum + a[i], 0)
+        max_suffix_sum_total = max(max_suffix_sum_total, max_suffix_sum)
+        
+    return max(max_suffix_sum_total + max_prefix_sum_total, total_sum)
+```

@@ -1,0 +1,91 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string and split it into digits
+    digits = list(str(n))
+
+    # Find the index of the digit that needs to be swapped
+    for i in range(len(digits) - 1, 0, -1):
+        if digits[i - 1] < digits[i]:
+            break
+    else:
+        # If all digits are in descending order, return the original number
+        return n
+
+    # Find the index of the smallest digit to the right of the swap index that is larger than the digit at the swap index
+    swap_index = i - 1
+    for j in range(len(digits) - 1, swap_index, -1):
+        if digits[j] > digits[swap_index]:
+            break
+
+    # Swap the digits at the swap index and the found index
+    digits[swap_index], digits[j] = digits[j], digits[swap_index]
+
+    # Reverse the digits to the right of the swap index
+    digits[swap_index + 1:] = reversed(digits[swap_index + 1:])
+
+    # Convert the digits back to a number and return it
+    return int(''.join(digits))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(999999999) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+assert rearrange_bigger(132) == 213
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    digits = list(str(n))
+
+    for i in range(len(digits) - 1, 0, -1):
+        if digits[i - 1] < digits[i]:
+            break
+    else:
+        return False
+
+    swap_index = i - 1
+    for j in range(len(digits) - 1, swap_index, -1):
+        if digits[j] > digits[swap_index]:
+            break
+
+    digits[swap_index], digits[j] = digits[j], digits[swap_index]
+
+    digits[swap_index + 1:] = reversed(digits[swap_index + 1:])
+
+    return int(''.join(digits))
+```

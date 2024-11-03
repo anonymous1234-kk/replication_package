@@ -1,0 +1,92 @@
+task_id:MbppEval/592
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def binomial_Coeff(n,k): 
+    '''
+    Write a python function to find the sum of the product of consecutive binomial co-efficients.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def binomial_Coeff(n,k): 
+    '''
+    Write a python function to find the sum of the product of consecutive binomial co-efficients.
+    '''
+ 
+    # Initialize result 
+    res = 0
+  
+    # One by constructs array to store values at
+    # different iterations of outer loop
+    c = [0] * (k+1) 
+  
+    c[0] = 1 # First value in line is 1 
+  
+    # One by one compute next value in line 
+    # using the previous value 
+    for i in range(1, n+1): 
+  
+        # Compute next row of pascal triangle using 
+        # the previous row
+        j = min(i ,k)
+        while (j > 0): 
+            c[j] = c[j] + c[j-1] 
+            res += c[j]
+            j -= 1
+  
+    return res 
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert binomial_Coeff(10,5) == 252
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def binomial_Coeff(n,k): 
+    '''
+    Write a python function to find the sum of the product of consecutive binomial co-efficients.
+    '''
+ 
+    # Initialize result 
+    res = 0
+  
+    # One by constructs array to store values at
+    # different iterations of outer loop
+    c = [0] * (k+1) 
+  
+    c[0] = 1 # First value in line is 1 
+  
+    # One by one compute next value in line 
+    # using the previous value 
+    for i in range(1, n+1): 
+  
+        # Compute next row of pascal triangle using 
+        # the previous row
+        j = min(i ,k)
+        while (j > 0): 
+            c[j] = c[j] + c[j-1] 
+            if j == k:
+                res += c[j]
+            j -= 1
+  
+    return res 
+```

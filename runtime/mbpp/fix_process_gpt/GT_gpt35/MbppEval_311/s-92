@@ -1,0 +1,60 @@
+task_id:MbppEval/311
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+ 
+    # convert the number to binary and reverse it
+    binary = bin(n)[2:][::-1]
+    
+    # find the index of the first '0'
+    index = binary.find('0')
+    
+    # if there is no '0', return -1
+    if index == -1:
+        return -1
+    
+    # set the left most unset bit to 1 and return the new integer
+    return n + (1 << index)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_left_most_unset_bit(100) == 116
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    binary = bin(n)[2:][::-1]
+    index = binary.find('0')
+    if index == -1:
+        return -1
+    return n | (1 << index)
+```

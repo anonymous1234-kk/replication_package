@@ -1,0 +1,193 @@
+task_id:MbppEval/100
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+    def reverse(num):
+        return int(str(num)[::-1])
+    
+    def is_palindrome(num):
+        return num == reverse(num)
+    
+    def next_palindrome(num):
+        digits = list(str(num))
+        n = len(digits)
+        mid = n // 2
+        left = digits[:mid]
+        right = digits[mid + n % 2:]
+        rleft = left[::-1]
+        if rleft < right:
+            return int(''.join(left + rleft))
+        else:
+            carry = 1
+            for i in range(mid - 1, -1, -1):
+                if carry == 0:
+                    break
+                s = int(digits[i]) + carry
+                carry, digits[i] = divmod(s, 10)
+            if carry == 1:
+                rleft = ['0']
+                right = ['0'] * (n - 1 - mid + n % 2)
+            else:
+                rleft = rleft[::-1]
+            return int(''.join(left + rleft + right))
+    
+    if num < 0:
+        raise ValueError("Input must be non-negative")
+    if num < 9:
+        return num + 1
+    if is_palindrome(num):
+        num += 1
+    while True:
+        if is_palindrome(num):
+            return num
+        num = next_palindrome(num)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(sys.maxsize) == 9223372037302733229
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    def reverse(num):
+        return int(str(num)[::-1])
+
+    def is_palindrome(num):
+        return num == reverse(num)
+
+    def next_palindrome(num):
+        digits = list(str(num))
+        n = len(digits)
+        mid = n // 2
+        left = digits[:mid]
+        right = digits[mid + n % 2:]
+        rleft = left[::-1]
+        if rleft < right:
+            return int(''.join(left + rleft))
+        else:
+            carry = 1
+            for i in range(mid - 1, -1, -1):
+                if carry == 0:
+                    break
+                s = int(digits[i]) + carry
+                carry, digits[i] = divmod(s, 10)
+            if carry == 1:
+                rleft = ['0']
+                right = ['0'] * (n - 1 - mid + n % 2)
+            else:
+                rleft = rleft[::-1]
+            return int(''.join(left + rleft + right))
+
+    if num < 0:
+        raise ValueError("Input must be non-negative")
+    if num < 9:
+        return num + 1
+    if is_palindrome(num):
+        num += 1
+    while True:
+        if is_palindrome(num):
+            return num
+        num = next_palindrome(num)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(7654321) == 7654567
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    def reverse(num):
+        return int(str(num)[::-1])
+    
+    def is_palindrome(num):
+        return num == reverse(num)
+    
+    def next_palindrome(num):
+        digits = list(str(num))
+        n = len(digits)
+        mid = n // 2
+        left = digits[:mid]
+        right = digits[mid + n % 2:]
+        rleft = left[::-1]
+        if rleft < right:
+            return int(''.join(left + rleft))
+        else:
+            carry = 1
+            for i in range(mid - 1, -1, -1):
+                if carry == 0:
+                    break
+                s = int(digits[i]) + carry
+                carry, digits[i] = divmod(s, 10)
+            if carry == 1:
+                rleft = ['0']
+                right = ['0'] * (n - 1 - mid + n % 2)
+            else:
+                rleft = rleft[::-1]
+            return int(''.join(left + rleft + right))
+    
+    if num < 0:
+        raise ValueError("Input must be non-negative")
+    if num < 9:
+        return num + 1
+    if is_palindrome(num):
+        num += 1
+    while True:
+        if is_palindrome(num):
+            return num
+        num = next_palindrome(num)
+
+assert next_smallest_palindrome(7654321) == 7654567
+```

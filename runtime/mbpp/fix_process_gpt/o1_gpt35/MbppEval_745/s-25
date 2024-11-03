@@ -1,0 +1,379 @@
+task_id:MbppEval/745
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0]
+        if all(num % d == 0 for d in digits):
+            result.append(num)
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(300,400) == [312, 315, 324, 333, 336, 366, 384, 396]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0]
+        if len(digits) == len(str(num)):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(400,500) == [400, 404, 408, 412, 420, 424, 432, 440, 444, 448, 480, 488, 500]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum to endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0 and num % 2 == 0]
+        if len(digits) == len(str(num)):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(700,800) == [735, 777]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0]
+        if len(digits) == len(str(num)) and all(num % int(d) == 0 for d in digits):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(900,1000) == [900, 909, 936, 990, 999]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0]
+        if len(digits) == len(str(num)) and all(digits):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(0,199) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184, 186, 195]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert divisible_by_digits(1000,1100) == []
+assert divisible_by_digits(111,119) == [111, 112, 115]
+assert divisible_by_digits(99,108) == [99]
+assert divisible_by_digits(99,110) == [99]
+assert divisible_by_digits(100,105) == []
+assert divisible_by_digits(22,199) == [22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(22,22) == [22]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0]
+        if len(digits) == len(str(num)) and len(set(digits)) == len(str(num)):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(9,100) == [9, 10, 11, 12, 15, 20, 22, 24, 30, 33, 36, 40, 44, 48, 50, 55, 60, 66, 70, 77, 80, 88, 90, 99, 100]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert divisible_by_digits(1000,1100) == []
+assert divisible_by_digits(111,119) == [111, 112, 115]
+assert divisible_by_digits(99,108) == [99]
+assert divisible_by_digits(99,110) == [99]
+assert divisible_by_digits(100,105) == []
+assert divisible_by_digits(22,199) == [22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(22,22) == [22]
+assert divisible_by_digits(1,22) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+assert divisible_by_digits(11,26) == [11, 12, 15, 22, 24]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0]
+        if len(digits) == len(str(num)):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-42<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(300,400) == [312, 315, 360, 363, 364, 368, 372, 375, 384, 396]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert divisible_by_digits(1000,1100) == []
+assert divisible_by_digits(111,119) == [111, 112, 115]
+assert divisible_by_digits(99,108) == [99]
+assert divisible_by_digits(99,110) == [99]
+assert divisible_by_digits(100,105) == []
+assert divisible_by_digits(22,199) == [22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(22,22) == [22]
+assert divisible_by_digits(1,22) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+assert divisible_by_digits(11,26) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(7,70) == [7, 8, 9, 11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66]
+assert divisible_by_digits(1,12) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12]
+assert divisible_by_digits(10,30) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(20,40) == [22, 24, 33, 36]
+assert divisible_by_digits(1,1) == [1]
+assert divisible_by_digits(60,71) == [66]
+assert divisible_by_digits(101,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(1,39) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22, 24, 33, 36]
+assert divisible_by_digits(10,55) == [11, 12, 15, 22, 24, 33, 36, 44, 48, 55]
+assert divisible_by_digits(50,99) == [55, 66, 77, 88, 99]
+assert divisible_by_digits(100,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(200,300) == [212, 216, 222, 224, 244, 248, 264, 288]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum to endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0 and num % 10 != 0]
+        if len(digits) == len(str(num)):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-43<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(400,500) == [444, 448, 488]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert divisible_by_digits(1000,1100) == []
+assert divisible_by_digits(111,119) == [111, 112, 115]
+assert divisible_by_digits(99,108) == [99]
+assert divisible_by_digits(99,110) == [99]
+assert divisible_by_digits(100,105) == []
+assert divisible_by_digits(22,199) == [22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(22,22) == [22]
+assert divisible_by_digits(1,22) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+assert divisible_by_digits(11,26) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(7,70) == [7, 8, 9, 11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66]
+assert divisible_by_digits(1,12) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12]
+assert divisible_by_digits(10,30) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(20,40) == [22, 24, 33, 36]
+assert divisible_by_digits(1,1) == [1]
+assert divisible_by_digits(60,71) == [66]
+assert divisible_by_digits(101,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(1,39) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22, 24, 33, 36]
+assert divisible_by_digits(10,55) == [11, 12, 15, 22, 24, 33, 36, 44, 48, 55]
+assert divisible_by_digits(50,99) == [55, 66, 77, 88, 99]
+assert divisible_by_digits(100,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(200,300) == [212, 216, 222, 224, 244, 248, 264, 288]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here is the fixed code:
+
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0]
+        if len(digits) == len(str(num)) and len(set(digits)) == len(digits):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-45<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(600,700) == [612, 624, 636, 648, 660, 672, 684, 696]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert divisible_by_digits(1000,1100) == []
+assert divisible_by_digits(111,119) == [111, 112, 115]
+assert divisible_by_digits(99,108) == [99]
+assert divisible_by_digits(99,110) == [99]
+assert divisible_by_digits(100,105) == []
+assert divisible_by_digits(22,199) == [22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(22,22) == [22]
+assert divisible_by_digits(1,22) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+assert divisible_by_digits(11,26) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(7,70) == [7, 8, 9, 11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66]
+assert divisible_by_digits(1,12) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12]
+assert divisible_by_digits(10,30) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(20,40) == [22, 24, 33, 36]
+assert divisible_by_digits(1,1) == [1]
+assert divisible_by_digits(60,71) == [66]
+assert divisible_by_digits(101,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(1,39) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22, 24, 33, 36]
+assert divisible_by_digits(10,55) == [11, 12, 15, 22, 24, 33, 36, 44, 48, 55]
+assert divisible_by_digits(50,99) == [55, 66, 77, 88, 99]
+assert divisible_by_digits(100,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(200,300) == [212, 216, 222, 224, 244, 248, 264, 288]
+assert divisible_by_digits(500,600) == [515, 555]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num) if int(d) != 0 and num % int(d) == 0]
+        if len(digits) == len(str(num)) and len(set(digits)) == len(digits):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(10,200) == [11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 132, 135, 144, 155, 162, 168, 175, 184, 195]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert divisible_by_digits(1000,1100) == []
+assert divisible_by_digits(111,119) == [111, 112, 115]
+assert divisible_by_digits(99,108) == [99]
+assert divisible_by_digits(99,110) == [99]
+assert divisible_by_digits(100,105) == []
+assert divisible_by_digits(22,199) == [22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99, 111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(22,22) == [22]
+assert divisible_by_digits(1,22) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+assert divisible_by_digits(11,26) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(7,70) == [7, 8, 9, 11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66]
+assert divisible_by_digits(1,12) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12]
+assert divisible_by_digits(10,30) == [11, 12, 15, 22, 24]
+assert divisible_by_digits(20,40) == [22, 24, 33, 36]
+assert divisible_by_digits(1,1) == [1]
+assert divisible_by_digits(60,71) == [66]
+assert divisible_by_digits(101,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(1,39) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22, 24, 33, 36]
+assert divisible_by_digits(10,55) == [11, 12, 15, 22, 24, 33, 36, 44, 48, 55]
+assert divisible_by_digits(50,99) == [55, 66, 77, 88, 99]
+assert divisible_by_digits(100,200) == [111, 112, 115, 122, 124, 126, 128, 132, 135, 144, 155, 162, 168, 175, 184]
+assert divisible_by_digits(200,300) == [212, 216, 222, 224, 244, 248, 264, 288]
+assert divisible_by_digits(500,600) == [515, 555]
+assert divisible_by_digits(10,20) == [11, 12, 15]
+assert divisible_by_digits(10,70) == [11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66]
+assert divisible_by_digits(10,100) == [11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(d) for d in str(num)]
+        divisible = True
+        for digit in digits:
+            if digit != 0 and num % digit != 0:
+                divisible = False
+                break
+        if divisible:
+            result.append(num)
+    return result
+```

@@ -1,0 +1,87 @@
+task_id:MbppEval/398
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sum_of_digits(nums):
+    '''
+    Write a function to compute the sum of digits of each number of a given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sum_of_digits(nums):
+    '''
+    Write a function to compute the sum of digits of each number of a given list.
+    '''
+
+    """
+    Compute the sum of digits of each number in the list `nums`.
+
+    Args:
+    nums (list): A list of integers.
+
+    Returns:
+    list: A list of integers representing the sum of digits of each number in the input list.
+    """
+
+    result = []
+
+    for num in nums:
+        digits_sum = 0
+        for digit in str(num):
+            digits_sum += int(digit)
+        result.append(digits_sum)
+
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sum_of_digits([28, 12, 33]) == 19
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sum_of_digits(nums):
+    '''
+    Write a function to compute the sum of digits of each number of a given list.
+    '''
+
+    """
+    Compute the sum of digits of each number in the list `nums`.
+
+    Args:
+    nums (list): A list of integers.
+
+    Returns:
+    list: A list of integers representing the sum of digits of each number in the input list.
+    """
+
+    result = []
+
+    for num in nums:
+        digits_sum = 0
+        for digit in str(abs(num)):
+            digits_sum += int(digit)
+        result.append(digits_sum)
+
+    return result
+
+```
+

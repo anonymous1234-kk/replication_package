@@ -1,0 +1,83 @@
+task_id:MbppEval/2
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def similar_elements(test_tup1, test_tup2):
+    '''
+    Write a function to find the shared elements from the given two lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def similar_elements(test_tup1, test_tup2):
+    '''
+    Write a function to find the shared elements from the given two lists.
+    '''
+
+    # Initialize an empty set to hold shared elements
+    shared_elements = set()
+
+    # Iterate over elements of the first tuple
+    for elem in test_tup1:
+        # If the element is present in the second tuple, add it to the shared_elements set
+        if elem in test_tup2:
+            shared_elements.add(elem)
+
+    # Return the shared elements as a tuple
+    return tuple(shared_elements)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-48<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert similar_elements(['H', 'E', 'L', 'L', 'O'],['H', 'O', 'L', 'L', 'E', 'R']) == ('L', 'E', 'H', 'O')
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def similar_elements(test_tup1, test_tup2):
+    '''
+    Write a function to find the shared elements from the given two lists.
+    '''
+
+    # Initialize an empty dictionary to hold the count of each element
+    count_dict = {}
+
+    # Iterate over elements of the first tuple
+    for elem in test_tup1:
+        # If the element is already present in the dictionary, increment its count
+        if elem in count_dict:
+            count_dict[elem] += 1
+        # Otherwise, add the element to the dictionary with count 1
+        else:
+            count_dict[elem] = 1
+
+    # Initialize an empty list to hold the shared elements
+    shared_elements = []
+
+    # Iterate over elements of the second tuple
+    for elem in test_tup2:
+        # If the element is present in the dictionary and its count is greater than 0, add it to the shared_elements list
+        if elem in count_dict and count_dict[elem] > 0:
+            shared_elements.append(elem)
+            # Decrement the count of the element in the dictionary
+            count_dict[elem] -= 1
+
+    # Return the shared elements as a tuple
+    return tuple(shared_elements)
+```

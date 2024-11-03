@@ -1,0 +1,123 @@
+task_id:MbppEval/299
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+    # Create a dictionary to store the sum of marks for each student
+    marks = defaultdict(int)
+    for student, subject, score in stdata:
+        marks[student] += score
+
+    # Find the maximum aggregate score among all students
+    max_score = 0
+    for score in marks.values():
+        if score > max_score:
+            max_score = score
+
+    return max_score
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_aggregate([(1, 40), (2, 50), (3, 60), (1, 70), (2, 80), (3, 90)]) == (3, 150)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    marks = defaultdict(int)
+    for student, score in stdata:
+        marks[student] += score
+
+    max_student = None
+    max_score = 0
+    for student, score in marks.items():
+        if score > max_score:
+            max_student = student
+            max_score = score
+
+    return max_student, max_score
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-37<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_aggregate([('a', -10), ('b', -20), ('a', -5), ('c', -8), ('d', -9)]) == ('c', -8)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert max_aggregate([(1, 40), (2, 50), (3, 60), (1, 70), (2, 80), (3, 90)]) == (3, 150)
+assert max_aggregate([(1, 20), (2, 10), (3, 30), (1, 40), (2, 50), (3, 60)]) == (3, 90)
+assert max_aggregate([(1, 10), (2, 40), (3, 30), (1, 50), (2, 20), (3, 60)]) == (3, 90)
+assert max_aggregate([(1, 60), (2, 50), (3, 40), (1, 30), (2, 20), (3, 10)]) == (1, 90)
+assert max_aggregate([(1, 20), (2, 50), (3, 40), (1, 60), (2, 30), (3, 10)]) == (1, 80)
+assert max_aggregate([(1, 60), (2, 20), (3, 30), (1, 50), (2, 10), (3, 40)]) == (1, 110)
+assert max_aggregate([(1, 40), (2, 30), (3, 20), (1, 10), (2, 50), (3, 60)]) == (2, 80)
+assert max_aggregate([(1, 50), (2, 40), (3, 30), (1, 20), (2, 10), (3, 60)]) == (3, 90)
+assert max_aggregate([(1, 60), (2, 50), (3, 40), (1, 30), (2, 20), (3, 10), (1, 70), (2, 80), (3, 90)]) == (1, 160)
+assert max_aggregate([(1, 50), (2, 70), (3, 60), (1, 10), (2, 30), (3, 40), (1, 20), (2, 80), (3, 90)]) == (3, 190)
+assert max_aggregate([('a', 10), ('b', 20), ('a', 5), ('c', 8)]) == ('b', 20)
+assert max_aggregate([('a', 10), ('b', 20), ('a', 5), ('c', 8), ('d', -9)]) == ('b', 20)
+assert max_aggregate([('a', 10), ('b', 20), ('a', 5), ('c', 8), ('d', 9)]) == ('b', 20)
+assert max_aggregate([('a', 10), ('b', 20), ('a', 5), ('c', -8), ('d', 9)]) == ('b', 20)
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    marks = defaultdict(int)
+    for student, score in stdata:
+        marks[student] += score
+
+    max_student = None
+    max_score = float('-inf')
+    for student, score in marks.items():
+        if score > max_score:
+            max_student = student
+            max_score = score
+
+    return max_student, max_score
+```

@@ -1,0 +1,50 @@
+task_id:MbppEval/268
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_star_num(n): 
+    '''
+    Write a function to find the n'th star number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_star_num(n): 
+    '''
+    Write a function to find the n'th star number.
+    '''
+
+    return 6 * n * (n - 1) + 1
+``` 
+
+This function takes an integer `n` as input and returns the n'th star number. The star number is calculated using the formula `6 * n * (n - 1) + 1`. This formula generates the sequence of star numbers: 1, 13, 37, 73, 121, 181, 253, 337, 433, 541, 661, 793, 937, 1093, 1261, 1441, 1633, 1837, 2053, 2281, 2521, 2773, 3037, 3313, 3601, 3901, 4213, 4537, 4873, 5221, 5581, 5953, 6337, 6733, 7141, 7561, 7993, 8437, 8893, 9361, 9841, 10333, 10837, 11353, 11881, 12421, 12973, 13537, 14113, 14701, 15301, 15913, 16537, 17173, 17821, 18481, 19153, 19837, 20533, 21241, 21961, 22693, 23437, 24193, 24961, 25741, 26533, 27337, 28153, 28981, 29821, 30673, 31537, 32413, 33301, 34201, 35113, 36037, 36973, 37921, 38881, 39853, 40837, 41833, 42841, 43861, 44893, 45937, 46993, 48061, 49141, 50233, 51337, 52453, 53581, 54721, 55873, 57037, 58213, 59401, 60601, 61813, 63037, 64273, 65521, 66781, 68053, 69337, 70633, 71941, 73261, 74593, 75937, 77293, 78661, 80041, 81433, 82837, 84253, 85681, 87121, 88573, 90037, 91513, 93001, 94501, 96013, 97537, 99173, 100921, 102781, 104753, 106837, 109033, 111341, 113761, 116293, 118937, 121693, 124561, 127541, 130633, 133837, 137153, 140581, 144121, 147773, 151537, 155413, 159401, 163501, 167713, 172037, 176473, 181021, 185681, 190453, 195337, 200333, 205441, 210661, 216001, 221453, 227017, 232693, 238481, 244381, 250393, 256517, 262753, 269101, 275561, 282133, 288817, 295613, 302521, 309541, 316673, 323917, 331273, 338741, 346321, 354013, 361817, 369733, 377761, 385901, 394153, 402517, 411001, 419597, 428305, 437125, 446057, 455101, 464257, 473525, 482905, 492397, 502001, 511717, 521545, 531485, 541537, 551701, 561977, 572365, 582865, 593477, 604201, 615037, 625985, 637045, 648217, 659501, 670897, 682405, 694025, 705757, 717601, 729557, 741625, 753805, 766097, 778501, 791017, 803645, 816385, 829237, 842201, 855277, 868465, 881765, 895177, 908701, 922337, 936085, 949945, 963917, 978001, 992197
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_star_num(5) == 121
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_star_num(n): 
+    '''
+    Write a function to find the n'th star number.
+    '''
+    return 6 * (n - 1) * n + 1
+```

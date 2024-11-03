@@ -1,0 +1,72 @@
+task_id:MbppEval/103
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def eulerian_num(n, m): 
+    '''
+    Write a function to find the Eulerian number a(n, m).
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def eulerian_num(n, m): 
+    '''
+    Write a function to find the Eulerian number a(n, m).
+    '''
+ 
+    '''
+    Write a function to find the Eulerian number a(n, m).
+    '''
+    if m < 0 or n < m: 
+        return 0
+    if m == 0: 
+        return 1
+    a = [0 for j in range(n+1)] 
+    b = [0 for j in range(n+1)]
+    a[0] = b[0] = 1
+    for i in range(1,n+1): 
+        j = 1 if i <= m else i - m
+        while j <= i: 
+            a[j], b[j] = b[j-1] + j*b[j], a[j]
+            j += 1
+    return a[m] 
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert eulerian_num(4,2) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def eulerian_num(n, m): 
+    if m < 0 or n < m: 
+        return 0
+    if m == 0: 
+        return 1
+    a = [0 for j in range(n+1)] 
+    b = [0 for j in range(n+1)]
+    a[0] = b[0] = 1
+    for i in range(1,n+1): 
+        j = 1 if i <= m else i - m
+        while j <= i: 
+            a[j], b[j] = b[j-1] + j*b[j], a[j]
+            j += 1
+    return a[m] 
+```

@@ -1,0 +1,89 @@
+task_id:MbppEval/453
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+ 
+    # Initialize the sum variable to 0
+    sum = 0
+    
+    # Loop through all numbers from 1 to sqrt(n)
+    for i in range(1, int(math.sqrt(n)) + 1):
+        
+        # Check if i is a factor of n
+        if n % i == 0:
+            
+            # If i is even, add it to the sum variable
+            if i % 2 == 0:
+                sum += i
+            
+            # Check if the other factor is even and add it to the sum variable
+            if (n // i) % 2 == 0:
+                sum += (n // i)
+                
+    # Return the sum of even factors
+    return sum
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sumofFactors(4) == 6
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert sumofFactors(30) == 48
+assert sumofFactors(10) == 12
+assert sumofFactors(25) == 0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+ 
+    # Initialize the sum variable to 0
+    sum = 0
+    
+    # Loop through all numbers from 1 to sqrt(n)
+    for i in range(1, int(math.sqrt(n)) + 1):
+        
+        # Check if i is a factor of n
+        if n % i == 0:
+            
+            # If i is even, add it to the sum variable
+            if i % 2 == 0:
+                sum += i
+            # If n/i is not equal to i, then add n/i to the sum if it's even
+            if i != n // i and (n // i) % 2 == 0:
+                sum += (n // i)
+                
+    # Return the sum of even factors
+    return sum
+```

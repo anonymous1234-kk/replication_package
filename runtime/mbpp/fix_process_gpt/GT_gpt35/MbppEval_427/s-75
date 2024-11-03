@@ -1,0 +1,71 @@
+task_id:MbppEval/427
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+    # Use the re module to match the date format
+    match = re.match(r'(\d{4})-(\d{2})-(\d{2})', dt)
+
+    # Extract the year, month, and day from the match object
+    year, month, day = match.groups()
+
+    # Return the date in the desired format
+    return f"{day}-{month}-{year}"
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-25<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert change_date_format('2022/01/01') == 2022/01/01
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert change_date_format('2022-01-00') == 00-01-2022
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    # Use the re module to match the date format
+    match = re.match(r'(\d{4})-(\d{2})-(\d{2})', dt)
+
+    # Extract the year, month, and day from the match object
+    year, month, day = match.groups()
+
+    # Return the date in the desired format
+    return f"{day}-{month}-{year}"
+
+assert change_date_format('2022-01-00') == "00-01-2022"
+```

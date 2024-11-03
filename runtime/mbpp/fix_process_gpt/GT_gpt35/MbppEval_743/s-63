@@ -1,0 +1,50 @@
+task_id:MbppEval/743
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rotate_right(list, m):
+    '''
+    Write a function to rotate a given list by specified number of items to the right direction. https://www.geeksforgeeks.org/python-program-right-rotate-list-n/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rotate_right(list, m):
+    '''
+    Write a function to rotate a given list by specified number of items to the right direction. https://www.geeksforgeeks.org/python-program-right-rotate-list-n/
+    '''
+
+    return lst[-m:] + lst[:-m]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rotate_right([4, 2, 1, 6, 8],6) == [4, 2, 1, 6, 8]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rotate_right(lst, m):
+    '''
+    Write a function to rotate a given list by specified number of items to the right direction. https://www.geeksforgeeks.org/python-program-right-rotate-list-n/
+    '''
+    n = len(lst)
+    m = m % n
+    return lst[-m:] + lst[:-m]
+```

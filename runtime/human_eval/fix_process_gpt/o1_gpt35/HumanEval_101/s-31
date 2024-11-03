@@ -1,0 +1,72 @@
+task_id:HumanEval/101
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def words_string(s):
+    """
+    You will be given a string of words separated by commas or spaces. Your task is
+    to split the string into words and return an array of the words.
+    
+    For example:
+    words_string("Hi, my name is John") == ["Hi", "my", "name", "is", "John"]
+    words_string("One, two, three, four, five, six") == ["One", "two", "three", "four", "five", "six"]
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def words_string(s):
+    """
+    You will be given a string of words separated by commas or spaces. Your task is
+    to split the string into words and return an array of the words.
+    
+    For example:
+    words_string("Hi, my name is John") == ["Hi", "my", "name", "is", "John"]
+    words_string("One, two, three, four, five, six") == ["One", "two", "three", "four", "five", "six"]
+    """
+
+    # Use the split() function to split the string into a list of words.
+    # The split() function takes an optional delimiter as an argument.
+    # If no delimiter is specified, it splits the string on whitespace characters.
+    # In this case, we want to split the string on both commas and spaces.
+    # We can achieve this by passing a regular expression that matches both commas and spaces as the delimiter.
+    # The regular expression we need is ",\s+|\s+"
+    # This matches one or more whitespace characters (\s+) preceded by a comma (,) OR
+    # one or more whitespace characters (\s+) NOT preceded by a comma (,)
+    # We then call the split() function with the regular expression as the delimiter to split the string into words.
+    words = re.split(",\s+|\s+", s)
+    # Return the list of words.
+    return words
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert words_string("Life is not always easy, but it's worth it.") == ['Life', 'is', 'not', 'always', 'easy', 'but', "it's", 'worth', 'it.']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+import re
+
+def words_string(s):
+    words = re.findall(r'\w+|[^\w\s]', s)
+    return words
+```

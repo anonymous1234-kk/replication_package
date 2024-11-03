@@ -1,0 +1,77 @@
+task_id:MbppEval/446
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+
+    # create a Counter object from the tuple
+    counter_tup = Counter(tup)
+  
+    # create an empty dictionary to store the counts
+    count_dict = {}
+  
+    # iterate over the elements of the list
+    for element in lst:
+        
+        # check if the element is present in the tuple
+        if element in counter_tup:
+          
+            # add the count to the dictionary
+            count_dict[element] = counter_tup[element]
+    
+    # return the dictionary of counts
+    return count_dict
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_Occurrence((1, 2, 3, 1, 2, 1, 4, 5, 6, 7, 8, 9, 9),[1, 3, 10]) == {1: 3, 3: 1, 10: 0}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_Occurrence(('a', 'b', 'a', 'c', 'd', 'd', 'a', 'd', 'd', 'c', 'c', 'e', 'e', 'd', 'a'),['a', 'c', 'd']) == {'a': 4, 'c': 3, 'd': 5}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+
+    counter_tup = Counter(tup)
+    count_dict = {}
+
+    for element in lst:
+        if element in counter_tup:
+            count_dict[element] = counter_tup[element]
+        else:
+            count_dict[element] = 0
+
+    return count_dict
+```

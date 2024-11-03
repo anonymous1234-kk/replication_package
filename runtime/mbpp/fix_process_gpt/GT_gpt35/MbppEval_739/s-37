@@ -1,0 +1,91 @@
+task_id:MbppEval/739
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def find_Index(n): 
+    '''
+    Write a python function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def find_Index(n): 
+    '''
+    Write a python function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/
+    '''
+
+    # Calculate the minimum number of digits needed to represent a triangular number with n digits
+    min_num = int(math.ceil(((n * 2) / 3) ** (1/2)))
+    
+    # Check all triangular numbers with min_num digits until a triangular number with n digits is found
+    index = 0
+    while True:
+        index += 1
+        triangular_num = (index * (index + 1)) // 2
+        
+        if len(str(triangular_num)) == n:
+            return index
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-23<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_Index(14) == 4472136
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_Index(4) == 45
+assert find_Index(3) == 14
+assert find_Index(2) == 4
+assert find_Index(5) == 141
+assert find_Index(6) == 447
+assert find_Index(7) == 1414
+assert find_Index(8) == 4472
+assert find_Index(9) == 14142
+assert find_Index(10) == 44721
+assert find_Index(11) == 141421
+assert find_Index(2) == 4
+assert find_Index(3) == 14
+assert find_Index(4) == 45
+assert find_Index(5) == 141
+assert find_Index(6) == 447
+assert find_Index(7) == 1414
+assert find_Index(8) == 4472
+assert find_Index(9) == 14142
+assert find_Index(10) == 44721
+assert find_Index(11) == 141421
+assert find_Index(12) == 447214
+assert find_Index(13) == 1414214
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def find_Index(n): 
+    '''
+    Write a python function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/
+    '''
+
+    min_num = int(math.ceil(((n * 2) / 3) ** (1/2)))
+    
+    index = 0
+    while True:
+        index += 1
+        triangular_num = (index * (index + 1)) // 2
+        
+        if len(str(triangular_num)) >= n:
+            return index
+```

@@ -1,0 +1,100 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the input number to a list of digits
+    digits = list(str(n))
+
+    # Iterate through the list of digits from right to left
+    for i in range(len(digits) - 2, -1, -1):
+        # If the current digit is less than the next digit
+        if digits[i] < digits[i + 1]:
+            # Find the smallest digit to the right of the current digit that is greater than the current digit
+            smallest_greater = min(filter(lambda x: x > digits[i], digits[i + 1:]))
+            # Swap the current digit with the smallest greater digit
+            j = digits.index(smallest_greater)
+            digits[i], digits[j] = digits[j], digits[i]
+            # Sort the digits to the right of the current digit in ascending order
+            digits[i + 1:] = sorted(digits[i + 1:])
+            # Convert the list of digits back to an integer and return it
+            return int(''.join(digits))
+
+    # If no rearrangement is possible, return -1
+    return -1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(1001) == 1010
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+assert rearrange_bigger(132) == 213
+assert rearrange_bigger(999999999) == -1
+assert rearrange_bigger(22) == -1
+assert rearrange_bigger(9) == -1
+assert rearrange_bigger(3000) == -1
+assert rearrange_bigger(54321) == -1
+assert rearrange_bigger(1) == -1
+assert rearrange_bigger(53214) == 53241
+assert rearrange_bigger(999) == -1
+assert rearrange_bigger(531) == -1
+assert rearrange_bigger(754298) == 754829
+assert rearrange_bigger(53421) == 54123
+assert rearrange_bigger(25585) == 25855
+assert rearrange_bigger(81432) == 82134
+assert rearrange_bigger(71513) == 71531
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the input number to a list of digits
+    digits = list(str(n))
+
+    # Iterate through the list of digits from right to left
+    for i in range(len(digits) - 2, -1, -1):
+        # If the current digit is less than the next digit
+        if digits[i] < digits[i + 1]:
+            # Find the smallest digit to the right of the current digit that is greater than the current digit
+            smallest_greater = min(filter(lambda x: x > digits[i], digits[i + 1:]))
+            # Swap the current digit with the smallest greater digit
+            j = digits.index(smallest_greater, i + 1)
+            digits[i], digits[j] = digits[j], digits[i]
+            # Sort the digits to the right of the current digit in ascending order
+            digits[i + 1:] = sorted(digits[i + 1:])
+            # Convert the list of digits back to an integer and return it
+            return int(''.join(digits))
+
+    # If no rearrangement is possible, return -1
+    return -1
+```

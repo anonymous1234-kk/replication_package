@@ -1,0 +1,100 @@
+task_id:MbppEval/453
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+ 
+    # Initialize result as n itself 
+    res = n 
+    # This loop runs from 2 to 
+    # square root of n. 
+    for i in range(2, int(math.sqrt(n)) + 1) : 
+        # If i divides n 
+        if (n % i == 0) : 
+            # If both divisors are same 
+            # then add it only once else 
+            # add both the factors 
+            if (i == (n / i)) : 
+                if i % 2 == 0:
+                    res += i 
+            else : 
+                if i % 2 == 0:
+                    res += i 
+                if ((n / i) % 2 == 0):
+                    res += (n // i) 
+    # Add 1 to the result as 1 
+    # is also a factor 
+    if n == 1:
+        return 0
+    elif n % 2 == 0:
+        return res + 1
+    else:
+        return res
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sumofFactors(30) == 48
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+ 
+    # Initialize result as n itself 
+    res = 0 
+    # This loop runs from 2 to 
+    # square root of n. 
+    for i in range(2, int(math.sqrt(n)) + 1) : 
+        # If i divides n 
+        if (n % i == 0) : 
+            # If both divisors are same 
+            # then add it only once else 
+            # add both the factors 
+            if (i == (n / i)) : 
+                if i % 2 == 0:
+                    res += i 
+            else : 
+                if i % 2 == 0:
+                    res += i 
+                if ((n / i) % 2 == 0):
+                    res += (n // i) 
+    # Add 1 to the result as 1 
+    # is also a factor 
+    if n % 2 == 0:
+        return res + n 
+    else:
+        return res
+```

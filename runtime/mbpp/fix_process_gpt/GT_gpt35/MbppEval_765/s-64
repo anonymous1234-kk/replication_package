@@ -1,0 +1,143 @@
+task_id:MbppEval/765
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    A function to find nth polite number. A polite number is a number that can be expressed as the sum of two or more consecutive positive integers. 
+    This function takes an integer n as input and returns the nth polite number.
+    """
+    # Check if n is a positive integer
+    if n <= 0:
+        return None
+    
+    # The first polite number is 1
+    polite_num = 1
+    
+    while n > 0:
+        # check if polite_num is polite, i.e., it can be expressed as the sum of two or more consecutive positive integers
+        for i in range(1, polite_num):
+            # calculate the sum of consecutive positive integers from i to j
+            j = (2 * polite_num + i - i**2 - 2 * polite_num * i) / (2 * i - 2)
+            # check if the sum equals polite_num and all numbers are positive integers
+            if j > i and j == int(j):
+                n -= 1
+                break
+        polite_num += 1
+        
+    return int(polite_num - 1)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(20) == 25
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    A function to find nth polite number. A polite number is a number that can be expressed as the sum of two or more consecutive positive integers. 
+    This function takes an integer n as input and returns the nth polite number.
+    """
+    # Check if n is a positive integer
+    if n <= 0:
+        return None
+    
+    # The first polite number is 1
+    polite_num = 1
+    
+    while n > 0:
+        # check if polite_num is polite, i.e., it can be expressed as the sum of two or more consecutive positive integers
+        for i in range(1, polite_num):
+            # calculate the sum of consecutive positive integers from i to j
+            j = (2 * polite_num + i - i**2 - 2 * polite_num * i) / (2 * i - 2)
+            # check if the sum equals polite_num and all numbers are positive integers
+            if j > i and j == int(j):
+                n -= 1
+                break
+        if n == 0:
+            break
+        polite_num += 1
+        
+    return int(polite_num)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(7) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    A function to find nth polite number. A polite number is a number that can be expressed as the sum of two or more consecutive positive integers. 
+    This function takes an integer n as input and returns the nth polite number.
+    """
+    # Check if n is a positive integer
+    if n <= 0:
+        return None
+    
+    # The first polite number is 1
+    polite_num = 1
+    
+    while n > 0:
+        # check if polite_num is polite, i.e., it can be expressed as the sum of two or more consecutive positive integers
+        for i in range(1, polite_num):
+            # calculate the sum of consecutive positive integers from i to j
+            j = (2 * polite_num + i - i**2 - 2 * polite_num * i) / (2 * i - 2)
+            # check if the sum equals polite_num and all numbers are positive integers
+            if j > i and j == int(j):
+                n -= 1
+                break
+        if n > 0:
+            polite_num += 1
+        
+    return int(polite_num - 1)
+```

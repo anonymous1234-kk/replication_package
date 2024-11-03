@@ -1,0 +1,93 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the integer n to a string so that it can be sorted
+    n = str(n)
+
+    # Check if the input number is already the largest possible number that can be rearranged from its digits
+    if ''.join(sorted(n, reverse=True)) == n:
+        return int(n)
+
+    # Loop over the digits of the input number from right to left to find the first pair of adjacent digits that are in decreasing order
+    for i in range(len(n) - 2, -1, -1):
+        if n[i] < n[i+1]:
+            # Split the string into two parts: the prefix (which ends at the i-th character) and the suffix (which starts at the i+1-th character)
+            prefix = n[:i]
+            suffix = n[i+1:]
+
+            # Find the smallest digit in the suffix that is greater than the i-th digit
+            smallest_greater_digit = min(filter(lambda x: x > n[i], suffix))
+
+            # Remove the smallest greater digit from the suffix
+            suffix = suffix.replace(smallest_greater_digit, '', 1)
+
+            # Construct the next bigger number by concatenating the prefix, the smallest greater digit, and the sorted suffix
+            next_bigger_number = int(prefix + smallest_greater_digit + ''.join(sorted(suffix)))
+
+            return next_bigger_number
+
+    # If we reach this point, the input number is already the largest possible number that can be rearranged from its digits
+    return int(n)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(123) == 132
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    n = str(n)
+
+    if ''.join(sorted(n, reverse=True)) == n:
+        return int(n)
+
+    for i in range(len(n) - 2, -1, -1):
+        if n[i] < n[i+1]:
+            prefix = n[:i]
+            suffix = n[i+1:]
+
+            smallest_greater_digit = min(filter(lambda x: x > n[i], suffix))
+
+            suffix = suffix.replace(smallest_greater_digit, '', 1)
+
+            next_bigger_number = int(prefix + smallest_greater_digit + ''.join(sorted(suffix)))
+
+            return next_bigger_number
+
+    return int(''.join(sorted(n, reverse=True)))
+```

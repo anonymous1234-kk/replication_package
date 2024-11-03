@@ -1,0 +1,65 @@
+task_id:MbppEval/388
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+
+    # using bitwise right shift operator to divide the number by 2 until it becomes 0
+    # and counting the number of times we have divided the number to get the power of 2
+    power = 0
+    while n > 1:
+        n = n >> 1
+        power += 1
+    # returning the highest power of 2 less than or equal to n
+    return 2**power
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert highest_Power_of_2(-10) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+
+    # using bitwise right shift operator to divide the absolute value of the number by 2 until it becomes 0
+    # and counting the number of times we have divided the number to get the power of 2
+    power = 0
+    abs_n = abs(n)
+    while abs_n > 1:
+        abs_n = abs_n >> 1
+        power += 1
+    # returning the highest power of 2 less than or equal to n
+    return 2**power if n >= 0 else 0
+
+```

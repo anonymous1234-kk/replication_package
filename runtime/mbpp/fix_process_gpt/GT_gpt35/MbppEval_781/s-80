@@ -1,0 +1,89 @@
+task_id:MbppEval/781
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def count_divisors(n) : 
+    '''
+    Write a python function to check whether the count of divisors is even. https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-24.php
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def count_divisors(n) : 
+    '''
+    Write a python function to check whether the count of divisors is even. https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-24.php
+    '''
+ 
+    '''
+    Write a python function to check whether the count of divisors is even. https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-24.php
+    '''
+    count = 0
+    for i in range(1, int(math.sqrt(n))+1):
+        if n % i == 0:
+            count += 2 
+    if math.sqrt(n)**2 == n: 
+        count -= 1 
+    return count % 2 == 0
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_divisors(54) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_divisors(23) == True
+assert count_divisors(5) == True
+assert count_divisors(5) == True
+assert count_divisors(5) == True
+assert count_divisors(13) == True
+assert count_divisors(5) == True
+assert count_divisors(7) == True
+assert count_divisors(13) == True
+assert count_divisors(19) == True
+assert count_divisors(10) == True
+assert count_divisors(16) == False
+assert count_divisors(4) == False
+assert count_divisors(9) == False
+assert count_divisors(9) == False
+assert count_divisors(25) == False
+assert count_divisors(100) == False
+assert count_divisors(36) == False
+assert count_divisors(8) == True
+assert count_divisors(3) == True
+assert count_divisors(12) == True
+assert count_divisors(20) == True
+assert count_divisors(24) == True
+assert count_divisors(15) == True
+assert count_divisors(12) == True
+assert count_divisors(8) == True
+assert count_divisors(15) == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+
+def count_divisors(n):
+    count = 0
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            count += 2
+    if math.sqrt(n) ** 2 == n:
+        count -= 1
+    return count % 2 == 0
+```

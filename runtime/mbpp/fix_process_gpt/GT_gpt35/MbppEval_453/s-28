@@ -1,0 +1,72 @@
+task_id:MbppEval/453
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+ 
+    sum = 0
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if (n % i == 0):
+            if (i % 2 == 0):
+                sum += i
+            if ((n // i) % 2 == 0):
+                sum += (n // i)
+    if (n % 2 == 0):
+        sum += n
+    return sum
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sumofFactors(4) == 6
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert sumofFactors(30) == 48
+assert sumofFactors(10) == 12
+assert sumofFactors(25) == 0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def sumofFactors(n) : 
+    '''
+    Write a python function to find the sum of even factors of a number.
+    '''
+ 
+    sum = 0
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if (n % i == 0):
+            if (i % 2 == 0):
+                sum += i
+            if (i != (n // i) and (n // i) % 2 == 0):
+                sum += (n // i)
+    if (n % 2 == 0):
+        sum += n
+    return sum
+```

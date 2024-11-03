@@ -1,0 +1,80 @@
+task_id:MbppEval/417
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+ 
+    # Create an empty dictionary to store the common first elements
+    common_first_elements = {}
+    
+    # Iterate through each tuple in the input list
+    for tup in Input:
+        # Check if the first element of the tuple is already in the dictionary
+        if tup[0] in common_first_elements:
+            # If it is, append the tuple to the list of tuples associated with that first element
+            common_first_elements[tup[0]].append(tup)
+        else:
+            # If it is not, create a new list with the current tuple as its only element and associate it with the first element in the dictionary
+            common_first_elements[tup[0]] = [tup]
+    
+    # Create a list to hold the groups of tuples
+    groups = []
+    
+    # Iterate through each key-value pair in the dictionary
+    for key, value in common_first_elements.items():
+        # Append the list of tuples to the groups list
+        groups.append(value)
+    
+    # Return the groups list
+    return groups
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (2, 6), (1, 6), (4, 7)]) == [(1, 3, 6), (2, 6), (4, 7)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    common_first_elements = {}
+    
+    for tup in Input:
+        if tup[0] in common_first_elements:
+            common_first_elements[tup[0]].append(tup[1])
+        else:
+            common_first_elements[tup[0]] = [tup[1]]
+    
+    groups = []
+    
+    for key, value in common_first_elements.items():
+        groups.append((key, *value))
+    
+    return groups
+```

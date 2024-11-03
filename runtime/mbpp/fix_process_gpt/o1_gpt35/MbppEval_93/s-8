@@ -1,0 +1,55 @@
+task_id:MbppEval/93
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def power(a,b):
+    '''
+    Write a function to calculate the value of 'a' to the power 'b'.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def power(a,b):
+    '''
+    Write a function to calculate the value of 'a' to the power 'b'.
+    '''
+
+    result = 1
+    for i in range(abs(b)):
+        result *= a
+    if b < 0:
+        result = 1 / result
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert power(2.5,1.5) == 3.952847075210474
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def power(a,b):
+    '''
+    Write a function to calculate the value of 'a' to the power 'b'.
+    '''
+
+    result = a ** b
+    return result
+```

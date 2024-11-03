@@ -1,0 +1,92 @@
+task_id:MbppEval/111
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def common_in_nested_lists(nestedlist):
+    '''
+    Write a function to find the common elements in given nested lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def common_in_nested_lists(nestedlist):
+    '''
+    Write a function to find the common elements in given nested lists.
+    '''
+
+    '''
+    Write a function to find the common elements in given nested lists.
+    '''
+    if not nestedlist:
+        return []
+
+    # Flatten the nested list
+    flattened = [item for sublist in nestedlist for item in sublist]
+
+    # Count the occurrences of each item
+    counter = {}
+    for item in flattened:
+        if item in counter:
+            counter[item] += 1
+        else:
+            counter[item] = 1
+
+    # Find the items that occur in all sublists
+    result = []
+    for item, count in counter.items():
+        if count == len(nestedlist):
+            result.append(item)
+
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert common_in_nested_lists([[1, 2, 3], [2, 3, 1], [3, 2, 2]]) == [2, 3]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert common_in_nested_lists([[1, 2, 3], [4, 5, 6], [7, 8, 9, 1, 2, 3]]) == []
+assert common_in_nested_lists([[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 2, 3], [3, 4, 5]]) == []
+assert common_in_nested_lists([[1, 2], [2, 3], [3, 4]]) == []
+assert common_in_nested_lists([[1, 2, 3], [2, 3, 1], [3, 2, 4]]) == [2, 3]
+assert common_in_nested_lists([['a', 'b', 'c'], ['b', 'c', 'a'], ['c', 'a', 'd']]) == ['a', 'c']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def common_in_nested_lists(nestedlist):
+    if not nestedlist:
+        return []
+  
+    # Flatten the nested list
+    flattened = [item for sublist in nestedlist for item in sublist]
+  
+    # Count the occurrences of each item
+    counter = {}
+    for item in flattened:
+        if item in counter:
+            counter[item] += 1
+        else:
+            counter[item] = 1
+  
+    # Find the items that occur in all sublists
+    result = []
+    for item, count in counter.items():
+        if count == len(nestedlist):
+            result.append(item)
+  
+    return result
+```

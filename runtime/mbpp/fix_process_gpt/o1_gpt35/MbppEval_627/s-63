@@ -1,0 +1,83 @@
+task_id:MbppEval/627
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_First_Missing(array,start=0,end=None):
+    '''
+    Write a python function to find the smallest missing number from a sorted list of natural numbers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_First_Missing(array,start=0,end=None):
+    '''
+    Write a python function to find the smallest missing number from a sorted list of natural numbers.
+    '''
+
+    if end is None:
+        end = len(array) - 1
+
+    if start > end:
+        return start
+
+    mid = (start + end) // 2
+
+    # If mid is not at its correct position, then the missing number must be on the left side
+    if array[mid] != mid + 1:
+        return find_First_Missing(array, start, mid)
+
+    # Else the missing number must be on the right side
+    return find_First_Missing(array, mid + 1, end)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_First_Missing([1],0,0) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_First_Missing(array,start=0,end=None):
+    '''
+    Write a python function to find the smallest missing number from a sorted list of natural numbers.
+    '''
+
+    if end is None:
+        end = len(array) - 1
+
+    if start > end:
+        return start
+
+    mid = (start + end) // 2
+
+    # If mid is not at its correct position, then the missing number must be on the left side
+    if array[mid] != mid + 1:
+        return find_First_Missing(array, start, mid)
+
+    # Check if the current element is the last element of the array
+    if mid == len(array) - 1:
+        return mid + 1
+
+    # Check if the next element is missing
+    if array[mid+1] != array[mid] + 1:
+        return array[mid] + 1
+
+    # Else the missing number must be on the right side
+    return find_First_Missing(array, mid + 1, end)
+```

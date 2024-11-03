@@ -1,0 +1,64 @@
+task_id:MbppEval/388
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+ 
+    # Shifting the binary representation of n to right by 1 bit until the result is zero 
+    # (i.e. we have iterated through all powers of 2 less than or equal to n).
+    # The number of iterations is equal to the highest power of 2 that is less than or equal to n.
+    res = 0
+    while n > 0:
+        res += 1
+        n >>= 1
+    return pow(2, res-1)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert highest_Power_of_2(-10) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+ 
+    res = 0
+    if n <= 0:
+        return res
+    
+    while n > 0:
+        res += 1
+        n >>= 1
+        
+    return pow(2, res-1)
+```

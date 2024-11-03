@@ -1,0 +1,86 @@
+task_id:MbppEval/558
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+    # find absolute difference between n1 and n2
+    num = abs(n1-n2)
+    
+    # convert the number to string
+    num = str(num)
+    
+    # initialize result variable to store sum of per-digit difference
+    result = 0
+    
+    # loop through each digit in the number
+    for i in range(len(num)):
+        # add the absolute difference between the digits of n1 and n2 to the result
+        result += abs(int(num[i]) - int(str(n1)[i]))
+        
+    # return the result
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert digit_distance_nums(234,489) == 12
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+    # find absolute difference between n1 and n2
+    num = abs(n1-n2)
+    
+    # convert the number to string
+    num = str(num)
+    
+    # initialize result variable to store sum of per-digit difference
+    result = 0
+    
+    # loop through each digit in the number
+    for i in range(len(num)):
+        # add the absolute difference between the digits of n1 and n2 to the result
+        result += abs(int(num[i]) - int(str(n2)[i]))
+        
+    # return the result
+    return result
+
+```

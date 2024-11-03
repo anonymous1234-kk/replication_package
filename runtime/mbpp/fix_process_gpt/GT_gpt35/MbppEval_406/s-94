@@ -1,0 +1,69 @@
+task_id:MbppEval/406
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_Parity(x): 
+    '''
+    Write a python function to find whether the parity of a given number is odd.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_Parity(x): 
+    '''
+    Write a python function to find whether the parity of a given number is odd.
+    '''
+ 
+    '''
+    Write a python function to find whether the parity of a given number is odd.
+    '''
+    count = 0
+    while x:
+        count += x & 1
+        x >>= 1
+    return count % 2 != 0
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_Parity(-1) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_Parity(43) == False
+assert find_Parity(2) == True
+assert find_Parity(3) == False
+assert find_Parity(4) == True
+assert find_Parity(5) == False
+assert find_Parity(8) == True
+assert find_Parity(9) == False
+assert find_Parity(2) == True
+assert find_Parity(27) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_Parity(x): 
+    '''
+    Write a python function to find whether the parity of a given number is odd.
+    '''
+ 
+    count = 0
+    x = abs(x)
+    while x:
+        count += x & 1
+        x >>= 1
+    return count % 2 != 0
+```

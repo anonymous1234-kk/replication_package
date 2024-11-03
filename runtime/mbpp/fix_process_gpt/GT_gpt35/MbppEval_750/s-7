@@ -1,0 +1,50 @@
+task_id:MbppEval/750
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def add_tuple(test_list, test_tup):
+    '''
+    Write a function to add the given tuple to the given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def add_tuple(test_list, test_tup):
+    '''
+    Write a function to add the given tuple to the given list.
+    '''
+
+    '''
+    Write a function to add the given tuple to the given list.
+    '''
+    test_list.append(test_tup)
+    return test_list
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_tuple([1, 2, 3],(4, 5, 6)) == [1, 2, 3, 4, 5, 6]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_tuple(test_list, test_tup):
+    test_list += test_tup
+    return test_list
+```

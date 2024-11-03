@@ -1,0 +1,78 @@
+task_id:HumanEval/154
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def cycpattern_check(a , b):
+    """You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word
+    cycpattern_check("abcd","abd") => False
+    cycpattern_check("hello","ell") => True
+    cycpattern_check("whassup","psus") => False
+    cycpattern_check("abab","baa") => True
+    cycpattern_check("efef","eeff") => False
+    cycpattern_check("himenss","simen") => True
+
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def cycpattern_check(a , b):
+    """You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word
+    cycpattern_check("abcd","abd") => False
+    cycpattern_check("hello","ell") => True
+    cycpattern_check("whassup","psus") => False
+    cycpattern_check("abab","baa") => True
+    cycpattern_check("efef","eeff") => False
+    cycpattern_check("himenss","simen") => True
+
+    """
+
+    # Concatenate `a` with itself to consider all possible rotations of `b`
+    a += a
+    
+    # Check if `b` or any of its rotations is a substring of `a`
+    for i in range(len(a) - len(b) + 1):
+        if a[i:i+len(b)] == b:
+            return True
+    
+    return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert cycpattern_check('abcdefgh','fghabc') == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert cycpattern_check('helo','ello') == False
+assert cycpattern_check('sillyBacon','conBacon') == False
+assert cycpattern_check('xyz','yxz') == False
+assert cycpattern_check('train','tainr') == False
+assert cycpattern_check('himen','nhiem') == False
+assert cycpattern_check('TheCatInTheHat','heCatInThet') == False
+assert cycpattern_check('dog','god') == False
+assert cycpattern_check('human','nam') == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def cycpattern_check(a , b):
+    a += a
+    for i in range(len(a) - len(b) + 1):
+        if a[i:i+len(b)] == b:
+            return True
+    return False
+```

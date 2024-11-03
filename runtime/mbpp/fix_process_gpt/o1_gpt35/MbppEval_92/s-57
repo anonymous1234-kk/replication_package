@@ -1,0 +1,81 @@
+task_id:MbppEval/92
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+    if n < 100:
+        return False
+
+    digits = [int(d) for d in str(n)]
+
+    if len(set(digits)) != 2:
+        return False
+
+    if digits[0] == digits[1]:
+        return False
+
+    for i in range(2, len(digits)):
+        if digits[i] == digits[i - 2]:
+            return False
+
+    return True
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-14<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_undulating(4554) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+    if n < 100:
+        return False
+
+    digits = [int(d) for d in str(n)]
+
+    if len(set(digits)) != 2:
+        return False
+
+    if digits[0] == digits[1]:
+        return False
+
+    for i in range(2, len(digits)):
+        if digits[i] == digits[i - 2]:
+            return False
+
+    return True
+```

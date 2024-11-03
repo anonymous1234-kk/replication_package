@@ -1,0 +1,110 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string
+    n_str = str(n)
+    
+    # Get the length of the string
+    n_len = len(n_str)
+    
+    # Convert the string to a list of digits
+    n_list = [int(d) for d in n_str]
+    
+    # Traverse the list from right to left to find the first digit that is smaller than the digit to its right
+    i = n_len - 2
+    while i >= 0 and n_list[i] >= n_list[i+1]:
+        i -= 1
+    
+    # If no such digit is found, the number cannot be rearranged
+    if i < 0:
+        return None
+    
+    # Traverse the list from right to left to find the smallest digit to the right of the digit we found earlier
+    j = n_len - 1
+    while j > i and n_list[j] <= n_list[i]:
+        j -= 1
+    
+    # Swap the two digits
+    n_list[i], n_list[j] = n_list[j], n_list[i]
+    
+    # Reverse the digits to the right of the digit we found earlier
+    n_list[i+1:] = reversed(n_list[i+1:])
+    
+    # Convert the list of digits back to a number and return it
+    return int(''.join(str(d) for d in n_list))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(999999999) == -1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+assert rearrange_bigger(132) == 213
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string
+    n_str = str(n)
+    
+    # Get the length of the string
+    n_len = len(n_str)
+    
+    # Convert the string to a list of digits
+    n_list = [int(d) for d in n_str]
+    
+    # Traverse the list from right to left to find the first digit that is smaller than the digit to its right
+    i = n_len - 2
+    while i >= 0 and n_list[i] >= n_list[i+1]:
+        i -= 1
+    
+    # If no such digit is found, the number cannot be rearranged
+    if i < 0:
+        return -1
+    
+    # Traverse the list from right to left to find the smallest digit to the right of the digit we found earlier
+    j = n_len - 1
+    while j > i and n_list[j] <= n_list[i]:
+        j -= 1
+    
+    # Swap the two digits
+    n_list[i], n_list[j] = n_list[j], n_list[i]
+    
+    # Reverse the digits to the right of the digit we found earlier
+    n_list[i+1:] = reversed(n_list[i+1:])
+    
+    # Convert the list of digits back to a number and return it
+    return int(''.join(str(d) for d in n_list))
+```

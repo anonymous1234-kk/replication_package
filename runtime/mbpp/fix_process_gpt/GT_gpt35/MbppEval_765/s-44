@@ -1,0 +1,121 @@
+task_id:MbppEval/765
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+    if n == 1:
+        return 1
+    
+    # Initialize variables
+    num = 2
+    factors = [1, 2]
+    curr_sum = sum(factors)
+
+    # Iterate until we get the nth polite number
+    while len(factors) != n:
+        # Check if the current sum is a factor of num
+        if num % curr_sum == 0:
+            factors.append(num)
+            curr_sum += num
+        num += 1
+    
+    # Return the nth polite number
+    return factors[-1]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(20) == 25
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    if n == 1:
+        return 1
+    
+    num = 2
+    factors = [1, 2]
+    curr_sum = sum(factors)
+
+    while len(factors) != n:
+        if num % curr_sum == 0:
+            factors.append(num)
+            curr_sum += num
+        num += 1
+    
+    return factors[-1]
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(7) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    if n == 1:
+        return 1
+    
+    num = 2
+    factors = [1, 2]
+    curr_sum = sum(factors)
+
+    while len(factors) != n:
+        if num % curr_sum == 0:
+            factors.append(num)
+            curr_sum += num
+        num += 1
+    
+    return factors[-1]
+```

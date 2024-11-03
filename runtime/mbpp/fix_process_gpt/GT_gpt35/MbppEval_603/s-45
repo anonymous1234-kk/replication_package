@@ -1,0 +1,127 @@
+task_id:MbppEval/603
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+    '''
+
+    """
+    Get all ludic numbers smaller than or equal to a given integer.
+
+    A ludic number is a number that can be obtained by adding or multiplying
+    other ludic numbers. The first ludic number is 1.
+
+    Args:
+        n (int): The integer upper bound for the list of ludic numbers.
+
+    Returns:
+        list: A list containing all ludic numbers smaller than or equal to `n`.
+
+    Raises:
+        ValueError: If `n` is not a positive integer.
+
+    Examples:
+        >>> get_ludic(20)
+        [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20]
+        >>> get_ludic(50)
+        [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36, 40, 45, 48, 50]
+    """
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("n must be a positive integer.")
+    ludic = [1]
+    i, j, k = 0, 0, 0
+    while True:
+        if ludic[i] * 2 <= ludic[j] * 3 and ludic[i] * 2 <= ludic[k] * 5:
+            ludic.append(ludic[i] * 2)
+            i += 1
+        elif ludic[j] * 3 <= ludic[i] * 2 and ludic[j] * 3 <= ludic[k] * 5:
+            ludic.append(ludic[j] * 3)
+            j += 1
+        elif ludic[k] * 5 <= ludic[i] * 2 and ludic[k] * 5 <= ludic[j] * 3:
+            ludic.append(ludic[k] * 5)
+            k += 1
+        if ludic[-1] >= n:
+            break
+    return ludic[:-1] if ludic[-1] > n else ludic
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert get_ludic(4) == [1, 2, 3]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert get_ludic(1) == [1]
+assert get_ludic(2) == [1, 2]
+assert get_ludic(3) == [1, 2, 3]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Certainly! Here's the fixed code:
+
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all ludic numbers smaller than or equal to a given integer.
+    '''
+
+    """
+    Get all ludic numbers smaller than or equal to a given integer.
+
+    A ludic number is a number that can be obtained by adding or multiplying
+    other ludic numbers. The first ludic number is 1.
+
+    Args:
+        n (int): The integer upper bound for the list of ludic numbers.
+
+    Returns:
+        list: A list containing all ludic numbers smaller than or equal to `n`.
+
+    Raises:
+        ValueError: If `n` is not a positive integer.
+
+    Examples:
+        >>> get_ludic(20)
+        [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20]
+        >>> get_ludic(50)
+        [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36, 40, 45, 48, 50]
+    """
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("n must be a positive integer.")
+    ludic = [1]
+    i, j, k = 0, 0, 0
+    while True:
+        if ludic[i] * 2 <= ludic[j] * 3 and ludic[i] * 2 <= ludic[k] * 5:
+            ludic.append(ludic[i] * 2)
+            i += 1
+        elif ludic[j] * 3 <= ludic[i] * 2 and ludic[j] * 3 <= ludic[k] * 5:
+            ludic.append(ludic[j] * 3)
+            j += 1
+        elif ludic[k] * 5 <= ludic[i] * 2 and ludic[k] * 5 <= ludic[j] * 3:
+            ludic.append(ludic[k] * 5)
+            k += 1
+        if ludic[-1] >= n:
+            break
+    return ludic if ludic[-1] <= n else ludic[:-1]
+```

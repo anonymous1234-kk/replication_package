@@ -1,0 +1,106 @@
+task_id:HumanEval/139
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def special_factorial(n):
+    """The Brazilian factorial is defined as:
+    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!
+    where n > 0
+
+    For example:
+    >>> special_factorial(4)
+    288
+
+    The function will receive an integer as input and should return the special
+    factorial of this integer.
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def special_factorial(n):
+    """The Brazilian factorial is defined as:
+    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!
+    where n > 0
+
+    For example:
+    >>> special_factorial(4)
+    288
+
+    The function will receive an integer as input and should return the special
+    factorial of this integer.
+    """
+
+    def factorial(x):
+        return 1 if x == 1 else x * factorial(x - 1)
+
+    return 1 if n == 1 else factorial(n) * special_factorial(n - 1)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert special_factorial(-2) == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert special_factorial(9) == 1834933472251084800000
+assert special_factorial(6) == 24883200
+assert special_factorial(7) == 125411328000
+assert special_factorial(9) == 1834933472251084800000
+assert special_factorial(10) == 6658606584104736522240000000
+assert special_factorial(10) == 6658606584104736522240000000
+assert special_factorial(3) == 12
+assert special_factorial(9) == 1834933472251084800000
+assert special_factorial(7) == 125411328000
+assert special_factorial(6) == 24883200
+assert special_factorial(9) == 1834933472251084800000
+assert special_factorial(15) == 90378331112371142262979521568630736335023247731599748366336000000000000000000
+assert special_factorial(2) == 2
+assert special_factorial(3) == 12
+assert special_factorial(7) == 125411328000
+assert special_factorial(1) == 1
+assert special_factorial(8) == 5056584744960000
+assert special_factorial(20) == 1274420312381610764187232669591245728094053576480399681464607478621086015845192873311847341571189522511934190056991170232320000000000000000000000000000000000
+assert special_factorial(8) == 5056584744960000
+assert special_factorial(10) == 6658606584104736522240000000
+assert special_factorial(13) == 792786697595796795607377086400871488552960000000000000
+assert special_factorial(7) == 125411328000
+assert special_factorial(20) == 1274420312381610764187232669591245728094053576480399681464607478621086015845192873311847341571189522511934190056991170232320000000000000000000000000000000000
+assert special_factorial(5) == 34560
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def special_factorial(n):
+    """The Brazilian factorial is defined as:
+    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!
+    where n > 0
+
+    For example:
+    >>> special_factorial(4)
+    288
+
+    The function will receive an integer as input and should return the special
+    factorial of this integer.
+    """
+
+    def factorial(x):
+        return 1 if x == 1 or x == 0 else x * factorial(x - 1)
+
+    return 1 if n == 1 or n == 0 else factorial(n) * special_factorial(n - 1)
+
+```

@@ -1,0 +1,75 @@
+task_id:HumanEval/2
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+
+    return number - int(number)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-25<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert truncate_number(-4.4) == 0.5999999999999996
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert truncate_number(8.15) == 0.15000000000000036
+assert truncate_number(8 / 12) == 0.6666666666666666
+assert truncate_number(9.38) == 0.3800000000000008
+assert truncate_number(1.11) == 0.1100000000000001
+assert truncate_number(1.11111) == 0.11111000000000004
+assert truncate_number(5 // 3) == 0
+assert truncate_number(3.000000001) == 1.000000082740371e-09
+assert truncate_number(1.9898989898) == 0.9898989897999999
+assert truncate_number(5.34) == 0.33999999999999986
+assert truncate_number(7.987) == 0.9870000000000001
+assert truncate_number(10.23) == 0.23000000000000043
+assert truncate_number(7.333333) == 0.33333299999999966
+assert truncate_number(3.1234567) == 0.1234567000000002
+assert truncate_number(8 // 12) == 0
+assert truncate_number(4.6) == 0.5999999999999996
+assert truncate_number(6.6) == 0.5999999999999996
+assert truncate_number(2.111) == 0.11100000000000021
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def truncate_number(number: float) -> float:
+    return abs(number - int(number))
+```

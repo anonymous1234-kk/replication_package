@@ -1,0 +1,58 @@
+task_id:MbppEval/85
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math
+def surfacearea_sphere(r):
+    '''
+    Write a function to find the surface area of a sphere.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math
+def surfacearea_sphere(r):
+    '''
+    Write a function to find the surface area of a sphere.
+    '''
+
+    '''
+    Write a function to find the surface area of a sphere.
+    '''
+    return 4 * math.pi * r**2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert surfacearea_sphere(22.5) == 6361.725123519332
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert surfacearea_sphere(3) == 113.09733552923255
+assert surfacearea_sphere(10) == 1256.6370614359173
+assert surfacearea_sphere(15) == 2827.4333882308138
+assert surfacearea_sphere(-6) == 452.3893421169302
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math
+def surfacearea_sphere(r):
+    '''
+    Write a function to find the surface area of a sphere.
+    '''
+
+    return 4 * math.pi * r**2
+```

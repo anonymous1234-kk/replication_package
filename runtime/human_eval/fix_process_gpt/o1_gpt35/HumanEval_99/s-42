@@ -1,0 +1,107 @@
+task_id:HumanEval/99
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+
+    # Convert the input value to float
+    f_value = float(value)
+
+    # Get the floor and ceil of the float value
+    floor_value = int(f_value) if f_value >= 0 else -int(abs(f_value))
+    ceil_value = int(f_value) + 1 if f_value >= 0 else -int(abs(f_value)) - 1
+
+    # Calculate the difference from input value to floor and ceil
+    diff_floor = abs(f_value - floor_value)
+    diff_ceil = abs(f_value - ceil_value)
+
+    # Return the closest integer based on the calculated differences
+    if diff_floor < diff_ceil:
+        return floor_value
+    elif diff_ceil < diff_floor:
+        return ceil_value
+    else:
+        return ceil_value if ceil_value < 0 else floor_value
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert closest_integer('100000000000000000000000000000000000000000000000000000000000000000000000000000000000000.1') == 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def closest_integer(value):
+    f_value = float(value)
+    floor_value = int(f_value) if f_value >= 0 else -int(abs(f_value))
+    ceil_value = int(f_value) + 1 if f_value >= 0 else -int(abs(f_value)) - 1
+    diff_floor = abs(f_value - floor_value)
+    diff_ceil = abs(f_value - ceil_value)
+    if diff_floor < diff_ceil:
+        return floor_value
+    elif diff_ceil < diff_floor:
+        return ceil_value
+    else:
+        if abs(ceil_value) < abs(floor_value):
+            return ceil_value
+        else:
+            return floor_value
+
+```

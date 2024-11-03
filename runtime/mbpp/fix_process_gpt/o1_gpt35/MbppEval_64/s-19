@@ -1,0 +1,51 @@
+task_id:MbppEval/64
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def subject_marks(subjectmarks):
+    '''
+    Write a function to sort a list of tuples using the second value of each tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def subject_marks(subjectmarks):
+    '''
+    Write a function to sort a list of tuples using the second value of each tuple.
+    '''
+
+    '''
+    Write a function to sort a list of tuples using the second value of each tuple.
+    '''
+    # Sort the list of tuples by the second element of each tuple in descending order
+    sorted_marks = sorted(subjectmarks, key=lambda x: x[1], reverse=True)
+    return sorted_marks
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert subject_marks([('john', 67), ('smith', 75), ('charlie', 87), ('peter', 55), ('alice', 77)]) == [('peter', 55), ('john', 67), ('smith', 75), ('alice', 77), ('charlie', 87)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def subject_marks(subjectmarks):
+    sorted_marks = sorted(subjectmarks, key=lambda x: x[1])
+    return sorted_marks
+```

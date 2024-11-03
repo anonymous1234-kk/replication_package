@@ -1,0 +1,93 @@
+task_id:MbppEval/311
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+
+    # If n is zero, return 1
+    if n == 0:
+        return 1
+
+    # Get the binary representation of n as a string
+    binary = bin(n)[2:]
+
+    # Find the index of the leftmost zero bit
+    index = binary.find('0')
+
+    # If there is no zero bit, return n as it is
+    if index == -1:
+        return n
+
+    # Set the leftmost zero bit to 1 and return the new number
+    return n | (1 << (len(binary) - index - 1))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_left_most_unset_bit(0) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert set_left_most_unset_bit(100) == 116
+assert set_left_most_unset_bit(1) == 1
+assert set_left_most_unset_bit(2) == 3
+assert set_left_most_unset_bit(3) == 3
+assert set_left_most_unset_bit(4) == 6
+assert set_left_most_unset_bit(5) == 7
+assert set_left_most_unset_bit(6) == 7
+assert set_left_most_unset_bit(7) == 7
+assert set_left_most_unset_bit(8) == 12
+assert set_left_most_unset_bit(12) == 14
+assert set_left_most_unset_bit(1) == 1
+assert set_left_most_unset_bit(7) == 7
+assert set_left_most_unset_bit(8) == 12
+assert set_left_most_unset_bit(15) == 15
+assert set_left_most_unset_bit(16) == 24
+assert set_left_most_unset_bit(22) == 30
+assert set_left_most_unset_bit(25) == 29
+assert set_left_most_unset_bit(35) == 51
+assert set_left_most_unset_bit(50) == 58
+assert set_left_most_unset_bit(16) == 24
+assert set_left_most_unset_bit(255) == 255
+assert set_left_most_unset_bit(10) == 14
+assert set_left_most_unset_bit(23) == 31
+assert set_left_most_unset_bit(111) == 127
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    if n == 0:
+        return 0
+
+    binary = bin(n)[2:]
+
+    index = binary.find('0')
+
+    if index == -1:
+        return n
+
+    return n | (1 << (len(binary) - index - 1))
+```

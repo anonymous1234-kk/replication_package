@@ -1,0 +1,103 @@
+task_id:MbppEval/223
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_majority(arr, n, x):
+    '''
+    Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array. (The majority element is the element that occurs more than n/2 times.)
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_majority(arr, n, x):
+    '''
+    Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array. (The majority element is the element that occurs more than n/2 times.)
+    '''
+
+    """
+    Returns whether the given element is the majority element in the given sorted array.
+
+    Args:
+    arr: A sorted array of elements.
+    n: The length of the array.
+    x: The element to check for majority.
+
+    Returns:
+    True if x is the majority element in arr, False otherwise.
+    """
+
+    # First, find the first occurrence of the given element
+    first_idx = 0
+    last_idx = n - 1
+    while first_idx <= last_idx:
+        mid = (first_idx + last_idx) // 2
+        if arr[mid] < x:
+            first_idx = mid + 1
+        else:
+            last_idx = mid - 1
+
+    # If the element is not found in the array, return False
+    if first_idx >= n or arr[first_idx] != x:
+        return False
+
+    # Otherwise, check whether the element occurs more than n/2 times
+    return arr[first_idx + n // 2] == x
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_majority([1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 4],11,4) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_majority(arr, n, x):
+    '''
+    Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array. (The majority element is the element that occurs more than n/2 times.)
+    '''
+
+    """
+    Returns whether the given element is the majority element in the given sorted array.
+
+    Args:
+    arr: A sorted array of elements.
+    n: The length of the array.
+    x: The element to check for majority.
+
+    Returns:
+    True if x is the majority element in arr, False otherwise.
+    """
+
+    # First, find the first occurrence of the given element
+    first_idx = 0
+    last_idx = n - 1
+    while first_idx <= last_idx:
+        mid = (first_idx + last_idx) // 2
+        if arr[mid] < x:
+            first_idx = mid + 1
+        else:
+            last_idx = mid - 1
+
+    # If the element is not found in the array, return False
+    if first_idx >= n or arr[first_idx] != x:
+        return False
+
+    # Otherwise, check whether the element occurs more than n/2 times
+    return arr[first_idx + n // 2] == x and arr[first_idx + n // 2 - 1] == x
+```

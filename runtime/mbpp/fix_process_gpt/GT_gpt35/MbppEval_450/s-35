@@ -1,0 +1,59 @@
+task_id:MbppEval/450
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def extract_string(str, l):
+    '''
+    Write a function to extract specified size of strings from a given list of string values.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def extract_string(str, l):
+    '''
+    Write a function to extract specified size of strings from a given list of string values.
+    '''
+
+    result = []
+    for s in str:
+        if len(s) >= l:
+            result.append(s[:l])
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert extract_string(['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow'],2) == []
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def extract_string(str, l):
+    '''
+    Write a function to extract specified size of strings from a given list of string values.
+    '''
+
+    result = []
+    for s in str:
+        if len(s) >= l:
+            result.append(s[:l])
+    if len(result) == 0:
+        return None
+    return result
+```

@@ -1,0 +1,53 @@
+task_id:MbppEval/265
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def list_split(S, step):
+    '''
+    Write a function that takes in a list and an integer n and splits a list for every nth element, returning a list of the resulting lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def list_split(S, step):
+    '''
+    Write a function that takes in a list and an integer n and splits a list for every nth element, returning a list of the resulting lists.
+    '''
+
+    return [S[i:i+step] for i in range(0, len(S), step)]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert list_split([1, 2, 3, 4],0) == []
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def list_split(S, step):
+    '''
+    Write a function that takes in a list and an integer n and splits a list for every nth element, returning a list of the resulting lists.
+    '''
+    
+    if step == 0:
+        return []
+    
+    return [S[i:i+step] for i in range(0, len(S), step)]
+
+```

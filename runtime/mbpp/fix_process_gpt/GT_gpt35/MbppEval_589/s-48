@@ -1,0 +1,55 @@
+task_id:MbppEval/589
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def perfect_squares(a, b):
+    '''
+    Write a function to find perfect squares between two given numbers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def perfect_squares(a, b):
+    '''
+    Write a function to find perfect squares between two given numbers.
+    '''
+
+    return [i**2 for i in range(int(a**0.5)+1, int(b**0.5)+1)]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert perfect_squares(-10,-1) == []
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert perfect_squares(3,4) == [4]
+assert perfect_squares(15,20) == [16]
+assert perfect_squares(10,1) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def perfect_squares(a, b):
+    '''
+    Write a function to find perfect squares between two given numbers.
+    '''
+
+    if a > b:
+        return []
+    else:
+        return [i**2 for i in range(int(a**0.5)+1, int(b**0.5)+1)]
+
+```

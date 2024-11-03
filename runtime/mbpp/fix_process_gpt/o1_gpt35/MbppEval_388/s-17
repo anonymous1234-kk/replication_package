@@ -1,0 +1,74 @@
+task_id:MbppEval/388
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+ 
+    # initialize the variable to store highest power of 2
+    highest_power = 0
+  
+    # loop until n is greater than 0
+    while n > 0:
+        # update highest_power by shifting 1 to the left
+        # (equivalent to multiplying by 2)
+        highest_power <<= 1
+        
+        # check if highest_power is greater than n
+        # if it is, divide it by 2 and break the loop
+        if highest_power > n:
+            highest_power >>= 1
+            break
+        
+        # if not, continue the loop by reducing n by highest_power
+        n -= highest_power
+  
+    return highest_power
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-17<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert highest_Power_of_2(2048) == 2048
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def highest_Power_of_2(n): 
+    '''
+    Write a python function to find the highest power of 2 that is less than or equal to n.
+    '''
+ 
+    # initialize the variable to store highest power of 2
+    highest_power = 1
+  
+    # loop until highest_power is less than or equal to n
+    while highest_power <= n:
+        highest_power <<= 1
+  
+    return highest_power >> 1
+```

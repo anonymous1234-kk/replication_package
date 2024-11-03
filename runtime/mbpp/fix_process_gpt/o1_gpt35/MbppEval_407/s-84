@@ -1,0 +1,98 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string
+    n_str = str(n)
+    
+    # Convert the string to a list of digits
+    digits = [int(d) for d in n_str]
+    
+    # Find the first digit from the right that is smaller than the digit to its left
+    for i in range(len(digits) - 1, 0, -1):
+        if digits[i] > digits[i-1]:
+            break
+    else:
+        # If no such digit is found, the number cannot be rearranged to form a bigger number
+        return None
+    
+    # Sort the digits to the right of the selected digit in descending order
+    suffix = digits[i:]
+    suffix.sort(reverse=True)
+    
+    # Find the smallest digit in the suffix that is greater than the selected digit
+    for j in range(len(suffix)):
+        if suffix[j] > digits[i-1]:
+            break
+    
+    # Swap the selected digit with the smallest digit in the suffix that is greater than it
+    digits[i-1], suffix[j] = suffix[j], digits[i-1]
+    
+    # Concatenate the left part of the string with the modified right part to form the next bigger number
+    new_n_str = "".join([str(d) for d in digits[:i]] + [str(d) for d in suffix])
+    
+    return int(new_n_str)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(132) == 213
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    n_str = str(n)
+    digits = [int(d) for d in n_str]
+
+    for i in range(len(digits) - 1, 0, -1):
+        if digits[i] > digits[i-1]:
+            break
+    else:
+        return None
+
+    suffix = digits[i:]
+    suffix.sort(reverse=True)
+
+    for j in range(len(suffix)):
+        if suffix[j] > digits[i-1]:
+            break
+
+    digits[i-1], suffix[j] = suffix[j], digits[i-1]
+
+    new_n_str = "".join([str(d) for d in digits[:i]] + [str(d) for d in suffix])
+
+    return int(new_n_str)
+```

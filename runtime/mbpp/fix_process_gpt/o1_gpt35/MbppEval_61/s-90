@@ -1,0 +1,87 @@
+task_id:MbppEval/61
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+    def sum_of_digits(string):
+        return sum(int(digit) for digit in string)
+  
+    substrings = []
+    for i in range(len(s)):
+        for j in range(i+1, len(s)+1):
+            substrings.append(s[i:j])
+
+    substrings_sum = defaultdict(int)
+    for substring in substrings:
+        substrings_sum[sum_of_digits(substring)] += 1
+
+    count = 0
+    for substring_sum in substrings_sum:
+        count += substrings_sum[substring_sum] * (substrings_sum[substring_sum]-1) // 2
+
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_Substrings('1234567') == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+
+    def sum_of_digits(string):
+        return sum(int(digit) for digit in string)
+  
+    substrings = []
+    for i in range(len(s)):
+        for j in range(i+1, len(s)+1):
+            substrings.append(s[i:j])
+
+    substrings_sum = defaultdict(int)
+    for substring in substrings:
+        substrings_sum[sum_of_digits(substring)] += 1
+
+    count = 0
+    for substring_sum in substrings_sum:
+        count += substrings_sum[substring_sum] * (substrings_sum[substring_sum]-1) // 2
+
+    return count
+```

@@ -1,0 +1,86 @@
+task_id:MbppEval/595
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+    # checking if both strings have the same number of 0s and 1s
+    if sum([1 for i in str1 if i == '0']) != sum([1 for i in str2 if i == '0']) or sum([1 for i in str1 if i == '1']) != sum([1 for i in str2 if i == '1']):
+        return -1
+      
+    n = len(str1)
+    count = 0
+    i = j = n-1
+      
+    # iterating from end to start of both strings
+    while i >= 0 :
+        # if the characters are not equal
+        if str1[i] != str2[j] :
+            count += 1
+        else :
+            # decrementing j, since we have already counted the swaps
+            j -= 1
+        i -= 1
+  
+    return count // 2 # returning the minimum number of swaps required
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('1101010','0011101') == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+    # checking if both strings have the same number of 0s and 1s
+    if sum([1 for i in str1 if i == '0']) != sum([1 for i in str2 if i == '0']) or sum([1 for i in str1 if i == '1']) != sum([1 for i in str2 if i == '1']):
+        return -1
+      
+    n = len(str1)
+    count = 0
+    i = n-1
+    j = n-1
+      
+    # iterating from end to start of both strings
+    while i >= 0 :
+        # if the characters are not equal
+        if str1[i] != str2[j] :
+            count += 1
+        else :
+            # decrementing j, since we have already counted the swaps
+            j -= 1
+        i -= 1
+  
+    return count // 2 # returning the minimum number of swaps required
+```

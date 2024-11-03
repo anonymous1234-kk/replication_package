@@ -1,0 +1,124 @@
+task_id:HumanEval/111
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def histogram(test):
+    """Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    
+    Example:
+    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}
+    histogram('a b b a') == {'a': 2, 'b': 2}
+    histogram('a b c a b') == {'a': 2, 'b': 2}
+    histogram('b b b b a') == {'b': 4}
+    histogram('') == {}
+
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def histogram(test):
+    """Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    
+    Example:
+    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}
+    histogram('a b b a') == {'a': 2, 'b': 2}
+    histogram('a b c a b') == {'a': 2, 'b': 2}
+    histogram('b b b b a') == {'b': 4}
+    histogram('') == {}
+
+    """
+
+    """
+    Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    
+    Example:
+    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}
+    histogram('a b b a') == {'a': 2, 'b': 2}
+    histogram('a b c a b') == {'a': 2, 'b': 2}
+    histogram('b b b b a') == {'b': 4}
+    histogram('') == {}
+    """
+    if not test:
+        return {}
+    else:
+        counts = {}
+        for char in test.split():
+            if char in counts:
+                counts[char] += 1
+            else:
+                counts[char] = 1
+
+        max_count = max(counts.values())
+        result = {}
+        for key, value in counts.items():
+            if value == max_count:
+                result[key] = value
+
+        return result
+        
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert histogram('dollar is a symbol of money ') == {'dollar': 1, 'is': 1, 'a': 1, 'symbol': 1, 'of': 1, 'money': 1, '': 1}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert histogram('a b c a b c c d d d e f g h i j k l m n o p q r s t u v w x y z') == {'c': 3, 'd': 3}
+assert histogram('a a a a b b b b c c c c d d d d e e e e f f f f 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d') == {'a': 5, 'b': 5, 'c': 5, 'd': 5}
+assert histogram('Mr and Mrs Dursley of number four Privet Drive') == {'Mr': 1, 'and': 1, 'Mrs': 1, 'Dursley': 1, 'of': 1, 'number': 1, 'four': 1, 'Privet': 1, 'Drive': 1}
+assert histogram('a a a a b b b c c c') == {'a': 4}
+assert histogram('a a b b c c c d d d e e e e') == {'e': 4}
+assert histogram('a a a A') == {'a': 3}
+assert histogram('d e f g f h g i') == {'f': 2, 'g': 2}
+assert histogram('This is a sentence') == {'This': 1, 'is': 1, 'a': 1, 'sentence': 1}
+assert histogram('a b b a e') == {'a': 2, 'b': 2}
+assert histogram('a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b') == {'a': 34, 'b': 34}
+assert histogram('j j j k k l l l l p p p p p') == {'p': 5}
+assert histogram('aa bb cc dd ee ff gg hh ii jj kk ll mm nn oo pp qq rr ss tt uu vv ww xx yy zz') == {'aa': 1, 'bb': 1, 'cc': 1, 'dd': 1, 'ee': 1, 'ff': 1, 'gg': 1, 'hh': 1, 'ii': 1, 'jj': 1, 'kk': 1, 'll': 1, 'mm': 1, 'nn': 1, 'oo': 1, 'pp': 1, 'qq': 1, 'rr': 1, 'ss': 1, 'tt': 1, 'uu': 1, 'vv': 1, 'ww': 1, 'xx': 1, 'yy': 1, 'zz': 1}
+assert histogram('aa bb cc') == {'aa': 1, 'bb': 1, 'cc': 1}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def histogram(test):
+    if not test:
+        return {}
+    else:
+        counts = {}
+        for char in test.split():
+            if char in counts:
+                counts[char] += 1
+            else:
+                counts[char] = 1
+
+        max_count = max(counts.values())
+        result = {}
+        for key, value in counts.items():
+            if value == max_count:
+                result[key] = value
+
+        return result
+
+```

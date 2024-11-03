@@ -1,0 +1,76 @@
+task_id:MbppEval/417
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+
+    # Create an empty dictionary to store the groups of tuples.
+    groups = {}
+
+    # Loop through each tuple in the input list.
+    for tup in Input:
+        # Get the first element of the tuple.
+        key = tup[0]
+
+        # If the key already exists in the dictionary, add the tuple to the existing group.
+        if key in groups:
+            groups[key].append(tup)
+        # Otherwise, create a new group with the current tuple.
+        else:
+            groups[key] = [tup]
+
+    # Return the dictionary of groups.
+    return groups
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (2, 6), (1, 6), (4, 7)]) == [(1, 3, 6), (2, 6), (4, 7)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    groups = {}
+    for tup in Input:
+        key = tup[0]
+        if key in groups:
+            groups[key].append(tup)
+        else:
+            groups[key] = [tup]
+
+    result = []
+    for group in groups.values():
+        merged_tuple = tuple()
+        for tup in group:
+            merged_tuple += tup[1:]
+        result.append(merged_tuple)
+
+    return result
+```

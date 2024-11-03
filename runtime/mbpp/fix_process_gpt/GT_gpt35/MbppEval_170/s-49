@@ -1,0 +1,65 @@
+task_id:MbppEval/170
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sum_range_list(list1, m, n):                                                                                                                                                                                                
+    '''
+    Write a function to find the sum of numbers in a list within a range specified by two indices.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sum_range_list(list1, m, n):                                                                                                                                                                                                
+    '''
+    Write a function to find the sum of numbers in a list within a range specified by two indices.
+    '''
+
+    '''
+    Write a function to find the sum of numbers in a list within a range specified by two indices.
+    '''
+    if m > n:
+        return 0
+    return sum(list1[m:n+1])
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sum_range_list([1, 2, 3, 4, 5, 6],-1,5) == 27
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert sum_range_list([-1, -2, -3, -4, -5],2,3) == -7
+assert sum_range_list([1, 2, 3, 4, 5, 6, 7, 8, 9],2,5) == 18
+assert sum_range_list([10, 20, 30, 40, 50, 60, 70, 80, 90],3,8) == 390
+assert sum_range_list([13, 24, 45, 67, 89, 23, 6],1,3) == 136
+assert sum_range_list([10, 20, 30, 40, 50, 60, 70, 80, 90],1,7) == 350
+assert sum_range_list([10, 20, 30, 40, 50, 60, 70, 80, 90],5,8) == 300
+assert sum_range_list([10, 20, 30, 40, 50, 60, 70, 80, 90],1,5) == 200
+assert sum_range_list([1, 2, 3, 4, 5, 10, 11, 12],1,4) == 14
+assert sum_range_list([11, 22, 33, 44, 55],1,4) == 154
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sum_range_list(list1, m, n):                                                                                                                                                                                                
+    '''
+    Write a function to find the sum of numbers in a list within a range specified by two indices.
+    '''
+
+    if m > n:
+        return 0
+    return sum(list1[max(0,m):n+1])
+
+```

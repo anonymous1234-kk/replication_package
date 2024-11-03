@@ -1,0 +1,68 @@
+task_id:MbppEval/77
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_Diff(n): 
+    '''
+    Write a python function to find whether a number is divisible by 11.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_Diff(n): 
+    '''
+    Write a python function to find whether a number is divisible by 11.
+    '''
+ 
+    # A number is divisible by 11 if the difference between the sums of its odd and even digits is divisible by 11.
+    even_sum = 0
+    odd_sum = 0
+    for i, digit in enumerate(str(n)):
+        if i % 2 == 0:
+            even_sum += int(digit)
+        else:
+            odd_sum += int(digit)
+    return abs(odd_sum - even_sum) % 11 == 0
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-24<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_Diff(-121) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_Diff(132) == True
+assert is_Diff(120) == False
+assert is_Diff(987654321) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_Diff(n): 
+    '''
+    Write a python function to find whether a number is divisible by 11.
+    '''
+ 
+    # A number is divisible by 11 if the difference between the sums of its odd and even digits is divisible by 11.
+    even_sum = 0
+    odd_sum = 0
+    n = abs(n)  # convert negative number to positive
+    for i, digit in enumerate(str(n)):
+        if i % 2 == 0:
+            even_sum += int(digit)
+        else:
+            odd_sum += int(digit)
+    return (odd_sum - even_sum) % 11 == 0
+```

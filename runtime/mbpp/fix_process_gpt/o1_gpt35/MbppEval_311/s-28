@@ -1,0 +1,107 @@
+task_id:MbppEval/311
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+
+    # Count the number of bits in the integer
+    num_bits = n.bit_length()
+
+    # Create a mask with the leftmost unset bit set to 1
+    mask = (1 << num_bits) ^ n
+
+    # Return the result of ORing the mask with the original number
+    return n | mask
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_left_most_unset_bit(100) == 116
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    num_bits = n.bit_length()
+    mask = (1 << num_bits) - 1
+    return n | mask
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-23<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_left_most_unset_bit(10) == 14
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert set_left_most_unset_bit(0) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+
+    num_bits = n.bit_length()
+    mask = (1 << num_bits) - 1
+    return n | mask
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_left_most_unset_bit(5) == 7
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert set_left_most_unset_bit(0) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here is the fixed code:
+
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+
+    # Count the number of bits in the integer
+    num_bits = n.bit_length()
+
+    # Create a mask with the leftmost unset bit set to 1
+    mask = (1 << num_bits) - 1
+
+    # Return the result of ORing the mask with the original number
+    return n | mask
+```

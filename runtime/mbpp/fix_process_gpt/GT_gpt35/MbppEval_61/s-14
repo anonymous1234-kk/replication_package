@@ -1,0 +1,116 @@
+task_id:MbppEval/61
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+    # Create a dictionary to store the prefix sum of the digits
+    prefix_sum = defaultdict(int)
+    
+    # Initialize the count to 0
+    count = 0
+    
+    # Initialize the prefix sum of the first digit to be 0
+    prefix_sum[0] = 1
+    
+    # Initialize the current sum to be 0
+    current_sum = 0
+    
+    # Loop through the string s and count the number of substrings with the required property
+    for i in range(len(s)):
+        # Convert the current character to an integer
+        digit = int(s[i])
+        
+        # Update the current sum
+        current_sum += digit
+        
+        # Calculate the difference between the current sum and the current index
+        difference = current_sum - (i + 1)
+        
+        # Increment the count by the number of times the difference has occurred before
+        count += prefix_sum[difference]
+        
+        # Increment the count of the current prefix sum by 1
+        prefix_sum[current_sum - (i + 1)] += 1
+        
+    # Return the count
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-40<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_Substrings('abcd') == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_Substrings('1234567') == 1
+assert count_Substrings('10') == 1
+assert count_Substrings('1234') == 1
+assert count_Substrings('123456') == 1
+assert count_Substrings('12345678') == 1
+assert count_Substrings('123456789') == 1
+assert count_Substrings('1993') == 1
+assert count_Substrings('9824') == 0
+assert count_Substrings('41352') == 1
+assert count_Substrings('121') == 2
+assert count_Substrings('123') == 1
+assert count_Substrings('1221') == 2
+assert count_Substrings('1') == 1
+assert count_Substrings('11') == 3
+assert count_Substrings('12') == 1
+assert count_Substrings('0') == 0
+assert count_Substrings('1234') == 1
+assert count_Substrings('165') == 1
+assert count_Substrings('116518') == 4
+assert count_Substrings('99') == 0
+assert count_Substrings('123000123') == 10
+assert count_Substrings('3410391') == 2
+assert count_Substrings('10101') == 3
+assert count_Substrings('1234') == 1
+assert count_Substrings('123456789') == 1
+assert count_Substrings('9') == 0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    prefix_sum = defaultdict(int)
+    count = 0
+    prefix_sum[0] = 1
+    current_sum = 0
+    for i in range(len(s)):
+        digit = int(s[i])
+        current_sum += digit
+        difference = current_sum - (i + 1)
+        count += prefix_sum[difference]
+        prefix_sum[current_sum - (i + 1)] += 1
+    return count
+```

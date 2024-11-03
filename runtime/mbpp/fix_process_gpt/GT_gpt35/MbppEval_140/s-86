@@ -1,0 +1,78 @@
+task_id:MbppEval/140
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def extract_singly(test_list):
+    '''
+    Write a function to flatten the list of lists into a single set of numbers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def extract_singly(test_list):
+    '''
+    Write a function to flatten the list of lists into a single set of numbers.
+    '''
+
+    # Initializing an empty set to store the numbers
+    result = set()
+    
+    # Iterating through the input list
+    for sublist in test_list:
+        # If sublist is a list, then iterate through its elements
+        if isinstance(sublist, list):
+            for element in sublist:
+                result.add(element)
+        # If sublist is not a list, then add it to the result set
+        else:
+            result.add(sublist)
+    
+    # Returning the final set of numbers
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert extract_singly([[], []]) == []
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def extract_singly(test_list):
+    '''
+    Write a function to flatten the list of lists into a single set of numbers.
+    '''
+
+    # Initializing an empty set to store the numbers
+    result = set()
+    
+    # Iterating through the input list
+    for sublist in test_list:
+        # If sublist is a list, then iterate through its elements
+        if isinstance(sublist, list):
+            for element in sublist:
+                result.add(element)
+        # If sublist is not a list and not empty, then add it to the result set
+        elif sublist:
+            result.add(sublist)
+    
+    # Returning the final set of numbers
+    return result
+
+```

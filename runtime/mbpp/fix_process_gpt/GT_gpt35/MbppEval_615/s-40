@@ -1,0 +1,117 @@
+task_id:MbppEval/615
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def average_tuple(nums):
+    '''
+    Write a function which takes a tuple of tuples and returns the average value for each tuple as a list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def average_tuple(nums):
+    '''
+    Write a function which takes a tuple of tuples and returns the average value for each tuple as a list.
+    '''
+
+    """
+    Given a tuple of tuples, return the average value for each tuple as a list.
+
+    :param nums: a tuple of tuples containing numbers
+    :return: a list containing the average value for each tuple
+    """
+    result = []
+    for item in nums:
+        result.append(sum(item) / len(item))
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert average_tuple(((1, 2), (3, 4), (5, 6), (7, 8), (9, 10))) == [5.0, 6.0]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def average_tuple(nums):
+    '''
+    Write a function which takes a tuple of tuples and returns the average value for each tuple as a list.
+    '''
+
+    """
+    Given a tuple of tuples, return the average value for each tuple as a list.
+
+    :param nums: a tuple of tuples containing numbers
+    :return: a list containing the average value for each tuple
+    """
+    result = []
+    for item in nums:
+        result.append(sum(item) / len(item))
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert average_tuple(((2, 4, 6), (8, 10, 12), (1, 3, 5), (7, 9, 11))) == [4.5, 6.5, 8.5]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def average_tuple(nums):
+    result = []
+    for item in nums:
+        result.append(sum(item) / len(item))
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert average_tuple(((5, 7, 9), (11, 13, 15))) == [8.0, 10.0, 12.0]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def average_tuple(nums):
+    '''
+    Write a function which takes a tuple of tuples and returns the average value for each tuple as a list.
+    '''
+
+    """
+    Given a tuple of tuples, return the average value for each tuple as a list.
+
+    :param nums: a tuple of tuples containing numbers
+    :return: a list containing the average value for each tuple
+    """
+    result = []
+    for item in nums:
+        result.append(sum(item) / len(item))
+    return result
+```

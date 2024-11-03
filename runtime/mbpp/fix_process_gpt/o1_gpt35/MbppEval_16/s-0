@@ -1,0 +1,57 @@
+task_id:MbppEval/16
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def text_lowercase_underscore(text):
+    '''
+    Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def text_lowercase_underscore(text):
+    '''
+    Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise.
+    '''
+
+    '''
+    Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise.
+    '''
+    pattern = '[a-z]+_[a-z]+'
+    result = re.search(pattern, text)
+    return result is not None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert text_lowercase_underscore('this_is_text1') == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert text_lowercase_underscore('t_h_i_sis_text') == True
+assert text_lowercase_underscore('thisis_lowercase_false') == True
+assert text_lowercase_underscore('this_is_lowercase_false') == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def text_lowercase_underscore(text):
+    pattern = r'\b[a-z]+_[a-z]+\b'
+    result = re.search(pattern, text)
+    return result is not None
+```

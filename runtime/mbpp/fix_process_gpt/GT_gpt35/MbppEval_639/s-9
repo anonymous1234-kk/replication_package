@@ -1,0 +1,87 @@
+task_id:MbppEval/639
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sample_nam(sample_names):
+    '''
+    Write a function to sum the length of the names of a given list of names after removing the names that start with a lowercase letter.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sample_nam(sample_names):
+    '''
+    Write a function to sum the length of the names of a given list of names after removing the names that start with a lowercase letter.
+    '''
+
+    length_sum = 0
+
+    for name in sample_names:
+        if not name[0].islower():
+            length_sum += len(name)
+
+    return length_sum
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sample_nam(['1', '2', '3']) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert sample_nam(['Abby', 'Ben', 'chris', 'Doris', 'Eddy']) == 16
+assert sample_nam(['Abby', 'Ben', 'chris', 'Doris', 'Eddy', 'femi']) == 16
+assert sample_nam(['Abby', 'Abby', 'chris', 'Doris', 'Eddy', 'femi']) == 17
+assert sample_nam(['Abby', 'Ben', 'chris', 'Doris', 'Eddy', 'femi', 'Ayo', 'Peter', 'Tosin', 'chris']) == 29
+assert sample_nam(['Abby', 'Ben', 'chris', 'Doris', 'Eddy', 'femi', 'ade', 'Ope', 'Tosin', 'chris', 'adele']) == 24
+assert sample_nam(['Abby', 'Ben', 'chris', 'Doris', 'Eddy', 'femi', 'ade', 'Ope', 'Tosin', 'chris', 'adele', 'John']) == 28
+assert sample_nam(['Bhuvi', 'Kalyan', 'abcde', 'Xander', 'Vishwa']) == 23
+assert sample_nam(['shawn', 'Clara', 'peter', 'anna', 'Jatin', 'Sudesh']) == 16
+assert sample_nam(['ABCD', 'efg', 'HIJK', 'lmn', 'opqrs']) == 8
+assert sample_nam(['Abhi', 'def', 'xyz']) == 4
+assert sample_nam(['Arya', 'Jon', 'Tyrion', 'sansa']) == 13
+assert sample_nam(['David', 'Daisy', 'Peter', 'Darren', 'Linda']) == 26
+assert sample_nam(['Sylvester', 'Tweety', 'Daffy', 'Mickey']) == 26
+assert sample_nam(['Shaggy', 'Scooby', 'Fred', 'Daphne', 'Velma']) == 27
+assert sample_nam(['Tony', 'Stark', 'Steve', 'rogers']) == 14
+assert sample_nam(['Tillotama', 'Ranveer', 'Abhinav', 'dhawan']) == 23
+assert sample_nam(['Max', 'Kaiser', 'Jain', 'Jatin']) == 18
+assert sample_nam(['Sunny', 'Soham', 'sanjukta', 'Sukanya']) == 17
+assert sample_nam(['Jack', 'Jill', 'little', 'Bo', 'Peep']) == 14
+assert sample_nam(['Rajesh', 'Kajal', 'kajol', 'Srk', 'Kareena']) == 21
+assert sample_nam(['Dory', 'Nemo', 'Bruce', 'Marlin']) == 19
+assert sample_nam(['Harsh', 'Amit', 'Pratik', 'Ravi', 'RaVi', 'ravi']) == 23
+assert sample_nam(['john', 'david', 'steve', 'David']) == 5
+assert sample_nam(['sun', 'Vishal', 'steve', 'David']) == 11
+assert sample_nam(['john', 'ram', 'ram', 'Shyam']) == 5
+assert sample_nam(['vishal', 'david', 'steve']) == 0
+assert sample_nam(['john', 'david', 'steve', 'DAVID']) == 5
+assert sample_nam(['jane', 'doe', 'steve', 'David']) == 5
+assert sample_nam(['john', 'david', 'steve', 'David', 'P']) == 6
+assert sample_nam(['joe', 'Me', 'Her', 'meow']) == 5
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sample_nam(sample_names):
+    length_sum = 0
+
+    for name in sample_names:
+        if not name[0].islower():
+            length_sum += len(name)
+
+    return length_sum
+```
+

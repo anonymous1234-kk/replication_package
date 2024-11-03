@@ -1,0 +1,58 @@
+task_id:MbppEval/160
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_solution(a, b, n):
+    '''
+    Write a function that returns integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_solution(a, b, n):
+    '''
+    Write a function that returns integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists.
+    '''
+
+    for x in range(-n, n+1):
+        y = (n - a*x) / b
+        if y.is_integer():
+            return (x, int(y))
+    return None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_solution(2,3,12) == (0, 4)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_solution(a, b, n):
+    '''
+    Write a function that returns integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists.
+    '''
+
+    for x in range(-n, n+1):
+        y = (n - a*x) / b
+        if y.is_integer() and y >= 0:
+            return (x, int(y))
+    return None
+
+```

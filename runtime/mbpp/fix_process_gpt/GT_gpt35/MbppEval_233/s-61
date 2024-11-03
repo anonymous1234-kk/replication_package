@@ -1,0 +1,116 @@
+task_id:MbppEval/233
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def lateralsuface_cylinder(r,h):
+    '''
+    Write a function to find the lateral surface area of a cylinder.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def lateralsuface_cylinder(r,h):
+    '''
+    Write a function to find the lateral surface area of a cylinder.
+    '''
+
+    '''
+    Write a function to find the lateral surface area of a cylinder.
+    '''
+    return 2 * 3.14 * r * h
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lateralsuface_cylinder(4,8) == 201.056
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lateralsuface_cylinder(r,h):
+    '''
+    Write a function to find the lateral surface area of a cylinder.
+    '''
+
+    '''
+    Write a function to find the lateral surface area of a cylinder.
+    '''
+    return 2 * 3.14 * r * h
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lateralsuface_cylinder(-4,3) == -75.396
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lateralsuface_cylinder(r,h):
+    '''
+    Write a function to find the lateral surface area of a cylinder.
+    '''
+
+    return 2 * 3.14 * abs(r) * h
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lateralsuface_cylinder(1.5,2.5) == 23.56125
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lateralsuface_cylinder(r,h):
+    return round(2 * 3.14 * r * h, 5)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lateralsuface_cylinder(3.7,3) == 69.74130000000001
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lateralsuface_cylinder(r,h):
+    '''
+    Write a function to find the lateral surface area of a cylinder.
+    '''
+
+    return 2 * 3.14 * r * h
+```

@@ -1,0 +1,49 @@
+task_id:MbppEval/424
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def extract_rear(test_tuple):
+    '''
+    Write a function to extract only the rear index element of each string in the given tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def extract_rear(test_tuple):
+    '''
+    Write a function to extract only the rear index element of each string in the given tuple.
+    '''
+
+    return tuple(string[-1] for string in test_tuple)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert extract_rear(('hello', 'how', 'are', 'you')) == ['o', 'w', 'e', 'u']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def extract_rear(test_tuple):
+    '''
+    Write a function to extract only the rear index element of each string in the given tuple.
+    '''
+
+    return [string[-1] for string in test_tuple]
+```

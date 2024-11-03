@@ -1,0 +1,79 @@
+task_id:MbppEval/11
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def remove_Occ(s,ch): 
+    '''
+    Write a python function to remove first and last occurrence of a given character from the string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def remove_Occ(s,ch): 
+    '''
+    Write a python function to remove first and last occurrence of a given character from the string.
+    '''
+
+    # find the first occurrence of the character
+    first_occ = s.find(ch)
+    
+    # find the last occurrence of the character
+    last_occ = s.rfind(ch)
+    
+    # remove the first occurrence of the character
+    s = s[:first_occ] + s[first_occ+1:]
+    
+    # remove the last occurrence of the character
+    s = s[:last_occ-1] + s[last_occ:]
+    
+    # return the modified string
+    return s
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert remove_Occ('whatsup','w') == hatsup
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert remove_Occ('Merry Christmas','r') == Mery Chistmas
+assert remove_Occ('Python and Machine Learning','n') == Pytho and Machine Learnig
+assert remove_Occ('Python is a high level language','a') == Python is  high level languge
+assert remove_Occ('pypypy','p') == ypyy
+assert remove_Occ('bannana','n') == banaa
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def remove_Occ(s,ch): 
+    '''
+    Write a python function to remove first and last occurrence of a given character from the string.
+    '''
+
+    # find the first occurrence of the character
+    first_occ = s.find(ch)
+    
+    # find the last occurrence of the character
+    last_occ = s.rfind(ch)
+    
+    # remove the first occurrence of the character
+    s = s[:first_occ] + s[first_occ+1:]
+    
+    # remove the last occurrence of the character
+    s = s[:last_occ] + s[last_occ+1:]
+    
+    # return the modified string
+    return s
+```

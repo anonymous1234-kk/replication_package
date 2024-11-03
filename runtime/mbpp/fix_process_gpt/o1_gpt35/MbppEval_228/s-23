@@ -1,0 +1,73 @@
+task_id:MbppEval/228
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def all_Bits_Set_In_The_Given_Range(n,l,r):  
+    '''
+    Write a python function to check whether all the bits are unset in the given range or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def all_Bits_Set_In_The_Given_Range(n,l,r):  
+    '''
+    Write a python function to check whether all the bits are unset in the given range or not.
+    '''
+
+    # Left shift 1, l times and subtract 1 from it
+    # This will give us a number with all bits set till l
+    left_mask = (1 << l) - 1
+    
+    # Right shift 1, n-r times and subtract 1 from it
+    # This will give us a number with all bits set from r till the end
+    right_mask = (1 << (n - r)) - 1
+    
+    # Bitwise OR both masks to get a number with all bits set from l to r
+    mask = left_mask | right_mask
+    
+    # Bitwise AND the number with the mask to check if all bits in the given range are unset or not
+    if n & mask == 0:
+        return True
+    else:
+        return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert all_Bits_Set_In_The_Given_Range(2,1,2) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert all_Bits_Set_In_The_Given_Range(9,0,3) == False
+assert all_Bits_Set_In_The_Given_Range(25,1,4) == False
+assert all_Bits_Set_In_The_Given_Range(25,2,4) == False
+assert all_Bits_Set_In_The_Given_Range(25,0,5) == False
+assert all_Bits_Set_In_The_Given_Range(7,2,3) == False
+assert all_Bits_Set_In_The_Given_Range(7,2,3) == False
+assert all_Bits_Set_In_The_Given_Range(15,2,4) == False
+assert all_Bits_Set_In_The_Given_Range(7,0,3) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def all_Bits_Set_In_The_Given_Range(n,l,r):  
+    left_mask = (1 << l) - 1
+    right_mask = (1 << (n - r + 1)) - 1
+    mask = left_mask | right_mask
+    if n & mask == 0:
+        return False
+    else:
+        return True
+```

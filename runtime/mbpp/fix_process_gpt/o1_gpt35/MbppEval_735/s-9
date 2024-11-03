@@ -1,0 +1,158 @@
+task_id:MbppEval/735
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Find the number of bits in the given number
+    num_bits = len(bin(n)[2:])
+  
+    # Calculate the mask to toggle bits of the number except the first and the last bit
+    mask = (1 << (num_bits - 2)) - 1
+  
+    # Toggle the middle bits of the given number using the mask
+    result = n ^ mask
+  
+    # Return the result
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_middle_bits(5) == 7
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert set_middle_bits(3) == 3
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Find the number of bits in the given number
+    num_bits = len(bin(n)[2:])
+  
+    # Calculate the mask to toggle bits of the number except the first and the last bit
+    mask = (1 << (num_bits - 2)) - 1
+  
+    # Toggle the middle bits of the given number using the mask
+    result = n ^ mask
+
+    # Set the first and last bits of the result same as the original number
+    result = (result | (n & 1)) | (n & (1 << (num_bits - 1)))
+  
+    # Return the result
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_middle_bits(101) == 91
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert set_middle_bits(3) == 3
+assert set_middle_bits(2) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Find the number of bits in the given number
+    num_bits = len(bin(n)[2:])
+  
+    # Calculate the mask to toggle bits of the number except the first and the last bit
+    mask = (1 << (num_bits - 2)) - 1
+  
+    # Toggle the middle bits of the given number using the mask
+    result = n ^ mask
+  
+    # Return the result
+    return result
+```
+Fixed code:
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Find the number of bits in the given number
+    num_bits = len(bin(n)[2:])
+  
+    # Calculate the mask to toggle bits of the number except the first and the last bit
+    mask = (1 << (num_bits - 3)) - 1
+  
+    # Toggle the middle bits of the given number using the mask
+    result = n ^ mask
+  
+    # Return the result
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-7<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_middle_bits(2 ** 32 - 1) == 2147483649
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert set_middle_bits(3) == 3
+assert set_middle_bits(2) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Find the number of bits in the given number
+    num_bits = len(bin(n)[2:])
+  
+    # Calculate the mask to toggle bits of the number except the first and the last bit
+    mask = (1 << (num_bits - 3)) - 1
+  
+    # Toggle the middle bits of the given number using the mask
+    result = n ^ mask
+  
+    # Set the last bit to 1
+    result = result | (1 << (num_bits - 1))
+  
+    # Return the result
+    return result
+```

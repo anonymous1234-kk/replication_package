@@ -1,0 +1,119 @@
+task_id:HumanEval/99
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+
+    # Convert the string input to float
+    float_value = float(value)
+
+    # Round the float value to the nearest integer
+    rounded_value = round(float_value)
+
+    # Calculate the difference between the rounded value and the original value
+    diff = abs(rounded_value - float_value)
+
+    # If the difference is exactly 0.5, round away from zero
+    if diff == 0.5:
+        if rounded_value > float_value:
+            return int(rounded_value - 1)
+        else:
+            return int(rounded_value + 1)
+
+    # If the difference is less than 0.5, return the rounded value
+    elif diff < 0.5:
+        return int(rounded_value)
+
+    # If the difference is greater than 0.5, round away from zero
+    else:
+        if rounded_value > float_value:
+            return int(rounded_value - 1)
+        else:
+            return int(rounded_value + 1)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert closest_integer('100000000000000000000000000000000000000000000000000000000000000000000000000000000000000.1') == 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def closest_integer(value):
+    float_value = float(value)
+    rounded_value = round(float_value)
+    diff = abs(rounded_value - float_value)
+    
+    if diff == 0.5:
+        if rounded_value > float_value:
+            return int(rounded_value - 1)
+        else:
+            return int(rounded_value + 1)
+    
+    elif diff < 0.5:
+        return int(rounded_value)
+    
+    else:
+        if rounded_value > float_value:
+            return int(rounded_value - 1)
+        else:
+            return int(rounded_value + 1)
+```
+

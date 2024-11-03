@@ -1,0 +1,75 @@
+task_id:MbppEval/232
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import heapq
+def larg_nnum(list1,n):
+    '''
+    Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import heapq
+def larg_nnum(list1,n):
+    '''
+    Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list.
+    '''
+
+    return heapq.nlargest(n, list1)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-48<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert larg_nnum('1,2,3,4',3) == [4, 3, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert larg_nnum([5, 2, 9, 7, 4, 6, 3, 8, 1, 0],3) == [9, 8, 7]
+assert larg_nnum([100, 101, 102, 300, 310, 320, 350, 400, 450, 500],4) == [500, 450, 400, 350]
+assert larg_nnum([5, 6, 8, 2, 3, 1, 9, 4, 10, 7],5) == [10, 9, 8, 7, 6]
+assert larg_nnum([5, 3, 7, 1, 9, 2, 8, 4, 6, 0],2) == [9, 8]
+assert larg_nnum([10, 9, 8, 7, 6, 5, 4, 3, 2, 1],3) == [10, 9, 8]
+assert larg_nnum([2, 4, 6, 8, 10, 12, 14, 16, 18, 20],2) == [20, 18]
+assert larg_nnum([10, 20, 30, 40, 50, 60, 70, 80, 90, 100],5) == [100, 90, 80, 70, 60]
+assert larg_nnum([-10, -1, 0, 1, 10, 15],3) == [15, 10, 1]
+assert larg_nnum([-10, -1, 0, 1, 10, 15],6) == [15, 10, 1, 0, -1, -10]
+assert larg_nnum([1, 2, 3, 4, 5, 6, 7, 8, 9],3) == [9, 8, 7]
+assert larg_nnum([9, 8, 7, 6, 5, 4, 3, 2, 1],4) == [9, 8, 7, 6]
+assert larg_nnum([1, 2, 3, 4, 5, 6, 7],2) == [7, 6]
+assert larg_nnum([9, 8, 7, 6, 5, 4, 3, 2, 1],2) == [9, 8]
+assert larg_nnum([1, 2, 3, 4, 5, 6, 7],6) == [7, 6, 5, 4, 3, 2]
+assert larg_nnum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],10) == [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+assert larg_nnum([5, 5, 4, 7, 2, 1, 6],3) == [7, 6, 5]
+assert larg_nnum([1, 2, 3, 4, 5],3) == [5, 4, 3]
+assert larg_nnum([1, 1, 2, 3, 5, 6, 7, 7, 7, 9, 10],2) == [10, 9]
+assert larg_nnum([-3, -5, -1, -7, -9, -4, -6],3) == [-1, -3, -4]
+assert larg_nnum([9, 8, 7, 6, 5, 4, 3, 2, 1],5) == [9, 8, 7, 6, 5]
+assert larg_nnum([1, 2, 3, 4, 5],6) == [5, 4, 3, 2, 1]
+assert larg_nnum([],3) == []
+assert larg_nnum([1, 2],3) == [2, 1]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import heapq
+
+def larg_nnum(list1,n):
+    '''
+    Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list.
+    '''
+
+    return heapq.nlargest(n, list1, key=lambda x: int(x))
+```

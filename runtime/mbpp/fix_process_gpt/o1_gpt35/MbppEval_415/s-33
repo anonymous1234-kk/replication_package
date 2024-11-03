@@ -1,0 +1,80 @@
+task_id:MbppEval/415
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+
+    # Initialize variables to hold the maximum and second maximum values
+    max_val = arr[0]
+    sec_max_val = arr[1]
+    
+    # Check which value is the maximum and which is the second maximum
+    if arr[1] > arr[0]:
+        max_val = arr[1]
+        sec_max_val = arr[0]
+    
+    # Loop through the array and update the maximum and second maximum values
+    for i in range(2, len(arr)):
+        if arr[i] > max_val:
+            sec_max_val = max_val
+            max_val = arr[i]
+        elif arr[i] > sec_max_val:
+            sec_max_val = arr[i]
+    
+    # Calculate and return the maximum product of the pair
+    return max_val * sec_max_val
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_Product([7, -1, -2, 8, -2]) == (7, 8)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+
+    # Initialize variables to hold the maximum and second maximum values
+    max_val = float('-inf')
+    sec_max_val = float('-inf')
+    
+    # Check which value is the maximum and which is the second maximum
+    for i in range(len(arr)):
+        if arr[i] > max_val:
+            sec_max_val = max_val
+            max_val = arr[i]
+        elif arr[i] > sec_max_val:
+            sec_max_val = arr[i]
+    
+    # Calculate and return the maximum product of the pair
+    return (max_val, sec_max_val)
+```

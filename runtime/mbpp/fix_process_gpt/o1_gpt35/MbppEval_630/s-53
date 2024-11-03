@@ -1,0 +1,68 @@
+task_id:MbppEval/630
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def adjac(ele, sub = []): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def adjac(ele, sub = []): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+
+    row, col = ele
+    adjacents = []
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if i == 0 and j == 0:
+                continue
+            adj_row = row + i
+            adj_col = col + j
+            adjacents.append((adj_row, adj_col))
+    return adjacents
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert adjac((0, 0),[(1, 0), (0, 1)]) == [(1, 0), (0, 1)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def adjac(ele, sub=[]): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+    row, col = ele
+    adjacents = []
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if i == 0 and j == 0:
+                continue
+            adj_row = row + i
+            adj_col = col + j
+            if (adj_row, adj_col) not in sub:
+                adjacents.append((adj_row, adj_col))
+    return adjacents
+```
+

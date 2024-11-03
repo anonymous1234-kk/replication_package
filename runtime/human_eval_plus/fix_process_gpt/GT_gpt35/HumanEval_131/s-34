@@ -1,0 +1,89 @@
+task_id:HumanEval/131
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+
+    odd_digits_product = 1
+    even_digits_count = 0
+    while n > 0:
+        digit = n % 10
+        if digit % 2 == 0:
+            even_digits_count += 1
+        else:
+            odd_digits_product *= digit
+        n //= 10
+    if even_digits_count == len(str(n)):
+        return 0
+    return odd_digits_product
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert digits(2357) == 105
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert digits(85796) == 315
+assert digits(65432) == 15
+assert digits(234) == 3
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+    
+    odd_digits_product = 1
+    even_digits_count = 0
+    while n > 0:
+        digit = n % 10
+        if digit % 2 == 0:
+            even_digits_count += 1
+        else:
+            odd_digits_product *= digit
+        n //= 10
+    if even_digits_count == len(str(n)) + 1:
+        return 0
+    return odd_digits_product
+
+```

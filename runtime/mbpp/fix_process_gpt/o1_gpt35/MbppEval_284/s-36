@@ -1,0 +1,51 @@
+task_id:MbppEval/284
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def check_element(list,element):
+    '''
+    Write a function that takes in a list and element and checks whether all items in the list are equal to the given element.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def check_element(list,element):
+    '''
+    Write a function that takes in a list and element and checks whether all items in the list are equal to the given element.
+    '''
+
+    for item in lst:
+        if item != element:
+            return False
+    return True
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert check_element(['mohammed', 'hassan', 'ali', 'ali', 'ali'],'ali') == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def check_element(lst, element):
+    for item in lst:
+        if item != element:
+            return False
+    return True
+```

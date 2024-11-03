@@ -1,0 +1,64 @@
+task_id:MbppEval/773
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    # Find all occurrences of the pattern in the text
+    matches = list(re.finditer(pattern, text))
+    # If no matches found, return None
+    if not matches:
+        return None
+    # Otherwise, return a list of tuples containing the start and end positions of each match
+    return [(match.start(), match.end()) for match in matches]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Hello, World','o') == ('o', 4, 5)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    # Find all occurrences of the pattern in the text
+    matches = list(re.finditer(pattern, text))
+    # If no matches found, return None
+    if not matches:
+        return None
+    # Otherwise, return a tuple containing the pattern and the start and end positions of the first match
+    return (pattern, matches[0].start(), matches[0].end())
+```

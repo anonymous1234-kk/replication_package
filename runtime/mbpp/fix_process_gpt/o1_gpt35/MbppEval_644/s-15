@@ -1,0 +1,67 @@
+task_id:MbppEval/644
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def reverse_Array_Upto_K(input, k): 
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def reverse_Array_Upto_K(input, k): 
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+    start = 0
+    end = k - 1
+    
+    while start < end:
+        input[start], input[end] = input[end], input[start]
+        start += 1
+        end -= 1
+    
+    return input
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-25<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert reverse_Array_Upto_K([5, 7, 3, 1, 8, 6, 9, 4, 2],6) == [9, 6, 8, 1, 3, 7, 5, 4, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def reverse_Array_Upto_K(input, k): 
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+    start = 0
+    end = k - 1
+    
+    while start < end:
+        input[start], input[end] = input[end], input[start]
+        start += 1
+        end -= 1
+    
+    return input[::-1]
+```

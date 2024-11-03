@@ -1,0 +1,72 @@
+task_id:MbppEval/759
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_decimal(num):
+    '''
+    Write a function to check whether a given string is a decimal number with a precision of 2.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_decimal(num):
+    '''
+    Write a function to check whether a given string is a decimal number with a precision of 2.
+    '''
+
+    try:
+        # Convert the string to float with 2 decimal places
+        float_num = float(num)
+        rounded_num = round(float_num, 2)
+        
+        # If the rounded number is same as original number, it is a decimal number with precision of 2
+        if rounded_num == float_num:
+            return True
+        else:
+            return False
+    except:
+        return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_decimal('1234') == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_decimal('3.344') == False
+assert is_decimal('3333333333.34') == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_decimal(num):
+    '''
+    Write a function to check whether a given string is a decimal number with a precision of 2.
+    '''
+
+    try:
+        # Convert the string to float with 2 decimal places
+        float_num = float(num)
+        rounded_num = round(float_num, 2)
+        
+        # If the rounded number is same as original number and it has 2 decimal places, it is a decimal number with precision of 2
+        if rounded_num == float_num and num.count('.') == 1 and len(num.split('.')[1]) == 2:
+            return True
+        else:
+            return False
+    except:
+        return False
+```

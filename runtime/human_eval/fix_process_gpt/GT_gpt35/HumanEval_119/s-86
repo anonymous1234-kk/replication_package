@@ -1,0 +1,94 @@
+task_id:HumanEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def match_parens(lst):
+    '''
+    You are given a list of two strings, both strings consist of open
+    parentheses '(' or close parentheses ')' only.
+    Your job is to check if it is possible to concatenate the two strings in
+    some order, that the resulting string will be good.
+    A string S is considered to be good if and only if all parentheses in S
+    are balanced. For example: the string '(())()' is good, while the string
+    '())' is not.
+    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
+
+    Examples:
+    match_parens(['()(', ')']) == 'Yes'
+    match_parens([')', ')']) == 'No'
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def match_parens(lst):
+    '''
+    You are given a list of two strings, both strings consist of open
+    parentheses '(' or close parentheses ')' only.
+    Your job is to check if it is possible to concatenate the two strings in
+    some order, that the resulting string will be good.
+    A string S is considered to be good if and only if all parentheses in S
+    are balanced. For example: the string '(())()' is good, while the string
+    '())' is not.
+    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
+
+    Examples:
+    match_parens(['()(', ')']) == 'Yes'
+    match_parens([')', ')']) == 'No'
+    '''
+
+    # count the number of open and close parentheses in each string
+    left1 = lst[0].count('(')
+    left2 = lst[1].count('(')
+    right1 = lst[0].count(')')
+    right2 = lst[1].count(')')
+
+    # check if the total number of open and close parentheses in both strings are equal
+    if left1+left2 == right1+right2:
+        return 'Yes'
+    else:
+        return 'No'
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert match_parens(['()()', ')(']) == No
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert match_parens(['(())', ')']) == No
+assert match_parens(['((()))))', '))()(((()())(()))']) == No
+assert match_parens(['(', '(', ')', ')', '(', ')', ')', ')']) == No
+assert match_parens(['((((', '))))']) == Yes
+assert match_parens(['((', '))']) == Yes
+assert match_parens(['((', '))']) == Yes
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def match_parens(lst):
+    left1 = lst[0].count('(')
+    left2 = lst[1].count('(')
+    right1 = lst[0].count(')')
+    right2 = lst[1].count(')')
+
+    if left1 + left2 == right1 + right2:
+        return 'Yes'
+    elif (left1 == 0 and right2 == 0) or (left2 == 0 and right1 == 0):
+        return 'Yes'
+    else:
+        return 'No'
+```

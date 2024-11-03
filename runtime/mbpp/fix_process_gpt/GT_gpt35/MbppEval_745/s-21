@@ -1,0 +1,78 @@
+task_id:MbppEval/745
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    # define an empty list to store the results
+    result = []
+    # loop through the range between startnum and endnum
+    for num in range(startnum, endnum + 1):
+        # convert the number to a string
+        num_str = str(num)
+        # set a flag to keep track of whether all digits are divisible
+        all_divisible = True
+        # loop through each digit in the number
+        for digit_str in num_str:
+            # convert the digit back to an integer
+            digit = int(digit_str)
+            # check if the number is divisible by the digit
+            if digit != 0 and num % digit != 0:
+                # if not, set the flag to False and break out of the loop
+                all_divisible = False
+                break
+        # if all digits are divisible, add the number to the result list
+        if all_divisible:
+            result.append(num)
+    # return the list of results
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(200,300) == [212, 216, 222, 224, 244, 248, 264, 288]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        num_str = str(num)
+        all_divisible = True
+        for digit_str in num_str:
+            digit = int(digit_str)
+            if digit != 0 and num % digit != 0:
+                all_divisible = False
+                break
+        if all_divisible:
+            result.append(num)
+    return result
+
+```

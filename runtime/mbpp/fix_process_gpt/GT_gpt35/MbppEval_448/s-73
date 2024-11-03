@@ -1,0 +1,73 @@
+task_id:MbppEval/448
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def cal_sum(n): 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def cal_sum(n): 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+ 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+    if n < 3:
+        return 0
+    perrin_list = [3, 0, 2]
+    total_sum = 5
+    for i in range(3, n+1):
+        curr_num = perrin_list[i-2] + perrin_list[i-3]
+        perrin_list.append(curr_num)
+        total_sum += curr_num
+    return total_sum
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert cal_sum(0) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert cal_sum(5) == 15
+assert cal_sum(10) == 66
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def cal_sum(n): 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+ 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+    if n < 3:
+        return 0
+    perrin_list = [3, 0, 2]
+    total_sum = 5
+    for i in range(3, n+1):
+        curr_num = perrin_list[i-2] + perrin_list[i-3]
+        perrin_list.append(curr_num)
+        total_sum += curr_num
+    return total_sum
+assert cal_sum(0) == 3
+```

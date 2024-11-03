@@ -1,0 +1,91 @@
+task_id:MbppEval/102
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+    # Split the word into a list of words using "_" as the separator
+    words = word.split("_")
+    
+    # Capitalize the first letter of each word except the first one
+    for i in range(1, len(words)):
+        words[i] = words[i].capitalize()
+    
+    # Join the words together to form a single string
+    camel_case_word = "".join(words)
+    
+    # Return the camel case string
+    return camel_case_word
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('arun') == Arun
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert snake_to_camel(' ') ==  
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def snake_to_camel(word):
+    words = word.split("_")
+    for i in range(1, len(words)):
+        words[i] = words[i].capitalize()
+    camel_case_word = "".join(words)
+    return camel_case_word.capitalize()
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('happy_new_year') == HappyNewYear
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert snake_to_camel(' ') ==  
+assert snake_to_camel('arun') == Arun
+assert snake_to_camel('wordCount') == Wordcount
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+
+def snake_to_camel(word):
+    words = word.split("_")
+    for i in range(1, len(words)):
+        words[i] = words[i].capitalize()
+    camel_case_word = "".join(words)
+    return camel_case_word
+```

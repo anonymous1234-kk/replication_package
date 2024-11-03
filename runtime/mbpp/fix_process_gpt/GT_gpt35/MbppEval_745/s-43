@@ -1,0 +1,56 @@
+task_id:MbppEval/745
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    def is_divisible(num):
+        digits = [int(d) for d in str(num) if d != '0']
+        return all(num % d == 0 for d in digits)
+    return [num for num in range(startnum, endnum+1) if is_divisible(num)]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(200,300) == [212, 216, 222, 224, 244, 248, 264, 288]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    def is_divisible(num):
+        digits = [int(d) for d in str(num) if d != '0']
+        return all(num % d == 0 for d in digits)
+
+    return [num for num in range(startnum, endnum+1) if is_divisible(num) and all(d != 0 and num % d == 0 for d in [int(d) for d in str(num)])]
+```

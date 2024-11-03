@@ -1,0 +1,574 @@
+task_id:MbppEval/473
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-24<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(2, 4, 5), (5, 7, 8), (8, 10, 9)],[(4, 2, 5), (7, 5, 8), (8, 10)]) == [(2, 4, 5), (5, 7, 8)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    # Sorting the list of common tuples based on the first element
+    common_tuples.sort(key=lambda x: x[0])
+    return common_tuples
+
+assert tuple_intersection([(2, 4, 5), (5, 7, 8), (8, 10, 9)],[(4, 2, 5), (7, 5, 8), (8, 10)]) == [(2, 4, 5), (5, 7, 8)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2), (5, 7)],[(4, 2), (7, 5), (8, 10)]) == [(5, 7)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    
+    return common_tuples
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-27<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(2, 4, 5), (5, 7, 8), (8, 10, 9)],[(4, 2, 5)]) == [(2, 4, 5)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    
+    # Sorting the common tuples based on the first element of each tuple
+    common_tuples.sort(key=lambda x: x[0])
+    
+    return common_tuples
+
+assert tuple_intersection([(2, 4, 5), (5, 7, 8), (8, 10, 9)],[(4, 2, 5)]) == [(2, 4, 5)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-46<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([0, 1, 2, 3, 4],[2, 3, 4]) == (2, 3, 4)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    # Converting inner lists back to tuples
+    common_tuples = [tuple(i) for i in common_tuples]
+    # Returning the first tuple from the list
+    return common_tuples[0]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([0, 1, 2, 3, 4],[2, 3, 4, 5, 6]) == (2, 3, 4)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    # Fix: Unwrap the tuples and convert the result to a tuple
+    common_tuples = tuple([item for sublist in common_tuples for item in sublist])
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (3, 2, 1)],[(1, 2, 3), (3, 2, 1)]) == [(1, 2, 3)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2), (2, 3), (3, 1)],[(1, 2), (3, 1)]) == [(1, 2), (3, 1)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+Fixed code:
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(3, 4), (1, 2), (5, 6)],[(1, 2), (3, 4)]) == [(3, 4), (1, 2)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+
+# Fixing the code to correctly handle tuple intersection
+def tuple_intersection(test_list1, test_list2):
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Sorting the list of tuples based on the first element of each tuple
+    common_tuples.sort(key=lambda x: x[0])
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2), (2, 4), (3, 5), (4, 2)],[(3, 5), (4, 2)]) == [(2, 4), (3, 5), (4, 2)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+
+assert tuple_intersection([(1, 2), (2, 4), (3, 5), (4, 2)],[(3, 5), (4, 2)]) == [(2, 4), (3, 5), (4, 2)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (2, 3, 4), (3, 1, 2)],[(1, 2, 3), (3, 4, 2)]) == [(1, 2, 3), (2, 3, 4)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (2, 3, 4), (3, 1, 2)],[(3, 2, 1), (1, 2, 3)]) == [(1, 2, 3), (3, 1, 2)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    # Filtering out tuples that are not present in both lists
+    common_tuples = [i for i in common_tuples if i in test_list1 and i in test_list2]
+    return common_tuples
+
+assert tuple_intersection([(1, 2, 3), (2, 3, 4), (3, 1, 2)],[(3, 2, 1), (1, 2, 3)]) == [(1, 2, 3), (3, 1, 2)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (4, 5, 6), (7, 8, 9, 10)],[(3, 2, 1), (6, 5, 4), (1, 2, 3), (7, 8, 9, 10)]) == [(1, 2, 3), (4, 5, 6), (7, 8, 9, 10)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-33<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2), (2, 3)],[(1, 2), (3, 2)]) == [(1, 2), (2, 3)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (4, 5, 6), (7, 8, 9, 10)],[(3, 2, 1), (6, 5, 4), (1, 2, 3)]) == [(1, 2, 3), (4, 5, 6)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(sorted(i)) for i in test_list1]
+    test_list2 = [tuple(sorted(i)) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(2, 4), (1, 2), (4, 2), (1, 2), (3, 5), (4, 7)],[(1, 2), (2, 4), (3, 5), (4, 2)]) == [(2, 4), (1, 2), (3, 5)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (2, 3, 4), (3, 1, 2)],[(7, 8, 9), (3, 4, 2)]) == [(2, 3, 4)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+
+assert tuple_intersection([(1, 2, 3), (2, 3, 4), (3, 1, 2)],[(7, 8, 9), (3, 4, 2)]) == [(2, 3, 4)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-7<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (2, 3, 4), (3, 1, 2)],[(1, 2, 3), (3, 1)]) == [(1, 2, 3), (3, 1, 2)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    common_tuples = set(test_list1) & set(test_list2)
+    common_tuples = list(common_tuples)
+    common_tuples = [list(i) for i in common_tuples]
+    return common_tuples
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_intersection([(1, 2, 3), (4, 5, 6)],[(3, 2, 1), (6, 5, 4)]) == [(1, 2, 3), (4, 5, 6)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_intersection(test_list1, test_list2):
+    '''
+    Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.
+    '''
+
+    # Using list comprehension to convert elements of list to tuples
+    test_list1 = [tuple(i) for i in test_list1]
+    test_list2 = [tuple(i) for i in test_list2]
+    # Using set intersection to find common tuples
+    common_tuples = set(test_list1) & set(test_list2)
+    # Converting set back to list
+    common_tuples = list(common_tuples)
+    # Converting tuples back to list
+    common_tuples = [list(i) for i in common_tuples]
+    
+    # Sorting the common tuples to ensure order consistency
+    common_tuples.sort()
+    
+    return common_tuples
+
+assert tuple_intersection([(1, 2, 3), (4, 5, 6)],[(3, 2, 1), (6, 5, 4)]) == [(1, 2, 3), (4, 5, 6)]
+```

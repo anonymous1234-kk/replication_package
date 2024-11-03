@@ -1,0 +1,81 @@
+task_id:MbppEval/644
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def reverse_Array_Upto_K(input, k): 
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def reverse_Array_Upto_K(input, k): 
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+    # Initialize start and end index
+    start_index = 0
+    end_index = k-1
+     
+    # Swap elements till start < end
+    while (start_index < end_index):
+         
+        # Swap start and end index elements
+        input[start_index], input[end_index] = input[end_index], input[start_index]
+         
+        # Increment start index and decrement end index
+        start_index += 1
+        end_index -= 1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert reverse_Array_Upto_K([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def reverse_Array_Upto_K(input, k): 
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+
+    '''
+    Write a python function to reverse an array upto a given position.
+    '''
+    # Initialize start and end index
+    start_index = 0
+    end_index = min(k, len(input)-1)
+     
+    # Swap elements till start < end
+    while (start_index < end_index):
+         
+        # Swap start and end index elements
+        input[start_index], input[end_index] = input[end_index], input[start_index]
+         
+        # Increment start index and decrement end index
+        start_index += 1
+        end_index -= 1
+
+    return input
+```

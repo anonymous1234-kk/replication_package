@@ -1,0 +1,71 @@
+task_id:MbppEval/99
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def decimal_to_binary(n): 
+    '''
+    Write a function to convert the given decimal number to its binary equivalent, represented as a string with no leading zeros.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def decimal_to_binary(n): 
+    '''
+    Write a function to convert the given decimal number to its binary equivalent, represented as a string with no leading zeros.
+    '''
+ 
+    binary_num = "" # Initialize an empty string to hold the binary equivalent of decimal number n
+    while n > 0: 
+        binary_num = str(n % 2) + binary_num # Append the remainder to binary_num
+        n = n // 2 # Update n by floor dividing it by 2
+    return binary_num if binary_num else "0" # Return binary_num if not empty, else return "0"
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert decimal_to_binary(-10) == -1010
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert decimal_to_binary(11) == 1011
+assert decimal_to_binary(12) == 1100
+assert decimal_to_binary(1) == 1
+assert decimal_to_binary(0) == 0
+assert decimal_to_binary(41) == 101001
+assert decimal_to_binary(128) == 10000000
+assert decimal_to_binary(31) == 11111
+assert decimal_to_binary(5) == 101
+assert decimal_to_binary(255) == 11111111
+assert decimal_to_binary(14) == 1110
+assert decimal_to_binary(1) == 1
+assert decimal_to_binary(4) == 100
+assert decimal_to_binary(0) == 0
+assert decimal_to_binary(2999999) == 1011011100011010111111
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def decimal_to_binary(n): 
+    binary_num = ""
+    if n == 0:
+        return "0"
+    elif n < 0:
+        n *= -1
+        binary_num = "-"
+    while n > 0: 
+        binary_num = str(n % 2) + binary_num
+        n = n // 2
+    return binary_num
+```

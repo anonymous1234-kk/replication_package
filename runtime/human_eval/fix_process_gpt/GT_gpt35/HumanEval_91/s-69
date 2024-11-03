@@ -1,0 +1,104 @@
+task_id:HumanEval/91
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+    # Initialize count of boredoms
+    count = 0
+
+    # Split the string into sentences
+    sentences = S.split(".")
+    sentences = [s.strip() for s in sentences]
+    sentences = [s for s in sentences if len(s) > 0]
+
+    # Check each sentence for boredom
+    for sentence in sentences:
+        if sentence[-1] in ['?', '!']:
+            sentence = sentence[:-1]
+
+        if sentence.startswith("I "):
+            count += 1
+
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_bored('This is a test. I am happy. I am bored? I am bored! I am bored') == 4
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_bored('I am happy. I love my family. I love this weather') == 3
+assert is_bored('I am not feeling bored. I am happy.') == 2
+assert is_bored('I am happy. I am going to the beach. Do you want to come?') == 2
+assert is_bored('I will be on holiday. It will be in Turkey. I am excited') == 2
+assert is_bored("I'm reading a book. It's so good. I'm almost finished with it.") == 0
+assert is_bored('I am excited. This is a test. I am bored. I do not want to do this') == 3
+assert is_bored('I am tired.I need a vacation? Are you coming! Let me know.') == 2
+assert is_bored("I am really bored. Please let's go to the mall?") == 1
+assert is_bored('I am happy and sad. I am not sad. I am happy again!') == 3
+assert is_bored("I'm getting bored. Why are you here?") == 0
+assert is_bored('I am an engineer. I live in Austin! my favorite team is Dallas Mavericks') == 2
+assert is_bored('I need to go shopping. I have run out of milk. I am so thirsty. I think I will go now!') == 4
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    count = 0
+    sentences = S.split(".")
+    sentences = [s.strip() for s in sentences]
+    sentences = [s for s in sentences if len(s) > 0]
+
+    for sentence in sentences:
+        if sentence[-1] in ['?', '!']:
+            sentence = sentence[:-1]
+
+        if sentence.startswith("I ") or sentence == "I":
+            count += 1
+
+    return count
+
+```

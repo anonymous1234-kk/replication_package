@@ -1,0 +1,103 @@
+task_id:HumanEval/0
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+    """
+    Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    """
+    for i in range(len(numbers)):
+        for j in range(i + 1, len(numbers)):
+            if abs(numbers[i] - numbers[j]) <= threshold:
+                return True
+    return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert has_close_elements([1.0, 1.5, 3.0],0.5) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0],0.9) == True
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0],5) == True
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0],0.1) == False
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 6.0],0.3) == True
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0],2) == True
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0],4.0) == True
+assert has_close_elements([5.0, 5.2, 5.5],1) == True
+assert has_close_elements([0.1, 0.2, 0.3],0.02) == False
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0, 7.0, 9.0, 10.0],10.0) == True
+assert has_close_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],0.4) == False
+assert has_close_elements([1.0, 2.0, 3.0, 3.2, 5.5, 5.9],0.3) == True
+assert has_close_elements([1.0, 2.0, 3.0],1.5) == True
+assert has_close_elements([1.0, 5.0, 7.0, 10.0],3.5) == True
+assert has_close_elements([1.0, 2.0, 3.0, 4.0, 5.0],3) == True
+assert has_close_elements([1, 2, 3, 4, 4.1],0.05) == False
+assert has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0, 4.0],1.0) == True
+assert has_close_elements([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.1],0.1) == True
+assert has_close_elements([4, 3, 5, 1, 6],2) == True
+assert has_close_elements([4.0, 6.0, 8.0, 10.0, 12.0, 13.0, 14.0],0.8) == False
+assert has_close_elements([-100.0, 100.0, 200.0, 300.0],80.0) == False
+assert has_close_elements([1.0, 2.3, 2.7, 4.0, 5.0],0.3) == False
+assert has_close_elements([10.0, 20.0, 50.0, 30.0],21.0) == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+    for i in range(len(numbers)):
+        for j in range(i + 1, len(numbers)):
+            if abs(numbers[i] - numbers[j]) <= threshold:
+                return True
+    return False
+```

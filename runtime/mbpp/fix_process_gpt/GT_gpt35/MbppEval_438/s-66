@@ -1,0 +1,204 @@
+task_id:MbppEval/438
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def count_bidirectional(test_list):
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+
+    count = 0
+    
+    # Iterate through each tuple in the list
+    for tup in test_list:
+        
+        # Check if the tuple is bidirectional by checking if both elements are present in the list
+        if tup[::-1] in test_list:
+            count += 1
+            
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 1), (2, 3), (3, 2), (4, 3), (4, 4)]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+
+    count = 0
+    
+    # Iterate through each tuple in the list
+    for tup in test_list:
+        
+        # Check if the tuple is bidirectional by checking if both elements are present in the list
+        if tup[::-1] in test_list and test_list.count(tup) > 1:
+            count += 1
+            
+    return count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 1), (2, 3), (3, 2)]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+
+    count = 0
+    
+    for tup in test_list:
+        
+        if tup[::-1] in test_list and test_list.count(tup) > 1:
+            count += 1
+            
+    return count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-16<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5), (5, 4), (6, 7), (7, 6), (9, 9), (2, 5), (8, 8)]) == 5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5)]) == 2
+assert count_bidirectional([(1, 2), (3, 4), (4, 3)]) == 2
+assert count_bidirectional([(1, 2), (2, 1)]) == 2
+assert count_bidirectional([(1, 2), (3, 4), (4, 5), (5, 4)]) == 2
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5), (5, 4), (6, 7), (7, 6)]) == 6
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    count = 0
+    for tup in test_list:
+        if (tup[1], tup[0]) in test_list:
+            count += 1
+    return count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6), (5, 6), (6, 7), (6, 8), (8, 9), (7, 9)]) == 19
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5)]) == 2
+assert count_bidirectional([(1, 2), (3, 4), (4, 3)]) == 2
+assert count_bidirectional([(1, 2), (2, 1)]) == 2
+assert count_bidirectional([(1, 2), (3, 4), (4, 5), (5, 4)]) == 2
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5), (5, 4), (6, 7), (7, 6)]) == 6
+assert count_bidirectional([(1, 2)]) == 0
+assert count_bidirectional([(1, 2), (3, 4), (4, 3), (1, 2), (5, 6), (7, 8), (9, 7), (9, 7)]) == 2
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7)]) == 0
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5)]) == 4
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6)]) == 4
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6), (5, 6)]) == 6
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6), (5, 6), (6, 7)]) == 6
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6), (5, 6), (6, 7), (6, 8), (8, 9)]) == 6
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    count = 0
+    bidirectional_set = set()
+
+    for tup in test_list:
+        # Check if the tuple is bidirectional
+        if tup[::-1] in bidirectional_set:
+            count += 1
+        else:
+            bidirectional_set.add(tup)
+
+    return count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 1), (3, 4), (2, 2), (3, 3), (1, 1), (4, 3), (6, 7)]) == 4
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5)]) == 2
+assert count_bidirectional([(1, 2), (3, 4), (4, 3)]) == 2
+assert count_bidirectional([(1, 2), (2, 1)]) == 2
+assert count_bidirectional([(1, 2), (3, 4), (4, 5), (5, 4)]) == 2
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5), (5, 4), (6, 7), (7, 6)]) == 6
+assert count_bidirectional([(1, 2)]) == 0
+assert count_bidirectional([(1, 2), (3, 4), (4, 3), (1, 2), (5, 6), (7, 8), (9, 7), (9, 7)]) == 2
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7)]) == 0
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5)]) == 4
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6)]) == 4
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6), (5, 6)]) == 6
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6), (5, 6), (6, 7)]) == 6
+assert count_bidirectional([(1, 2), (2, 3), (3, 4), (5, 4), (6, 5), (7, 8), (9, 7), (9, 7), (8, 7), (4, 5), (4, 6), (5, 6), (6, 7), (6, 8), (8, 9)]) == 6
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+
+    count = 0
+    
+    # Create a set to store the unique tuples
+    unique_tuples = set(test_list)
+    
+    # Iterate through each tuple in the list
+    for tup in test_list:
+        
+        # Check if the tuple is bidirectional by checking if both elements are present in the set
+        if (tup[1], tup[0]) in unique_tuples:
+            count += 1
+            
+    return count
+```

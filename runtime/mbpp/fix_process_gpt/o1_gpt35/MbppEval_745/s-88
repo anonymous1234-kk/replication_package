@@ -1,0 +1,99 @@
+task_id:MbppEval/745
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(digit) for digit in str(num)]
+        if all(digit != 0 and num % digit == 0 for digit in digits):
+            result.append(num)
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(200,300) == [200, 202, 204, 208, 210, 212, 216, 220, 222, 224, 240, 244, 248, 250, 264, 280, 288, 300]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(digit) for digit in str(num)]
+        if all(digit != 0 and num % digit == 0 for digit in digits):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(100,200) == [100, 101, 102, 104, 105, 110, 111, 112, 115, 120, 122, 124, 126, 128, 132, 135, 140, 144, 150, 155, 162, 168, 175, 184, 200]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(digit) for digit in str(num)]
+        if all(digit != 0 and num % digit == 0 for digit in digits):
+            result.append(num)
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(400,500) == [400, 404, 408, 412, 420, 424, 432, 440, 444, 448, 480, 488, 500]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    result = []
+    for num in range(startnum, endnum + 1):
+        digits = [int(digit) for digit in str(num)]
+        if all(digit != 0 and num % digit == 0 for digit in digits) and all(digit != 0 for digit in digits):
+            result.append(num)
+    return result
+```

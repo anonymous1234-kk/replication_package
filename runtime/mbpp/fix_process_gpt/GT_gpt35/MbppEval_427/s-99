@@ -1,0 +1,78 @@
+task_id:MbppEval/427
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+    # Use regular expression to extract year, month and day from the input date string
+    year, month, day = re.findall(r'\d+', dt)
+
+    # Concatenate the day, month and year in the desired format
+    new_date_format = day + '-' + month + '-' + year
+
+    # Return the new date format
+    return new_date_format
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-25<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert change_date_format('2022/01/01') == 2022/01/01
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert change_date_format('2022-01-00') == 00-01-2022
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+    # Use regular expression to extract year, month and day from the input date string
+    year, month, day = re.findall(r'\d+', dt)
+
+    # Check if the input date string is in the correct format
+    if len(year) == 4 and len(month) == 2 and len(day) == 2:
+        # Concatenate the day, month and year in the desired format
+        new_date_format = day + '-' + month + '-' + year
+    else:
+        # Return the original date string if it is not in the correct format
+        new_date_format = dt
+
+    # Return the new date format
+    return new_date_format
+
+```

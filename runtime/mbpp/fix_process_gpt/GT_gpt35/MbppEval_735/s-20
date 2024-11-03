@@ -1,0 +1,107 @@
+task_id:MbppEval/735
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Get number of bits in the given number
+    num_bits = n.bit_length()
+    
+    # Generate a number with all bits set except the first and last bit
+    mask = (1 << (num_bits - 2)) - 1
+    
+    # Toggle bits using XOR operator
+    result = n ^ mask
+    
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_middle_bits(3) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Get number of bits in the given number
+    num_bits = n.bit_length()
+    
+    # Generate a number with all bits set except the first and last bit
+    mask = (1 << (num_bits - 2)) - 1
+    
+    # Toggle bits using XOR operator
+    result = n ^ mask
+    
+    # Set the first and last bit of the result to 0
+    result &= ~(1 << (num_bits - 1))
+    result &= ~(1 << 0)
+    
+    return result
+
+assert set_middle_bits(3) == 0
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_middle_bits(5) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert set_middle_bits(3) == 0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_middle_bits(n):  
+    '''
+    Write a python function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/
+    '''
+
+    # Get number of bits in the given number
+    num_bits = n.bit_length()
+    
+    # Generate a number with all bits set except the first and last bit
+    mask = (1 << (num_bits - 2)) - 1
+    
+    # Toggle bits using XOR operator
+    result = n ^ mask
+    
+    # Set the first and last bit of the result to 0
+    result &= ~(1 << (num_bits - 1))
+    result &= ~(1 << 0)
+    
+    return result
+```

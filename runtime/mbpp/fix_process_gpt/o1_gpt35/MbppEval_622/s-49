@@ -1,0 +1,91 @@
+task_id:MbppEval/622
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def get_median(arr1, arr2, n):
+    '''
+    Write a function to find the median of two sorted lists of same size.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def get_median(arr1, arr2, n):
+    '''
+    Write a function to find the median of two sorted lists of same size.
+    '''
+
+    # Merge the two sorted arrays
+    merged_arr = []
+    i = 0
+    j = 0
+    while i < n and j < n:
+        if arr1[i] <= arr2[j]:
+            merged_arr.append(arr1[i])
+            i += 1
+        else:
+            merged_arr.append(arr2[j])
+            j += 1
+    # Copy the remaining elements of arr1
+    while i < n:
+        merged_arr.append(arr1[i])
+        i += 1
+    # Copy the remaining elements of arr2
+    while j < n:
+        merged_arr.append(arr2[j])
+        j += 1
+    # Find the median of the merged array
+    if n % 2 == 0:
+        return (merged_arr[n//2-1] + merged_arr[n//2])/2
+    else:
+        return merged_arr[n//2]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert get_median([1, 2, 3, 4],[10, 20, 30, 40],4) == 7.0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def get_median(arr1, arr2, n):
+    '''
+    Write a function to find the median of two sorted lists of same size.
+    '''
+
+    merged_arr = []
+    i = 0
+    j = 0
+    while i < n and j < n:
+        if arr1[i] <= arr2[j]:
+            merged_arr.append(arr1[i])
+            i += 1
+        else:
+            merged_arr.append(arr2[j])
+            j += 1
+    while i < n:
+        merged_arr.append(arr1[i])
+        i += 1
+    while j < n:
+        merged_arr.append(arr2[j])
+        j += 1
+    if n % 2 == 0:
+        return (merged_arr[n//2-1] + merged_arr[n//2])/2
+    else:
+        return merged_arr[n//2]
+```

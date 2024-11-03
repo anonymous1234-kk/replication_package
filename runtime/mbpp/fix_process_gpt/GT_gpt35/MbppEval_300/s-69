@@ -1,0 +1,85 @@
+task_id:MbppEval/300
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def count_binary_seq(n): 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def count_binary_seq(n): 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+ 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+    if n <= 0:
+        return 0
+    
+    # Initialize count to 1 since an empty sequence is also valid
+    count = 1
+    
+    # Loop through all possible sum values of n bits, from 0 to n
+    for i in range(n + 1):
+        # Calculate the number of ways to choose i bits to be 1
+        # and n-i bits to be 0 in the first n bits
+        first_half = factorial(n) // (factorial(i) * factorial(n-i))
+        
+        # Calculate the number of ways to choose i bits to be 1
+        # and n-i bits to be 0 in the last n bits
+        second_half = factorial(n) // (factorial(i) * factorial(n-i))
+        
+        # Multiply the two counts to get the total number of valid sequences
+        count += first_half * second_half
+    
+    return count
+```
+
+Note that the implementation uses the `factorial` function from the `math` module, so you should include the following import statement at the top of your code:
+
+```python
+from math import factorial
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_binary_seq(12) == 2704156.0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from math import factorial
+
+def count_binary_seq(n): 
+    if n <= 0:
+        return 0
+    
+    count = 1
+    
+    for i in range(n + 1):
+        first_half = factorial(2*n) // (factorial(n) * factorial(n+i))
+        second_half = factorial(2*n) // (factorial(n) * factorial(n-i))
+        count += first_half * second_half
+    
+    return count
+```

@@ -1,0 +1,103 @@
+task_id:HumanEval/132
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+
+    stack = []
+    for char in string:
+        if char == "[":
+            stack.append(char)
+        elif char == "]":
+            if len(stack) > 0 and stack[-1] == "[":
+                stack.pop()
+            else:
+                stack.append(char)
+    return len(stack) > 0 and "[" in stack and "]" in stack
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-15<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_nested('[]]]]]]][[[[[]') == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_nested('][][[]][') == True
+assert is_nested('][[]][[]') == True
+assert is_nested('][[]][') == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+
+    stack = []
+    for char in string:
+        if char == "[":
+            stack.append(char)
+        elif char == "]":
+            if len(stack) > 0 and stack[-1] == "[":
+                stack.pop()
+            else:
+                stack.append(char)
+        if len(stack) > 1 and stack[-2] == "[" and stack[-1] == "]":
+            stack.pop()
+            stack.pop()
+    return len(stack) > 0 and "[" in stack and "]" in stack
+
+```

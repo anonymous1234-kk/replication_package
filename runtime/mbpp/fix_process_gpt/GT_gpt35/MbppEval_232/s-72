@@ -1,0 +1,60 @@
+task_id:MbppEval/232
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import heapq
+def larg_nnum(list1,n):
+    '''
+    Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import heapq
+def larg_nnum(list1,n):
+    '''
+    Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list.
+    '''
+
+    return heapq.nlargest(n, list1)
+``` 
+
+You can test the function by calling it with a list and an integer value n as arguments, like this:
+
+```python
+# Example usage
+list1 = [5, 2, 8, 6, 1, 9]
+n = 3
+largest_numbers = larg_nnum(list1, n)
+print(largest_numbers)  # Output: [9, 8, 6]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert larg_nnum([5, 2, 9, 7, 4, 6, 3, 8, 1, 0],3) == [9, 8, 7]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here is the fixed code:
+
+```python
+import heapq
+def larg_nnum(list1,n):
+    return heapq.nlargest(n, list1)
+```

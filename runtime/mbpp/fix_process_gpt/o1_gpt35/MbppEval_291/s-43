@@ -1,0 +1,75 @@
+task_id:MbppEval/291
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def count_no_of_ways(n, k): 
+    '''
+    Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def count_no_of_ways(n, k): 
+    '''
+    Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.
+    '''
+ 
+    if n == 0:  # if there are no posts, there is only one way to paint the fence
+        return 0
+    elif n == 1:  # if there is only one post, there are k ways to paint the fence
+        return k
+    elif n == 2:  # if there are only two posts, there are k ways to paint the fence
+        return k * k
+
+    same_color_counts = k  # number of ways to paint the first two posts with the same color
+    diff_color_counts = k * (k - 1)  # number of ways to paint the first two posts with different colors
+    for i in range(3, n + 1):
+        prev_same_color_counts = same_color_counts  # save previous same color counts
+        same_color_counts = diff_color_counts  # same color counts for current post is equal to different color counts for previous post
+        diff_color_counts = (prev_same_color_counts + (k - 1) * diff_color_counts)  # different color counts for current post is sum of previous same color counts and different color counts multiplied by (k-1)
+    return same_color_counts + diff_color_counts
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_no_of_ways(4,4) == 228
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_no_of_ways(n, k): 
+    '''
+    Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.
+    '''
+ 
+    if n == 0:
+        return 0
+    elif n == 1:
+        return k
+    elif n == 2:
+        return k * k
+
+    same_color_counts = k
+    diff_color_counts = k * (k - 1)
+    for i in range(3, n + 1):
+        prev_same_color_counts = same_color_counts
+        same_color_counts = diff_color_counts
+        diff_color_counts = (prev_same_color_counts + (k - 1) * diff_color_counts) % (10**9 + 7)
+    return (same_color_counts + diff_color_counts) % (10**9 + 7)
+```

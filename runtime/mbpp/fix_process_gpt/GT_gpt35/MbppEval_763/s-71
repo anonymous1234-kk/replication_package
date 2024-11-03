@@ -1,0 +1,62 @@
+task_id:MbppEval/763
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_min_diff(arr,n): 
+    '''
+    Write a python function to find the minimum difference between any two elements in a given array. https://www.geeksforgeeks.org/find-minimum-difference-pair/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_min_diff(arr,n): 
+    '''
+    Write a python function to find the minimum difference between any two elements in a given array. https://www.geeksforgeeks.org/find-minimum-difference-pair/
+    '''
+
+    arr.sort()
+    min_diff = arr[1] - arr[0]
+    for i in range(2,n):
+        if arr[i] - arr[i-1] < min_diff:
+            min_diff = arr[i] - arr[i-1]
+    return min_diff
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-44<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_min_diff([],0) == 100000000000000000000
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_min_diff([2, 3, 7, 9, 12, 15, 18],7) == 1
+assert find_min_diff([1, 19, -4, 31, 38, 25],6) == 5
+assert find_min_diff([30, 5, 20, 9, 40],5) == 4
+assert find_min_diff([1, 19, -4],3) == 5
+assert find_min_diff([1, 2, 3, 4, 5, 5, 5, 5, 6],9) == 0
+assert find_min_diff([100, 10, 2, 4, 7, 1, 20],7) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_min_diff(arr,n): 
+    arr.sort()
+    if n < 2:
+        return 100000000000000000000
+    min_diff = arr[1] - arr[0]
+    for i in range(2,n):
+        if arr[i] - arr[i-1] < min_diff:
+            min_diff = arr[i] - arr[i-1]
+    return min_diff
+```

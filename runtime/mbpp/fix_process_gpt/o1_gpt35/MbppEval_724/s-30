@@ -1,0 +1,67 @@
+task_id:MbppEval/724
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def power_base_sum(base, power):
+    '''
+    Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def power_base_sum(base, power):
+    '''
+    Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.
+    '''
+
+    result = 0
+    # calculate the power of the base
+    power_of_base = base ** power
+    # convert the power of the base to string
+    str_power_of_base = str(power_of_base)
+    # loop through the string and sum all the digits
+    for digit in str_power_of_base:
+        result += int(digit)
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert power_base_sum(2,-1) == 5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert power_base_sum(3,3) == 9
+assert power_base_sum(9,2) == 9
+assert power_base_sum(3,4) == 9
+assert power_base_sum(6,2) == 9
+assert power_base_sum(2,3) == 8
+assert power_base_sum(7,5) == 22
+assert power_base_sum(9,4) == 18
+assert power_base_sum(2,0) == 1
+assert power_base_sum(8,6) == 19
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def power_base_sum(base, power):
+    result = 0
+    power_of_base = base ** power
+    str_power_of_base = str(power_of_base)
+    for digit in str_power_of_base:
+        if digit.isdigit():
+            result += int(digit)
+    return result
+```

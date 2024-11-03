@@ -1,0 +1,111 @@
+task_id:HumanEval/6
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+
+    # Initialize variables to track maximum nesting depth and current nesting depth
+    max_depth = 0
+    cur_depth = 0
+    
+    # Initialize an empty list to store the deepest nesting depths
+    depths = []
+    
+    # Loop through each character in the input string
+    for char in paren_string:
+        # If the character is an opening parenthesis, increase the current depth by 1
+        if char == "(":
+            cur_depth += 1
+            # Update the maximum depth if the current depth is greater than the current maximum depth
+            if cur_depth > max_depth:
+                max_depth = cur_depth
+        # If the character is a closing parenthesis, decrease the current depth by 1
+        elif char == ")":
+            cur_depth -= 1
+        # If the character is a space, append the maximum depth to the depths list and reset the current depth and maximum depth variables to 0
+        elif char == " ":
+            depths.append(max_depth)
+            max_depth = 0
+            cur_depth = 0
+    
+    # Append the maximum depth of the last group to the depths list
+    depths.append(max_depth)
+    
+    # Return the depths list
+    return depths
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert parse_nested_parens('((((((((()))))))))))') == [10]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert parse_nested_parens('()()()()()') == [1]
+assert parse_nested_parens('()()()()') == [1]
+assert parse_nested_parens('() ((())())() () ()') == [1, 3, 1, 1]
+assert parse_nested_parens('((()())(())((()()()()()))())') == [4]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    max_depth = 0
+    cur_depth = 0
+    depths = []
+    
+    for char in paren_string:
+        if char == "(":
+            cur_depth += 1
+            if cur_depth > max_depth:
+                max_depth = cur_depth
+        elif char == ")":
+            cur_depth -= 1
+        elif char == " ":
+            depths.append(max_depth)
+            max_depth = 0
+            cur_depth = 0
+    
+    depths.append(max_depth)
+    
+    return depths
+```

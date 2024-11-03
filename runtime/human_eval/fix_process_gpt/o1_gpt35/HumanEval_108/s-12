@@ -1,0 +1,93 @@
+task_id:HumanEval/108
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def count_nums(arr):
+    """
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    >>> count_nums([]) == 0
+    >>> count_nums([-1, 11, -11]) == 1
+    >>> count_nums([1, 1, 2]) == 3
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def count_nums(arr):
+    """
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    >>> count_nums([]) == 0
+    >>> count_nums([-1, 11, -11]) == 1
+    >>> count_nums([1, 1, 2]) == 3
+    """
+
+    count = 0
+    for num in arr:
+        if num == 0:
+            count += 1
+        elif num > 0:
+            sum_digits = sum(int(digit) for digit in str(num))
+            if sum_digits > 0:
+                count += 1
+        elif num < 0:
+            first_digit = int(str(num)[0])
+            if first_digit < 0:
+                sum_digits = sum(int(digit) for digit in str(num)[1:])
+            else:
+                sum_digits = sum(int(digit) for digit in str(num))
+            if sum_digits > 0:
+                count += 1
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_nums([-10, -20, -30, -40, -50, -60, -70, -80, -90, -100]) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_nums([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]) == 10
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def count_nums(arr):
+    count = 0
+    for num in arr:
+        if num == 0:
+            count += 1
+        elif num > 0:
+            sum_digits = sum(int(digit) for digit in str(num))
+            if sum_digits > 0:
+                count += 1
+        elif num < 0:
+            first_digit = int(str(num)[0])
+            if first_digit < 0:
+                sum_digits = sum(int(digit) for digit in str(num)[2:])
+            else:
+                sum_digits = sum(int(digit) for digit in str(num)[1:])
+            if sum_digits > 0:
+                count += 1
+    return count
+
+```

@@ -1,0 +1,90 @@
+task_id:MbppEval/417
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+ 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    # Create an empty dictionary to store the first elements and their counts
+    freq = {}
+
+    # Iterate through each tuple in the input list
+    for tup in Input:
+        # Extract the first element of the tuple
+        elem = tup[0]
+
+        # If the element is already in the dictionary, increment its count
+        if elem in freq:
+            freq[elem] += 1
+        # Otherwise, add the element to the dictionary with a count of 1
+        else:
+            freq[elem] = 1
+
+    # Create an empty list to store the common elements
+    common = []
+
+    # Iterate through the dictionary and add any elements with a count greater than 1 to the common list
+    for elem, count in freq.items():
+        if count > 1:
+            common.append(elem)
+
+    # Return the common list of first elements
+    return common
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (2, 6), (1, 6), (4, 7)]) == [(1, 3, 6), (2, 6), (4, 7)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+
+    freq = {}
+    common = []
+
+    for tup in Input:
+        elem = tup[0]
+        if elem in freq:
+            freq[elem].append(tup)
+        else:
+            freq[elem] = [tup]
+
+    for elem, tuples in freq.items():
+        if len(tuples) > 1:
+            common.append(tuple(sum(tuples, ())))
+
+    return common
+```

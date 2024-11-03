@@ -1,0 +1,90 @@
+task_id:MbppEval/804
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_product_even(arr): 
+    '''
+    Write a function to check whether the product of numbers in a list is even or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_product_even(arr): 
+    '''
+    Write a function to check whether the product of numbers in a list is even or not.
+    '''
+
+    # Set a flag to False initially
+    flag = False
+    
+    # Iterate over each element of the array
+    for i in arr:
+        # If any element is zero, the product will always be zero, so return True
+        if i == 0:
+            return True
+        
+        # Check if the element is even
+        if i % 2 == 0:
+            # If the flag is already set to True, return True as we have found two even numbers
+            if flag:
+                return True
+            # Set the flag to True as we have found an even number
+            else:
+                flag = True
+    
+    # If we have traversed the entire array and found only one even number, the product is odd
+    if flag:
+        return False
+    
+    # If no even number was found, the product will always be odd
+    return True
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_product_even([1, 2, 3, 5]) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_product_even([2, 3, 4, 5, 6, 7, 8, 9]) == True
+assert is_product_even([1, 2, 3, 4, 5, 6, 7, 8, 9]) == True
+assert is_product_even([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) == True
+assert is_product_even([0, 3, 5, 3]) == True
+assert is_product_even([1, 2, 3, 4, 5, 7]) == True
+assert is_product_even([1, 2, 3, 4, 5, 6, 7, 8, 9]) == True
+assert is_product_even([1, 2, 3, 4, 5]) == True
+assert is_product_even([1, 2, 3, 4, 5]) == True
+assert is_product_even([0]) == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_product_even(arr): 
+    flag = False
+    for i in arr:
+        if i == 0:
+            return True
+        
+        if i % 2 == 0:
+            if flag:
+                return True
+            else:
+                flag = True
+    
+    if flag:
+        return True
+    
+    return False
+```

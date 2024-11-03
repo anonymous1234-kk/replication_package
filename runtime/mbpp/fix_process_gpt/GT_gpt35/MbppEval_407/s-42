@@ -1,0 +1,84 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    n_str = str(n)
+    # Find the pivot point where the value to the left is smaller than the value to the right
+    pivot = len(n_str) - 2
+    while pivot >= 0 and n_str[pivot] >= n_str[pivot+1]:
+        pivot -= 1
+    if pivot == -1:
+        return -1 # If no pivot point is found, return -1
+    # Find the rightmost digit that is larger than the pivot point
+    successor = len(n_str) - 1
+    while n_str[successor] <= n_str[pivot]:
+        successor -= 1
+    # Swap the pivot and successor digits
+    n_str = n_str[:pivot] + n_str[successor] + n_str[pivot+1:successor] + n_str[pivot] + n_str[successor+1:]
+    # Reverse the string after the pivot point
+    n_str = n_str[:pivot+1] + n_str[pivot+1:][::-1]
+    # Convert the string to an integer and return
+    return int(n_str)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(999999999) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+assert rearrange_bigger(132) == 213
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here is the fixed code:
+
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    n_str = str(n)
+    # Find the pivot point where the value to the left is smaller than the value to the right
+    pivot = len(n_str) - 2
+    while pivot >= 0 and n_str[pivot] >= n_str[pivot+1]:
+        pivot -= 1
+    if pivot == -1:
+        return False  # If no pivot point is found, return False
+    # Find the rightmost digit that is larger than the pivot point
+    successor = len(n_str) - 1
+    while n_str[successor] <= n_str[pivot]:
+        successor -= 1
+    # Swap the pivot and successor digits
+    n_str = n_str[:pivot] + n_str[successor] + n_str[pivot+1:successor] + n_str[pivot] + n_str[successor+1:]
+    # Reverse the string after the pivot point
+    n_str = n_str[:pivot+1] + n_str[pivot+1:][::-1]
+    # Convert the string to an integer and return
+    return int(n_str)
+```

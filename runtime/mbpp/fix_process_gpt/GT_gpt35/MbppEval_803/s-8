@@ -1,0 +1,81 @@
+task_id:MbppEval/803
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_perfect_square(n) :
+    '''
+    Write a function to check whether the given number is a perfect square or not. https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_perfect_square(n) :
+    '''
+    Write a function to check whether the given number is a perfect square or not. https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/
+    '''
+
+    '''
+    Write a function to check whether the given number is a perfect square or not. https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/
+    '''
+    if n < 0:
+        return False
+    if n == 0 or n == 1:
+        return True
+    start = 0
+    end = n//2
+    while start <= end:
+        mid = (start + end) // 2
+        if mid**2 == n:
+            return True
+        elif mid**2 > n:
+            end = mid - 1
+        else:
+            start = mid + 1
+    return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_perfect_square(0) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_perfect_square(987654321) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_perfect_square(n) :
+    '''
+    Write a function to check whether the given number is a perfect square or not. https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/
+    '''
+
+    if n < 0:
+        return False
+    if n == 0 or n == 1:
+        return True
+    start = 0
+    end = n//2
+    while start <= end:
+        mid = (start + end) // 2
+        if mid**2 == n:
+            return True
+        elif mid**2 > n:
+            end = mid - 1
+        else:
+            start = mid + 1
+    return False
+
+```

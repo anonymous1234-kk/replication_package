@@ -1,0 +1,134 @@
+task_id:MbppEval/630
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def adjac(ele, sub = []): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def adjac(ele, sub = []): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+
+    adjac_lst = []
+    x, y = ele[0], ele[1]
+    
+    # Check for all adjacent coordinates
+    for i in range(x-1, x+2):
+        for j in range(y-1, y+2):
+            # Check if the current coordinate is not the input coordinate
+            if (i, j) != ele:
+                adjac_lst.append((i, j))
+    
+    return adjac_lst
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-33<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert adjac((0, 0),[(0, 1), (1, 0)]) == [(0, 1), (1, 0)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def adjac(ele, sub = []): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+
+    adjac_lst = []
+    x, y = ele[0], ele[1]
+    
+    # Check for all adjacent coordinates
+    for i in range(x-1, x+2):
+        for j in range(y-1, y+2):
+            # Check if the current coordinate is not the input coordinate
+            if (i, j) != ele and (i, j) not in sub:
+                adjac_lst.append((i, j))
+    
+    return adjac_lst
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert adjac((0, 0),[(1, 0), (0, 1)]) == [(1, 0), (0, 1)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def adjac(ele, sub = []): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+
+    adjac_lst = []
+    x, y = ele[0], ele[1]
+    
+    # Check for all adjacent coordinates
+    for i in range(x-1, x+2):
+        for j in range(y-1, y+2):
+            # Check if the current coordinate is not the input coordinate
+            if (i, j) != ele and (i, j) not in sub:
+                adjac_lst.append((i, j))
+    
+    return adjac_lst
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-14<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert adjac((3, 3),[(2, 3), (3, 2)]) == [(4, 3), (3, 4)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def adjac(ele, sub = []): 
+    '''
+    Write a function to extract all the adjacent coordinates of the given coordinate tuple.
+    '''
+
+    adjac_lst = []
+    x, y = ele[0], ele[1]
+    
+    # Check for all adjacent coordinates
+    for i in range(x-1, x+2):
+        for j in range(y-1, y+2):
+            # Check if the current coordinate is not the input coordinate
+            if (i, j) != ele and (i, j) not in sub:
+                adjac_lst.append((i, j))
+    
+    return adjac_lst
+```
+

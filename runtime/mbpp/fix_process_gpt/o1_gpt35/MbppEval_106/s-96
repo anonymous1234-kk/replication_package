@@ -1,0 +1,276 @@
+task_id:MbppEval/106
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+    res = []
+    for tup in test_tup:
+        res.append(list(tup) + test_list)
+    return res
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['nurul', 'islam'],('is', 'a', 'good')) == ('is', 'a', 'good', 'nurul', 'islam')
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    res = []
+    for tup in test_tup:
+        res.append(tup + tuple(test_list))
+    return tuple(res)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['Welcome', 'to'],('my', 'world', 'of', 'python')) == ['my', 'world', 'of', 'python', 'Welcome', 'to']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+
+    res = []
+    for tup in test_tup:
+        res.append(list(tup) + test_list)
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists([3, 2, 1],('U', 'A', 'E')) == ['U', 'A', 'E', 3, 2, 1]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+    res = []
+    for tup in test_tup:
+        res.append(list(tup) + test_list)
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['sundar', 'pichai', 'is'],('indian', 'born')) == ('indian', 'born', 'sundar', 'pichai', 'is')
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    res = []
+    for tup in test_tup:
+        res.extend(tup + test_list)
+    return tuple(res)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists([1, 2, 3, 4],('Welcome', 'to', 'world', 'of python')) == ('Welcome', 'to', 'world', 'of python', 1, 2, 3, 4)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+    res = []
+    for tup in test_tup:
+        res.append(tup + tuple(test_list))
+    return tuple(res)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-7<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['bd', 'is', 'my'],('Homeland', 'country')) == ('Homeland', 'country', 'bd', 'is', 'my')
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+
+    res = []
+    for tup in test_tup:
+        res.append(tup + tuple(test_list))
+    return tuple(res)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['python', 'is', 'my'],('favourite', 'language')) == ['favourite', 'language', 'python', 'is', 'my']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    res = []
+    for tup in test_tup:
+        res.append(list(tup) + test_list)
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['R', 'A'],('P', 'K')) == ('P', 'K', 'R', 'A')
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+
+    res = []
+    for tup in test_tup:
+        res.append(tup + tuple(test_list))
+    return tuple(res)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-14<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['M', 'H'],('L', 'W')) == ['L', 'W', 'M', 'H']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    '''
+    Write a function to append the given list to the given tuples.
+    '''
+
+    res = []
+    for tup in test_tup:
+        res.append(list(tup) + test_list)
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-15<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['D', 'N'],('P', 'Q')) == ('P', 'Q', ['D', 'N'])
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    res = []
+    for tup in test_tup:
+        res.append(tuple(list(tup) + test_list))
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_lists(['U', 'V', 'W'],('X', 'Y', 'Z')) == ('X', 'Y', 'Z', 'U', 'V', 'W')
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_lists(test_list, test_tup):
+    res = []
+    for tup in test_tup:
+        res.append(tup + tuple(test_list))
+    return tuple(res)
+```

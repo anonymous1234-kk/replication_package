@@ -1,0 +1,58 @@
+task_id:MbppEval/102
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+
+    parts = word.split('_')
+    return parts[0] + ''.join(i.title() for i in parts[1:])
+```
+
+Example usage:
+
+```python
+snake_to_camel('snake_case_string')
+# Output: 'snakeCaseString'
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-16<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel(' ') ==  
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+
+    parts = word.split('_')
+    return ''.join(parts[0] + i.title() for i in parts[1:])
+```

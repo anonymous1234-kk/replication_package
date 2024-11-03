@@ -1,0 +1,71 @@
+task_id:MbppEval/411
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # Split the given string into words separated by underscores.
+    words = word.split('_')
+    
+    # Capitalize the first letter of each word except the first one.
+    for i in range(1, len(words)):
+        words[i] = words[i].capitalize()
+    
+    # Join the words to form a single string in camel case.
+    return ''.join(words)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-40<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('_happy_') == happy
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # Remove leading and trailing underscores
+    word = word.strip('_')
+
+    # Split the given string into words separated by underscores.
+    words = word.split('_')
+    
+    # Capitalize the first letter of each word except the first one.
+    for i in range(1, len(words)):
+        words[i] = words[i].capitalize()
+    
+    # Join the words to form a single string in camel case.
+    return ''.join(words)
+```

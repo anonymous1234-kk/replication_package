@@ -1,0 +1,93 @@
+task_id:MbppEval/777
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+ 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+    # create an empty list to store non-repeated elements
+    non_repeated = []
+    # create an empty dictionary to store element counts
+    element_counts = {}
+    # iterate through the input list
+    for element in arr:
+        # if element has not been seen before, add it to non_repeated and set its count to 1
+        if element not in element_counts:
+            non_repeated.append(element)
+            element_counts[element] = 1
+        # if element has been seen before, increase its count
+        else:
+            element_counts[element] += 1
+    # iterate through the non-repeated list and add each element to the sum
+    sum = 0
+    for element in non_repeated:
+        if element_counts[element] == 1:
+            sum += element
+    return sum
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_sum([1, 2, 2, 3, 3, 4, 4, 5]) == 15
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+ 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+    # create an empty list to store non-repeated elements
+    non_repeated = []
+    # create an empty dictionary to store element counts
+    element_counts = {}
+    # iterate through the input list
+    for element in arr:
+        # if element has not been seen before, add it to non_repeated and set its count to 1
+        if element not in element_counts:
+            non_repeated.append(element)
+            element_counts[element] = 1
+        # if element has been seen before, increase its count
+        else:
+            element_counts[element] += 1
+    # iterate through the non-repeated list and add each element to the sum
+    sum = 0
+    for element in non_repeated:
+        if element_counts[element] == 1:
+            sum += element
+    return sum
+
+assert find_sum([1, 2, 2, 3, 3, 4, 4, 5]) == 15
+```

@@ -1,0 +1,206 @@
+task_id:MbppEval/595
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+ 
+    # Count number of zeros and ones in both strings
+    count1 = count0 = 0
+    count2 = count3 = 0
+    n = len(str1)
+    for i in range(n):
+        if(str1[i] == '0'):
+            count0 += 1
+        else:
+            count1 += 1
+        if(str2[i] == '0'):
+            count2 += 1
+        else:
+            count3 += 1
+     
+    # If counts are not equal, return -1
+    if(count0 != count2 or count1 != count3):
+        return -1
+ 
+    # Initialize variables
+    i = j = n - 1
+    swaps = 0
+ 
+    # Traverse strings from right to left
+    while(i >= 0):
+         
+        # If characters at current position of str1 and str2
+        # are equal, decrement i and j
+        if(str1[i] == str2[j]):
+            i -= 1
+            j -= 1
+         
+        # If characters are not equal
+        else:
+            k = i
+             
+            # Find the position of str2[j] in str1
+            while(k >= 0):
+                if(str1[k] == str2[j]):
+                    break
+                k -= 1
+             
+            # If the above loop did not find any matching
+            # character, return -1
+            if(k == -1):
+                return -1
+             
+            # Swap str1[i] with str1[k]
+            while(k < i):
+                str1[k], str1[k + 1] = str1[k + 1], str1[k]
+                k += 1
+                swaps += 1
+             
+            # Decrement i and j
+            i -= 1
+            j -= 1
+ 
+    # Return the minimum number of swaps required
+    return swaps
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('10101010100101','11111111111111') == Not Possible
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1, str2):
+    count1 = count0 = 0
+    count2 = count3 = 0
+    n = len(str1)
+    for i in range(n):
+        if str1[i] == '0':
+            count0 += 1
+        else:
+            count1 += 1
+        if str2[i] == '0':
+            count2 += 1
+        else:
+            count3 += 1
+
+    if count0 != count2 or count1 != count3:
+        return "Not Possible"
+
+    i = j = n - 1
+    swaps = 0
+
+    while i >= 0:
+        if str1[i] == str2[j]:
+            i -= 1
+            j -= 1
+        else:
+            k = i
+            while k >= 0:
+                if str1[k] == str2[j]:
+                    break
+                k -= 1
+
+            if k == -1:
+                return "Not Possible"
+
+            while k < i:
+                str1[k], str1[k + 1] = str1[k + 1], str1[k]
+                k += 1
+                swaps += 1
+
+            i -= 1
+            j -= 1
+
+    return swaps
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('0000','1111') == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert min_Swaps('10101010100101','11111111111111') == Not Possible
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+def min_Swaps(str1, str2):
+    count1 = count0 = 0
+    count2 = count3 = 0
+    n = len(str1)
+    for i in range(n):
+        if str1[i] == '0':
+            count0 += 1
+        else:
+            count1 += 1
+        if str2[i] == '0':
+            count2 += 1
+        else:
+            count3 += 1
+
+    if count0 != count2 or count1 != count3:
+        return "Not Possible"
+
+    i = j = n - 1
+    swaps = 0
+
+    while i >= 0:
+        if str1[i] == str2[j]:
+            i -= 1
+            j -= 1
+        else:
+            k = i
+            while k >= 0:
+                if str1[k] == str2[j]:
+                    break
+                k -= 1
+
+            if k == -1:
+                return "Not Possible"
+
+            while k < i:
+                str1 = str1[:k] + str1[k + 1] + str1[k] + str1[k + 2:]
+                k += 1
+                swaps += 1
+
+            i -= 1
+            j -= 1
+
+    return swaps
+```

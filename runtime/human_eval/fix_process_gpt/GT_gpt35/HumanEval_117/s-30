@@ -1,0 +1,98 @@
+task_id:HumanEval/117
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def select_words(s, n):
+    """Given a string s and a natural number n, you have been tasked to implement 
+    a function that returns a list of all words from string s that contain exactly 
+    n consonants, in order these words appear in the string s.
+    If the string s is empty then the function should return an empty list.
+    Note: you may assume the input string contains only letters and spaces.
+    Examples:
+    select_words("Mary had a little lamb", 4) ==> ["little"]
+    select_words("Mary had a little lamb", 3) ==> ["Mary", "lamb"]
+    select_words("simple white space", 2) ==> []
+    select_words("Hello world", 4) ==> ["world"]
+    select_words("Uncle sam", 3) ==> ["Uncle"]
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def select_words(s, n):
+    """Given a string s and a natural number n, you have been tasked to implement 
+    a function that returns a list of all words from string s that contain exactly 
+    n consonants, in order these words appear in the string s.
+    If the string s is empty then the function should return an empty list.
+    Note: you may assume the input string contains only letters and spaces.
+    Examples:
+    select_words("Mary had a little lamb", 4) ==> ["little"]
+    select_words("Mary had a little lamb", 3) ==> ["Mary", "lamb"]
+    select_words("simple white space", 2) ==> []
+    select_words("Hello world", 4) ==> ["world"]
+    select_words("Uncle sam", 3) ==> ["Uncle"]
+    """
+
+    words = s.split()
+    result = []
+    for word in words:
+        consonants_count = 0
+        for letter in word:
+            if letter.lower() not in "aeiou" and letter.isalpha():
+                consonants_count += 1
+        if consonants_count == n:
+            result.append(word)
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert select_words('Love is like a bonfire, you need fuel to keep it burning',5) == ['bonfire,', 'burning']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert select_words("Breakfast at tiffany's",5) == []
+assert select_words('a',1) == []
+assert select_words('The quick brown fox jumps over the lazy dog',3) == ['quick', 'lazy']
+assert select_words('The quick brown fox jumps over the lazy dog',2) == ['The', 'fox', 'over', 'the', 'dog']
+assert select_words('The cat in the hat',3) == []
+assert select_words('this is a sample string to check the function',3) == ['this']
+assert select_words('a e i o u b',1) == ['b']
+assert select_words('Mary had a little lamb',0) == ['a']
+assert select_words('ab cd efg',2) == ['cd', 'efg']
+assert select_words('Python is a great programming language',3) == ['great']
+assert select_words('The Good, the Bad and the Ugly',4) == []
+assert select_words('it was a dream come true',3) == ['dream']
+assert select_words('he arrived on Monday by train',4) == ['arrived', 'Monday']
+assert select_words('test',3) == ['test']
+assert select_words('Love is like a bonfire, you need fuel to keep it burning',2) == ['Love', 'like', 'need', 'fuel', 'keep']
+assert select_words('Hello world Welcome to the world of Python',3) == ['Hello']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def select_words(s, n):
+    words = s.split()
+    result = []
+    for word in words:
+        consonants_count = 0
+        for letter in word:
+            if letter.lower() not in "aeiou" and letter.isalpha():
+                consonants_count += 1
+        if consonants_count == n:
+            result.append(word)
+    return result
+```

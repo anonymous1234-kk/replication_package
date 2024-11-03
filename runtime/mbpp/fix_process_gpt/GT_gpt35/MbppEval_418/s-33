@@ -1,0 +1,65 @@
+task_id:MbppEval/418
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def Find_Max(lst): 
+    '''
+    Write a python function to find the element of a list having maximum length.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def Find_Max(lst): 
+    '''
+    Write a python function to find the element of a list having maximum length.
+    '''
+ 
+    max_len = 0
+    max_elem = None
+    for elem in lst:
+        if len(elem) > max_len:
+            max_len = len(elem)
+            max_elem = elem
+    return max_elem
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert Find_Max([1, 2, 3, 4, 5]) == 5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def Find_Max(lst): 
+    '''
+    Write a python function to find the element of a list having maximum length.
+    '''
+ 
+    max_len = 0
+    max_elem = None
+    for elem in lst:
+        if isinstance(elem, int):  # Check if element is an integer
+            elem = str(elem)  # Convert integer to string
+        if len(str(elem)) > max_len:
+            max_len = len(str(elem))
+            max_elem = elem
+    return max_elem
+
+assert Find_Max([1, 2, 3, 4, 5]) == 5
+```

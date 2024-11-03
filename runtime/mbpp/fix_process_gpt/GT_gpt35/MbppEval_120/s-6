@@ -1,0 +1,85 @@
+task_id:MbppEval/120
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_product_tuple(list1):
+    '''
+    Write a function to find the maximum absolute product between numbers in pairs of tuples within a given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_product_tuple(list1):
+    '''
+    Write a function to find the maximum absolute product between numbers in pairs of tuples within a given list.
+    '''
+
+    """
+    This function takes a list of tuples and finds the maximum absolute product of numbers in each tuple pair.
+
+    Args:
+    list1 (list): A list of tuples containing integers or floats.
+
+    Returns:
+    max_product (float): The maximum absolute product of numbers in each tuple pair.
+    """
+
+    max_product = float('-inf')  # Initialize max_product with negative infinity.
+
+    for pair in combinations(list1, 2):  # Loop over all the possible pairs of tuples.
+        product = abs(pair[0][0]*pair[1][0])  # Calculate the absolute product of the first elements of the two tuples.
+
+        for i in range(1, len(pair)):  # Loop over remaining elements in each tuple.
+            for j in range(len(pair[0])):  # Loop over remaining elements in each tuple.
+                new_product = abs(pair[0][j]*pair[1][i])  # Calculate the absolute product of each pair of elements.
+                if new_product > product:  # If the new product is greater than the previous product.
+                    product = new_product  # Update the product with the new product.
+
+        if product > max_product:  # If the product of this pair of tuples is greater than the previous maximum product.
+            max_product = product  # Update the maximum product with this product.
+
+    return max_product  # Return the maximum absolute product of numbers in each tuple pair.
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_product_tuple([(4, 8), (3, 9), (2, 5), (10, 11), (6, 7)]) == 110
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from itertools import combinations
+
+def max_product_tuple(list1):
+    max_product = float('-inf')
+
+    for pair in combinations(list1, 2):
+        product = abs(pair[0][0]*pair[1][0])
+
+        for i in range(1, len(pair)):
+            for j in range(len(pair[0])):
+                new_product = abs(pair[0][j]*pair[1][i])
+                if new_product > product:
+                    product = new_product
+
+        if product > max_product:
+            max_product = product
+
+    return max_product
+```

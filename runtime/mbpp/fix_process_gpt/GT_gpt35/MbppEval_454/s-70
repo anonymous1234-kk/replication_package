@@ -1,0 +1,54 @@
+task_id:MbppEval/454
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def text_match_wordz(text):
+    '''
+    Write a function that matches a word containing 'z'.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def text_match_wordz(text):
+    '''
+    Write a function that matches a word containing 'z'.
+    '''
+
+    pattern = r'\b\w*z\w*\b'  # \b matches word boundary, \w* matches any number of word characters, z matches the letter 'z'
+    return re.findall(pattern, text)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert text_match_wordz('The quick brown fox jumps over the lazy dog.') == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def text_match_wordz(text):
+    '''
+    Write a function that matches a word containing 'z'.
+    '''
+
+    pattern = r'\b\w*z\w*\b'  # \b matches word boundary, \w* matches any number of word characters, z matches the letter 'z'
+    return bool(re.findall(pattern, text))
+```

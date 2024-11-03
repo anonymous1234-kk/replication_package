@@ -1,0 +1,75 @@
+task_id:MbppEval/286
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    '''
+    Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    '''
+    Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.
+    '''
+ 
+    temp = [0]*(2*n+1)
+    for i in range(1, n+1): 
+        temp[i] = temp[i+n] = a[i-1] 
+    if (k == 1): 
+        return max_sub_array_sum(a, n) 
+    else: 
+        return max(max_sub_array_sum(a, n), 
+                   (k-2)*sum(a)) 
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_sub_array_sum_repeated([1, 2, 3, 4, 5],5,3) == 45
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    '''
+    Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.
+    '''
+ 
+    temp = [0]*(2*n+1)
+    for i in range(1, n+1): 
+        temp[i] = temp[i+n] = a[i-1] 
+    if (k == 1): 
+        return max_sub_array_sum(a, n) 
+    else: 
+        return max(max_sub_array_sum(a, n), 
+                   (k-2)*sum(a)) 
+
+def max_sub_array_sum(a, n): 
+    max_so_far = a[0] 
+    curr_max = a[0] 
+
+    for i in range(1,n): 
+        curr_max = max(a[i], curr_max + a[i]) 
+        max_so_far = max(max_so_far,curr_max) 
+
+    return max_so_far
+
+assert max_sub_array_sum_repeated([1, 2, 3, 4, 5],5,3) == 45
+```

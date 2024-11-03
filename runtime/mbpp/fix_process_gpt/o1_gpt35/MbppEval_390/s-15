@@ -1,0 +1,529 @@
+task_id:MbppEval/390
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def add_string(list_, string):
+    '''
+    Write a function to apply a given format string to all of the elements in a list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    '''
+    Write a function to apply a given format string to all of the elements in a list.
+    '''
+
+    return [string.format(element) for element in list_]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index, element) for index, element in enumerate(list_)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string(['a', 'b', 'c'],'{} {}') == a b
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index, element) for index, element in enumerate(list_)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-17<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string(['a', 'b'],'{} {}') == a b
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index, element) for index, element in enumerate(list_)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string(['a', 'b'],'{}{}') == ab
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index, element) for index, element in enumerate(list_)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([1, 2, 3],'a') == ['1a', '2a', '3a']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index, element) for index, element in enumerate(list_)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([2, 4, 6],'b') == ['10', '100', '110']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index, element) for index, element in enumerate(list_)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([1, 3, 5],'c') == ['\x01', '\x03', '\x05']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(str(element)) for element in list_]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string(['A', 'B', 'C'],1) == ['A1', 'B1', 'C1']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(element) for element in list_]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-27<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string(['A', 'B', 'C'],2) == ['A2', 'B2', 'C2']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    '''
+    Write a function to apply a given format string to all of the elements in a list.
+    '''
+    return [string.format(element) for element in list_]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([1, 2, 3],'%d') == ['1', '2', '3']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(element) for element in list_]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-30<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([1, 'test', 3],'%s') == ['1', 'test', '3']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(element) for element in list_]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-33<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([1, 2, 3],'%f') == ['1.000000', '2.000000', '3.000000']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+assert add_string(['a', 'b', 'c'],'%d') == ['%d', '%d', '%d']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index, element) for index, element in enumerate(list_)]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([1.4, 2.2, 3.0],'%d') == ['1', '2', '3']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+assert add_string(['a', 'b', 'c'],'%d') == ['%d', '%d', '%d']
+assert add_string(['a', 'b', 'c'],'%f') == ['%f', '%f', '%f']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(index) for index in range(len(list_))]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-37<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([1.4, 'test', 3.0],'%s') == ['1.4', 'test', '3.0']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+assert add_string(['a', 'b', 'c'],'%d') == ['%d', '%d', '%d']
+assert add_string(['a', 'b', 'c'],'%f') == ['%f', '%f', '%f']
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(element) for element in list_]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-46<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([True, True, False],' ') == ['True ', 'True ', 'False ']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+assert add_string(['a', 'b', 'c'],'%d') == ['%d', '%d', '%d']
+assert add_string(['a', 'b', 'c'],'%f') == ['%f', '%f', '%f']
+assert add_string(['a', 'b', 'c'],'***') == ['***', '***', '***']
+assert add_string(['I like turtles'],'!!!') == ['!!!']
+assert add_string([],'123') == []
+assert add_string(['123'],'a') == ['a']
+assert add_string([' ', ' ', ' '],'') == ['', '', '']
+assert add_string([],' ') == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(element) for element in list_]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string([0, 1, 2, 3, 4],'3') == ['  0', '  1', '  2', '  3', '  4']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+assert add_string(['a', 'b', 'c'],'{} is value of element') == ['0 is value of element', '1 is value of element', '2 is value of element']
+assert add_string(['a', 'b', 'c'],'value of element is {}') == ['value of element is 0', 'value of element is 1', 'value of element is 2']
+assert add_string(['a', 'b', 'c'],'') == ['', '', '']
+assert add_string(['a'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'element value is {}') == ['element value is 0', 'element value is 1', 'element value is 2']
+assert add_string(['a', 'b', 'c'],'element is {} of list') == ['element is 0 of list', 'element is 1 of list', 'element is 2 of list']
+assert add_string(['a', 'b', 'c'],'{}') == ['0', '1', '2']
+assert add_string(['a', 'b'],'value of {} element') == ['value of 0 element', 'value of 1 element']
+assert add_string(['123'],'{}') == ['0']
+assert add_string(['a', 'b', 'c'],'{} is element') == ['0 is element', '1 is element', '2 is element']
+assert add_string(['a', 'b'],'value is {}') == ['value is 0', 'value is 1']
+assert add_string(['a', 'b'],'') == ['', '']
+assert add_string(['A', 'B', 'C'],'a') == ['a', 'a', 'a']
+assert add_string(['A', 'B', 'C'],'b') == ['b', 'b', 'b']
+assert add_string(['A', 'B', 'C'],'c') == ['c', 'c', 'c']
+assert add_string(['A', 'B', 'C'],'d') == ['d', 'd', 'd']
+assert add_string(['a', 'b', 'c'],'%d') == ['%d', '%d', '%d']
+assert add_string(['a', 'b', 'c'],'%f') == ['%f', '%f', '%f']
+assert add_string(['a', 'b', 'c'],'***') == ['***', '***', '***']
+assert add_string(['I like turtles'],'!!!') == ['!!!']
+assert add_string([],'123') == []
+assert add_string(['123'],'a') == ['a']
+assert add_string([' ', ' ', ' '],'') == ['', '', '']
+assert add_string([],' ') == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    return [string.format(str(index).rjust(len(str(len(list_)))), element) for index, element in enumerate(list_)]
+```

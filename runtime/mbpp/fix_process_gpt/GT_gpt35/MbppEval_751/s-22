@@ -1,0 +1,136 @@
+task_id:MbppEval/751
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def check_min_heap_helper(arr, i):
+    '''
+    Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def check_min_heap_helper(arr, i):
+    '''
+    Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/
+    '''
+
+    '''
+    Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/
+    '''
+    # Get the left and right child of the given index
+    left_child = 2 * i + 1
+    right_child = 2 * i + 2
+ 
+    # Assume that the given index i is the minimum element
+    minimum = i
+ 
+    # Check if the left child is smaller than the current minimum
+    if left_child < len(arr) and arr[left_child] < arr[minimum]:
+        minimum = left_child
+ 
+    # Check if the right child is smaller than the current minimum
+    if right_child < len(arr) and arr[right_child] < arr[minimum]:
+        minimum = right_child
+ 
+    # If the current index is not the minimum, swap it with the minimum element
+    if minimum != i:
+        arr[i], arr[minimum] = arr[minimum], arr[i]
+ 
+        # Recursively check if the swapped element violates the heap property
+        check_min_heap_helper(arr, minimum)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert check_min_heap_helper([90, 15, 10, 7, 12, 2],0) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def check_min_heap_helper(arr, i):
+    left_child = 2 * i + 1
+    right_child = 2 * i + 2
+
+    minimum = i
+
+    if left_child < len(arr) and arr[left_child] < arr[minimum]:
+        minimum = left_child
+
+    if right_child < len(arr) and arr[right_child] < arr[minimum]:
+        minimum = right_child
+
+    if minimum != i:
+        arr[i], arr[minimum] = arr[minimum], arr[i]
+        check_min_heap_helper(arr, minimum)
+    
+    return arr
+
+def check_min_heap_helper(arr, i):
+    left_child = 2 * i + 1
+    right_child = 2 * i + 2
+
+    minimum = i
+
+    if left_child < len(arr) and arr[left_child] < arr[minimum]:
+        minimum = left_child
+
+    if right_child < len(arr) and arr[right_child] < arr[minimum]:
+        minimum = right_child
+
+    if minimum != i:
+        arr[i], arr[minimum] = arr[minimum], arr[i]
+        check_min_heap_helper(arr, minimum)
+    
+    return arr
+
+def check_min_heap(arr):
+    for i in range(len(arr) // 2 - 1, -1, -1):
+        check_min_heap_helper(arr, i)
+    
+    return arr
+
+def is_min_heap(arr):
+    sorted_arr = sorted(arr)
+    return arr == sorted_arr
+
+def check_min_heap_helper(arr, i):
+    left_child = 2 * i + 1
+    right_child = 2 * i + 2
+
+    minimum = i
+
+    if left_child < len(arr) and arr[left_child] < arr[minimum]:
+        minimum = left_child
+
+    if right_child < len(arr) and arr[right_child] < arr[minimum]:
+        minimum = right_child
+
+    if minimum != i:
+        arr[i], arr[minimum] = arr[minimum], arr[i]
+        check_min_heap_helper(arr, minimum)
+
+def check_min_heap(arr):
+    for i in range(len(arr) // 2 - 1, -1, -1):
+        check_min_heap_helper(arr, i)
+
+    return is_min_heap(arr)
+
+
+assert check_min_heap_helper([90, 15, 10, 7, 12, 2],0) == False
+```

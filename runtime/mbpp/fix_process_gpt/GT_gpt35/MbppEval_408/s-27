@@ -1,0 +1,81 @@
+task_id:MbppEval/408
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import heapq
+def k_smallest_pairs(nums1, nums2, k):
+    '''
+    Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import heapq
+def k_smallest_pairs(nums1, nums2, k):
+    '''
+    Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.
+    '''
+
+    pairs = []
+    n1, n2 = len(nums1), len(nums2)
+    if not nums1 or not nums2 or not k:
+        return pairs
+
+    def push(i, j):
+        if i < n1 and j < n2:
+            heapq.heappush(pairs, [nums1[i] + nums2[j], i, j])
+
+    push(0, 0)
+    while pairs and len(pairs) <= k:
+        _, i, j = heapq.heappop(pairs)
+        push(i, j + 1)
+        if j == 0:
+            push(i + 1, 0)
+        yield [nums1[i], nums2[j]]
+
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert k_smallest_pairs([1, 5, 7, 8, 9],[2, 4, 6],4) == [[1, 2], [1, 4], [1, 6], [5, 2]]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import heapq
+def k_smallest_pairs(nums1, nums2, k):
+    pairs = []
+    n1, n2 = len(nums1), len(nums2)
+    if not nums1 or not nums2 or not k:
+        return pairs
+
+    def push(i, j):
+        if i < n1 and j < n2:
+            heapq.heappush(pairs, [nums1[i] + nums2[j], i, j])
+
+    push(0, 0)
+    while pairs and len(pairs) < k:
+        _, i, j = heapq.heappop(pairs)
+        push(i, j + 1)
+        if j == 0:
+            push(i + 1, 0)
+        yield [nums1[i], nums2[j]]
+
+    return list(k_smallest_pairs(nums1, nums2, k))
+```

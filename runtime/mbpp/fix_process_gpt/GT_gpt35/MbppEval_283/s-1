@@ -1,0 +1,68 @@
+task_id:MbppEval/283
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def validate(n): 
+    '''
+    Write a python function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def validate(n): 
+    '''
+    Write a python function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.
+    '''
+ 
+    num_str = str(n)
+    for i in range(1, 10):
+        if str(num_str.count(str(i))) > str(i):
+            return False
+    return True
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert validate(10000000000000000) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert validate(111222333444555666777888999000) == False
+assert validate(1233334) == False
+assert validate(1112333) == False
+assert validate(123451) == False
+assert validate(33221100) == False
+assert validate(1111) == False
+assert validate(231) == True
+assert validate(4452) == True
+assert validate(5788) == True
+assert validate(122344) == True
+assert validate(12458) == True
+assert validate(34527) == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def validate(n): 
+    '''
+    Write a python function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.
+    '''
+ 
+    num_str = str(n)
+    for i in range(1, 10):
+        if num_str.count(str(i)) > int(str(i)):
+            return False
+    return True
+```

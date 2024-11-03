@@ -1,0 +1,69 @@
+task_id:MbppEval/83
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def get_Char(strr):  
+    '''
+    Write a python function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def get_Char(strr):  
+    '''
+    Write a python function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.
+    '''
+  
+    total = 0
+  
+    # Loop through each character of the string
+    for char in strr:
+        # Add the ASCII value of each character to total
+        total += ord(char)
+  
+    # Take modulo 26 of total and add 65 (ASCII value of 'A') to get the corresponding character
+    result = chr((total % 26) + 65)
+  
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert get_Char('abc') == i
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def get_Char(strr):  
+    '''
+    Write a python function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.
+    '''
+  
+    total = 0
+  
+    # Loop through each character of the string
+    for char in strr:
+        # Add the ASCII value of each character to total
+        total += ord(char)
+  
+    # Take modulo 26 of total and add 97 (ASCII value of 'a') to get the corresponding character
+    result = chr((total % 26) + 97)
+  
+    return result
+```

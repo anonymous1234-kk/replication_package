@@ -1,0 +1,336 @@
+task_id:MbppEval/100
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    if num < 0:
+        raise ValueError("Input number should be positive")
+    
+    if num < 9:
+        return num + 1
+
+    num = list(str(num))
+    length = len(num)
+
+    # check if the number is already a palindrome
+    if num == num[::-1]:
+        num = [int(i) for i in num]
+        if length % 2 == 0:
+            mid_left = length // 2 - 1
+            mid_right = length // 2
+            if num[mid_left] == 9 and num[mid_right] == 9:
+                while num[mid_left] == 9 and num[mid_right] == 9:
+                    num[mid_left] = 0
+                    num[mid_right] = 0
+                    mid_left -= 1
+                    mid_right += 1
+                
+                if mid_left == -1:
+                    num = [1] + num
+                    num[-1] = 1
+                else:
+                    num[mid_left] += 1
+                    num[mid_right] += 1
+
+        else:
+            mid = length // 2
+            if num[mid] == 9:
+                while num[mid] == 9:
+                    num[mid] = 0
+                    mid_left = mid - 1
+                    mid_right = mid + 1
+                
+                if mid_left == -1:
+                    num = [1] + num
+                    num[-1] = 1
+                else:
+                    num[mid] += 1
+                    num[mid_left] += 1
+                    num[mid_right] += 1
+        
+        return int(''.join([str(i) for i in num]))
+    else:
+        mid = length // 2
+        left_end = mid - 1
+        right_start = mid + 1
+        
+        if length % 2 == 0:
+            right_end = mid
+        else:
+            right_end = mid + 1
+        
+        while left_end >= 0 and num[left_end] == num[right_end]:
+            left_end -= 1
+            right_end += 1
+        
+        if left_end < 0:
+            left_end = 0
+        
+        if num[left_end] < num[right_end]:
+            num[left_end] += 1
+            carry = num[left_end] // 10
+            num[left_end] %= 10
+            right_end = left_end + 2
+        else:
+            right_end = left_end + 1
+            carry = 0
+        
+        while left_end >= 0:
+            num[left_end] += carry
+            carry = num[left_end] // 10
+            num[left_end] %= 10
+            
+            if carry == 0:
+                break
+                
+            left_end -= 1
+            right_end += 1
+            
+        if carry > 0:
+            num = [1] + num + [1]
+        else:
+            num = num[:left_end+1] + num[right_end:]
+        
+        return int(''.join([str(i) for i in num]))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(sys.maxsize) == 9223372037302733229
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+
+def next_smallest_palindrome(num):
+    if num < 0:
+        raise ValueError("Input number should be positive")
+
+    if num < 9:
+        return num + 1
+
+    num = list(str(num))
+    length = len(num)
+
+    if num == num[::-1]:
+        num = [int(i) for i in num]
+        if length % 2 == 0:
+            mid_left = length // 2 - 1
+            mid_right = length // 2
+            if num[mid_left] == 9 and num[mid_right] == 9:
+                while num[mid_left] == 9 and num[mid_right] == 9:
+                    num[mid_left] = 0
+                    num[mid_right] = 0
+                    mid_left -= 1
+                    mid_right += 1
+
+                if mid_left == -1:
+                    num = [1] + num
+                    num[-1] = 1
+                else:
+                    num[mid_left] += 1
+                    num[mid_right] += 1
+
+        else:
+            mid = length // 2
+            if num[mid] == 9:
+                while num[mid] == 9:
+                    num[mid] = 0
+                    mid_left = mid - 1
+                    mid_right = mid + 1
+
+                if mid_left == -1:
+                    num = [1] + num
+                    num[-1] = 1
+                else:
+                    num[mid] += 1
+                    num[mid_left] += 1
+                    num[mid_right] += 1
+
+        return int(''.join([str(i) for i in num]))
+    else:
+        mid = length // 2
+        left_end = mid - 1
+        right_start = mid + 1
+
+        if length % 2 == 0:
+            right_end = mid
+        else:
+            right_end = mid + 1
+
+        while left_end >= 0 and num[left_end] == num[right_end]:
+            left_end -= 1
+            right_end += 1
+
+        if left_end < 0:
+            left_end = 0
+
+        if num[left_end] < num[right_end]:
+            num[left_end] += 1
+            carry = num[left_end] // 10
+            num[left_end] %= 10
+            right_end = left_end + 2
+        else:
+            right_end = left_end + 1
+            carry = 0
+
+        while left_end >= 0:
+            num[left_end] += carry
+            carry = num[left_end] // 10
+            num[left_end] %= 10
+
+            if carry == 0:
+                break
+
+            left_end -= 1
+            right_end += 1
+
+        if carry > 0:
+            num = [1] + num + [1]
+        else:
+            num = num[:left_end+1] + num[right_end:]
+
+        return int(''.join([str(i) for i in num]))
+
+assert next_smallest_palindrome(sys.maxsize) == 9223372037302733229
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(7654321) == 7654567
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    if num < 0:
+        raise ValueError("Input number should be positive")
+    
+    if num < 9:
+        return num + 1
+
+    num = list(str(num))
+    length = len(num)
+
+    # check if the number is already a palindrome
+    if num == num[::-1]:
+        num = [int(i) for i in num]
+        if length % 2 == 0:
+            mid_left = length // 2 - 1
+            mid_right = length // 2
+            if num[mid_left] == 9 and num[mid_right] == 9:
+                while num[mid_left] == 9 and num[mid_right] == 9:
+                    num[mid_left] = 0
+                    num[mid_right] = 0
+                    mid_left -= 1
+                    mid_right += 1
+                
+                if mid_left == -1:
+                    num = [1] + num
+                    num[-1] = 1
+                else:
+                    num[mid_left] += 1
+                    num[mid_right] += 1
+
+        else:
+            mid = length // 2
+            if num[mid] == 9:
+                while num[mid] == 9:
+                    num[mid] = 0
+                    mid_left = mid - 1
+                    mid_right = mid + 1
+                
+                if mid_left == -1:
+                    num = [1] + num
+                    num[-1] = 1
+                else:
+                    num[mid] += 1
+                    num[mid_left] += 1
+                    num[mid_right] += 1
+        
+        return int(''.join([str(i) for i in num]))
+    else:
+        mid = length // 2
+        left_end = mid - 1
+        right_start = mid + 1
+        
+        if length % 2 == 0:
+            right_end = mid
+        else:
+            right_end = mid + 1
+        
+        while left_end >= 0 and num[left_end] == num[right_end]:
+            left_end -= 1
+            right_end += 1
+        
+        if left_end < 0:
+            left_end = 0
+        
+        if num[left_end] < num[right_end]:
+            num[left_end] += 1
+            carry = num[left_end] // 10
+            num[left_end] %= 10
+            right_end = left_end + 2
+        else:
+            right_end = left_end + 1
+            carry = 0
+        
+        while left_end >= 0:
+            num[left_end] += carry
+            carry = num[left_end] // 10
+            num[left_end] %= 10
+            
+            if carry == 0:
+                break
+                
+            left_end -= 1
+            right_end += 1
+            
+        if carry > 0:
+            num = [1] + num + [1]
+        else:
+            num = num[:left_end+1] + num[right_end:]
+        
+        return int(''.join([str(i) for i in num]))
+```

@@ -1,0 +1,65 @@
+task_id:MbppEval/12
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sort_matrix(M):
+    '''
+    Write a function to sort a given matrix in ascending order according to the sum of its rows.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sort_matrix(M):
+    '''
+    Write a function to sort a given matrix in ascending order according to the sum of its rows.
+    '''
+
+    # Calculate the sum of each row and store it in a list
+    sums = [sum(row) for row in M]
+
+    # Create a dictionary where the keys are the row sums and the values are the rows
+    rows_dict = dict(zip(sums, M))
+
+    # Sort the keys (i.e., the row sums) in ascending order
+    sorted_keys = sorted(sums)
+
+    # Create a new matrix by appending the rows in the order of the sorted keys
+    sorted_matrix = []
+    for key in sorted_keys:
+        sorted_matrix.append(rows_dict[key])
+
+    return sorted_matrix
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sort_matrix([[0, 1, 0], [1, 0, 0], [0, 0, 1]]) == [[0, 1, 0], [1, 0, 0], [0, 0, 1]]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert sort_matrix([[1, 4, 6], [2, 5, 7], [3, 8, 9], [4, 6, 9]]) == [[1, 4, 6], [2, 5, 7], [4, 6, 9], [3, 8, 9]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sort_matrix(M):
+    sums = [sum(row) for row in M]
+    rows_dict = dict(zip(sums, M))
+    sorted_keys = sorted(sums)
+    sorted_matrix = []
+    for key in sorted_keys:
+        sorted_matrix.append(rows_dict[key])
+    return sorted_matrix
+```

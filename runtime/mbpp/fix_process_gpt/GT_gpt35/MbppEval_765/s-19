@@ -1,0 +1,160 @@
+task_id:MbppEval/765
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    """
+    # First polite number is 1, so return 1 if n is 1
+    if n == 1:
+        return 1
+    
+    # Initialize count to 1 and current term to 2
+    count = 1
+    curr = 2
+    
+    # Loop until we reach nth polite number
+    while count < n:
+        
+        # Calculate the power of current term
+        power = int(math.log(curr, 2))
+        
+        # Check if current term is the sum of powers of previous polite numbers
+        for j in range(1, power+1):
+            if is_polite(curr - 2**j) and is_polite(2**j):
+                count += 1
+                break
+        
+        # Increment current term
+        curr += 1
+    
+    # Return the nth polite number
+    return curr - 1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(20) == 25
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    # First polite number is 1, so return 1 if n is 1
+    if n == 1:
+        return 1
+    
+    # Initialize count to 1 and current term to 2
+    count = 1
+    curr = 2
+    
+    # Loop until we reach nth polite number
+    while count < n:
+        
+        # Calculate the power of current term
+        power = int(math.log(curr, 2))
+        
+        # Check if current term is the sum of powers of previous polite numbers
+        for j in range(1, power+1):
+            if is_polite(curr - 2**j) and is_polite(2**j):
+                count += 1
+                break
+        
+        # Increment current term
+        curr += 1
+    
+    # Return the nth polite number
+    return curr - 1
+
+assert is_polite(20) == 25
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(7) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    """
+    # First polite number is 1, so return 1 if n is 1
+    if n == 1:
+        return 1
+    
+    # Initialize count to 1 and current term to 2
+    count = 1
+    curr = 2
+    
+    # Loop until we reach nth polite number
+    while count < n:
+        
+        # Calculate the power of current term
+        power = int(math.log(curr, 2))
+        
+        # Check if current term is the sum of powers of previous polite numbers
+        is_sum_of_powers = False
+        for j in range(1, power+1):
+            if is_polite(curr - 2**j) and is_polite(2**j):
+                is_sum_of_powers = True
+                break
+        
+        # Increment current term and count
+        if is_sum_of_powers:
+            count += 1
+            curr += 1
+        else:
+            curr += 1
+    
+    # Return the nth polite number
+    return curr - 1
+
+```

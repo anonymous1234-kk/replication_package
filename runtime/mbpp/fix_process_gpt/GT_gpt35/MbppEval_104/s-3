@@ -1,0 +1,49 @@
+task_id:MbppEval/104
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sort_sublists(input_list):
+    '''
+    Write a function to sort each sublist of strings in a given list of lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sort_sublists(input_list):
+    '''
+    Write a function to sort each sublist of strings in a given list of lists.
+    '''
+
+    for sublist in input_list:
+        sublist.sort()
+    return input_list
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sort_sublists(['andy', 'ok', 'go']) == [['a', 'd', 'n', 'y'], ['k', 'o'], ['g', 'o']]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sort_sublists(input_list):
+    for sublist in input_list:
+        sublist.sort(key=lambda x: sorted(x))
+    return input_list
+```

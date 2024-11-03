@@ -1,0 +1,70 @@
+task_id:MbppEval/63
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_difference(test_list):
+    '''
+    Write a function to find the maximum difference between available pairs in the given tuple list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_difference(test_list):
+    '''
+    Write a function to find the maximum difference between available pairs in the given tuple list.
+    '''
+
+    '''
+    Write a function to find the maximum difference between available pairs in the given tuple list.
+    '''
+    # Initialize the maximum difference to be the difference between the first two elements
+    max_diff = abs(test_list[0][0] - test_list[0][1])
+    
+    # Iterate through all the tuples in the list
+    for i in range(len(test_list)):
+        for j in range(i+1, len(test_list)):
+            # Calculate the absolute difference between the two elements in the tuple
+            diff = abs(test_list[i][0] - test_list[j][1])
+            # Update the maximum difference if the current difference is greater
+            if diff > max_diff:
+                max_diff = diff
+                
+    # Return the maximum difference
+    return max_diff
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-24<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_difference([1, 2, 90, 10]) == 89
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_difference(test_list):
+    max_diff = 0
+    
+    for i in range(len(test_list)):
+        for j in range(i+1, len(test_list)):
+            diff = abs(test_list[i] - test_list[j])
+            if diff > max_diff:
+                max_diff = diff
+                
+    return max_diff
+
+```

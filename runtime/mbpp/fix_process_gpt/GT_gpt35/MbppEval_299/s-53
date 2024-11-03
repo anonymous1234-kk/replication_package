@@ -1,0 +1,68 @@
+task_id:MbppEval/299
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+    # Create a dictionary to store the aggregate scores of students
+    agg_scores = defaultdict(int)
+
+    # Iterate through each tuple in the list
+    for data in stdata:
+        # Calculate the aggregate score for the current student
+        agg_score = sum(data[1:])
+        # Add the aggregate score to the dictionary, with the student name as the key
+        agg_scores[data[0]] += agg_score
+
+    # Return the maximum aggregate score from the dictionary
+    return max(agg_scores.values())
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_aggregate([(1, 40), (2, 50), (3, 60), (1, 70), (2, 80), (3, 90)]) == (3, 150)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    agg_scores = defaultdict(int)
+    for data in stdata:
+        agg_scores[data[0]] += data[1]
+    max_score = max(agg_scores.values())
+    for student, score in agg_scores.items():
+        if score == max_score:
+            return (student, score)
+```

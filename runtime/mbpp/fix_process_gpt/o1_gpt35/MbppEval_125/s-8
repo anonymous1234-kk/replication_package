@@ -1,0 +1,221 @@
+task_id:MbppEval/125
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count = [0]*(n+1)
+    count[0] = 1 if string[0] == '0' else -1
+    for i in range(1, n):
+        count[i] = count[i-1] + (1 if string[i] == '0' else -1)
+    max_len = 0
+    minn, maxx = min(count), max(count)
+    bucket = [-1]*(maxx-minn+1)
+    for i in range(n):
+        if max_len >= n - i:
+            break
+        if bucket[count[i]-minn] != -1:
+            max_len = max(max_len, i-bucket[count[i]-minn])
+        else:
+            bucket[count[i]-minn] = i
+    return max_len
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_length('11001110101011') == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count = [0]*(n+1)
+    count[0] = 0 if string[0] == '0' else 1
+    for i in range(1, n):
+        count[i] = count[i-1] + (1 if string[i] == '0' else -1)
+    max_len = 0
+    minn, maxx = min(count), max(count)
+    bucket = [-1]*(maxx-minn+1)
+    for i in range(n):
+        if max_len >= n - i:
+            break
+        if bucket[count[i]-minn] != -1:
+            max_len = max(max_len, i-bucket[count[i]-minn])
+        else:
+            bucket[count[i]-minn] = i
+    return max_len
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-27<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_length('11111110000000000000') == 13
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count = [0]*(n+1)
+    count[0] = 1 if string[0] == '0' else -1
+    for i in range(1, n):
+        count[i] = count[i-1] + (1 if string[i] == '0' else -1)
+    max_len = 0
+    minn, maxx = min(count), max(count)
+    bucket = [-1]*(maxx-minn+1)
+    for i in range(n):
+        if max_len >= n - i:
+            break
+        if bucket[count[i]-minn] != -1:
+            max_len = max(max_len, i-bucket[count[i]-minn])
+        else:
+            bucket[count[i]-minn] = i
+    return max_len
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_length('11111000000000000000000000000001111100000000000000') == 35
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count = [0]*(n+1)
+    count[0] = 1 if string[0] == '0' else -1
+    for i in range(1, n):
+        count[i] = count[i-1] + (1 if string[i] == '0' else -1)
+    max_len = 0
+    minn, maxx = min(count), max(count)
+    bucket = [-1]*(maxx-minn+1)
+    for i in range(n):
+        if max_len >= n - i:
+            break
+        if bucket[count[i]-minn] != -1:
+            max_len = max(max_len, i-bucket[count[i]-minn])
+        else:
+            bucket[count[i]-minn] = i
+    return max_len
+
+assert find_length('11111000000000000000000000000001111100000000000000') == 35
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_length('1010011100001110100101110111111100110001111101111011') == 4
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count = [0]*(n+1)
+    count[0] = 0
+    max_len = 0
+    seen = {0: -1}
+    for i in range(n):
+        count[i+1] = count[i] + (1 if string[i] == '1' else -1)
+        if count[i+1] in seen:
+            max_len = max(max_len, i - seen[count[i+1]])
+        else:
+            seen[count[i+1]] = i
+    return max_len
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-31<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_length('0000100') == 5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count = [0]*(n+1)
+    count[0] = 0 if string[0] == '0' else 1
+    for i in range(1, n):
+        count[i] = count[i-1] + (1 if string[i] == '0' else -1)
+    max_len = 0
+    minn, maxx = min(count), max(count)
+    bucket = [-1]*(maxx-minn+1)
+    for i in range(n):
+        if max_len >= n - i:
+            break
+        if bucket[count[i]-minn] != -1:
+            max_len = max(max_len, i-bucket[count[i]-minn])
+        else:
+            bucket[count[i]-minn] = i
+    return max_len
+```

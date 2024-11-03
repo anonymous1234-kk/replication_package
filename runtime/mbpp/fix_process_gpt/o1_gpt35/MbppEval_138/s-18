@@ -1,0 +1,92 @@
+task_id:MbppEval/138
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_Sum_Of_Powers_Of_Two(n): 
+    '''
+    Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_Sum_Of_Powers_Of_Two(n): 
+    '''
+    Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not.
+    '''
+ 
+    # Iterate over all possible powers of 2 less than n
+    for i in range(n):
+        # Calculate the current power of 2
+        power_of_two = 2**i
+        # If the current power of 2 is greater than n, exit the loop
+        if power_of_two > n:
+            break
+        # Calculate the remaining sum
+        remaining_sum = n - power_of_two
+        # If the remaining sum can be represented as a sum of powers of 2, return True
+        if is_Sum_Of_Powers_Of_Two(remaining_sum):
+            return True
+    # If no sum of powers of 2 was found, return False
+    return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_Sum_Of_Powers_Of_Two(31) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_Sum_Of_Powers_Of_Two(11) == False
+assert is_Sum_Of_Powers_Of_Two(23) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_Sum_Of_Powers_Of_Two(n): 
+    '''
+    Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not.
+    '''
+ 
+    # Create a set to store the already checked values
+    checked_values = set()
+
+    # Recursive helper function to check if the given number can be represented as a sum of powers of 2
+    def helper(num):
+        # If the number is 0, return True
+        if num == 0:
+            return True
+        # If the number is negative or has already been checked, return False
+        if num < 0 or num in checked_values:
+            return False
+
+        # Iterate over all possible powers of 2 less than num
+        for i in range(num):
+            # Calculate the current power of 2
+            power_of_two = 2**i
+            # Calculate the remaining sum
+            remaining_sum = num - power_of_two
+            # Recursively check if the remaining sum can be represented as a sum of powers of 2
+            if helper(remaining_sum):
+                return True
+
+        # Add the current number to the checked values set
+        checked_values.add(num)
+
+        # If no sum of powers of 2 was found, return False
+        return False
+
+    # Call the helper function to check if the given number can be represented as a sum of powers of 2
+    return helper(n)
+```

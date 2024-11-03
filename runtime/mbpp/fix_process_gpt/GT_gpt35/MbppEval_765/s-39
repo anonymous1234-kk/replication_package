@@ -1,0 +1,157 @@
+task_id:MbppEval/765
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+    polite = [1]
+    p2 = [2]
+    p3 = [3]
+    p5 = [5]
+    i = 0
+    j = 0
+    k = 0
+    while len(polite) < n:
+        next_polite = min(p2[0], p3[0], p5[0])
+        polite.append(next_polite)
+        if next_polite == p2[0]:
+            i += 1
+            p2.pop(0)
+            p2.append(2 * polite[i])
+            p3.append(3 * polite[i])
+        elif next_polite == p3[0]:
+            j += 1
+            p3.pop(0)
+            p3.append(3 * polite[j])
+        else:
+            k += 1
+            p5.pop(0)
+            p5.append(5 * polite[k])
+    return polite[-1]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(20) == 25
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+    polite = [1]
+    p2 = [2]
+    p3 = [3]
+    p5 = [5]
+    i = 0
+    j = 0
+    k = 0
+    while len(polite) < n:
+        next_polite = min(p2[0], p3[0], p5[0])
+        polite.append(next_polite)
+        if next_polite == p2[0]:
+            i += 1
+            p2.pop(0)
+            p2.append(2 * polite[i])
+            p3.append(3 * polite[i])
+            p5.append(5 * polite[i])
+        elif next_polite == p3[0]:
+            j += 1
+            p3.pop(0)
+            p3.append(3 * polite[j])
+            p5.append(5 * polite[j])
+        else:
+            k += 1
+            p5.pop(0)
+            p5.append(5 * polite[k])
+    return polite[-1]
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(7) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+    polite = [1]
+    p2 = [2]
+    p3 = [3]
+    p5 = [5]
+    i = 0
+    j = 0
+    k = 0
+    while len(polite) < n:
+        next_polite = min(p2[0], p3[0], p5[0])
+        polite.append(next_polite)
+        if next_polite == p2[0]:
+            i += 1
+            p2.pop(0)
+            p2.append(2 * polite[i])
+            p3.append(3 * polite[i])
+            p5.append(5 * polite[i])
+        elif next_polite == p3[0]:
+            j += 1
+            p3.pop(0)
+            p3.append(3 * polite[j])
+            p5.append(5 * polite[j])
+        else:
+            k += 1
+            p5.pop(0)
+            p5.append(5 * polite[k])
+    return polite[-1]
+```

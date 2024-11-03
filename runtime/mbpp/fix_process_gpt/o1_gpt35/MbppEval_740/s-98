@@ -1,0 +1,66 @@
+task_id:MbppEval/740
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def tuple_to_dict(test_tup):
+    '''
+    Write a function to convert the given tuple to a key-value dictionary using adjacent elements. https://www.geeksforgeeks.org/python-convert-tuple-to-adjacent-pair-dictionary/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def tuple_to_dict(test_tup):
+    '''
+    Write a function to convert the given tuple to a key-value dictionary using adjacent elements. https://www.geeksforgeeks.org/python-convert-tuple-to-adjacent-pair-dictionary/
+    '''
+
+    # creating empty dictionary
+    dict = {}
+    
+    # iterating over tuple using loop
+    for i in range(0, len(test_tup), 2):
+        dict[test_tup[i]] = test_tup[i + 1]
+    
+    # returning dictionary
+    return dict
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_to_dict([(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four'), (5, 'five')]) == {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five'}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_to_dict(test_tup):
+    '''
+    Write a function to convert the given tuple to a key-value dictionary using adjacent elements. https://www.geeksforgeeks.org/python-convert-tuple-to-adjacent-pair-dictionary/
+    '''
+
+    # creating empty dictionary
+    dict = {}
+    
+    # iterating over tuple using loop
+    for i in range(len(test_tup)):
+        dict[test_tup[i][0]] = test_tup[i][1]
+    
+    # returning dictionary
+    return dict
+
+```

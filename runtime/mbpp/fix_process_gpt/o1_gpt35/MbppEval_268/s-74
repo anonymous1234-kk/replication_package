@@ -1,0 +1,57 @@
+task_id:MbppEval/268
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_star_num(n): 
+    '''
+    Write a function to find the n'th star number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_star_num(n): 
+    '''
+    Write a function to find the n'th star number.
+    '''
+ 
+    '''
+    Write a function to find the n'th star number.
+    '''
+    return 6 * n * (n - 1) + 1
+```
+
+The star numbers are a sequence of numbers defined by the formula `6 * n * (n - 1) + 1`, where `n` is a positive integer. The first few star numbers are:
+
+```
+1, 13, 37, 73, 121, 181, 253, 337, 433, 541, ...
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_star_num(5) == 121
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_star_num(n): 
+    '''
+    Write a function to find the n'th star number.
+    '''
+    return 3 * n * (n - 1) + 1
+```

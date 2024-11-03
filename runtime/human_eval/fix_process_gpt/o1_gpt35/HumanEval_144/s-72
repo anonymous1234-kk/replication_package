@@ -1,0 +1,84 @@
+task_id:HumanEval/144
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def simplify(x, n):
+    """Your task is to implement a function that will simplify the expression
+    x * n. The function returns True if x * n evaluates to a whole number and False
+    otherwise. Both x and n, are string representation of a fraction, and have the following format,
+    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.
+
+    You can assume that x, and n are valid fractions, and do not have zero as denominator.
+
+    simplify("1/5", "5/1") = True
+    simplify("1/6", "2/1") = False
+    simplify("7/10", "10/2") = False
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def simplify(x, n):
+    """Your task is to implement a function that will simplify the expression
+    x * n. The function returns True if x * n evaluates to a whole number and False
+    otherwise. Both x and n, are string representation of a fraction, and have the following format,
+    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.
+
+    You can assume that x, and n are valid fractions, and do not have zero as denominator.
+
+    simplify("1/5", "5/1") = True
+    simplify("1/6", "2/1") = False
+    simplify("7/10", "10/2") = False
+    """
+
+    num1, den1 = x.split('/')
+    num2, den2 = n.split('/')
+    return int(num1)*int(num2) % int(den1)*int(den2) == 0
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert simplify('2/4','2/4') == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert simplify('8/5','5/8') == True
+assert simplify('14/10','10/14') == True
+assert simplify('4/6','6/4') == True
+assert simplify('2/7','7/2') == True
+assert simplify('15/25','25/15') == True
+assert simplify('2/3','3/2') == True
+assert simplify('12/20','20/12') == True
+assert simplify('2/5','5/2') == True
+assert simplify('9/12','3/4') == False
+assert simplify('10/7','10/7') == False
+assert simplify('4/12','2/3') == False
+assert simplify('15/100','4/25') == False
+assert simplify('10/15','2/3') == False
+assert simplify('3/5','10/3') == True
+assert simplify('3/4','12/3') == True
+assert simplify('2/4','1/2') == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def simplify(x, n):
+    num1, den1 = x.split('/')
+    num2, den2 = n.split('/')
+    return int(num1)*int(num2) % (int(den1)*int(den2)) == 0
+
+```

@@ -1,0 +1,101 @@
+task_id:HumanEval/111
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def histogram(test):
+    """Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    
+    Example:
+    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}
+    histogram('a b b a') == {'a': 2, 'b': 2}
+    histogram('a b c a b') == {'a': 2, 'b': 2}
+    histogram('b b b b a') == {'b': 4}
+    histogram('') == {}
+
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def histogram(test):
+    """Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    
+    Example:
+    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}
+    histogram('a b b a') == {'a': 2, 'b': 2}
+    histogram('a b c a b') == {'a': 2, 'b': 2}
+    histogram('b b b b a') == {'b': 4}
+    histogram('') == {}
+
+    """
+
+    """Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    
+    Example:
+    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}
+    histogram('a b b a') == {'a': 2, 'b': 2}
+    histogram('a b c a b') == {'a': 2, 'b': 2}
+    histogram('b b b b a') == {'b': 4}
+    histogram('') == {}
+
+    """
+    counts = {}
+    for char in test:
+        if char != ' ':
+            if char not in counts:
+                counts[char] = 1
+            else:
+                counts[char] += 1
+    max_count = max(counts.values())
+    result = {}
+    for char, count in counts.items():
+        if count == max_count:
+            result[char] = count
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert histogram('Mr and Mrs Dursley of number four Privet Drive') == {'Mr': 1, 'and': 1, 'Mrs': 1, 'Dursley': 1, 'of': 1, 'number': 1, 'four': 1, 'Privet': 1, 'Drive': 1}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert histogram('a b c a b c c d d d e f g h i j k l m n o p q r s t u v w x y z') == {'c': 3, 'd': 3}
+assert histogram('a a a a b b b b c c c c d d d d e e e e f f f f 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d') == {'a': 5, 'b': 5, 'c': 5, 'd': 5}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def histogram(test):
+    counts = {}
+    for word in test.split():
+        if word not in counts:
+            counts[word] = 1
+        else:
+            counts[word] += 1
+    max_count = max(counts.values())
+    result = {}
+    for word, count in counts.items():
+        if count == max_count:
+            result[word] = count
+    return result
+```

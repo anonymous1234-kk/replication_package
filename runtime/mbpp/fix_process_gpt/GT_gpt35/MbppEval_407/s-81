@@ -1,0 +1,90 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string to make it iterable
+    n_str = str(n)
+    
+    # Check if the number is already at its maximum value
+    if sorted(n_str, reverse=True) == list(n_str):
+        return n
+    
+    # Iterate through the digits of the number from right to left
+    for i in range(len(n_str) - 2, -1, -1):
+        if n_str[i] < n_str[i+1]:
+            # Find the smallest digit to the right of n_str[i] that is greater than it
+            smallest_larger_digit = min(filter(lambda x: x > n_str[i], n_str[i+1:]))
+            
+            # Swap n_str[i] and smallest_larger_digit
+            new_str = n_str[:i] + smallest_larger_digit + ''.join(sorted(n_str[i+1:].replace(smallest_larger_digit, n_str[i])))
+            
+            # Convert the new string back to an integer and return it
+            return int(new_str)
+    
+    # If we get here, the number is already at its maximum value
+    return n
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(999999999) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+assert rearrange_bigger(132) == 213
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string to make it iterable
+    n_str = str(n)
+    
+    # Check if the number is already at its maximum value
+    if sorted(n_str, reverse=True) == list(n_str):
+        return False
+    
+    # Iterate through the digits of the number from right to left
+    for i in range(len(n_str) - 2, -1, -1):
+        if n_str[i] < n_str[i+1]:
+            # Find the smallest digit to the right of n_str[i] that is greater than it
+            smallest_larger_digit = min(filter(lambda x: x > n_str[i], n_str[i+1:]))
+            
+            # Swap n_str[i] and smallest_larger_digit
+            new_str = n_str[:i] + smallest_larger_digit + ''.join(sorted(n_str[i+1:].replace(smallest_larger_digit, n_str[i])))
+            
+            # Convert the new string back to an integer and return it
+            return int(new_str)
+    
+    # If we get here, the number is already at its maximum value
+    return n
+```

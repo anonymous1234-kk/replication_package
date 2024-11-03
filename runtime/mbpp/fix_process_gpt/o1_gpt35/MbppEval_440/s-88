@@ -1,0 +1,108 @@
+task_id:MbppEval/440
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+    # split the sentence into words
+    words = text.split()
+    
+    # regex pattern to match adverbs
+    pattern = re.compile(r'\b\w+ly\b')
+    
+    # iterate over the words and find the first adverb
+    for i, word in enumerate(words):
+        if pattern.match(word):
+            return "The first adverb is '{}' and its position is {}".format(word, i+1)
+    
+    # if no adverb is found, return None
+    return None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverb_position('She sang sweetly') == ('sweetly', 9)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    # split the sentence into words
+    words = text.split()
+    
+    # regex pattern to match adverbs
+    pattern = re.compile(r'\b\w+ly\b')
+    
+    # iterate over the words and find the first adverb
+    for i, word in enumerate(words):
+        if pattern.match(word):
+            return (word, text.find(word) + 1)
+    
+    # if no adverb is found, return None
+    return None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverb_position('He plays the guitar joyfully') == ('joyfully', 20)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    words = text.split()
+    pattern = re.compile(r'\b\w+ly\b')
+    
+    for i, word in enumerate(words):
+        if pattern.match(word):
+            return (word, text.index(word) + 1)
+
+    return None
+```

@@ -1,0 +1,128 @@
+task_id:HumanEval/91
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+    sentences = S.split(".")
+    sentences = [s.strip() for s in sentences]
+    sentences = [s for s in sentences if s]
+    count = 0
+    for s in sentences:
+        if s.startswith("I "):
+            count += 1
+        elif s.startswith("I'"):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I've "):
+            count += 1
+        elif s.startswith("I, "):
+            count += 1
+        elif s.startswith("I;"):
+            count += 1
+        elif s.startswith("I:"):
+            count += 1
+        elif s.startswith("I "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_bored("I'm reading a book. It's so good. I'm almost finished with it.") == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_bored('I am happy. I love my family. I love this weather') == 3
+assert is_bored('I am not feeling bored. I am happy.') == 2
+assert is_bored('I am happy. I am going to the beach. Do you want to come?') == 2
+assert is_bored('I will be on holiday. It will be in Turkey. I am excited') == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    sentences = S.split(".")
+    sentences = [s.strip() for s in sentences]
+    sentences = [s for s in sentences if s]
+    count = 0
+    for s in sentences:
+        if s.startswith("I "):
+            count += 1
+        elif s.startswith("I'"):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I've "):
+            count += 1
+        elif s.startswith("I, "):
+            count += 1
+        elif s.startswith("I;"):
+            count += 1
+        elif s.startswith("I:"):
+            count += 1
+        elif s.startswith("I "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I'm "):
+            count += 1
+        elif s.startswith("I'm"):
+            count += 1
+    return count
+
+```

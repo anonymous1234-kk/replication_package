@@ -1,0 +1,90 @@
+task_id:MbppEval/576
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_Sub_Array(A,B): 
+    '''
+    Write a python function to check whether a list is sublist of another or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_Sub_Array(A,B): 
+    '''
+    Write a python function to check whether a list is sublist of another or not.
+    '''
+
+    # check if both A and B are lists
+    if not(isinstance(A, list) and isinstance(B, list)):
+        return False
+    
+    # check if length of A is greater than length of B
+    if len(A) > len(B):
+        return False
+    
+    # iterate through each element of B
+    for i in range(len(B)):
+        # if element of B matches first element of A
+        if B[i] == A[0]:
+            # iterate through both A and B
+            for j in range(len(A)):
+                # if end of A is reached, then all elements of A are found in B
+                if j == len(A) - 1:
+                    return True
+                # if any element of A doesn't match corresponding element of B, break the loop
+                if B[i+j] != A[j]:
+                    break
+    # if no match found, A is not a sub-array of B
+    return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_Sub_Array([3, 2],[1, 2, 3, 4]) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_Sub_Array([1, 1, 5],[5, 2, 3, 5]) == False
+assert is_Sub_Array([1, 1, 5],[1, 5, 5, 2, 3, 5]) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_Sub_Array(A,B): 
+    '''
+    Write a python function to check whether a list is sublist of another or not.
+    '''
+
+    if not(isinstance(A, list) and isinstance(B, list)):
+        return False
+    
+    if len(A) > len(B):
+        return False
+    
+    for i in range(len(B)-len(A)+1):  # fixed code
+    
+        if B[i] == A[0]:
+            
+            for j in range(len(A)):
+                
+                if j == len(A) - 1:
+                    return True
+                
+                if B[i+j] != A[j]:
+                    break
+
+    return False
+
+```

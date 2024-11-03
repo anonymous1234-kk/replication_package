@@ -1,0 +1,113 @@
+task_id:MbppEval/773
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    """
+    Find the occurrence and position of the substrings within a string.
+    Return None if there is no match.
+    """
+    match = re.search(pattern, text)
+    if match is None:
+        return None
+    else:
+        positions = []
+        while match:
+            positions.append(match.start())
+            match = re.search(pattern, text[match.start() + 1:])
+            if match is not None:
+                match = match.start() + match.start() + 1
+        return positions
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    """
+    Find the occurrence and position of the substrings within a string.
+    Return None if there is no match.
+    """
+    positions = []
+    start = 0
+    while True:
+        match = re.search(pattern, text[start:])
+        if match is None:
+            break
+        positions.append(match.start() + start)
+        start += match.start() + 1
+    return positions
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-25<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('I am a good python Programmer','Python') == None
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text, pattern):
+    positions = []
+    start = 0
+    while True:
+        match = re.search(pattern, text[start:], re.IGNORECASE)
+        if match is None:
+            break
+        positions.append(match.start() + start)
+        start += match.start() + 1
+    return positions
+```

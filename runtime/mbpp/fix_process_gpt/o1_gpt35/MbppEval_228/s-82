@@ -1,0 +1,70 @@
+task_id:MbppEval/228
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def all_Bits_Set_In_The_Given_Range(n,l,r):  
+    '''
+    Write a python function to check whether all the bits are unset in the given range or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def all_Bits_Set_In_The_Given_Range(n,l,r):  
+    '''
+    Write a python function to check whether all the bits are unset in the given range or not.
+    '''
+
+    # Left shift '1' by 'r' times and subtract 1 from it
+    # to create a number with 'r' bits set from the right
+    # Example: If r=3, then (1 << 3) - 1 = 0b111
+    # This creates a number with rightmost 3 bits set
+    # Then left shift this number by 'l-1' times
+    # Example: If l=2, then (1 << 3) - 1 << (2-1) = 0b110
+    # This creates a number with bits from l to r set
+    # Finally, AND this number with 'n'
+    # If the result is 0, then all bits are unset in the given range
+    # Otherwise, some bits are set in the given range
+    return (n & ((1 << r) - 1 << (l - 1))) == 0
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert all_Bits_Set_In_The_Given_Range(9,0,3) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def all_Bits_Set_In_The_Given_Range(n,l,r):  
+    '''
+    Write a python function to check whether all the bits are unset in the given range or not.
+    '''
+
+    # Left shift '1' by 'r' times and subtract 1 from it
+    # to create a number with 'r' bits set from the right
+    # Example: If r=3, then (1 << 3) - 1 = 0b111
+    # This creates a number with rightmost 3 bits set
+    # Then left shift this number by 'l-1' times
+    # Example: If l=2, then (1 << 3) - 1 << (2-1) = 0b110
+    # This creates a number with bits from l to r set
+    # Finally, AND this number with 'n'
+    # If the result is 0, then all bits are unset in the given range
+    # Otherwise, some bits are set in the given range
+    return (n & ((1 << r) - 1 << l)) == 0
+
+```

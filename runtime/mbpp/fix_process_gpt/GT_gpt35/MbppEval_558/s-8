@@ -1,0 +1,88 @@
+task_id:MbppEval/558
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    # Convert the two integers to strings to access each digit
+    str_n1 = str(n1)
+    str_n2 = str(n2)
+
+    # Ensure that both numbers are of equal length
+    if len(str_n1) != len(str_n2):
+        return "Numbers must be of equal length"
+
+    # Initialize the variable to keep track of the sum of per-digit differences
+    sum_diff = 0
+
+    # Iterate through the digits of the numbers and compute the difference
+    for i in range(len(str_n1)):
+        digit_diff = abs(int(str_n1[i]) - int(str_n2[i]))
+        sum_diff += digit_diff
+
+    # Return the sum of per-digit differences
+    return sum_diff
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert digit_distance_nums(2000,489) == 8
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert digit_distance_nums(234,489) == 12
+assert digit_distance_nums(200,489) == 19
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    str_n1 = str(n1)
+    str_n2 = str(n2)
+
+    if len(str_n1) != len(str_n2):
+        return "Numbers must be of equal length"
+
+    sum_diff = 0
+
+    # Find the minimum length between the two numbers
+    min_len = min(len(str_n1), len(str_n2))
+
+    for i in range(min_len):
+        digit_diff = abs(int(str_n1[i]) - int(str_n2[i]))
+        sum_diff += digit_diff
+
+    # If one number has more digits than the other, add the remaining digits to the sum
+    if len(str_n1) > min_len:
+        sum_diff += sum(int(digit) for digit in str_n1[min_len:])
+    elif len(str_n2) > min_len:
+        sum_diff += sum(int(digit) for digit in str_n2[min_len:])
+
+    return sum_diff
+```

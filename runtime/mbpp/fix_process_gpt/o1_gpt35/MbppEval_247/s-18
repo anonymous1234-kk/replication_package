@@ -1,0 +1,82 @@
+task_id:MbppEval/247
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def lps(str): 
+    '''
+    Write a function to find the length of the longest palindromic subsequence in the given string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def lps(str): 
+    '''
+    Write a function to find the length of the longest palindromic subsequence in the given string.
+    '''
+ 
+    n = len(str) 
+
+    # Create a table to store the lengths of the longest palindromic 
+    # subsequence for all subproblems of size 1 to n. 
+    L = [[0 for x in range(n)] for x in range(n)] 
+
+    # Strings of length 1 are palindromic of length 1. 
+    for i in range(n): 
+        L[i][i] = 1
+
+    # Build the table in bottom-up fashion. 
+    # cl is length of substring. 
+    for cl in range(2, n+1): 
+        for i in range(n - cl + 1): 
+            j = i + cl - 1
+            if (str[i] == str[j] and cl == 2): 
+                L[i][j] = 2
+            elif (str[i] == str[j]): 
+                L[i][j] = L[i + 1][j - 1] + 2
+            else: 
+                L[i][j] = max(L[i][j - 1], L[i + 1][j]) 
+
+    # L[0][n-1] contains the length of the longest palindromic subsequence. 
+    return L[0][n-1]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lps('longest palindromic sequence') == 7
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert lps('abcda') == 3
+assert lps('hello world') == 5
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lps(str): 
+    n = len(str) 
+    L = [[0 for x in range(n)] for x in range(n)] 
+    for i in range(n): 
+        L[i][i] = 1
+    for cl in range(2, n+1): 
+        for i in range(n - cl + 1): 
+            j = i + cl - 1
+            if (str[i] == str[j] and cl == 2): 
+                L[i][j] = 2
+            elif (str[i] == str[j]): 
+                L[i][j] = L[i + 1][j - 1] + 2
+            else: 
+                L[i][j] = max(L[i][j - 1], L[i + 1][j]) 
+    return L[0][n-1]
+```

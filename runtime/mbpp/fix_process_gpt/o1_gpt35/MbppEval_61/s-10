@@ -1,0 +1,106 @@
+task_id:MbppEval/61
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+
+    # Initialize a dictionary to store the frequency of each prefix sum
+    freq = defaultdict(int)
+    
+    # Initialize the prefix sum and count of substrings
+    prefix_sum = 0
+    count = 0
+    
+    # Iterate through each character of the string
+    for c in s:
+        # Convert the character to an integer
+        num = int(c)
+        
+        # Update the prefix sum
+        prefix_sum += num
+        
+        # If the prefix sum is equal to the length of the substring so far,
+        # increment the count of substrings
+        if prefix_sum == len(str(prefix_sum)):
+            count += 1
+        
+        # For each prefix sum seen so far, increment its frequency
+        count += freq[prefix_sum - len(str(prefix_sum))]
+        
+        # Increment the frequency of the current prefix sum
+        freq[prefix_sum - len(str(prefix_sum))] += 1
+    
+    # Return the count of substrings
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_Substrings('10') == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_Substrings('1234567') == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def count_Substrings(s):
+    '''
+    Write a python function to count the number of substrings with the sum of digits equal to their length.
+    '''
+
+    # Initialize a dictionary to store the frequency of each prefix sum
+    freq = defaultdict(int)
+    
+    # Initialize the prefix sum and count of substrings
+    prefix_sum = 0
+    count = 0
+    
+    # Iterate through each character of the string
+    for c in s:
+        # Convert the character to an integer
+        num = int(c)
+        
+        # Update the prefix sum
+        prefix_sum += num
+        
+        # If the prefix sum is equal to the length of the substring so far,
+        # increment the count of substrings
+        if prefix_sum == len(str(prefix_sum)):
+            count += 1
+        
+        # For each prefix sum seen so far, increment its frequency
+        count += freq[prefix_sum - len(str(prefix_sum))]
+        
+        # Increment the frequency of the current prefix sum
+        freq[prefix_sum - len(str(prefix_sum))] += 1
+    
+    # Return the count of substrings
+    return count
+```

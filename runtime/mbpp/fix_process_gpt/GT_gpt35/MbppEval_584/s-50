@@ -1,0 +1,85 @@
+task_id:MbppEval/584
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def find_adverbs(text):
+    '''
+    Write a function to find the first adverb ending with ly and its positions in a given string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverbs(text):
+    '''
+    Write a function to find the first adverb ending with ly and its positions in a given string.
+    '''
+
+    adverbs = []
+    positions = []
+    
+    # Find all the adverbs ending with "ly" in the given text
+    regex = r"\b\w+ly\b"
+    matches = re.finditer(regex, text)
+    
+    # Store the adverbs and their positions in the respective lists
+    for match in matches:
+        adverbs.append(match.group())
+        positions.append(match.start())
+    
+    # Return the first adverb and its position as a tuple
+    if adverbs:
+        return (adverbs[0], positions[0])
+    else:
+        return None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverbs('She has been living happily since she moved to New York.') == 20-27: happily
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverbs(text):
+    '''
+    Write a function to find the first adverb ending with ly and its positions in a given string.
+    '''
+
+    adverbs = []
+    positions = []
+    
+    # Find all the adverbs ending with "ly" in the given text
+    regex = r"\b\w+ly\b"
+    matches = re.finditer(regex, text)
+    
+    # Store the adverbs and their positions in the respective lists
+    for match in matches:
+        adverbs.append(match.group())
+        positions.append(match.start())
+    
+    # Return the first adverb and its position as a tuple
+    if adverbs:
+        return (positions[0], positions[0] + len(adverbs[0]) - 1, adverbs[0])
+    else:
+        return None
+
+```

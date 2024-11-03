@@ -1,0 +1,85 @@
+task_id:MbppEval/229
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def re_arrange_array(arr, n):
+    '''
+    Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before positive ones, and where the relative order among negative and positive elements is preserved.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def re_arrange_array(arr, n):
+    '''
+    Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before positive ones, and where the relative order among negative and positive elements is preserved.
+    '''
+
+    # Initialize left and right pointers
+    left = 0
+    right = n - 1
+  
+    while left <= right:
+        # If the left element is negative, move to the next element
+        if arr[left] < 0:
+            left += 1
+          
+        # If the right element is positive, move to the next element
+        elif arr[right] >= 0:
+            right -= 1
+          
+        # If both the left and right elements are misplaced, swap them
+        else:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert re_arrange_array([1, 2, 3, -1, 2],1) == [1, 2, 3, -1, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def re_arrange_array(arr, n):
+    '''
+    Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before positive ones, and where the relative order among negative and positive elements is preserved.
+    '''
+
+    # Initialize left and right pointers
+    left = 0
+    right = n - 1
+  
+    while left <= right:
+        # If the left element is negative, move to the next element
+        if arr[left] < 0:
+            left += 1
+          
+        # If the right element is positive, move to the next element
+        elif arr[right] >= 0:
+            right -= 1
+          
+        # If both the left and right elements are misplaced, swap them
+        else:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
+
+    return arr
+```

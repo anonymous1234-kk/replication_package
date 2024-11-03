@@ -1,0 +1,58 @@
+task_id:MbppEval/746
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math
+def sector_area(r,a):
+    '''
+    Write a function to find area of a sector. The function takes the radius and angle as inputs. Function should return None if the angle is larger than 360 degrees.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math
+def sector_area(r,a):
+    '''
+    Write a function to find area of a sector. The function takes the radius and angle as inputs. Function should return None if the angle is larger than 360 degrees.
+    '''
+
+    if a > 360:
+        return None
+    else:
+        return (a / 360) * math.pi * r ** 2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sector_area(5,80) == 17.453292519943297
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math
+def sector_area(r,a):
+    '''
+    Write a function to find area of a sector. The function takes the radius and angle as inputs. Function should return None if the angle is larger than 360 degrees.
+    '''
+
+    if a > 360:
+        return None
+    else:
+        return (a / 360) * math.pi * r ** 2
+```

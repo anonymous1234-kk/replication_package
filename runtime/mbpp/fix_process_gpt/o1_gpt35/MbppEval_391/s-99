@@ -1,0 +1,407 @@
+task_id:MbppEval/391
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        temp[l2[i]] = l3[i]
+        result[l1[i]] = temp
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([1, 2, 3],['hi'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+        result[l1[i]] = {l2[0]: temp}
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+            for k in range(len(l3)):
+                temp[l2[j]][l3[k]] = {}
+        result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([],['modern', 'ancient'],[1, 2]) == {'modern': 1, 'ancient': 2}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    result = {}
+    if not l1:
+        result = {l2[i]: l3[i] for i in range(len(l2))}
+    else:
+        for i in range(len(l1)):
+            temp = {}
+            for j in range(len(l2)):
+                temp[l2[j]] = {l3[k]: {} for k in range(len(l3))}
+            result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary(['new', 'old', 'new'],['modern', 'ancient'],[1, 2]) == {'new': {'modern': 1}, 'old': {'ancient': 2}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+            for k in range(len(l3)):
+                temp[l2[j]][l3[k]] = {}
+        result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient', 'modern'],[1, 2]) == {'new': {'modern': 1}, 'old': {'ancient': 2}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            if j < len(l3):
+                temp[l2[j]] = {l3[j]: {}}
+        result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient', 'new'],[1, 2]) == {'new': {'modern': 1}, 'old': {'ancient': 2}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+            for k in range(len(l3)):
+                if k < len(l3):
+                    temp[l2[j]][l3[k]] = {}
+        result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary(['new', 'old', 'new'],['modern', 'ancient'],[1, 2, 3]) == {'new': {'modern': 1}, 'old': {'ancient': 2}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            if j < len(l3):
+                temp[l2[j]] = l3[j]
+        result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary(['new', 'old', 'new'],['modern', 'ancient', 'new'],[1, 2, 3]) == {'new': {'modern': 1, 'new': 3}, 'old': {'ancient': 2}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+            for k in range(len(l3)):
+                if l1[i] in result:
+                    if l2[j] in result[l1[i]]:
+                        result[l1[i]][l2[j]][l3[k]] = {}
+                    else:
+                        result[l1[i]][l2[j]] = {l3[k]: {}}
+                else:
+                    result[l1[i]] = {l2[j]: {l3[k]: {}}}
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-46<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([7, 8],[9],[10, 11, 12]) == {7: {8: {9: {10: {11: 12}}}}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+assert convert_list_dictionary([],[],[1]) == {}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+            for k in range(len(l3)):
+                if k == len(l3) - 1:
+                    temp[l2[j]][l3[k]] = {}
+                else:
+                    temp[l2[j]][l3[k]] = l3[k+1]
+        result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([1, 2, 3],[],[4]) == {1: {2: {3: {4: {}}}}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+assert convert_list_dictionary([],[],[1]) == {}
+assert convert_list_dictionary([13, 14],[],[15, 16]) == {13: {}, 14: {}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+            for k in range(len(l3)):
+                temp[l2[j]][l3[k]] = {}
+        if len(l2) == 0:
+            result[l1[i]] = {}
+        else:
+            result[l1[i]] = temp
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-43<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([],[3],[]) == {3: {}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+assert convert_list_dictionary([1, 2, 3],['hi', 'hello', 'hey'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}, 3: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}, 'hey': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary([1],['hi'],['apple']) == {1: {'hi': {'apple': {}}}}
+assert convert_list_dictionary([1, 2],['hi', 'hello'],['apple', 'banana', 'orange']) == {1: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}, 2: {'hi': {'apple': {}, 'banana': {}, 'orange': {}}, 'hello': {'apple': {}, 'banana': {}, 'orange': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1],['A', 'B', 'C']) == {'a': {1: {'A': {}, 'B': {}, 'C': {}}}, 'b': {1: {'A': {}, 'B': {}, 'C': {}}}}
+assert convert_list_dictionary(['a'],[1],['A', 'B']) == {'a': {1: {'A': {}, 'B': {}}}}
+assert convert_list_dictionary(['a', 'b'],[1, 2, 3],['A']) == {'a': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}, 'b': {1: {'A': {}}, 2: {'A': {}}, 3: {'A': {}}}}
+assert convert_list_dictionary(['new', 'old'],['modern', 'ancient'],[]) == {'new': {'modern': {}, 'ancient': {}}, 'old': {'modern': {}, 'ancient': {}}}
+assert convert_list_dictionary([],[],[1]) == {}
+assert convert_list_dictionary([13, 14],[],[15, 16]) == {13: {}, 14: {}}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    result = {}
+    for i in range(len(l1)):
+        temp = {}
+        for j in range(len(l2)):
+            temp[l2[j]] = {}
+            for k in range(len(l3)):
+                temp[l2[j]][l3[k]] = {}
+        if len(l2) == 0:
+            result[l1[i]] = {}
+        else:
+            result[l1[i]] = temp
+    return result
+```

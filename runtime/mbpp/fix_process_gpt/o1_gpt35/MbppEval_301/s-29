@@ -1,0 +1,64 @@
+task_id:MbppEval/301
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def dict_depth(d):
+    '''
+    Write a function to find the depth of a dictionary.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def dict_depth(d):
+    '''
+    Write a function to find the depth of a dictionary.
+    '''
+
+    if not isinstance(d, dict) or not d:
+        return 0
+    return max(dict_depth(v) for k, v in d.items()) + 1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-45<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert dict_depth({'a': 1, 'b': 1, 'c': {'a': 1, 'b': {'a': {'b': {'c': {'d': {'e': {'f': {'g': {'h': {'i': {'j': {'k': {'l': {'m': {'n': {'o': {'p': {'q': {'r': {'s': {'t': {'u': {'v': {'w': {'x': {'y': {'z': {}}}}}}}}}}}}}}}}}}}}}}}}}}}}}) == 29
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert dict_depth({'a': 1, 'b': {'c': 1}, 'd': {'e': {'f': 1}}}) == 3
+assert dict_depth({'a': 1, 'b': {'c': 1}, 'd': {'e': {'f': {'g': 1}}}}) == 4
+assert dict_depth({'a': 1, 'b': {'c': 1}, 'd': {'e': {'f': {'g': 1}}}, 'h': 2}) == 4
+assert dict_depth({'a': 1, 'b': {'c': 1}, 'd': {'e': {'f': {'g': 1}}}, 'h': 2, 'i': {'j': {'k': {'l': {'m': {'n': {'o': 1}}}}}}}) == 7
+assert dict_depth({'a': 1, 'b': {'c': 1}, 'd': {'e': {'f': {'g': 1}}}, 'h': 2, 'i': {'j': {'k': {'l': {'m': {'n': 1}}}}}}) == 6
+assert dict_depth({1: 1, 2: 2, 3: {4: 4, 5: {6: 6, 7: 7}}}) == 3
+assert dict_depth({1: 1, 2: 2, 3: {4: 4, 5: {6: 6, 7: {8: 8, 9: 9}}}}) == 4
+assert dict_depth({1: 1, 2: 2, 3: {4: 4, 5: {6: 6}}}) == 3
+assert dict_depth({1: 1, 2: {3: 3, 4: {5: 5}}}) == 3
+assert dict_depth({1: 1, 2: {3: {4: {5: {6: {7: {8: {9: 9}}}}}}}}) == 8
+assert dict_depth({1: 1, 2: {3: {4: {5: {6: {7: {8: {9: 9, 10: 10}}}}}}}}) == 8
+assert dict_depth({'a': 1}) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def dict_depth(d):
+    '''
+    Write a function to find the depth of a dictionary.
+    '''
+
+    if not isinstance(d, dict) or not d:
+        return 0
+    return max(dict_depth(v) for k, v in d.items() if isinstance(v, dict)) + 1
+```

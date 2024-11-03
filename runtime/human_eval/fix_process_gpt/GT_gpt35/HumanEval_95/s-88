@@ -1,0 +1,103 @@
+task_id:HumanEval/95
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def check_dict_case(dict):
+    """
+    Given a dictionary, return True if all keys are strings in lower 
+    case or all keys are strings in upper case, else return False.
+    The function should return False is the given dictionary is empty.
+    Examples:
+    check_dict_case({"a":"apple", "b":"banana"}) should return True.
+    check_dict_case({"a":"apple", "A":"banana", "B":"banana"}) should return False.
+    check_dict_case({"a":"apple", 8:"banana", "a":"apple"}) should return False.
+    check_dict_case({"Name":"John", "Age":"36", "City":"Houston"}) should return False.
+    check_dict_case({"STATE":"NC", "ZIP":"12345" }) should return True.
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def check_dict_case(dict):
+    """
+    Given a dictionary, return True if all keys are strings in lower 
+    case or all keys are strings in upper case, else return False.
+    The function should return False is the given dictionary is empty.
+    Examples:
+    check_dict_case({"a":"apple", "b":"banana"}) should return True.
+    check_dict_case({"a":"apple", "A":"banana", "B":"banana"}) should return False.
+    check_dict_case({"a":"apple", 8:"banana", "a":"apple"}) should return False.
+    check_dict_case({"Name":"John", "Age":"36", "City":"Houston"}) should return False.
+    check_dict_case({"STATE":"NC", "ZIP":"12345" }) should return True.
+    """
+
+    if len(dict) == 0:
+        return False
+
+    lowercase = False
+    uppercase = False
+    for key in dict.keys():
+        if not isinstance(key, str):
+            return False
+        elif key.islower():
+            lowercase = True
+        elif key.isupper():
+            uppercase = True
+        else:
+            return False
+
+    if lowercase and uppercase:
+        return False
+    else:
+        return True
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert check_dict_case({'a': 'apple', 'b': 'banana', '1': 'apple', '2': 'banana'}) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert check_dict_case({'a': 'apple', 8: 'banana', 'G': 'apple'}) == False
+assert check_dict_case({'a': 'apple', 'B': 'banana', 'C': 'x', 'D': 'y', 'E': 'z'}) == False
+assert check_dict_case({'a': 'apple', 'b': 'banana', 'state': 'NC'}) == True
+assert check_dict_case({'STATE': 'NC', 'ZIP': '12345', 'CITY': 'San Francisco'}) == True
+assert check_dict_case({'A': 'NC', 'B': 'Ny', 'C': 'MA'}) == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def check_dict_case(dict):
+    if len(dict) == 0:
+        return False
+
+    lowercase = False
+    uppercase = False
+    for key in dict.keys():
+        if not isinstance(key, str):
+            return False
+        elif key.islower():
+            lowercase = True
+        elif key.isupper():
+            uppercase = True
+        else:
+            return False
+
+    if lowercase and uppercase:
+        return False
+    else:
+        return True
+```

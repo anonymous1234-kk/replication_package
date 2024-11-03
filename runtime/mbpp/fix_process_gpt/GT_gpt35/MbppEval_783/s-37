@@ -1,0 +1,113 @@
+task_id:MbppEval/783
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rgb_to_hsv(r, g, b):
+    '''
+    Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rgb_to_hsv(r, g, b):
+    '''
+    Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/
+    '''
+
+    '''
+    Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/
+    '''
+    r, g, b = r / 255.0, g / 255.0, b / 255.0
+    cmax = max(r, g, b)
+    cmin = min(r, g, b)
+    delta = cmax - cmin
+    if delta == 0:
+        h = 0
+    elif cmax == r:
+        h = ((g - b) / delta) % 6
+    elif cmax == g:
+        h = (b - r) / delta + 2
+    else:
+        h = (r - g) / delta + 4
+    h = round(h * 60)
+    if h < 0:
+        h += 360
+    if cmax == 0:
+        s = 0
+    else:
+        s = (delta / cmax) * 100
+    v = cmax * 100
+    return h, s, v
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rgb_to_hsv(238,18,137) == (327.54545454545456, 92.43697478991596, 93.33333333333333)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rgb_to_hsv(128,128,0) == (60.0, 100.0, 50.19607843137255)
+assert rgb_to_hsv(255,255,255) == (0, 0.0, 100.0)
+assert rgb_to_hsv(255,0,0) == (0.0, 100.0, 100.0)
+assert rgb_to_hsv(0,255,0) == (120.0, 100.0, 100.0)
+assert rgb_to_hsv(0,0,255) == (240.0, 100.0, 100.0)
+assert rgb_to_hsv(255,255,0) == (60.0, 100.0, 100.0)
+assert rgb_to_hsv(255,0,255) == (300.0, 100.0, 100.0)
+assert rgb_to_hsv(0,255,255) == (180.0, 100.0, 100.0)
+assert rgb_to_hsv(255,0,0) == (0.0, 100.0, 100.0)
+assert rgb_to_hsv(128,128,128) == (0, 0.0, 50.19607843137255)
+assert rgb_to_hsv(0,128,0) == (120.0, 100.0, 50.19607843137255)
+assert rgb_to_hsv(0,255,255) == (180.0, 100.0, 100.0)
+assert rgb_to_hsv(0,0,255) == (240.0, 100.0, 100.0)
+assert rgb_to_hsv(255,255,0) == (60.0, 100.0, 100.0)
+assert rgb_to_hsv(255,0,255) == (300.0, 100.0, 100.0)
+assert rgb_to_hsv(255,255,255) == (0, 0.0, 100.0)
+assert rgb_to_hsv(128,0,128) == (300.0, 100.0, 50.19607843137255)
+assert rgb_to_hsv(255,255,255) == (0, 0.0, 100.0)
+assert rgb_to_hsv(255,0,0) == (0.0, 100.0, 100.0)
+assert rgb_to_hsv(0,255,0) == (120.0, 100.0, 100.0)
+assert rgb_to_hsv(0,0,255) == (240.0, 100.0, 100.0)
+assert rgb_to_hsv(255,255,0) == (60.0, 100.0, 100.0)
+assert rgb_to_hsv(0,255,255) == (180.0, 100.0, 100.0)
+assert rgb_to_hsv(255,0,255) == (300.0, 100.0, 100.0)
+assert rgb_to_hsv(128,0,128) == (300.0, 100.0, 50.19607843137255)
+assert rgb_to_hsv(127,127,127) == (0, 0.0, 49.80392156862745)
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rgb_to_hsv(r, g, b):
+    r, g, b = r / 255.0, g / 255.0, b / 255.0
+    cmax = max(r, g, b)
+    cmin = min(r, g, b)
+    delta = cmax - cmin
+    if delta == 0:
+        h = 0
+    elif cmax == r:
+        h = ((g - b) / delta) % 6
+    elif cmax == g:
+        h = (b - r) / delta + 2
+    else:
+        h = (r - g) / delta + 4
+    h = round(h * 60, 2)
+    if h < 0:
+        h += 360
+    if cmax == 0:
+        s = 0
+    else:
+        s = (delta / cmax) * 100
+    v = cmax * 100
+    return h, round(s, 2), round(v, 2)
+```

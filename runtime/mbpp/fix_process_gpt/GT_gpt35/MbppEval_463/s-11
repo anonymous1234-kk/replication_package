@@ -1,0 +1,78 @@
+task_id:MbppEval/463
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_subarray_product(arr):
+    '''
+    Write a function to find the maximum product subarray of the given array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_subarray_product(arr):
+    '''
+    Write a function to find the maximum product subarray of the given array.
+    '''
+
+    """
+    Write a function to find the maximum product subarray of the given array.
+    """
+    # Initialize variables to hold the maximum product and current product
+    max_product = arr[0]
+    current_product = arr[0]
+
+    # Loop through the array starting from the second element
+    for i in range(1, len(arr)):
+        # Calculate the current product
+        current_product *= arr[i]
+
+        # Update the maximum product if the current product is greater
+        if current_product > max_product:
+            max_product = current_product
+
+        # Reset the current product if it becomes 0
+        if current_product == 0:
+            current_product = 1
+
+    return max_product
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_subarray_product([-1, -2, -3, 4, 5, 6, 7]) == 5040
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert max_subarray_product([3, 4, -1, 5, 6, 7, -8, 2]) == 40320
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_subarray_product(arr):
+    max_product = arr[0]
+    current_product = arr[0]
+
+    for i in range(1, len(arr)):
+        current_product *= arr[i]
+
+        if current_product > max_product:
+            max_product = current_product
+
+        if current_product == 0:
+            current_product = 1
+
+    return max_product
+```
+

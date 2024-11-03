@@ -1,0 +1,76 @@
+task_id:MbppEval/290
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_length(list1):
+    '''
+    Write a function to find the list of maximum length in a list of lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_length(list1):
+    '''
+    Write a function to find the list of maximum length in a list of lists.
+    '''
+
+    max_list = max(list1, key=len)
+    return max_list
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-7<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_length([[100, 200, 300], [400, 500, 600], [700, 800]]) == (3, [700, 800])
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_length(list1):
+    '''
+    Write a function to find the list of maximum length in a list of lists.
+    '''
+
+    max_length = 0
+    max_list = []
+
+    for lst in list1:
+        if len(lst) > max_length:
+            max_length = len(lst)
+            max_list = lst
+
+    return (max_length, max_list)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-40<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_length([[2, 3, 4], [5, 6, 7]]) == (3, [5, 6, 7])
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_length(list1):
+    max_list = max(list1, key=len)
+    return len(max_list), max_list
+```

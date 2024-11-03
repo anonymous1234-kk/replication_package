@@ -1,0 +1,86 @@
+task_id:MbppEval/446
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+ 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+    # Creating a Counter object from the tuple
+    tup_counter = Counter(tup)
+
+    # Creating a dictionary to store the occurrence of elements from the list in the tuple
+    count_dict = {}
+
+    # Iterating over the list
+    for element in lst:
+        # Getting the occurrence of the current element from the Counter object
+        count = tup_counter[element]
+
+        # Adding the element and its occurrence to the dictionary
+        count_dict[element] = count
+
+    # Returning the dictionary containing the occurrence of elements from the list in the tuple
+    return count_dict
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_Occurrence(('a', 'b', 'a', 'c', 'd', 'd', 'a', 'd', 'd', 'c', 'c', 'e', 'e', 'd', 'a'),['a', 'c', 'd']) == 12
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+ 
+    # Creating a Counter object from the tuple
+    tup_counter = Counter(tup)
+
+    # Creating a dictionary to store the occurrence of elements from the list in the tuple
+    count_dict = {}
+
+    # Iterating over the list
+    for element in lst:
+        # Getting the occurrence of the current element from the Counter object
+        count = tup_counter.get(element, 0)
+
+        # Adding the element and its occurrence to the dictionary
+        count_dict[element] = count
+
+    # Returning the dictionary containing the occurrence of elements from the list in the tuple
+    return count_dict
+
+```

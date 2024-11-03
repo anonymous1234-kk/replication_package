@@ -1,0 +1,52 @@
+task_id:MbppEval/430
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def parabola_directrix(a, b, c): 
+    '''
+    Write a function to find the directrix of a parabola.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def parabola_directrix(a, b, c): 
+    '''
+    Write a function to find the directrix of a parabola.
+    '''
+
+    '''
+    Write a function to find the directrix of a parabola.
+    '''
+    return -(b**2 - 4*a*c)/(4*a)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert parabola_directrix(-1,2,-1) == 19
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def parabola_directrix(a, b, c): 
+    '''
+    Write a function to find the directrix of a parabola.
+    '''
+
+    return -(b**2 - 4*a*c)/(4*a)
+```

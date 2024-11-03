@@ -1,0 +1,119 @@
+task_id:MbppEval/598
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # Convert number to string to get the length
+    num_str = str(number)
+
+    # Get the length of the number
+    n = len(num_str)
+
+    # Calculate the sum of the cubes of each digit
+    sum = 0
+    for digit in num_str:
+        sum += int(digit) ** n
+
+    # Check if the sum is equal to the number
+    if sum == number:
+        return True
+    else:
+        return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert armstrong_number(3) == Armstrong Number
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert armstrong_number(10) == False
+assert armstrong_number('123') == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # Convert number to string to get the length
+    num_str = str(number)
+
+    # Get the length of the number
+    n = len(num_str)
+
+    # Calculate the sum of the cubes of each digit
+    sum = 0
+    for digit in num_str:
+        sum += int(digit) ** n
+
+    # Check if the sum is equal to the number
+    if sum == number:
+        return "Armstrong Number"
+    else:
+        return False
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert armstrong_number(9474) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert armstrong_number(10) == False
+assert armstrong_number('123') == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # Convert number to string to get the length
+    num_str = str(number)
+
+    # Get the length of the number
+    n = len(num_str)
+
+    # Calculate the sum of the cubes of each digit
+    sum = 0
+    for digit in num_str:
+        sum += int(digit) ** n
+
+    # Check if the sum is equal to the number
+    if sum == number:
+        return True
+    else:
+        return False
+
+```

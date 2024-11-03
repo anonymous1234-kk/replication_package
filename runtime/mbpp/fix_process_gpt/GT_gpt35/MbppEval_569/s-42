@@ -1,0 +1,77 @@
+task_id:MbppEval/569
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sort_sublists(list1):
+    '''
+    Write a function to sort each sublist of strings in a given list of lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sort_sublists(list1):
+    '''
+    Write a function to sort each sublist of strings in a given list of lists.
+    '''
+
+    for sublist in list1:
+        sublist.sort()
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sort_sublists([['123', '23', '1'], ['0', '3'], ['1', '0', '34']]) == [['1', '123', '23'], ['0', '3'], ['0', '1', '34']]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sort_sublists(list1):
+    '''
+    Write a function to sort each sublist of strings in a given list of lists.
+    '''
+
+    for sublist in list1:
+        sublist.sort()
+    
+    return list1
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sort_sublists(['hello', 'hi', 'how are you']) == [['e', 'h', 'l', 'l', 'o'], ['h', 'i'], [' ', ' ', 'a', 'e', 'h', 'o', 'o', 'r', 'u', 'w', 'y']]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert sort_sublists([['123', '23', '1'], ['0', '3'], ['1', '0', '34']]) == [['1', '123', '23'], ['0', '3'], ['0', '1', '34']]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sort_sublists(list1):
+    '''
+    Write a function to sort each sublist of strings in a given list of lists.
+    '''
+
+    for sublist in list1:
+        sublist.sort(key=lambda x: x.lower())
+    
+    return list1
+```

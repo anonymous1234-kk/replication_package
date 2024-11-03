@@ -1,0 +1,106 @@
+task_id:MbppEval/444
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def trim_tuple(test_list, K):
+    '''
+    Write a function to trim each tuple by k in the given tuple list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def trim_tuple(test_list, K):
+    '''
+    Write a function to trim each tuple by k in the given tuple list.
+    '''
+
+    # Initialize an empty list to store the trimmed tuples
+    trimmed_list = []
+
+    # Loop through each tuple in the test_list
+    for tup in test_list:
+        # Check if the length of the tuple is greater than or equal to K
+        if len(tup) >= K:
+            # If yes, trim the tuple and append it to the trimmed_list
+            trimmed_list.append(tup[:K])
+        else:
+            # If no, append the original tuple to the trimmed_list
+            trimmed_list.append(tup)
+
+    # Return the trimmed_list
+    return trimmed_list
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert trim_tuple([(1, 2, 3), (4, 5, 6), (7, 8, 9)],2) == [(3,), (6,), (9,)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def trim_tuple(test_list, K):
+    '''
+    Write a function to trim each tuple by k in the given tuple list.
+    '''
+
+    # Initialize an empty list to store the trimmed tuples
+    trimmed_list = []
+
+    # Loop through each tuple in the test_list
+    for tup in test_list:
+        # Check if the length of the tuple is greater than or equal to K
+        if len(tup) >= K:
+            # If yes, trim the tuple and append it to the trimmed_list
+            trimmed_list.append(tup[-K:])
+        else:
+            # If no, append the original tuple to the trimmed_list
+            trimmed_list.append(tup)
+
+    # Return the trimmed_list
+    return trimmed_list
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-11<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert trim_tuple([(8, 9), (7, 8), (4, 5), (6, 7)],2) == [(), (), (), ()]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def trim_tuple(test_list, K):
+    '''
+    Write a function to trim each tuple by k in the given tuple list.
+    '''
+
+    trimmed_list = []
+
+    for tup in test_list:
+        if len(tup) >= K:
+            trimmed_list.append(tup[:K])
+        else:
+            trimmed_list.append(())
+
+    return trimmed_list
+```

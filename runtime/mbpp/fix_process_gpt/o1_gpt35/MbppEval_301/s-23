@@ -1,0 +1,49 @@
+task_id:MbppEval/301
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def dict_depth(d):
+    '''
+    Write a function to find the depth of a dictionary.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def dict_depth(d):
+    '''
+    Write a function to find the depth of a dictionary.
+    '''
+
+    if not isinstance(d, dict) or not d:
+        return 0
+    return max(dict_depth(v) for k, v in d.items() if isinstance(v, dict)) + 1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert dict_depth({'a': 1, 'b': {'c': 1}, 'd': {'e': {'f': 1}}}) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def dict_depth(d):
+    if not isinstance(d, dict) or not d:
+        return 0
+    return max(dict_depth(v) for v in d.values() if isinstance(v, dict)) + 1
+```

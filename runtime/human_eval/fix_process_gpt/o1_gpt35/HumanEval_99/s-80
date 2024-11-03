@@ -1,0 +1,94 @@
+task_id:HumanEval/99
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+
+    # Convert string to float
+    f_value = float(value)
+    # Round the float value
+    rounded_value = round(f_value)
+    # Check if the rounded value is greater than or equal to original value
+    if rounded_value >= f_value:
+        return int(rounded_value)
+    else:
+        # Round it up to the next integer away from zero
+        return int(rounded_value + abs(rounded_value - f_value) / (rounded_value - f_value)))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert closest_integer('100000000000000000000000000000000000000000000000000000000000000000000000000000000000000.1') == 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def closest_integer(value):
+    f_value = float(value)
+    rounded_value = round(f_value)
+    if rounded_value >= f_value:
+        return int(rounded_value)
+    else:
+        if f_value < 0:
+            return int(rounded_value - 1)
+        else:
+            return int(rounded_value + 1)
+
+```

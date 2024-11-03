@@ -1,0 +1,65 @@
+task_id:MbppEval/780
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from itertools import combinations 
+def find_combinations(test_list):
+    '''
+    Write a function to find the combinations of sums with tuples in the given tuple list. https://www.geeksforgeeks.org/python-combinations-of-sum-with-tuples-in-tuple-list/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from itertools import combinations 
+def find_combinations(test_list):
+    '''
+    Write a function to find the combinations of sums with tuples in the given tuple list. https://www.geeksforgeeks.org/python-combinations-of-sum-with-tuples-in-tuple-list/
+    '''
+
+    result = set()
+    
+    for i in range(1, len(test_list)+1):
+        combos = combinations(test_list, i)
+        for combo in combos:
+            sum_tuple = sum(combo)
+            result.add(sum_tuple)
+    
+    return sorted(result)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_combinations([(1, 2), (4, 5), (3, 6)]) == [(5, 7), (4, 8), (7, 11)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from itertools import combinations 
+
+def find_combinations(test_list):
+    result = set()
+
+    for i in range(1, len(test_list)+1):
+        combos = combinations(test_list, i)
+        for combo in combos:
+            sum_tuple = tuple(sum(t) for t in zip(*combo))
+            result.add(sum_tuple)
+
+    return sorted(result)
+```

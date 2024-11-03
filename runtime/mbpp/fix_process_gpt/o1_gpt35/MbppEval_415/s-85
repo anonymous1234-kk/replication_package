@@ -1,0 +1,103 @@
+task_id:MbppEval/415
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+
+    n = len(arr)
+    if n < 2:
+        return None
+    if n == 2:
+        return arr[0], arr[1]
+    max_pos1 = max_pos2 = None
+    max_neg1 = max_neg2 = None
+    for x in arr:
+        if x > 0:
+            if max_pos1 is None or x > max_pos1:
+                max_pos1, max_pos2 = x, max_pos1
+            elif max_pos2 is None or x > max_pos2:
+                max_pos2 = x
+        elif x < 0:
+            if max_neg1 is None or x > max_neg1:
+                max_neg1, max_neg2 = x, max_neg1
+            elif max_neg2 is None or x > max_neg2:
+                max_neg2 = x
+    if max_pos1 is not None and max_pos2 is not None:
+        if max_neg1 is not None and max_neg2 is not None:
+            if max_pos1 * max_pos2 > max_neg1 * max_neg2:
+                return max_pos1, max_pos2
+            else:
+                return max_neg1, max_neg2
+        else:
+            return max_pos1, max_pos2
+    else:
+        return max_neg1, max_neg2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_Product([7, -1, -2, 8, -2]) == (7, 8)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+
+    n = len(arr)
+    if n < 2:
+        return None
+    if n == 2:
+        return arr[0], arr[1]
+    max_pos1 = max_pos2 = None
+    max_neg1 = max_neg2 = None
+    for x in arr:
+        if x > 0:
+            if max_pos1 is None or x > max_pos1:
+                max_pos1, max_pos2 = x, max_pos1
+            elif max_pos2 is None or x > max_pos2:
+                max_pos2 = x
+        elif x < 0:
+            if max_neg1 is None or x < max_neg1:
+                max_neg1, max_neg2 = x, max_neg1
+            elif max_neg2 is None or x < max_neg2:
+                max_neg2 = x
+    if max_pos1 is not None and max_pos2 is not None:
+        if max_neg1 is not None and max_neg2 is not None:
+            if max_pos1 * max_pos2 > max_neg1 * max_neg2:
+                return max_pos1, max_pos2
+            else:
+                return max_neg1, max_neg2
+        else:
+            return max_pos1, max_pos2
+    else:
+        return max_neg1, max_neg2
+```

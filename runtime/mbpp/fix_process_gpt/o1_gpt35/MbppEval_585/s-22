@@ -1,0 +1,93 @@
+task_id:MbppEval/585
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import heapq
+def expensive_items(items,n):
+    '''
+    Write a function to find the n most expensive items in a given dataset.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import heapq
+def expensive_items(items,n):
+    '''
+    Write a function to find the n most expensive items in a given dataset.
+    '''
+
+    """
+    Return the n most expensive items from the given dataset.
+    
+    :param items: A list of tuples, each containing the name and price of an item.
+    :param n: The number of most expensive items to return.
+    
+    :return: A list of the n most expensive items from the given dataset.
+    """
+    # Use a heap to keep track of the n most expensive items
+    # The heap is kept in a min-heap order so that we can easily
+    # check if an item is more expensive than the current n-th item
+    most_expensive = []
+    for item in items:
+        # We use the negative price as the heap key because Python's
+        # heapq only provides a min-heap implementation
+        price = -item[1]
+        if len(most_expensive) < n:
+            heapq.heappush(most_expensive, (price, item[0]))
+        else:
+            if price > most_expensive[0][0]:
+                heapq.heappushpop(most_expensive, (price, item[0]))
+    
+    # Return the n most expensive items in the order they were added
+    return [item[1] for item in sorted(most_expensive, reverse=True)]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-11<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert expensive_items([('item1', '12.20'), ('item2', '15.10'), ('item3', '24.5'), ('item4', '45.00'), ('item5', '9.50')],2) == [('item4', '45.00'), ('item3', '24.5')]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import heapq
+def expensive_items(items,n):
+    '''
+    Write a function to find the n most expensive items in a given dataset.
+    '''
+
+    """
+    Return the n most expensive items from the given dataset.
+    
+    :param items: A list of tuples, each containing the name and price of an item.
+    :param n: The number of most expensive items to return.
+    
+    :return: A list of the n most expensive items from the given dataset.
+    """
+    most_expensive = []
+    for item in items:
+        price = -float(item[1])
+        if len(most_expensive) < n:
+            heapq.heappush(most_expensive, (price, item))
+        else:
+            if price > most_expensive[0][0]:
+                heapq.heappushpop(most_expensive, (price, item))
+    
+    return [item[1] for item in sorted(most_expensive, reverse=True)]
+
+```

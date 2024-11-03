@@ -1,0 +1,71 @@
+task_id:MbppEval/478
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def remove_lowercase(str1):
+    '''
+    Write a function to remove lowercase substrings from a given string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def remove_lowercase(str1):
+    '''
+    Write a function to remove lowercase substrings from a given string.
+    '''
+
+    '''
+    Write a function to remove lowercase substrings from a given string.
+    '''
+    regex = r"[a-z]+"
+    matches = re.findall(regex, str1)
+    for match in matches:
+        if match.islower():
+            str1 = str1.replace(match, "")
+    return str1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert remove_lowercase('Hello! My name is John. I am a Software Engineer') == H! M   J. I   S E
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert remove_lowercase('This is a Test String') == T   T S
+assert remove_lowercase('string with numbers 123') ==    123
+assert remove_lowercase('ONLY UPPERCASE') == ONLY UPPERCASE
+assert remove_lowercase('upPERcaSe') == PERS
+assert remove_lowercase('    ') ==     
+assert remove_lowercase('Both Lows and UPERS') == B L  UPERS
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def remove_lowercase(str1):
+    '''
+    Write a function to remove lowercase substrings from a given string.
+    '''
+
+    regex = r"[a-z]+"
+    matches = re.findall(regex, str1)
+    for match in matches:
+        if match.islower():
+            str1 = str1.replace(match, " ")
+    return str1
+
+```

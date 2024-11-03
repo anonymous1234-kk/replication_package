@@ -1,0 +1,106 @@
+task_id:HumanEval/91
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+    # Split the input string into sentences, delimited by '.', '?' or '!'
+    sentences = S.split('.')
+    sentences = [sentence.strip() for sentence in sentences]
+    sentences = [sentence for sentence in sentences if sentence]
+    
+    sentences += [sentence.strip() for sentence in S.split('?') if sentence.strip() and sentence[-1] != '.']
+    sentences += [sentence.strip() for sentence in S.split('!') if sentence.strip() and sentence[-1] != '.']
+
+    # Count the number of boredoms
+    count = 0
+    for sentence in sentences:
+        if sentence.startswith("I"):
+            count += 1
+
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_bored('I am happy. I love my family. I love this weather') == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+    # Split the input string into sentences, delimited by '.', '?' or '!'
+    sentences = S.split('.')
+    sentences = [sentence.strip() for sentence in sentences]
+    sentences = [sentence for sentence in sentences if sentence]
+    
+    sentences += [sentence.strip() for sentence in S.split('?') if sentence.strip() and sentence[-1] != '.']
+    sentences += [sentence.strip() for sentence in S.split('!') if sentence.strip() and sentence[-1] != '.']
+
+    # Count the number of boredoms
+    count = 0
+    for sentence in sentences:
+        words = sentence.split()
+        if words[0] == "I":
+            count += 1
+
+    return count
+
+```

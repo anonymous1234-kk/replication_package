@@ -1,0 +1,651 @@
+task_id:MbppEval/773
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append(match.start())
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Goodbye, World','o') == [('o', 1), ('o', 2), ('o', 10)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here is the fixed code:
+
+```python
+import re
+def occurance_substring(text, pattern):
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring(' ','') == [('', 0), ('', 1)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append(match.start())
+    if len(res) == 0:
+        return None
+    return res
+
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Artificial Intelligence','n') == ['Found "n" at 12:13', 'Found "n" at 20:21']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append(f'Found "{pattern}" at {match.start()}:{match.end()}')
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Artificial Intelligence','t') == [('t', 2), ('t', 13)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Heloo World!','o') == [('o', 3), ('o', 4), ('o', 7)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Python is a general-purpose language','a') == [('a', 10), ('a', 17), ('a', 29), ('a', 33)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-24<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('I am a proffessional programmer','r') == [('r', 8), ('r', 22), ('r', 25), ('r', 30)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('I am a good programmer','r') == [('r', 13), ('r', 16), ('r', 21)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Data Science is Good','i') == [('i', 7), ('i', 13)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-30<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Data Science is the sexiest job of the 21st century','the') == [('the', 16), ('the', 35)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+assert occurance_substring('Data Science is a Field of Future','f') == [25]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+
+def occurance_substring(text, pattern):
+    matches = re.finditer(pattern, text)
+    res = [(match.group(), match.start()) for match in matches]
+    return res if res else None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Python for Data Science Handbook','a') == (3, [12, 14, 25])
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+assert occurance_substring('Data Science is a Field of Future','f') == [25]
+assert occurance_substring('Python for Data Science Handbook','Python') == [0]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append(match.start())
+    if len(res) == 0:
+        return None
+    return len(res), res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-33<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('Data Science','a') == [('a', 1), ('a', 3)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+assert occurance_substring('Data Science is a Field of Future','f') == [25]
+assert occurance_substring('Python for Data Science Handbook','Python') == [0]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('rara','ra') == [('ra', 0), ('ra', 2)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+assert occurance_substring('Data Science is a Field of Future','f') == [25]
+assert occurance_substring('Python for Data Science Handbook','Python') == [0]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-37<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('abcabc','ab') == [('ab', 0), ('ab', 3)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+assert occurance_substring('Data Science is a Field of Future','f') == [25]
+assert occurance_substring('Python for Data Science Handbook','Python') == [0]
+assert occurance_substring('abcdefghi','gh') == [6]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    '''
+    Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match.
+    '''
+
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('aabaabaab','aab') == [(0, 3), (3, 6), (6, 9)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+assert occurance_substring('Data Science is a Field of Future','f') == [25]
+assert occurance_substring('Python for Data Science Handbook','Python') == [0]
+assert occurance_substring('abcdefghi','gh') == [6]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+
+def occurance_substring(text, pattern):
+    matches = re.finditer(pattern, text)
+    res = [(match.start(), match.start() + len(pattern)) for match in matches]
+    if len(res) == 0:
+        return None
+    return res
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert occurance_substring('aabaabaab','aa') == [('aa', 0), ('aa', 3), ('aa', 6)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert occurance_substring('Hello, World','o') == [4, 8]
+assert occurance_substring('Hello, World','W') == [7]
+assert occurance_substring('Goodbye, World','W') == [9]
+assert occurance_substring(' ',' ') == [0]
+assert occurance_substring('Hello, World','H') == [0]
+assert occurance_substring('hello world','world') == [6]
+assert occurance_substring('Hactoberfest is awesome','actober') == [1]
+assert occurance_substring('I am trying to learn python','to learn') == [12]
+assert occurance_substring('Computer Science','ter S') == [5]
+assert occurance_substring('I am a Teacher','am') == [2]
+assert occurance_substring('Data Science is Good','G') == [16]
+assert occurance_substring('Data Science is a Field of Future','f') == [25]
+assert occurance_substring('Python for Data Science Handbook','Python') == [0]
+assert occurance_substring('abcdefghi','gh') == [6]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def occurance_substring(text,pattern):
+    matches = re.finditer(pattern, text)
+    res = []
+    for match in matches:
+        res.append((match.group(), match.start()))
+    if len(res) == 0:
+        return None
+    return res
+```

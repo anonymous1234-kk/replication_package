@@ -1,0 +1,56 @@
+task_id:MbppEval/472
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def check_Consecutive(l): 
+    '''
+    Write a python function to check whether the given list contains consecutive numbers or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def check_Consecutive(l): 
+    '''
+    Write a python function to check whether the given list contains consecutive numbers or not.
+    '''
+
+    '''
+    Write a python function to check whether the given list contains consecutive numbers or not.
+    '''
+    n = len(l)
+    return "Yes" if sorted(l) == list(range(min(l), max(l)+1)) else "No"
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert check_Consecutive([2, 5, 4, 8, 6]) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def check_Consecutive(l): 
+    '''
+    Write a python function to check whether the given list contains consecutive numbers or not.
+    '''
+
+    n = len(l)
+    sorted_list = sorted(l)
+    return "Yes" if all(sorted_list[i] + 1 == sorted_list[i+1] for i in range(n-1)) else "No"
+
+```

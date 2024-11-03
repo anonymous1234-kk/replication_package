@@ -1,0 +1,610 @@
+task_id:MbppEval/417
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}  # create an empty dictionary to store the result
+    for tpl in Input:
+        if tpl[0] in result:  # if the first element of the tuple is already present in the result dictionary
+            result[tpl[0]].append(tpl)  # add the tuple to the existing list of tuples with the same first element
+        else:
+            result[tpl[0]] = [tpl]  # create a new list of tuples with the first element as the key in the result dictionary
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (2, 6), (1, 6), (4, 7)]) == [(1, 3), (1, 6)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.extend(result[key])
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 2), (1, 3)]) == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.extend(result[key])
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-7<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 2), (2, 3), (3, 6), (3, 7)]) == [3]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.append(key)
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 2), (2, 3), (3, 6), (3, 7), (1, 8), (2, 9)]) == {1: [2, 8], 2: [3, 9], 3: [6, 7]}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here's the fixed code:
+
+```python
+def group_tuples(Input): 
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl[1])
+        else:
+            result[tpl[0]] = [tpl[1]]
+    final_result = {}
+    for key in result:
+        if len(result[key]) > 1:
+            final_result[key] = result[key]
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (4, 5), (3, 6), (4, 8), (1, 9)]) == {1: [(1, 3), (1, 9)], 4: [(4, 5), (4, 8)]}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = {}
+    for key in result:
+        if len(result[key]) > 1:
+            final_result[key] = result[key]
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-11<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 5), (4, 5), (3, 6), (4, 8), (1, 9)]) == {1: [(1, 5), (1, 9)], 4: [(4, 5), (4, 8)]}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = {}
+    for key in result:
+        if len(result[key]) > 1:
+            final_result[key] = result[key]
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-14<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.extend(result[key])
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-16<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (4, 5), (3, 6), (4, 8), (1, 9)]) == [1, 4]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl[0])
+        else:
+            result[tpl[0]] = [tpl[0]]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.append(key)
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-17<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (4, 5), (3, 6), (4, 8), (1, 9)]) == {1: [(1, 3), (1, 9)], 4: [(4, 5), (4, 8)]}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = {}
+    for key in result:
+        if len(result[key]) > 1:
+            final_result[key] = result[key]
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 3), (4, 5), (3, 6), (4, 8), (1, 9)]) == [1, 4]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.append(key)
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 2), (1, 3), (1, 4)]) == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 2), (3, 4)]) == []
+assert group_tuples([(5, 6), (6, 7), (5, 7)]) == [(5, 6), (5, 7)]
+assert group_tuples([('apple', 'banana'), ('cat', 'dog'), ('apple', 'pie')]) == [('apple', 'banana'), ('apple', 'pie')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('book', 'eraser')]) == [('book', 'pen'), ('book', 'eraser')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('pen', 'eraser')]) == []
+assert group_tuples([(1, 2)]) == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.extend(result[key])
+    return final_result if len(final_result) > 0 else result[tpl[0]]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (1, 1)]) == {2: [(2, 5), (2, 7)], 1: [(1, 2), (1, 1)]}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 2), (3, 4)]) == []
+assert group_tuples([(5, 6), (6, 7), (5, 7)]) == [(5, 6), (5, 7)]
+assert group_tuples([('apple', 'banana'), ('cat', 'dog'), ('apple', 'pie')]) == [('apple', 'banana'), ('apple', 'pie')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('book', 'eraser')]) == [('book', 'pen'), ('book', 'eraser')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('pen', 'eraser')]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7)]) == [(2, 5), (2, 7)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1)]) == [(2, 5), (2, 7), (2, 1)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = {}
+    for key in result:
+        if len(result[key]) > 1:
+            final_result[key] = result[key]
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 2), (3, 4), (1, 5), (7, 8), (5, 4), (3, 9), (1, 12)]) == {1: [(1, 2), (1, 5), (1, 12)], 3: [(3, 4), (3, 9)]}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 2), (3, 4)]) == []
+assert group_tuples([(5, 6), (6, 7), (5, 7)]) == [(5, 6), (5, 7)]
+assert group_tuples([('apple', 'banana'), ('cat', 'dog'), ('apple', 'pie')]) == [('apple', 'banana'), ('apple', 'pie')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('book', 'eraser')]) == [('book', 'pen'), ('book', 'eraser')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('pen', 'eraser')]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7)]) == [(2, 5), (2, 7)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1)]) == [(2, 5), (2, 7), (2, 1)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (3, 1)]) == [(2, 5), (2, 7), (3, 2), (3, 1)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (4, 2), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (7, 8), (1, 4)]) == [(1, 2), (1, 5), (1, 4)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (7, 8), (1, 4), (1, 9), (1, 12)]) == [(1, 2), (1, 5), (1, 4), (1, 9), (1, 12)]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = {}
+    for key in result:
+        if len(result[key]) > 1:
+            final_result[key] = result[key]
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-48<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 2), (3, 4), (1, 5), (6, 7), (1, 8), (3, 5)]) == [1, 3]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 2), (3, 4)]) == []
+assert group_tuples([(5, 6), (6, 7), (5, 7)]) == [(5, 6), (5, 7)]
+assert group_tuples([('apple', 'banana'), ('cat', 'dog'), ('apple', 'pie')]) == [('apple', 'banana'), ('apple', 'pie')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('book', 'eraser')]) == [('book', 'pen'), ('book', 'eraser')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('pen', 'eraser')]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7)]) == [(2, 5), (2, 7)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1)]) == [(2, 5), (2, 7), (2, 1)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (3, 1)]) == [(2, 5), (2, 7), (3, 2), (3, 1)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (4, 2), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (7, 8), (1, 4)]) == [(1, 2), (1, 5), (1, 4)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (7, 8), (1, 4), (1, 9), (1, 12)]) == [(1, 2), (1, 5), (1, 4), (1, 9), (1, 12)]
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (1, 4)]) == [(1, 2), (1, 4)]
+assert group_tuples([(1, 2), (1, 4), (1, 5)]) == [(1, 2), (1, 4), (1, 5)]
+assert group_tuples([(1, 2), (3, 4)]) == []
+assert group_tuples([(1, 2), (3, 4), (7, 8)]) == []
+assert group_tuples([(1, 2), (3, 4), (7, 8), (9, 10)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6), (7, 8)]) == []
+assert group_tuples([(1, 2), (3, 4), (1, 5), (6, 7), (1, 8)]) == [(1, 2), (1, 5), (1, 8)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (6, 7)]) == [(1, 2), (1, 5)]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.append((key, result[key][0][1]))
+    return final_result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert group_tuples([(1, 2), (3, 4), (1, 5), (6, 7), (1, 8), (3, 5), (1, 5)]) == {1: [(1, 2), (1, 5), (1, 8), (1, 5)], 3: [(3, 4), (3, 5)], 6: [(6, 7)]}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert group_tuples([(1, 2), (2, 2)]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6)]) == []
+assert group_tuples([(1, 2), (2, 3), (3, 6)]) == []
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 3), (4, 5), (3, 6), (2, 8), (1, 9)]) == [(1, 3), (1, 9)]
+assert group_tuples([(1, 2), (3, 4)]) == []
+assert group_tuples([(5, 6), (6, 7), (5, 7)]) == [(5, 6), (5, 7)]
+assert group_tuples([('apple', 'banana'), ('cat', 'dog'), ('apple', 'pie')]) == [('apple', 'banana'), ('apple', 'pie')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('book', 'eraser')]) == [('book', 'pen'), ('book', 'eraser')]
+assert group_tuples([('book', 'pen'), ('pencil', 'book'), ('pen', 'eraser')]) == []
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7)]) == [(2, 5), (2, 7)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1)]) == [(2, 5), (2, 7), (2, 1)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (3, 2), (3, 1)]) == [(2, 5), (2, 7), (3, 2), (3, 1)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (4, 2), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(2, 5), (1, 2), (8, 6), (7, 8), (2, 7), (2, 1), (2, 2)]) == [(2, 5), (2, 7), (2, 1), (2, 2)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (7, 8), (1, 4)]) == [(1, 2), (1, 5), (1, 4)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (7, 8), (1, 4), (1, 9), (1, 12)]) == [(1, 2), (1, 5), (1, 4), (1, 9), (1, 12)]
+assert group_tuples([(1, 2)]) == []
+assert group_tuples([(1, 2), (1, 4)]) == [(1, 2), (1, 4)]
+assert group_tuples([(1, 2), (1, 4), (1, 5)]) == [(1, 2), (1, 4), (1, 5)]
+assert group_tuples([(1, 2), (3, 4)]) == []
+assert group_tuples([(1, 2), (3, 4), (7, 8)]) == []
+assert group_tuples([(1, 2), (3, 4), (7, 8), (9, 10)]) == []
+assert group_tuples([(1, 2), (3, 4), (5, 6), (7, 8)]) == []
+assert group_tuples([(1, 2), (3, 4), (1, 5), (6, 7), (1, 8)]) == [(1, 2), (1, 5), (1, 8)]
+assert group_tuples([(1, 2), (3, 4), (1, 5), (6, 7)]) == [(1, 2), (1, 5)]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def group_tuples(Input): 
+    '''
+    Write a function to find common first element in given list of tuple.
+    '''
+    result = {}
+    for tpl in Input:
+        if tpl[0] in result:
+            result[tpl[0]].append(tpl)
+        else:
+            result[tpl[0]] = [tpl]
+    final_result = []
+    for key in result:
+        if len(result[key]) > 1:
+            final_result.extend(result[key])
+    return final_result
+```

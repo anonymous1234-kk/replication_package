@@ -1,0 +1,63 @@
+task_id:MbppEval/311
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+ 
+    # Convert n to binary and reverse it
+    binary_n = bin(n)[2:][::-1]
+    
+    # Check if binary_n has no unset bit
+    if '0' not in binary_n:
+        return n
+    
+    # Find the index of the left most unset bit
+    index = binary_n.index('0')
+    
+    # Flip the bit at index to 1
+    result = n + 2**index
+    
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_left_most_unset_bit(100) == 116
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    binary_n = bin(n)[2:][::-1]
+    if '0' not in binary_n:
+        return n
+    index = binary_n.index('0')
+    result = n | 2**index
+    return result
+```

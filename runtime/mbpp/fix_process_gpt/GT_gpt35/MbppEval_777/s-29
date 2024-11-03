@@ -1,0 +1,70 @@
+task_id:MbppEval/777
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+ 
+    # create an empty set to store elements that have already been seen
+    seen = set()
+    
+    # create a variable to store the sum of non-repeated elements
+    sum_non_repeated = 0
+    
+    # iterate over each element in the input list
+    for elem in arr:
+        
+        # if the element has not been seen before, add it to the sum
+        if elem not in seen:
+            sum_non_repeated += elem
+            
+            # add the element to the set of seen elements
+            seen.add(elem)
+    
+    # return the sum of non-repeated elements
+    return sum_non_repeated
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_sum(['a', 'b', 'c', 'a', 'b', 'd']) == abcd
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_sum([1, 2, 2, 3, 3, 4, 4, 5]) == 15
+assert find_sum([1, 2, 3, 4, 2, 3, 4, 5]) == 15
+assert find_sum([1, 1, 1, 1]) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_sum(arr): 
+    seen = set()
+    sum_non_repeated = 0
+    for elem in arr:
+        if arr.count(elem) == 1:
+            sum_non_repeated += elem
+        seen.add(elem)
+    return sum_non_repeated
+```

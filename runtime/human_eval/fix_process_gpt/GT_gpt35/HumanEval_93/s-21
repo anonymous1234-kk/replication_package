@@ -1,0 +1,99 @@
+task_id:HumanEval/93
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+    # Define a variable to store the encoded message
+    encoded_message = ""
+
+    # Iterate through each character in the message
+    for char in message:
+        # If the character is a vowel, add the letter that appears 2 places after the vowel
+        if char.lower() in ['a', 'e', 'i', 'o', 'u']:
+            encoded_message += chr(ord(char) + 2)
+        # Otherwise, swap the case of the character and add it to the encoded message
+        else:
+            encoded_message += char.swapcase()
+
+    # Return the encoded message
+    return encoded_message
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert encode('Hello World!') == hGLLQ wQRLD!
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def encode(message):
+    encoded_message = ""
+    for char in message:
+        if char.lower() in ['a', 'e', 'i', 'o', 'u']:
+            encoded_message += chr(ord(char) + 2)
+        else:
+            encoded_message += char.swapcase()
+    return encoded_message
+```

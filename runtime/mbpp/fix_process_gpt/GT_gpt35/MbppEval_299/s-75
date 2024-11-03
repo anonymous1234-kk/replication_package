@@ -1,0 +1,68 @@
+task_id:MbppEval/299
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    # create a defaultdict to store the aggregate scores for each student
+    # the default value is 0
+    scores = defaultdict(int)
+
+    # iterate over the tuples in stdata
+    for student, score in stdata:
+        # add the score to the student's total aggregate
+        scores[student] += score
+
+    # find the maximum aggregate score
+    max_score = max(scores.values())
+
+    return max_score
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_aggregate([(1, 40), (2, 50), (3, 60), (1, 70), (2, 80), (3, 90)]) == (3, 150)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+
+def max_aggregate(stdata):
+    scores = defaultdict(int)
+
+    for student, score in stdata:
+        scores[student] += score
+
+    max_score = max(scores.values())
+    max_students = [student for student, score in scores.items() if score == max_score]
+    return max_students, max_score
+```

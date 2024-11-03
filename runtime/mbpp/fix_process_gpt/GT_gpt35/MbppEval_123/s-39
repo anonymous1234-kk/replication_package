@@ -1,0 +1,80 @@
+task_id:MbppEval/123
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def amicable_numbers_sum(limit):
+    '''
+    Write a function to sum all amicable numbers from 1 to a specified number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def amicable_numbers_sum(limit):
+    '''
+    Write a function to sum all amicable numbers from 1 to a specified number.
+    '''
+
+    '''
+    Write a function to sum all amicable numbers from 1 to a specified number.
+    '''
+    def divisors_sum(n):
+        '''
+        Returns the sum of divisors of a given number.
+        '''
+        return sum([i for i in range(1, n) if n % i == 0])
+    
+    amicables = set()
+    for i in range(1, limit):
+        ds1 = divisors_sum(i)
+        ds2 = divisors_sum(ds1)
+        if i == ds2 and i != ds1:
+            amicables.add(i)
+            amicables.add(ds1)
+    
+    return sum(amicables)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert amicable_numbers_sum(220) == 220
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert amicable_numbers_sum(4) == 0
+assert amicable_numbers_sum(5) == 0
+assert amicable_numbers_sum(6) == 0
+assert amicable_numbers_sum(7) == 0
+assert amicable_numbers_sum(100) == 0
+assert amicable_numbers_sum(200) == 0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here is the fixed code:
+
+```python
+def amicable_numbers_sum(limit):
+    def divisors_sum(n):
+        return sum([i for i in range(1, n) if n % i == 0])
+
+    amicables = set()
+    for i in range(1, limit):
+        ds1 = divisors_sum(i)
+        ds2 = divisors_sum(ds1)
+        if i == ds2 and i != ds1:
+            amicables.add(i)
+            amicables.add(ds1)
+    
+    return sum(amicables)
+```

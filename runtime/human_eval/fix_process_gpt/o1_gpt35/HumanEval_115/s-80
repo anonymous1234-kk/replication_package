@@ -1,0 +1,210 @@
+task_id:HumanEval/115
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+
+    import math
+    
+    def get_bucket_fill(bucket, capacity):
+        fill = min(bucket, capacity)
+        return fill
+    
+    def lower_bucket(bucket, fill):
+        bucket -= fill
+        return bucket
+    
+    def is_grid_empty(grid):
+        for row in grid:
+            for well in row:
+                if well != 0:
+                    return False
+        return True
+    
+    num_lowers = 0
+    while not is_grid_empty(grid):
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] != 0:
+                    fill = get_bucket_fill(grid[i][j], capacity)
+                    grid[i][j] = lower_bucket(grid[i][j], fill)
+                    if i != len(grid)-1 and grid[i+1][j] != 0:
+                        fill = get_bucket_fill(grid[i+1][j], capacity)
+                        grid[i+1][j] = lower_bucket(grid[i+1][j], fill)
+                    if j != len(grid[0])-1 and grid[i][j+1] != 0:
+                        fill = get_bucket_fill(grid[i][j+1], capacity)
+                        grid[i][j+1] = lower_bucket(grid[i][j+1], fill)
+                    num_lowers += 1
+    return num_lowers
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_fill([[1, 1, 1, 0], [1, 0, 0, 0], [1, 0, 0, 1], [1, 0, 0, 1]],1) == 8
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+
+    import math
+    
+    def get_bucket_fill(bucket, capacity):
+        fill = min(bucket, capacity)
+        return fill
+    
+    def lower_bucket(bucket, fill):
+        bucket -= fill
+        return bucket
+    
+    def is_grid_empty(grid):
+        for row in grid:
+            for well in row:
+                if well != 0:
+                    return False
+        return True
+    
+    num_lowers = 0
+    while not is_grid_empty(grid):
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] != 0:
+                    fill = get_bucket_fill(grid[i][j], capacity)
+                    grid[i][j] = lower_bucket(grid[i][j], fill)
+                    if i != len(grid)-1 and grid[i+1][j] != 0:
+                        fill = get_bucket_fill(grid[i+1][j], capacity)
+                        grid[i+1][j] = lower_bucket(grid[i+1][j], fill)
+                    if j != len(grid[0])-1 and grid[i][j+1] != 0:
+                        fill = get_bucket_fill(grid[i][j+1], capacity)
+                        grid[i][j+1] = lower_bucket(grid[i][j+1], fill)
+                    num_lowers += 1
+                    if grid[i][j] != 0:
+                        continue
+    return num_lowers
+
+```

@@ -1,0 +1,78 @@
+task_id:MbppEval/229
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def re_arrange_array(arr, n):
+    '''
+    Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before positive ones, and where the relative order among negative and positive elements is preserved.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def re_arrange_array(arr, n):
+    '''
+    Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before positive ones, and where the relative order among negative and positive elements is preserved.
+    '''
+
+    # Create an empty list to store negative elements
+    neg_elements = []
+    
+    # Iterate over the first n elements of the array
+    for i in range(n):
+        # Check if the current element is negative
+        if arr[i] < 0:
+            # If it is, add it to the neg_elements list
+            neg_elements.append(arr[i])
+    
+    # Iterate over the first n elements of the array again
+    for i in range(n):
+        # If the current element is positive, move it to the end of the array
+        if arr[i] >= 0:
+            arr.append(arr.pop(i))
+    
+    # Insert the negative elements back into the beginning of the array
+    for i in range(len(neg_elements)):
+        arr.insert(i, neg_elements[i])
+    
+    return arr
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert re_arrange_array([1, 2, 3, -1, 2],1) == [1, 2, 3, -1, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def re_arrange_array(arr, n):
+    neg_elements = []
+    
+    for i in range(n):
+        if arr[i] < 0:
+            neg_elements.append(arr[i])
+    
+    for i in range(n-1, -1, -1):
+        if arr[i] >= 0:
+            arr.append(arr.pop(i))
+    
+    for i in range(len(neg_elements)):
+        arr.insert(i, neg_elements[i])
+    
+    return arr
+```

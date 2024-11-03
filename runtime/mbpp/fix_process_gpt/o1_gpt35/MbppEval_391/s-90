@@ -1,0 +1,72 @@
+task_id:MbppEval/391
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+    # Combine all the lists into one list
+    combined_list = l1 + l2 + l3
+
+    # Create an empty dictionary
+    nested_dict = {}
+
+    # Iterate over the combined list
+    for i in range(len(combined_list)):
+        # If the index is divisible by 3, create a new key in the nested dictionary
+        if i % 3 == 0:
+            nested_dict[combined_list[i]] = {}
+        # If the index is not divisible by 3, add the value to the last key created
+        else:
+            nested_dict[combined_list[i-1]][combined_list[i-2]] = combined_list[i]
+
+    return nested_dict
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([1, 2],['hi', 'hello', 'hey'],['apple', 'banana']) == {1: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}, 2: {'hi': {'apple': {}, 'banana': {}}, 'hello': {'apple': {}, 'banana': {}}, 'hey': {'apple': {}, 'banana': {}}}}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    combined_list = l1 + l2 + l3
+    nested_dict = {}
+    for i in range(len(combined_list)):
+        if i % 3 == 0:
+            nested_dict[combined_list[i]] = {}
+        else:
+            # Fix: Add a check if the key already exists in the nested dictionary
+            if combined_list[i-2] not in nested_dict[combined_list[i-1]]:
+                nested_dict[combined_list[i-1]][combined_list[i-2]] = combined_list[i]
+    return nested_dict
+```

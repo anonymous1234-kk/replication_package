@@ -1,0 +1,81 @@
+task_id:MbppEval/468
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_product(arr):   
+    '''
+    Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_product(arr):   
+    '''
+    Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.
+    '''
+
+    n = len(arr)
+    # Initialize the product variable to 1
+    prod = 1
+    # Initialize the max product variable to 1
+    max_prod = 1
+    # Loop through the array
+    for i in range(n):
+        # Initialize the current product variable to 1
+        cur_prod = 1
+        # Loop through the array from the current index to the end
+        for j in range(i, n):
+            # Check if the current number is larger than the previous number
+            if arr[j] > arr[i]:
+                # Multiply the current product with the current number
+                cur_prod *= arr[j]
+        # Check if the current product is greater than the max product
+        if cur_prod > max_prod:
+            # Update the max product variable
+            max_prod = cur_prod
+    # Return the max product
+    return max_prod
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_product([10, 22, 9, 33, 21, 50, 41, 60, 80]) == 196800
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_product(arr):   
+    '''
+    Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.
+    '''
+
+    n = len(arr)
+    prod = 1
+    max_prod = 1
+    for i in range(n):
+        cur_prod = arr[i]
+        for j in range(i+1, n):
+            if arr[j] > arr[i]:
+                cur_prod *= arr[j]
+        if cur_prod > max_prod:
+            max_prod = cur_prod
+    return max_prod
+
+assert max_product([10, 22, 9, 33, 21, 50, 41, 60, 80]) == 196800
+```

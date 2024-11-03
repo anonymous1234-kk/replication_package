@@ -1,0 +1,103 @@
+task_id:MbppEval/603
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+    '''
+
+    """
+    Returns a list of all Ludic numbers smaller than or equal to n.
+
+    A Ludic number is a positive integer that can be expressed as the sum of a unique subset of the
+    prime numbers {2, 3, 5}.
+
+    Args:
+        n: An integer
+
+    Returns:
+        A list of Ludic numbers less than or equal to n
+
+    """
+    primes = [2, 3, 5]  # list of prime numbers
+    ludics = [1]  # list of Ludic numbers
+    for i in range(1, n):
+        if i in ludics:
+            continue
+        if i % 2 == 0 or i % 3 == 0 or i % 5 == 0:
+            for j in primes:
+                if i < j:
+                    break
+                if i % j == 0 and (i // j) in ludics:
+                    ludics.append(i)
+                    break
+    return ludics
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert get_ludic(2) == [1, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert get_ludic(1) == [1]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+    '''
+
+    """
+    Returns a list of all Ludic numbers smaller than or equal to n.
+
+    A Ludic number is a positive integer that can be expressed as the sum of a unique subset of the
+    prime numbers {2, 3, 5}.
+
+    Args:
+        n: An integer
+
+    Returns:
+        A list of Ludic numbers less than or equal to n
+
+    """
+    primes = [2, 3, 5]  # list of prime numbers
+    ludics = [1]  # list of Ludic numbers
+    for i in range(1, n):
+        if i in ludics:
+            continue
+        if i % 2 == 0 or i % 3 == 0 or i % 5 == 0:
+            is_ludic = True
+            for j in primes:
+                if i < j:
+                    break
+                if i % j == 0 and (i // j) in ludics:
+                    ludics.append(i)
+                    is_ludic = False
+                    break
+            if is_ludic:
+                ludics.append(i)
+    return ludics
+```

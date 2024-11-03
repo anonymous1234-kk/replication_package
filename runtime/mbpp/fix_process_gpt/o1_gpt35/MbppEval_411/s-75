@@ -1,0 +1,468 @@
+task_id:MbppEval/411
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts])
+    
+    # return the camel case string
+    return camel_case
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('happy_24_grocery') == happy24Grocery
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+    parts = word.split('_')
+    camel_case = ''.join([part.capitalize() for part in parts])
+    return camel_case
+
+assert snake_to_camel('happy_24_grocery') == 'happy24Grocery'
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my_favorite__string') == myFavoriteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # return the camel case string
+    return camel_case
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-13<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my_favorite___string') == myFavoriteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # return the camel case string
+    return camel_case
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-14<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my_favorite____string') == myFavoriteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # return the camel case string
+    return camel_case
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-15<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my_favorite______string') == myFavoriteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # return the camel case string
+    return camel_case
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-16<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my__favorite_______string') == myFavoriteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # remove empty parts
+    parts = [part for part in parts if part]
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts])
+    
+    # return the camel case string
+    return camel_case
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-17<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my__favorite____string') == myFavoriteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # return the camel case string
+    return camel_case
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my__favorite______string') == myFavoriteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # return the camel case string
+    return camel_case
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my__favo_______rite______string') == myFavoRiteString
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores and remove any empty parts
+    parts = [part for part in word.split('_') if part]
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts])
+    
+    # return the camel case string
+    return camel_case
+
+assert snake_to_camel('my__favo_______rite______string') == 'myFavoRiteString'
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('my__favo_______rite___st__ring') == myFavoRiteStRing
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores and remove empty parts
+    parts = [part for part in word.split('_') if part]
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts])
+    
+    # return the camel case string
+    return camel_case
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-27<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('python_') == python
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts])
+
+    # handle the case when the given string ends with an underscore
+    if camel_case[-1] == '_':
+        camel_case = camel_case[:-1]
+    
+    # return the camel case string
+    return camel_case
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('python__exercises') == pythonExercises
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # return the camel case string
+    return camel_case
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('happy_grocery_24') == happyGrocery24
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = parts[0] + ''.join([part.capitalize() for part in parts[1:]])
+    
+    # return the camel case string
+    return camel_case
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-40<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('_happy_') == happy
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts])
+    
+    # return the camel case string
+    return camel_case
+```

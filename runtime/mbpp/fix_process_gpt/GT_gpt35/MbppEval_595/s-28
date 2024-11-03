@@ -1,0 +1,70 @@
+task_id:MbppEval/595
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+ 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+    # Count the number of mismatches in the strings
+    mismatches = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            mismatches += 1
+    
+    # Return half the number of mismatches, rounded up
+    return (mismatches + 1) // 2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('10101010100101','11111111111111') == Not Possible
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1, str2):
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+    # Count the number of mismatches in the strings
+    mismatches = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            mismatches += 1
+
+    # If the number of mismatches is odd, it is not possible to convert one string to another using swaps
+    if mismatches % 2 != 0:
+        return "Not Possible"
+
+    # Return half the number of mismatches
+    return mismatches // 2
+```

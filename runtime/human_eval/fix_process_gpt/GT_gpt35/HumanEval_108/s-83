@@ -1,0 +1,111 @@
+task_id:HumanEval/108
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def count_nums(arr):
+    """
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    >>> count_nums([]) == 0
+    >>> count_nums([-1, 11, -11]) == 1
+    >>> count_nums([1, 1, 2]) == 3
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def count_nums(arr):
+    """
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    >>> count_nums([]) == 0
+    >>> count_nums([-1, 11, -11]) == 1
+    >>> count_nums([1, 1, 2]) == 3
+    """
+
+    """
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    >>> count_nums([]) == 0
+    >>> count_nums([-1, 11, -11]) == 1
+    >>> count_nums([1, 1, 2]) == 3
+    """
+    def digit_sum(n):
+        return sum(map(int, str(abs(n)))) * (-1 if n < 0 else 1)
+
+    return sum(1 for n in arr if digit_sum(n) != 0)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_nums([-10, -20, -30, -40, -50, -60, -70, -80, -90, -100]) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_nums([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]) == 10
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_nums(arr):
+    def digit_sum(n):
+        return sum(map(int, str(abs(n)))) * (-1 if n < 0 else 1)
+
+    return sum(1 for n in arr if digit_sum(n) > 0)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_nums([-1234567890123456789, 1234567890123456789]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_nums([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]) == 10
+assert count_nums([-10, -20, -30, -40, -50, -60, -70, -80, -90, -100]) == 0
+assert count_nums([-9, 0]) == 0
+assert count_nums([-10, -20, -30]) == 0
+assert count_nums([-10]) == 0
+assert count_nums([101, 9, 88, 22, 0]) == 4
+assert count_nums([0, -1, -1]) == 0
+assert count_nums([1, -2, 3, -4, 5]) == 3
+assert count_nums([1, 11, 2, 22, 3, 33, 0]) == 6
+assert count_nums([0, 0, -11, 0, 0, 0]) == 0
+assert count_nums([-2, -3, -1, 0]) == 0
+assert count_nums([10, 0, 100, 1, 2, 3, 0]) == 5
+assert count_nums([-1, 0, 1]) == 1
+assert count_nums([-3, 1, 0]) == 1
+assert count_nums([-10, -20, -33]) == 0
+assert count_nums([1, 0, 0]) == 1
+assert count_nums([-1, -10, -2, -3, 1, 10, 1, 1]) == 4
+assert count_nums([-1, -2, 3, 4, 5, -6, -7, -8, -9, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) == 4
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_nums(arr):
+    def digit_sum(n):
+        return sum(map(int, str(abs(n)))) * (-1 if n < 0 else 1)
+
+    return sum(1 for n in arr if digit_sum(n) != 0)
+```

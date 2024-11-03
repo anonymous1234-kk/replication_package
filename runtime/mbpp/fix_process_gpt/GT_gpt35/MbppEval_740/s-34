@@ -1,0 +1,57 @@
+task_id:MbppEval/740
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def tuple_to_dict(test_tup):
+    '''
+    Write a function to convert the given tuple to a key-value dictionary using adjacent elements. https://www.geeksforgeeks.org/python-convert-tuple-to-adjacent-pair-dictionary/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def tuple_to_dict(test_tup):
+    '''
+    Write a function to convert the given tuple to a key-value dictionary using adjacent elements. https://www.geeksforgeeks.org/python-convert-tuple-to-adjacent-pair-dictionary/
+    '''
+
+    # Creating an empty dictionary to store the key-value pairs
+    res_dict = {}
+
+    # Iterating through each element of the tuple until the second last element
+    for i in range(len(test_tup)-1):
+        # Adding the key-value pair to the dictionary
+        res_dict[test_tup[i]] = test_tup[i+1]
+
+    # Returning the resultant dictionary
+    return res_dict
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert tuple_to_dict([(5, 6), (6, 7), (7, 8), (8, 9)]) == {(5, 6): (6, 7), (7, 8): (8, 9)}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def tuple_to_dict(test_tup):
+    res_dict = {}
+    for i in range(len(test_tup)-1):
+        res_dict[test_tup[i]] = test_tup[i+1]
+    return res_dict
+```

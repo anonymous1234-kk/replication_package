@@ -1,0 +1,157 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # If there is only one element in the array, it's the unique element
+    if len(arr) == 1:
+        return arr[0]
+
+    # If the first element is not a duplicate, it's the unique element
+    if arr[0] != arr[1]:
+        return arr[0]
+
+    # If the last element is not a duplicate, it's the unique element
+    if arr[-1] != arr[-2]:
+        return arr[-1]
+
+    # Iterate through the array and check for the unique element
+    for i in range(1, len(arr)-1):
+        if arr[i] != arr[i-1] and arr[i] != arr[i+1]:
+            return arr[i]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # If there is only one element in the array, it's the unique element
+    if len(arr) == 1:
+        return arr[0]
+
+    # If the first element is not a duplicate, it's the unique element
+    if arr[0] != arr[1]:
+        return arr[0]
+
+    # If the last element is not a duplicate, it's the unique element
+    if arr[-1] != arr[-2]:
+        return arr[-1]
+
+    # Iterate through the array and check for the unique element
+    for i in range(1, len(arr)-1):
+        if arr[i] != arr[i-1] and arr[i] != arr[i+1]:
+            return arr[i]
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 150]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # If there is only one element in the array, it's the unique element
+    if len(arr) == 1:
+        return arr[0]
+
+    # If the first element is not a duplicate, it's the unique element
+    if arr[0] != arr[1]:
+        return arr[0]
+
+    # If the last element is not a duplicate, it's the unique element
+    if arr[-1] != arr[-2]:
+        return arr[-1]
+
+    # Iterate through the array and check for the unique element
+    for i in range(1, len(arr)-1):
+        if arr[i] != arr[i-1] and arr[i] != arr[i+1]:
+            return arr[i]
+    return None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 140, 150]) == [3, 150]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # If there is only one element in the array, it's the unique element
+    if len(arr) == 1:
+        return arr[0]
+
+    # If the first element is not a duplicate, it's the unique element
+    if arr[0] != arr[1]:
+        return arr[0]
+
+    # If the last element is not a duplicate, it's the unique element
+    if arr[-1] != arr[-2]:
+        return arr[-1]
+
+    # Iterate through the array and check for the unique element
+    for i in range(1, len(arr)-1):
+        if arr[i] != arr[i-1] and arr[i] != arr[i+1]:
+            return arr[i]
+
+    # If no unique element found, return an empty list
+    return []
+```

@@ -1,0 +1,66 @@
+task_id:MbppEval/391
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+
+    '''
+    Write a function to convert more than one list to nested dictionary.
+    '''
+    result = {}
+    
+    for i in range(len(l1)):
+        if l1[i] not in result:
+            result[l1[i]] = {}
+        if l2[i] not in result[l1[i]]:
+            result[l1[i]][l2[i]] = []
+        result[l1[i]][l2[i]].append(l3[i])
+            
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert convert_list_dictionary([1, 2, 3],['hi'],['apple', 'banana', 'orange']) == [{1: {'hi': 'apple'}}]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def convert_list_dictionary(l1, l2, l3):
+    result = []
+
+    for i in range(len(l1)):
+        if l1[i] not in result:
+            result.append({l1[i]: {}})
+        if l2[i] not in result[i][l1[i]]:
+            result[i][l1[i]][l2[i]] = []
+        result[i][l1[i]][l2[i]].append(l3[i])
+
+    return result
+```

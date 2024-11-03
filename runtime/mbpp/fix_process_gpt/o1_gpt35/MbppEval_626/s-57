@@ -1,0 +1,54 @@
+task_id:MbppEval/626
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def triangle_area(r) :  
+    '''
+    Write a python function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def triangle_area(r) :  
+    '''
+    Write a python function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.
+    '''
+
+    '''
+    Write a python function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.
+    '''
+    return r**2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert triangle_area(0.1) == 0.01
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def triangle_area(r) :  
+    '''
+    Write a python function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.
+    '''
+
+    area = (r**2) / 2
+    return area
+
+```

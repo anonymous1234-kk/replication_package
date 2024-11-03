@@ -1,0 +1,301 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Traverse through all elements of the array
+    for i in range(0, len(arr), 2):
+        # If the current element is not equal to the next element
+        if i == len(arr)-1 or arr[i] != arr[i+1]:
+            # Return the current element as it is the only one
+            return arr[i]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-16<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([0, 1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7]) == 5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Traverse through all elements of the array
+    for i in range(0, len(arr), 2):
+        # If the current element is not equal to the next element
+        if i == len(arr)-1 or arr[i] != arr[i+1]:
+            # Return the current element as it is the only one
+            return arr[i]
+
+    # If no element is found, return None
+    return None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9]) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Set the left and right pointers
+    left = 0
+    right = len(arr) - 1
+
+    # Binary search
+    while left < right:
+        # Find the middle index
+        mid = (left + right) // 2
+
+        # Check if the middle element is unique
+        if arr[mid] != arr[mid - 1] and arr[mid] != arr[mid + 1]:
+            return arr[mid]
+
+        # Check if the middle element is equal to the element on the left
+        if arr[mid] == arr[mid - 1]:
+            # If the number of elements between left and mid is odd,
+            # the unique element is on the right side
+            if (mid - 1 - left) % 2 == 0:
+                left = mid + 1
+            # Otherwise, the unique element is on the left side
+            else:
+                right = mid - 2
+        # Check if the middle element is equal to the element on the right
+        elif arr[mid] == arr[mid + 1]:
+            # If the number of elements between mid and right is odd,
+            # the unique element is on the left side
+            if (right - (mid + 1)) % 2 == 0:
+                right = mid - 1
+            # Otherwise, the unique element is on the right side
+            else:
+                left = mid + 2
+
+    # Return the remaining element
+    return arr[left]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 140]) == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Traverse through all elements of the array
+    for i in range(0, len(arr), 2):
+        # If the current element is not equal to the next element
+        if i == len(arr)-1 or arr[i] != arr[i+1]:
+            # Return the current element as it is the only one
+            return arr[i]
+        
+    # If no element is found, return None
+    return None
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 140, 150]) == 151
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    for i in range(0, len(arr), 2):
+        if i == len(arr)-1 or arr[i] != arr[i+1]:
+            return arr[i]
+    return arr[-1]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 142
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140]) == 2
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Traverse through all elements of the array
+    for i in range(0, len(arr), 2):
+        # If the current element is not equal to the next element
+        if i == len(arr)-1 or arr[i] != arr[i+1]:
+            # Check if the next element is equal to the current element
+            if i+1 < len(arr) and arr[i] == arr[i+2]:
+                # Return the next element as it is the only one
+                return arr[i+1]
+            else:
+                # Return the current element as it is the only one
+                return arr[i]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 150]) == 27
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140]) == 2
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Initialize the start and end pointers
+    start = 0
+    end = len(arr) - 1
+
+    # Binary search loop
+    while start < end:
+        # Find the middle index
+        mid = (start + end) // 2
+
+        # Check if the middle element is equal to its adjacent elements
+        if arr[mid] == arr[mid - 1]:
+            # If it is, the single element is on the left side
+            if (mid - 1) % 2 == 0:
+                end = mid - 2
+            else:
+                start = mid + 1
+        # Check if the middle element is equal to its adjacent elements
+        elif arr[mid] == arr[mid + 1]:
+            # If it is, the single element is on the right side
+            if mid % 2 == 0:
+                start = mid + 2
+            else:
+                end = mid - 1
+        # If the middle element is not equal to its adjacent elements, it is the single element
+        else:
+            return arr[mid]
+    
+    # If the loop ends, there is no single element
+    return arr[start]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 3, 3, 4, 4, 9, 9]) == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140]) == 2
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Initialize left and right pointers
+    left = 0
+    right = len(arr) - 1
+
+    # Perform binary search
+    while left < right:
+        # Find the middle element
+        mid = (left + right) // 2
+
+        # Check if the middle element is equal to its neighbors
+        if arr[mid] == arr[mid - 1]:
+            # If yes, the single element is on the left side
+            right = mid - 2
+        elif arr[mid] == arr[mid + 1]:
+            # If yes, the single element is on the right side
+            left = mid + 2
+        else:
+            # If no, the middle element is the single element
+            return arr[mid]
+
+    # If the loop exits without returning, the single element is at the end of the array
+    return arr[left]
+```

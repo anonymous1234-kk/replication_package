@@ -1,0 +1,126 @@
+task_id:MbppEval/598
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # Get the number of digits in the given number
+    num_digits = len(str(number))
+    
+    # Initialize sum to 0
+    sum = 0
+    
+    # Iterate over each digit in the number
+    for digit in str(number):
+        # Convert the digit to an integer
+        digit = int(digit)
+        
+        # Add the digit raised to the power of the number of digits to the sum
+        sum += digit ** num_digits
+    
+    # Check if the sum is equal to the original number
+    if sum == number:
+        return True
+    else:
+        return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert armstrong_number(3) == Armstrong Number
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert armstrong_number(10) == False
+assert armstrong_number('123') == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # Get the number of digits in the given number
+    num_digits = len(str(number))
+    
+    # Initialize sum to 0
+    sum = 0
+    
+    # Iterate over each digit in the number
+    for digit in str(number):
+        # Convert the digit to an integer
+        digit = int(digit)
+        
+        # Add the digit raised to the power of the number of digits to the sum
+        sum += digit ** num_digits
+    
+    # Check if the sum is equal to the original number
+    if sum == number:
+        return "Armstrong Number"
+    else:
+        return False
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert armstrong_number(9474) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert armstrong_number(10) == False
+assert armstrong_number('123') == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # Get the number of digits in the given number
+    num_digits = len(str(number))
+    
+    # Initialize sum to 0
+    sum = 0
+    
+    # Iterate over each digit in the number
+    for digit in str(number):
+        # Convert the digit to an integer
+        digit = int(digit)
+        
+        # Add the digit raised to the power of the number of digits to the sum
+        sum += digit ** num_digits
+    
+    # Check if the sum is equal to the original number
+    if sum == int(number):  # Fix: Convert number to int for comparison
+        return True  # Fix: Return True instead of "Armstrong Number"
+    else:
+        return False
+```

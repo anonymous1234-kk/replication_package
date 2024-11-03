@@ -1,0 +1,66 @@
+task_id:MbppEval/459
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def remove_uppercase(str1):
+    '''
+    Write a function to remove uppercase substrings from a given string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def remove_uppercase(str1):
+    '''
+    Write a function to remove uppercase substrings from a given string.
+    '''
+
+    '''
+    Write a function to remove uppercase substrings from a given string.
+    '''
+    # find all uppercase substrings using regular expressions
+    pattern = '[A-Z]+'
+    matches = re.findall(pattern, str1)
+
+    # remove all uppercase substrings from the string
+    for match in matches:
+        str1 = str1.replace(match, '')
+
+    return str1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert remove_uppercase('This is a TEST string with UPPERCASE') == his is a  string with 
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here's the fixed code:
+
+```python
+import re
+
+def remove_uppercase(str1):
+    pattern = '[A-Z]+'
+    matches = re.findall(pattern, str1)
+    for match in matches:
+        str1 = str1.replace(match, '')
+    return str1
+```

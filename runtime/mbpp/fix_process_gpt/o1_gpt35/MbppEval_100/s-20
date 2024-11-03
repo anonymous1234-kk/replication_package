@@ -1,0 +1,159 @@
+task_id:MbppEval/100
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+    # Convert the input number to a string so we can work with individual digits
+    num_str = str(num)
+    
+    # Check if the number is already a palindrome
+    if num_str == num_str[::-1]:
+        return num
+    
+    # Get the middle index of the number
+    middle_index = len(num_str) // 2
+    
+    # Split the number into left and right halves (accounting for odd and even length)
+    left_half = num_str[:middle_index + len(num_str) % 2]
+    right_half = num_str[middle_index:]
+    
+    # Reverse the left half and append it to the right half to create a potential palindrome
+    potential_palindrome = int(left_half[::-1] + right_half)
+    
+    # Check if the potential palindrome is smaller than the original number
+    if potential_palindrome < num:
+        # If it is, add 1 to the middle digit(s) of the left half and create a new potential palindrome
+        left_half = str(int(left_half) + 1)
+        potential_palindrome = int(left_half + left_half[:-len(right_half)][::-1])
+    
+    return potential_palindrome
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(sys.maxsize) == 9223372037302733229
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    num_str = str(num)
+    
+    if num_str == num_str[::-1]:
+        return num
+    
+    middle_index = len(num_str) // 2
+    
+    left_half = num_str[:middle_index + len(num_str) % 2]
+    right_half = num_str[middle_index:]
+    
+    potential_palindrome = int(left_half[::-1] + right_half)
+    
+    if potential_palindrome < num:
+        if len(left_half) != len(right_half):
+            middle_digit = int(left_half[-1])
+            middle_digit += 1
+            left_half = left_half[:-1] + str(middle_digit)
+            
+            # If the middle digit is 10, propagate the carry to the previous digit(s)
+            if middle_digit == 10:
+                carry = 1
+                for i in range(len(left_half) - 1, -1, -1):
+                    digit = int(left_half[i])
+                    digit += carry
+                    carry = digit // 10
+                    left_half = left_half[:i] + str(digit % 10) + left_half[i+1:]
+                    
+                    # If there is no more carry, break the loop
+                    if carry == 0:
+                        break
+        
+        potential_palindrome = int(left_half + left_half[:-len(right_half)][::-1])
+    
+    return potential_palindrome
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(7654321) == 7654567
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+    # Convert the input number to a string so we can work with individual digits
+    num_str = str(num)
+    
+    # Check if the number is already a palindrome
+    if num_str == num_str[::-1]:
+        return num
+    
+    # Get the middle index of the number
+    middle_index = len(num_str) // 2
+    
+    # Split the number into left and right halves (accounting for odd and even length)
+    left_half = num_str[:middle_index + len(num_str) % 2]
+    right_half = num_str[middle_index:]
+    
+    # Reverse the left half and append it to the right half to create a potential palindrome
+    potential_palindrome = int(left_half[::-1] + right_half)
+    
+    # Check if the potential palindrome is smaller than the original number
+    if potential_palindrome < num:
+        # If it is, add 1 to the middle digit(s) of the left half and create a new potential palindrome
+        left_half = str(int(left_half) + 1)
+        potential_palindrome = int(left_half + left_half[:-len(right_half)][::-1])
+    
+    return potential_palindrome
+```

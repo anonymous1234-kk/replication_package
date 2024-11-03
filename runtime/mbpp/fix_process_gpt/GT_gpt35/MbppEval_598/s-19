@@ -1,0 +1,91 @@
+task_id:MbppEval/598
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # convert the given number into a string to access each digit of the number
+    num_str = str(number)
+    
+    # calculate the power to which each digit should be raised
+    power = len(num_str)
+    
+    # initialize a variable to store the sum of the power of each digit
+    sum = 0
+    
+    # iterate over each digit of the number
+    for digit in num_str:
+        # convert the digit back to integer and raise it to the power
+        digit_power = int(digit) ** power
+        # add the power of the digit to the sum
+        sum += digit_power
+    
+    # check if the sum is equal to the original number
+    if sum == number:
+        return True
+    else:
+        return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert armstrong_number(153.0) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert armstrong_number(10) == False
+assert armstrong_number(3) == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def armstrong_number(number):
+    '''
+    Write a function to check whether the given number is armstrong or not.
+    '''
+
+    # convert the given number into a string to access each digit of the number
+    num_str = str(int(number))
+    
+    # calculate the power to which each digit should be raised
+    power = len(num_str)
+    
+    # initialize a variable to store the sum of the power of each digit
+    sum = 0
+    
+    # iterate over each digit of the number
+    for digit in num_str:
+        # convert the digit back to integer and raise it to the power
+        digit_power = int(digit) ** power
+        # add the power of the digit to the sum
+        sum += digit_power
+    
+    # check if the sum is equal to the original number
+    if sum == int(number):
+        return True
+    else:
+        return False
+
+```

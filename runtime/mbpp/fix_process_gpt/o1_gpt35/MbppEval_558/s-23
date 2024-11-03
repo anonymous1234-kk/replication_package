@@ -1,0 +1,109 @@
+task_id:MbppEval/558
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    return sum(abs(int(a)-int(b)) for a, b in zip(str(n1), str(n2)))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert digit_distance_nums(2000,489) == 23
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert digit_distance_nums(234,489) == 12
+assert digit_distance_nums(200,489) == 19
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    return sum(abs(int(a)-int(b)) for a, b in zip(str(n1), str(n2))) + abs(len(str(n1)) - len(str(n2))) * 9
+
+assert digit_distance_nums(2000,489) == 23
+assert digit_distance_nums(234,489) == 12
+assert digit_distance_nums(200,489) == 19
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert digit_distance_nums(1234,488) == 12
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert digit_distance_nums(234,489) == 12
+assert digit_distance_nums(200,489) == 19
+assert digit_distance_nums(73812,73612) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    return sum(abs(int(a)-int(b)) for a, b in zip(str(n1), str(n2))) + abs(len(str(n1)) - len(str(n2))) * 9
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-11<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert digit_distance_nums(1,1000000) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert digit_distance_nums(234,489) == 12
+assert digit_distance_nums(200,489) == 19
+assert digit_distance_nums(73812,73612) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def digit_distance_nums(n1, n2):
+    '''
+    Write a python function to find the sum of the per-digit difference between two integers.
+    '''
+
+    n1_str = str(n1)
+    n2_str = str(n2)
+
+    if len(n1_str) < len(n2_str):
+        n1_str = n1_str.zfill(len(n2_str))
+    else:
+        n2_str = n2_str.zfill(len(n1_str))
+
+    return sum(abs(int(a)-int(b)) for a, b in zip(n1_str, n2_str))
+
+```

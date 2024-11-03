@@ -1,0 +1,94 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    num_list = list(str(n))
+
+    # Find the first digit from the right that is smaller than the digit to its left
+    for i in range(len(num_list) - 2, -1, -1):
+        if num_list[i] < num_list[i+1]:
+            break
+    else:
+        # If all digits are in non-increasing order, return the original number
+        return n
+    
+    # Find the smallest digit to the right of the digit found in the previous step, that is greater than it
+    for j in range(len(num_list) - 1, i, -1):
+        if num_list[j] > num_list[i]:
+            break
+    
+    # Swap the digits found in the previous two steps
+    num_list[i], num_list[j] = num_list[j], num_list[i]
+    
+    # Reverse the digits to the right of the digit found in the first step
+    num_list[i+1:] = reversed(num_list[i+1:])
+    
+    # Convert the list of digits to an integer and return it
+    return int(''.join(num_list))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(999999999) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+assert rearrange_bigger(132) == 213
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    num_list = list(str(n))
+
+    # Find the first digit from the right that is smaller than the digit to its left
+    for i in range(len(num_list) - 2, -1, -1):
+        if num_list[i] < num_list[i+1]:
+            break
+    else:
+        # If all digits are in non-increasing order, return False
+        return False
+    
+    # Find the smallest digit to the right of the digit found in the previous step, that is greater than it
+    for j in range(len(num_list) - 1, i, -1):
+        if num_list[j] > num_list[i]:
+            break
+    
+    # Swap the digits found in the previous two steps
+    num_list[i], num_list[j] = num_list[j], num_list[i]
+    
+    # Reverse the digits to the right of the digit found in the first step
+    num_list[i+1:] = reversed(num_list[i+1:])
+    
+    # Convert the list of digits to an integer and return it
+    return int(''.join(num_list))
+```

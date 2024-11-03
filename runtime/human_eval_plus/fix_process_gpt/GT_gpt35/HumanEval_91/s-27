@@ -1,0 +1,145 @@
+task_id:HumanEval/91
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+    bored_count = 0
+    
+    # Split the string into individual sentences
+    sentences = S.split('.')
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    sentences = [s.split('?') for s in sentences]
+    sentences = [s for sublist in sentences for s in sublist]
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    sentences = [s.split('!') for s in sentences]
+    sentences = [s for sublist in sentences for s in sublist]
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    for sentence in sentences:
+        if sentence.startswith("I "):
+            bored_count += 1
+    
+    return bored_count
+```
+
+You can call the function with a string as its argument to see if it works correctly. For example:
+
+```python
+print(is_bored("Hello world"))
+# Output: 0
+
+print(is_bored("The sky is blue. The sun is shining. I love this weather"))
+# Output: 1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_bored('I am happy. I love my family. I love this weather') == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def is_bored(S):
+    bored_count = 0
+    
+    sentences = S.split('.')
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    sentences = [s.split('?') for s in sentences]
+    sentences = [s for sublist in sentences for s in sublist]
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    sentences = [s.split('!') for s in sentences]
+    sentences = [s for sublist in sentences for s in sublist]
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    for sentence in sentences:
+        if sentence.startswith("I") or sentence.startswith("I "):
+            bored_count += 1
+    
+    return bored_count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-17<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_bored('I will be on holiday. It will be in Turkey. I am excited') == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_bored('I am happy. I love my family. I love this weather') == 3
+assert is_bored('I am not feeling bored. I am happy.') == 2
+assert is_bored('I am happy. I am going to the beach. Do you want to come?') == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_bored(S):
+    bored_count = 0
+    
+    sentences = S.split('.')
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    sentences = [s.split('?') for s in sentences]
+    sentences = [s for sublist in sentences for s in sublist]
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    sentences = [s.split('!') for s in sentences]
+    sentences = [s for sublist in sentences for s in sublist]
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    for sentence in sentences:
+        if sentence.startswith("I ") or sentence == "I":
+            bored_count += 1
+    
+    return bored_count
+```

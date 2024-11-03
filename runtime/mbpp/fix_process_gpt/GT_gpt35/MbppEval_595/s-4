@@ -1,0 +1,128 @@
+task_id:MbppEval/595
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+    # initialize swap counter and index
+    swap_count = 0
+    i = 0
+  
+    # loop through the binary strings
+    while i < len(str1):
+        
+        # if the bits at the current index are different, swap them and increment the swap counter
+        if str1[i] != str2[i]:
+            str1 = str1[:i] + str2[i] + str1[i+1:]
+            swap_count += 1
+        
+        # move to the next index
+        i += 1
+    
+    return swap_count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('10101010100101','11111111111111') == Not Possible
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+    # check if the number of ones in str1 and str2 are equal
+    if str1.count('1') != str2.count('1'):
+        return "Not Possible"
+
+    # initialize swap counter and index
+    swap_count = 0
+    i = 0
+  
+    # loop through the binary strings
+    while i < len(str1):
+        
+        # if the bits at the current index are different, swap them and increment the swap counter
+        if str1[i] != str2[i]:
+            str1 = str1[:i] + str2[i] + str1[i+1:]
+            swap_count += 1
+        
+        # move to the next index
+        i += 1
+    
+    return swap_count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('0000','1111') == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert min_Swaps('10101010100101','11111111111111') == Not Possible
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+    # check if the number of ones in str1 and str2 are equal
+    if str1.count('1') != str2.count('1'):
+        return "Not Possible"
+
+    # initialize swap counter and index
+    swap_count = 0
+    i = 0
+  
+    # loop through the binary strings
+    while i < len(str1):
+        
+        # if the bits at the current index are different, swap them and increment the swap counter
+        if str1[i] != str2[i]:
+            j = i + 1
+            while j < len(str1) and str1[j] != str2[i]:
+                j += 1
+            if j == len(str1):
+                return "Not Possible"
+            str1 = str1[:i] + str1[j] + str1[i+1:j] + str1[i] + str1[j+1:]
+            swap_count += 1
+        
+        # move to the next index
+        i += 1
+    
+    return swap_count
+```

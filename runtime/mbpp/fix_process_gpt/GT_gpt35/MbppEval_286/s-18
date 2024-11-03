@@ -1,0 +1,98 @@
+task_id:MbppEval/286
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    '''
+    Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    '''
+    Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.
+    '''
+ 
+    max_so_far = 0 
+    max_ending_here = 0 
+    for i in range(0, n*k): 
+        max_ending_here = max_ending_here + a[i % n] 
+        if max_ending_here < 0: 
+            max_ending_here = 0
+        elif (max_so_far < max_ending_here): 
+            max_so_far = max_ending_here 
+    return max_so_far
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_sub_array_sum_repeated([-1, -2, -3, -4, -5, -6],6,3) == -1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert max_sub_array_sum_repeated([1, 2, 3, 4, 5],5,3) == 45
+assert max_sub_array_sum_repeated([1, 2, 3, 4, 5],5,2) == 30
+assert max_sub_array_sum_repeated([2, -1, 2],3,3) == 9
+assert max_sub_array_sum_repeated([8, -1, -1, 8],4,2) == 28
+assert max_sub_array_sum_repeated([2, -1, -1, 2],4,2) == 4
+assert max_sub_array_sum_repeated([-2, -3, 4, -1, -2, 1, 5, -3],8,3) == 7
+assert max_sub_array_sum_repeated([1, 2, 3, 4],4,4) == 40
+assert max_sub_array_sum_repeated([1, -1, -2, 4, -7],5,2) == 4
+assert max_sub_array_sum_repeated([2, 3, -1, -2, -3, 4, -1, -2, 1, 5, -3],11,3) == 13
+assert max_sub_array_sum_repeated([3, 2, 2, -2, -3, 4, -1, -2, 1, 5, -3],11,3) == 21
+assert max_sub_array_sum_repeated([1, -2, -3, 4, -1, 2, 1, -5, 4],9,2) == 7
+assert max_sub_array_sum_repeated([1, -2, 3, -4],4,2) == 3
+assert max_sub_array_sum_repeated([8, -1, -2, 4, -10, 5],6,3) == 18
+assert max_sub_array_sum_repeated([1, 2, 4, -5, 6],5,2) == 16
+assert max_sub_array_sum_repeated([1, 2, 4, -5, 6],5,3) == 24
+assert max_sub_array_sum_repeated([1, 2, 4, -5, 6],5,4) == 32
+assert max_sub_array_sum_repeated([2, 3, 4, -1, -2, 1, 5, 3],8,2) == 30
+assert max_sub_array_sum_repeated([2, 3, 4, -1, -2, 1, 5, 3],8,3) == 45
+assert max_sub_array_sum_repeated([1, -2, 3, -4, 5],5,2) == 8
+assert max_sub_array_sum_repeated([1, -2, 3, -4, 5],5,3) == 11
+assert max_sub_array_sum_repeated([1, -2, 3, -4, 5],5,4) == 14
+assert max_sub_array_sum_repeated([100, -101, 200, -3, 1000],5,1) == 1197
+assert max_sub_array_sum_repeated([100, -101, 200, -3, 1000],5,2) == 2393
+assert max_sub_array_sum_repeated([10, -2, 4, -7, 4, -5, -6, 3],8,3) == 16
+assert max_sub_array_sum_repeated([-1, 2, -3, 4, -1, 5, -4, 5],8,2) == 16
+assert max_sub_array_sum_repeated([1, 2, 3, 4, 5],5,2) == 30
+assert max_sub_array_sum_repeated([2, 3, -4, 5, -6, 7],6,1) == 7
+assert max_sub_array_sum_repeated([1, 2, -2, 4, -1],5,4) == 17
+assert max_sub_array_sum_repeated([1, 2, -2, 4, -1],5,5) == 21
+assert max_sub_array_sum_repeated([1, 2, -2, 4, -1],5,6) == 25
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_sub_array_sum_repeated(a, n, k): 
+    max_so_far = float('-inf')
+    max_ending_here = 0
+    for i in range(n):
+        max_ending_here += a[i]
+        if max_so_far < max_ending_here:
+            max_so_far = max_ending_here
+        if max_ending_here < 0:
+            max_ending_here = 0
+    if max_so_far <= 0:
+        return max_so_far
+    total_sum = sum(a)
+    if total_sum <= 0:
+        return max_so_far
+    max_sum = max_so_far
+    for i in range(1, k):
+        max_sum += total_sum
+    return max_sum
+```

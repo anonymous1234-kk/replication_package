@@ -1,0 +1,119 @@
+task_id:HumanEval/33
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+
+def sort_third(l: list):
+    """This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l, but sorted.
+    >>> sort_third([1, 2, 3])
+    [1, 2, 3]
+    >>> sort_third([5, 6, 3, 4, 8, 9, 2])
+    [2, 6, 3, 4, 8, 9, 5]
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+
+def sort_third(l: list):
+    """This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l, but sorted.
+    >>> sort_third([1, 2, 3])
+    [1, 2, 3]
+    >>> sort_third([5, 6, 3, 4, 8, 9, 2])
+    [2, 6, 3, 4, 8, 9, 5]
+    """
+
+    divisible_by_three = []
+    other = []
+    for i, x in enumerate(l):
+        if i % 3 == 0:
+            divisible_by_three.append(x)
+        else:
+            other.append(x)
+    divisible_by_three.sort()
+    result = []
+    j = 0
+    k = 0
+    while j < len(divisible_by_three) and k < len(other):
+        if k % 3 == 0:
+            result.append(divisible_by_three[j])
+            j += 1
+        else:
+            result.append(other[k])
+            k += 1
+    while j < len(divisible_by_three):
+        result.append(divisible_by_three[j])
+        j += 1
+    while k < len(other):
+        result.append(other[k])
+        k += 1
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sort_third([5, 3, 4, 8, 9, 2]) == [5, 3, 4, 8, 9, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+
+def sort_third(l: list):
+    """This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l, but sorted.
+    >>> sort_third([1, 2, 3])
+    [1, 2, 3]
+    >>> sort_third([5, 6, 3, 4, 8, 9, 2])
+    [2, 6, 3, 4, 8, 9, 5]
+    """
+
+    divisible_by_three = []
+    other = []
+    for i, x in enumerate(l):
+        if i % 3 == 0:
+            divisible_by_three.append(x)
+        else:
+            other.append(x)
+    divisible_by_three.sort()
+    result = []
+    j = 0
+    k = 0
+    while j < len(divisible_by_three) and k < len(other):
+        if k % 3 == 0:
+            result.append(divisible_by_three[j])
+            j += 1
+        else:
+            result.append(other[k])
+            k += 1
+    while j < len(divisible_by_three):
+        result.append(divisible_by_three[j])
+        j += 1
+    while k < len(other):
+        result.append(other[k])
+        k += 1
+    return result
+
+```

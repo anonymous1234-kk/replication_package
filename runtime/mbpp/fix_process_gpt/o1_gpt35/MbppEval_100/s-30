@@ -1,0 +1,142 @@
+task_id:MbppEval/100
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    num_str = str(num)
+    num_len = len(num_str)
+    
+    if num < 10:
+        return num + 1
+    
+    if num_str == num_str[::-1]:
+        num_str = num_str[:num_len//2] + str(int(num_str[num_len//2])-1) + num_str[num_len//2+1:] if num_len % 2 != 0 else num_str[:num_len//2-1] + str(int(num_str[num_len//2-1])-1) + num_str[num_len//2+1:]
+        num_len = len(num_str)
+        
+    left = num_str[:num_len//2]
+    right = left[::-1] if num_len % 2 == 0 else num_str[num_len//2+1:][::-1]
+    
+    if right < left:
+        return int(left + right)
+    
+    if num_len % 2 == 0:
+        new_left = str(int(left) + 1)
+        return int(new_left + new_left[::-1])
+    else:
+        new_left = str(int(num_str[num_len//2]) + 1)
+        return int(new_left + left[::-1])
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-18<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(sys.maxsize) == 9223372037302733229
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    num_str = str(num)
+    num_len = len(num_str)
+    
+    if num < 10:
+        return num + 1
+    
+    if num_str == num_str[::-1]:
+        num_str = num_str[:num_len//2] + str(int(num_str[num_len//2])-1) + num_str[num_len//2+1:] if num_len % 2 != 0 else num_str[:num_len//2-1] + str(int(num_str[num_len//2-1])-1) + num_str[num_len//2+1:]
+        num_len = len(num_str)
+        
+    left = num_str[:num_len//2]
+    right = left[::-1] if num_len % 2 == 0 else num_str[num_len//2+1:][::-1]
+    
+    if right < left:
+        return int(left + right)
+    
+    if num_len % 2 == 0:
+        new_left = str(int(left) + 1)
+        return int(new_left + new_left[::-1])
+    else:
+        new_left = str(int(num_str[num_len//2]) + 1)
+        return int(new_left + left[::-1])
+        
+assert next_smallest_palindrome(sys.maxsize) == 9223372037302733229
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest_palindrome(7654321) == 7654567
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import sys
+def next_smallest_palindrome(num):
+    '''
+    Write a function to find the next smallest palindrome of a specified integer, returned as an integer.
+    '''
+
+    num_str = str(num)
+    num_len = len(num_str)
+    
+    if num < 10:
+        return num + 1
+    
+    if num_str == num_str[::-1]:
+        num_str = num_str[:num_len//2] + str(int(num_str[num_len//2])-1) + num_str[num_len//2+1:] if num_len % 2 != 0 else num_str[:num_len//2-1] + str(int(num_str[num_len//2-1])-1) + num_str[num_len//2+1:]
+        num_len = len(num_str)
+        
+    left = num_str[:num_len//2]
+    right = left[::-1] if num_len % 2 == 0 else num_str[num_len//2+1:][::-1]
+    
+    if right < left:
+        return int(left + right)
+    
+    if num_len % 2 == 0:
+        new_left = str(int(left) + 1)
+        return int(new_left + new_left[::-1])
+    else:
+        new_left = str(int(num_str[num_len//2]) + 1)
+        new_right = new_left[::-1]
+        if len(new_left) > len(left):
+            new_left = new_left[:-1]
+        return int(new_left + new_right)
+```

@@ -1,0 +1,81 @@
+task_id:MbppEval/164
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def div_sum(n): 
+    '''
+    Write a function to determine if the sum of the divisors of two integers are the same.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def div_sum(n): 
+    '''
+    Write a function to determine if the sum of the divisors of two integers are the same.
+    '''
+
+    # Find all divisors of n and add them together
+    sum_n = sum([i for i in range(1, n+1) if n % i == 0])
+    
+    # Find all divisors of the sum of divisors of n and add them together
+    sum_div_n = sum([i for i in range(1, sum_n+1) if sum_n % i == 0])
+    
+    # Find all divisors of twice the original number and add them together
+    sum_2n = sum([i for i in range(1, 2*n+1) if (2*n) % i == 0])
+    
+    # If the sum of divisors of twice the original number is equal to the sum of divisors of n, return True
+    # Otherwise, return False
+    return sum_div_n == sum_2n
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert div_sum(6) == 6
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def div_sum(n): 
+    '''
+    Write a function to determine if the sum of the divisors of two integers are the same.
+    '''
+
+    # Find all divisors of n and add them together
+    sum_n = sum([i for i in range(1, n+1) if n % i == 0])
+    
+    # Find all divisors of the sum of divisors of n and add them together
+    sum_div_n = sum([i for i in range(1, sum_n+1) if sum_n % i == 0])
+    
+    # Find all divisors of twice the original number and add them together
+    sum_2n = sum([i for i in range(1, 2*n+1) if (2*n) % i == 0])
+    
+    # If the sum of divisors of twice the original number is equal to the sum of divisors of n, return True
+    # Otherwise, return False
+    return sum_div_n == sum_2n
+
+# Fix the code to handle the case where the sum of divisors of n is equal to n
+def div_sum(n): 
+    sum_n = sum([i for i in range(1, n) if n % i == 0])
+    sum_div_n = sum([i for i in range(1, sum_n+1) if sum_n % i == 0])
+    sum_2n = sum([i for i in range(1, 2*n+1) if (2*n) % i == 0])
+    return sum_div_n == sum_2n
+```

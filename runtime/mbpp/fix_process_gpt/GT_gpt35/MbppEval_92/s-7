@@ -1,0 +1,66 @@
+task_id:MbppEval/92
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+ 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+    digits = [int(x) for x in str(n)]   # convert number to list of digits
+    if len(digits) < 3:   # if number has less than 3 digits, it cannot be undulating
+        return False
+    for i in range(2, len(digits)):
+        if (digits[i-2] < digits[i-1] > digits[i]) or (digits[i-2] > digits[i-1] < digits[i]): 
+            # if current digit is part of undulating pattern, return True
+            return True
+    return False   # no undulating pattern found in the number
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_undulating(121234) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_undulating(4554) == False
+assert is_undulating(7887) == False
+assert is_undulating(1221) == False
+assert is_undulating(123456789) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    digits = [int(x) for x in str(n)]   # convert number to list of digits
+    if len(digits) < 3:   # if number has less than 3 digits, it cannot be undulating
+        return False
+    for i in range(2, len(digits)):
+        if (digits[i-2] < digits[i-1] > digits[i]) or (digits[i-2] > digits[i-1] < digits[i]): 
+            # if current digit is part of undulating pattern, return True
+            return True
+    return False   # no undulating pattern found in the number
+
+```

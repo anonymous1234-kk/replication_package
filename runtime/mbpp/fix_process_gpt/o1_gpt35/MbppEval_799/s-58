@@ -1,0 +1,100 @@
+task_id:MbppEval/799
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def left_rotate(n,d):   
+    '''
+    Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def left_rotate(n,d):   
+    '''
+    Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.
+    '''
+   
+    '''
+    Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.
+    '''
+    # Left shift the number n by d bits
+    left_shifted = n << d
+    
+    # Right shift the number n by 32 - d bits and take the bitwise OR of the two shifted numbers
+    right_shifted = n >> (32 - d)
+    result = left_shifted | right_shifted
+    
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert left_rotate(-8,2) == 4294967267
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert left_rotate(400000000,2) == 1600000000
+assert left_rotate(256,8) == 65536
+assert left_rotate(123456789,5) == 3950617248
+assert left_rotate(4,4) == 64
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def left_rotate(n,d):   
+    '''
+    Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.
+    '''
+   
+    left_shifted = n << d
+    right_shifted = (n & 0xFFFFFFFF) >> (32 - d)
+    result = (left_shifted | right_shifted) & 0xFFFFFFFF
+    
+    return result
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert left_rotate(-7,3) == 4294967295
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert left_rotate(400000000,2) == 1600000000
+assert left_rotate(256,8) == 65536
+assert left_rotate(123456789,5) == 3950617248
+assert left_rotate(4,4) == 64
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def left_rotate(n,d):   
+    '''
+    Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.
+    '''
+   
+    '''
+    Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.
+    '''
+    # Left shift the number n by d bits
+    left_shifted = n << d
+    
+    # Right shift the number n by 32 - d bits and take the bitwise OR of the two shifted numbers
+    right_shifted = n >> (32 - d)
+    result = (left_shifted | right_shifted) & 0xFFFFFFFF
+    
+    return result
+```

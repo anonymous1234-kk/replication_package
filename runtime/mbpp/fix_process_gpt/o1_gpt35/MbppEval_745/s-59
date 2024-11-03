@@ -1,0 +1,126 @@
+task_id:MbppEval/745
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    return [num for num in range(startnum, endnum+1) if all([num % int(digit) == 0 for digit in str(num) if digit != '0'])]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(300,400) == [312, 315, 324, 333, 336, 366, 384, 396]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    return [num for num in range(startnum, endnum+1) if all([num % int(digit) == 0 for digit in str(num) if digit != '0' and num % int(digit) != 0])]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(500,600) == [515, 555]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    return [num for num in range(startnum, endnum+1) if all([num % int(digit) == 0 for digit in str(num) if digit != '0'])]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(600,700) == [612, 624, 636, 648, 666, 672]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    return [num for num in range(startnum, endnum+1) if all([num % int(digit) == 0 for digit in str(num) if digit != '0' and num % int(digit) != 0])]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-7<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(800,900) == [816, 824, 848, 864, 888]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    return [num for num in range(startnum, endnum+1) if all([num % int(digit) == 0 and int(digit) != 0 for digit in str(num)])]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert divisible_by_digits(1000,1100) == []
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def divisible_by_digits(startnum, endnum):
+    '''
+    Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/python-exercises/lambda/python-lambda-exercise-24.php
+    '''
+
+    return [num for num in range(startnum, endnum+1) if all([num % int(digit) == 0 for digit in str(num) if digit != '0' and int(digit) != 0])]
+
+```

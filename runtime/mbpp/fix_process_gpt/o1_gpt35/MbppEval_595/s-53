@@ -1,0 +1,109 @@
+task_id:MbppEval/595
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+
+    #initialize a variable to count swaps
+    swaps = 0
+    
+    #iterate through the length of the first string
+    for i in range(len(str1)):
+        
+        #if the ith character of str1 is not equal to ith character of str2
+        if str1[i] != str2[i]:
+            
+            #increment the swap counter
+            swaps += 1
+            
+    #return half of the swap count as only one swap is needed to fix two bits
+    return swaps//2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('111','010') == -1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert min_Swaps('1101010','0011101') == 3
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Certainly! Here's the fixed code:
+
+```python
+def min_Swaps(str1,str2) : 
+    swaps = 0
+    ones_in_str1 = 0
+    ones_in_str2 = 0
+    
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            if str1[i] == '1':
+                ones_in_str1 += 1
+            else:
+                ones_in_str2 += 1
+                
+    if ones_in_str1 != ones_in_str2:
+        return -1
+    
+    return ones_in_str1 // 2
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('1110001010','0100011100') == -1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert min_Swaps('1101010','0011101') == 3
+assert min_Swaps('110011','001111') == 2
+assert min_Swaps('0000','1111') == 2
+assert min_Swaps('110000','000011') == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    swaps = 0
+    diff_count = 0
+    
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            swaps += 1
+            
+            if str1[i] == '1':
+                diff_count += 1
+            else:
+                diff_count -= 1
+    
+    if diff_count != 0:
+        return -1
+    
+    return swaps//2
+```

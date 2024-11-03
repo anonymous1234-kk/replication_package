@@ -1,0 +1,94 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    n = len(arr)
+    if n == 1:
+        return arr[0]
+    if arr[0] != arr[1]:
+        return arr[0]
+    if arr[-1] != arr[-2]:
+        return arr[-1]
+    left, right = 0, n - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] != arr[mid - 1] and arr[mid] != arr[mid + 1]:
+            return arr[mid]
+        if arr[mid] == arr[mid - 1]:
+            if (mid - left) % 2 == 0:
+                left = mid + 1
+            else:
+                right = mid - 2
+        elif arr[mid] == arr[mid + 1]:
+            if (right - mid) % 2 == 0:
+                right = mid - 1
+            else:
+                left = mid + 2
+    return None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    n = len(arr)
+    if n == 1:
+        return arr[0]
+    if arr[0] != arr[1]:
+        return arr[0]
+    if arr[-1] != arr[-2]:
+        return arr[-1]
+    left, right = 0, n - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] != arr[mid - 1] and arr[mid] != arr[mid + 1]:
+            return arr[mid]
+        if arr[mid] == arr[mid - 1]:
+            if (mid - left + 1) % 2 == 0:
+                left = mid + 1
+            else:
+                right = mid - 2
+        elif arr[mid] == arr[mid + 1]:
+            if (right - mid + 1) % 2 == 0:
+                right = mid - 1
+            else:
+                left = mid + 2
+    return None
+
+```

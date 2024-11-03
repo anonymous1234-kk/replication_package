@@ -1,0 +1,61 @@
+task_id:MbppEval/452
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def loss_amount(actual_cost,sale_amount): 
+    '''
+    Write a function that gives loss amount on a sale if the given amount has loss else return 0.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def loss_amount(actual_cost,sale_amount): 
+    '''
+    Write a function that gives loss amount on a sale if the given amount has loss else return 0.
+    '''
+
+    if actual_cost > sale_amount:
+        loss = actual_cost - sale_amount
+        return loss
+    else:
+        return 0
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert loss_amount('25','20') == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert loss_amount(19,20) == 0
+assert loss_amount(-1,-2) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def loss_amount(actual_cost, sale_amount):
+    '''
+    Write a function that gives loss amount on a sale if the given amount has loss else return 0.
+    '''
+
+    actual_cost = int(actual_cost)
+    sale_amount = int(sale_amount)
+
+    if actual_cost > sale_amount:
+        loss = actual_cost - sale_amount
+        return loss
+    else:
+        return 0
+```

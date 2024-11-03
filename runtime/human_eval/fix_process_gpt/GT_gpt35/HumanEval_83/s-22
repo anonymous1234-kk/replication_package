@@ -1,0 +1,77 @@
+task_id:HumanEval/83
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+    if n == 1:
+        # If n is 1, there is only one such number (1)
+        return 1
+    else:
+        # If n is greater than 1, we can count the number of n-digit integers
+        # that start with 1 and the number of n-digit integers that end with 1
+        # and subtract the number of n-digit integers that start and end with 1
+        # to avoid double-counting.
+        start_with_1 = 9 * 10 ** (n - 2)
+        end_with_1 = 9 * 10 ** (n - 2)
+        start_and_end_with_1 = 9
+        return start_with_1 + end_with_1 - start_and_end_with_1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert starts_one_ends(9) == 180000000
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+
+    if n == 1:
+        return 1
+    else:
+        start_with_1 = 9 * 10 ** (n - 2)
+        end_with_1 = 9 * 10 ** (n - 2)
+        start_and_end_with_1 = 9 * 10 ** (n - 3)
+        return start_with_1 + end_with_1 - start_and_end_with_1
+
+```

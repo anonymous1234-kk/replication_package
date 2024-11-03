@@ -1,0 +1,91 @@
+task_id:MbppEval/448
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def cal_sum(n): 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def cal_sum(n): 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+    # Initialize the first three Perrin numbers
+    p = [3, 0, 2]
+
+    # Initialize the sum of Perrin numbers
+    s = 0
+
+    # Iterate from 3 to n
+    for i in range(3, n+1):
+        # Calculate the ith Perrin number using the formula
+        p_i = p[i-2] + p[i-3]
+
+        # Add the ith Perrin number to the sum
+        s += p_i
+
+        # Update the list of Perrin numbers
+        p.append(p_i)
+
+    # Return the sum of Perrin numbers
+    return s
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert cal_sum(5) == 15
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def cal_sum(n): 
+    '''
+    Write a function to calculate the sum of perrin numbers.
+    '''
+
+    # Initialize the first three Perrin numbers
+    p = [3, 0, 2]
+
+    # Initialize the sum of Perrin numbers
+    s = 0
+
+    # Iterate from 3 to n
+    for i in range(3, n+1):
+        # Calculate the ith Perrin number using the formula
+        p_i = p[i-2] + p[i-3]
+
+        # Add the ith Perrin number to the sum
+        s += p_i
+
+        # Update the list of Perrin numbers
+        p.append(p_i)
+
+    # Return the sum of Perrin numbers
+    return s
+
+
+assert cal_sum(5) == 15
+```

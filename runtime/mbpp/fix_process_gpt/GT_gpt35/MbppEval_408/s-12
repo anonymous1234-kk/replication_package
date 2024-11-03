@@ -1,0 +1,133 @@
+task_id:MbppEval/408
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import heapq
+def k_smallest_pairs(nums1, nums2, k):
+    '''
+    Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import heapq
+def k_smallest_pairs(nums1, nums2, k):
+    '''
+    Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.
+    '''
+
+    pairs = []
+    if len(nums1) == 0 or len(nums2) == 0 or k == 0:
+        return pairs
+    
+    heap = [(nums1[0] + nums2[0], 0, 0)]
+    visited = set((0, 0))
+    
+    while len(pairs) < k and heap:
+        _, i, j = heapq.heappop(heap)
+        pairs.append((nums1[i], nums2[j]))
+        
+        if i+1 < len(nums1) and (i+1, j) not in visited:
+            heapq.heappush(heap, (nums1[i+1] + nums2[j], i+1, j))
+            visited.add((i+1, j))
+            
+        if j+1 < len(nums2) and (i, j+1) not in visited:
+            heapq.heappush(heap, (nums1[i] + nums2[j+1], i, j+1))
+            visited.add((i, j+1))
+            
+    return pairs
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert k_smallest_pairs([1, 5, 7, 8, 9],[2, 4, 6],4) == [[1, 2], [1, 4], [1, 6], [5, 2]]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import heapq
+def k_smallest_pairs(nums1, nums2, k):
+    '''
+    Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.
+    '''
+
+    pairs = []
+    if len(nums1) == 0 or len(nums2) == 0 or k == 0:
+        return pairs
+    
+    heap = [(nums1[0] + nums2[0], 0, 0)]
+    visited = set((0, 0))
+    
+    while len(pairs) < k and heap:
+        _, i, j = heapq.heappop(heap)
+        pairs.append([nums1[i], nums2[j]])  # Changed parentheses to square brackets
+        
+        if i+1 < len(nums1) and (i+1, j) not in visited:
+            heapq.heappush(heap, (nums1[i+1] + nums2[j], i+1, j))
+            visited.add((i+1, j))
+            
+        if j+1 < len(nums2) and (i, j+1) not in visited:
+            heapq.heappush(heap, (nums1[i] + nums2[j+1], i, j+1))
+            visited.add((i, j+1))
+            
+    return pairs
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert k_smallest_pairs([5, 6, 8],[4, 3, 9],3) == [[5, 4], [5, 3], [6, 4]]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert k_smallest_pairs([1, 5, 7, 8, 9],[2, 4, 6],4) == [[1, 2], [1, 4], [1, 6], [5, 2]]
+assert k_smallest_pairs([1, 5, 7, 8, 9],[2, 4, 6],2) == [[1, 2], [1, 4]]
+assert k_smallest_pairs([5, 7, 8, 9],[2, 4, 6],4) == [[5, 2], [5, 4], [7, 2], [8, 2]]
+assert k_smallest_pairs([1, 7, 11, 15, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37],[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26],10) == [[1, 2], [1, 4], [1, 6], [1, 8], [7, 2], [1, 10], [7, 4], [1, 12], [7, 6], [11, 2]]
+assert k_smallest_pairs([1, 2, 3],[4, 5, 6],3) == [[1, 4], [1, 5], [2, 4]]
+assert k_smallest_pairs([1, 2, 3, 4],[4, 5, 6],3) == [[1, 4], [1, 5], [2, 4]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import heapq
+def k_smallest_pairs(nums1, nums2, k):
+    pairs = []
+    if len(nums1) == 0 or len(nums2) == 0 or k == 0:
+        return pairs
+    
+    heap = [(nums1[0] + nums2[0], 0, 0)]
+    visited = set((0, 0))
+    
+    while len(pairs) < k and heap:
+        _, i, j = heapq.heappop(heap)
+        pairs.append([nums1[i], nums2[j]])
+        
+        if i+1 < len(nums1) and (i+1, j) not in visited:
+            heapq.heappush(heap, (nums1[i+1] + nums2[j], i+1, j))
+            visited.add((i+1, j))
+            
+        if j+1 < len(nums2) and (i, j+1) not in visited:
+            heapq.heappush(heap, (nums1[i] + nums2[j+1], i, j+1))
+            visited.add((i, j+1))
+            
+    return pairs
+```

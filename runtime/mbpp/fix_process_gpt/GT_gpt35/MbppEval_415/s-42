@@ -1,0 +1,73 @@
+task_id:MbppEval/415
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+
+    n = len(arr)
+    if n < 2:
+        return "Invalid Input"
+    elif n == 2:
+        return arr[0]*arr[1]
+    else:
+        max_product = arr[0]*arr[1]
+        for i in range(0,n):
+            for j in range(i+1,n):
+                if arr[i]*arr[j] > max_product:
+                    max_product = arr[i]*arr[j]
+        return max_product
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_Product([7, -1, -2, 8, -2]) == (7, 8)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_Product(arr): 
+    '''
+    Write a python function to find a pair with highest product from a given array of integers.
+    '''
+
+    n = len(arr)
+    if n < 2:
+        return "Invalid Input"
+    elif n == 2:
+        return arr[0]*arr[1]
+    else:
+        max_product = arr[0]*arr[1]
+        max_pair = (arr[0], arr[1])
+        for i in range(0,n):
+            for j in range(i+1,n):
+                if arr[i]*arr[j] > max_product:
+                    max_product = arr[i]*arr[j]
+                    max_pair = (arr[i], arr[j])
+        return max_pair
+```

@@ -1,0 +1,64 @@
+task_id:MbppEval/758
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def unique_sublists(list1):
+    '''
+    Write a function to count lists within a list. The function should return a dictionary where every list is converted to a tuple and the value of such tuple is the number of its occurencies in the original list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def unique_sublists(list1):
+    '''
+    Write a function to count lists within a list. The function should return a dictionary where every list is converted to a tuple and the value of such tuple is the number of its occurencies in the original list.
+    '''
+
+    counts = {}
+    for sublist in list1:
+        tup = tuple(sublist)
+        counts[tup] = counts.get(tup, 0) + 1
+    return counts
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-42<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert unique_sublists(['hello', 'hi', 'hi', 'hello']) == {}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert unique_sublists([[1, 2, 3], [1, 2, 3, 4]]) == {(1, 2, 3): 1, (1, 2, 3, 4): 1}
+assert unique_sublists([[1, 2, 3], [1, 2, 3, 4], ['a', 'b']]) == {(1, 2, 3): 1, (1, 2, 3, 4): 1, ('a', 'b'): 1}
+assert unique_sublists([[1, 2], [2, 3], [3, 4]]) == {(1, 2): 1, (2, 3): 1, (3, 4): 1}
+assert unique_sublists([[1], [2], [3]]) == {(1,): 1, (2,): 1, (3,): 1}
+assert unique_sublists([[1, 2], [2, 3]]) == {(1, 2): 1, (2, 3): 1}
+assert unique_sublists([[1, 2], [2, 3], [1, 2]]) == {(1, 2): 2, (2, 3): 1}
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def unique_sublists(list1):
+    '''
+    Write a function to count lists within a list. The function should return a dictionary where every list is converted to a tuple and the value of such tuple is the number of its occurencies in the original list.
+    '''
+
+    counts = {}
+    for sublist in list1:
+        if isinstance(sublist, list):
+            tup = tuple(sublist)
+            counts[tup] = counts.get(tup, 0) + 1
+    return counts
+
+```

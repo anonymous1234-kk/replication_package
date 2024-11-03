@@ -1,0 +1,55 @@
+task_id:MbppEval/470
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def add_pairwise(test_tup):
+    '''
+    Write a function to find the pairwise addition of the neighboring elements of the given tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def add_pairwise(test_tup):
+    '''
+    Write a function to find the pairwise addition of the neighboring elements of the given tuple.
+    '''
+
+    res = []
+    for i in range(len(test_tup)-1):
+        res.append(test_tup[i]+test_tup[i+1])
+    return res
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_pairwise([8, 10, 56, 78, 89]) == (18, 66, 134, 167)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_pairwise(test_tup):
+    '''
+    Write a function to find the pairwise addition of the neighboring elements of the given tuple.
+    '''
+
+    res = []
+    for i in range(len(test_tup)-1):
+        res.append(test_tup[i]+test_tup[i+1])
+    return tuple(res)
+```

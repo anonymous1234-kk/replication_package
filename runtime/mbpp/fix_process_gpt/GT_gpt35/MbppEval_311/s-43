@@ -1,0 +1,63 @@
+task_id:MbppEval/311
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+
+    # If n is already a power of 2, return n
+    if (n & (n + 1)) == 0:
+        return n
+    
+    # Find the leftmost unset bit by XORing n with n+1
+    mask = n ^ (n+1)
+    
+    # Flip the leftmost unset bit and return the result
+    return n | mask
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert set_left_most_unset_bit(100) == 116
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def set_left_most_unset_bit(n): 
+    '''
+    Write a python function to set the left most unset bit.
+    '''
+
+    if (n & (n + 1)) == 0:
+        return n
+    
+    mask = n ^ (n+1)
+    
+    return n | (mask & -mask)
+
+```

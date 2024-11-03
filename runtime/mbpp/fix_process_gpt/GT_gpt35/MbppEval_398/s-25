@@ -1,0 +1,75 @@
+task_id:MbppEval/398
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sum_of_digits(nums):
+    '''
+    Write a function to compute the sum of digits of each number of a given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sum_of_digits(nums):
+    '''
+    Write a function to compute the sum of digits of each number of a given list.
+    '''
+
+    '''
+    Write a function to compute the sum of digits of each number of a given list.
+    '''
+    # Initialize an empty list to store the sum of digits for each number
+    sum_of_digits_list = []
+    
+    # Loop through each number in the list
+    for num in nums:
+        # Convert the number to a string so that we can access each digit separately
+        num_str = str(num)
+        
+        # Initialize a variable to store the sum of digits for the current number
+        digit_sum = 0
+        
+        # Loop through each digit in the number
+        for digit in num_str:
+            # Convert the digit back to an integer and add it to the digit_sum
+            digit_sum += int(digit)
+        
+        # Add the digit_sum to the sum_of_digits_list
+        sum_of_digits_list.append(digit_sum)
+    
+    # Return the sum_of_digits_list
+    return sum_of_digits_list
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-9<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sum_of_digits([28, 12, 33]) == 19
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sum_of_digits(nums):
+    sum_of_digits_list = []
+    for num in nums:
+        num_str = str(num)
+        digit_sum = 0
+        for digit in num_str:
+            digit_sum += int(digit)
+        sum_of_digits_list.append(digit_sum)
+    return sum_of_digits_list
+```

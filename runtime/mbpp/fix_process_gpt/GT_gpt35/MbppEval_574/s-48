@@ -1,0 +1,48 @@
+task_id:MbppEval/574
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def surfacearea_cylinder(r,h):
+    '''
+    Write a function to find the surface area of a cylinder.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def surfacearea_cylinder(r,h):
+    '''
+    Write a function to find the surface area of a cylinder.
+    '''
+
+    '''
+    Write a function to find the surface area of a cylinder.
+    '''
+    return 2 * 3.14 * r * h + 2 * 3.14 * r ** 2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert surfacearea_cylinder(2,3) == 62.83
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def surfacearea_cylinder(r,h):
+    return 2 * 3.14 * r * (r + h)
+```

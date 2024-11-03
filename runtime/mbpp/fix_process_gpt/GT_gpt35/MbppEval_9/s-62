@@ -1,0 +1,70 @@
+task_id:MbppEval/9
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_Rotations(str): 
+    '''
+    Write a python function to find the minimum number of rotations (greater than 0) required to get the same string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_Rotations(str): 
+    '''
+    Write a python function to find the minimum number of rotations (greater than 0) required to get the same string.
+    '''
+ 
+    n = len(str) 
+  
+    # Create a temp string with concatenated 
+    # str twice 
+    temp = str + str 
+  
+    # Loop over the temp string and check if 
+    # substring of len n starting from each 
+    # character index i returns the original 
+    # string 
+    for i in range(1, n+1): 
+        if (temp[i:i+n] == str): 
+            return i 
+  
+    # If there is no such rotation that returns 
+    # the original string, return -1 
+    return -1 
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_Rotations('') == 0
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_Rotations('abba') == 4
+assert find_Rotations('aba') == 3
+assert find_Rotations('aaaabbbb') == 8
+assert find_Rotations('abcabcabc') == 3
+assert find_Rotations('abcdabcabc') == 10
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_Rotations(str): 
+    n = len(str) 
+    temp = str + str 
+    for i in range(1, n+1): 
+        if (temp[i:i+n] == str): 
+            return i 
+    return 0 if n == 0 else -1
+```

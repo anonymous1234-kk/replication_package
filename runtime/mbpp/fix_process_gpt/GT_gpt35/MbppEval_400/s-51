@@ -1,0 +1,76 @@
+task_id:MbppEval/400
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def extract_freq(test_list):
+    '''
+    Write a function to extract the number of unique tuples in the given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def extract_freq(test_list):
+    '''
+    Write a function to extract the number of unique tuples in the given list.
+    '''
+
+    '''
+    Write a function to extract the number of unique tuples in the given list.
+    '''
+    # Using set to get unique tuples
+    unique_tuples = set(test_list)
+
+    # Returning the length of set as it contains only unique tuples
+    return len(unique_tuples)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert extract_freq([(1, 2), (3, 4), (4, 3), (2, 1)]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert extract_freq([(0, 5), (0, 7), (0, 5)]) == 2
+assert extract_freq([(0, 5), (0, 7)]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def extract_freq(test_list):
+    '''
+    Write a function to extract the number of unique tuples in the given list.
+    '''
+
+    '''
+    Write a function to extract the number of unique tuples in the given list.
+    '''
+    # Using set to get unique tuples
+    unique_tuples = set(test_list)
+
+    # Returning the length of set as it contains only unique tuples
+    return len(unique_tuples)
+```
+
+```python
+def extract_freq(test_list):
+    '''
+    Write a function to extract the number of unique tuples in the given list.
+    '''
+    # Using set to get unique tuples
+    unique_tuples = set(test_list)
+
+    # Returning the length of set as it contains only unique tuples
+    return len(unique_tuples)
+```

@@ -1,0 +1,55 @@
+task_id:MbppEval/725
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def extract_quotation(text1):
+    '''
+    Write a function to extract values between quotation marks " " of the given string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def extract_quotation(text1):
+    '''
+    Write a function to extract values between quotation marks " " of the given string.
+    '''
+
+    # Use regex to find all occurrences of text within double quotes
+    quotation_regex = r'"([^"]+)"'
+    results = re.findall(quotation_regex, text1)
+    
+    # Return a list of all extracted values
+    return results
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-15<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert extract_quotation('""Hello, how are you?" he said"') == ['', ' he said']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert extract_quotation("My name is 'John'") == []
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def extract_quotation(text1):
+    quotation_regex = r'(?<!\\)".*?(?<!\\)"'
+    results = re.findall(quotation_regex, text1)
+    return results
+```

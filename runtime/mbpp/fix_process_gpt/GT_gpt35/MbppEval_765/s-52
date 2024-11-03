@@ -1,0 +1,120 @@
+task_id:MbppEval/765
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+    # calculate the maximum power of 2 less than or equal to n and store it in the variable power
+    power = int(math.log2(n)) 
+    # initialize the polite number to 0
+    polite_num = 0 
+    # loop through each power of 2 from power to 0
+    for i in range(power, -1, -1): 
+        # set the bit at position i in polite_num to 1
+        polite_num = polite_num | 1 << i 
+        # calculate the difference between the polite number and n
+        diff = n - polite_num 
+        # if the difference is negative or 0, set the bit at position i in polite_num to 0
+        if diff <= 0: 
+            polite_num = polite_num & ~(1 << i) 
+        # if the difference is a power of 2, return the polite number
+        elif math.log2(diff).is_integer(): 
+            return polite_num 
+    # if we get to this point, there is no nth polite number
+    return -1 
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(20) == 25
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+    # calculate the maximum power of 2 less than or equal to n and store it in the variable power
+    power = int(math.log2(n)) 
+    # initialize the polite number to 0
+    polite_num = 0 
+    # loop through each power of 2 from power to 0
+    for i in range(power, -1, -1): 
+        # set the bit at position i in polite_num to 1
+        polite_num = polite_num | 1 << i 
+        # calculate the difference between the polite number and n
+        diff = n - polite_num 
+        # if the difference is negative or 0, set the bit at position i in polite_num to 0
+        if diff < 0: 
+            polite_num = polite_num & ~(1 << i) 
+        # if the difference is a power of 2, return the polite number
+        elif diff == 0 or math.log2(diff).is_integer(): 
+            return polite_num 
+    # if we get to this point, there is no nth polite number
+    return -1 
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(7) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+
+def is_polite(n): 
+    power = int(math.log2(n)) 
+    polite_num = 0 
+    for i in range(power, -1, -1): 
+        polite_num = polite_num | 1 << i 
+        diff = n - polite_num 
+        if diff <= 0: 
+            polite_num = polite_num & ~(1 << i) 
+        elif math.log2(diff).is_integer(): 
+            return polite_num 
+    return -1
+```

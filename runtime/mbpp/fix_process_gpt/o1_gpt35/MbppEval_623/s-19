@@ -1,0 +1,59 @@
+task_id:MbppEval/623
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def nth_nums(nums,n):
+    '''
+    Write a function to compute the n-th power of each number in a list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def nth_nums(nums,n):
+    '''
+    Write a function to compute the n-th power of each number in a list.
+    '''
+
+    return [num**n for num in nums]
+```
+
+This function takes a list of numbers `nums` and an integer `n` as arguments. It returns a new list containing the `n`-th power of each element in `nums`. 
+
+For example:
+
+```python
+>>> nums = [1, 2, 3, 4, 5]
+>>> nth_nums(nums, 2)
+[1, 4, 9, 16, 25]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-15<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert nth_nums([10, 20, 30],4) == [10000, 160000, 810000]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def nth_nums(nums,n):
+    '''
+    Write a function to compute the n-th power of each number in a list.
+    '''
+
+    return [num**n for num in nums]
+```

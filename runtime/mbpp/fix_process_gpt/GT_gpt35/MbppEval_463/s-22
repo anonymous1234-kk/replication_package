@@ -1,0 +1,70 @@
+task_id:MbppEval/463
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_subarray_product(arr):
+    '''
+    Write a function to find the maximum product subarray of the given array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_subarray_product(arr):
+    '''
+    Write a function to find the maximum product subarray of the given array.
+    '''
+
+    # Initialize the local and global maxima with the first element of the array.
+    local_max = global_max = arr[0]
+    
+    # Iterate through the array starting from the second element.
+    for i in range(1, len(arr)):
+        # Update the local maxima by taking the maximum of three values:
+        # 1. The current element
+        # 2. The current element multiplied by the previous local maxima
+        # 3. The current element multiplied by the previous global maxima
+        local_max = max(arr[i], arr[i] * local_max, arr[i] * global_max)
+        
+        # If the local maxima becomes negative, reset it to 1.
+        if local_max < 0:
+            local_max = 1
+        
+        # Update the global maxima by taking the maximum of the current local maxima and the previous global maxima.
+        global_max = max(global_max, local_max)
+        
+    # Return the global maxima.
+    return global_max
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_subarray_product([3, 4, -1, 5, 6, 7, -8, 2]) == 40320
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_subarray_product(arr):
+    local_max = global_max = arr[0]
+    for i in range(1, len(arr)):
+        local_max = max(arr[i], arr[i] * local_max, arr[i] * global_max)
+        if local_max < 0:
+            local_max = 1
+        global_max = max(global_max, local_max)
+    return global_max
+```

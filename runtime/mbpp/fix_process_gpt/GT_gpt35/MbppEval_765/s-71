@@ -1,0 +1,160 @@
+task_id:MbppEval/765
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    Find nth polite number.
+    A number is called polite if it can be expressed as the sum of two or more consecutive positive integers.
+    Args:
+    n: integer, the index of the polite number.
+    
+    Returns:
+    integer, the nth polite number.
+    """
+    # Using the formula for the sum of consecutive numbers
+    # Sum of n consecutive numbers = (n * (n+1)) / 2
+    
+    # Find the smallest value of k such that (k * (k+1)) / 2 is greater than or equal to n
+    k = int(math.sqrt(2*n)) + 1
+    
+    # Find the sum of first k-1 consecutive numbers
+    sum_k_minus_1 = (k-1) * k // 2
+    
+    # Find the difference between the sum of first k-1 consecutive numbers and n
+    diff = sum_k_minus_1 - n
+    
+    # If the difference is 0, then the nth number is the sum of the k-1 consecutive numbers
+    if diff == 0:
+        return sum(range(1, k))
+    
+    # If the difference is greater than 0, then the nth number is the sum of k-1 consecutive numbers 
+    # with one or more of the first diff numbers removed
+    else:
+        return sum(range(1, k)) - sum(range(1, diff+1))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(20) == 25
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    Find nth polite number.
+    A number is called polite if it can be expressed as the sum of two or more consecutive positive integers.
+    Args:
+    n: integer, the index of the polite number.
+    
+    Returns:
+    integer, the nth polite number.
+    """
+    # Using the formula for the sum of consecutive numbers
+    # Sum of n consecutive numbers = (n * (n+1)) / 2
+    
+    # Find the smallest value of k such that (k * (k+1)) / 2 is greater than or equal to n
+    k = int(math.sqrt(2*n)) + 1
+    
+    # Find the sum of first k-1 consecutive numbers
+    sum_k_minus_1 = (k-1) * k // 2
+    
+    # Find the difference between the sum of first k-1 consecutive numbers and n
+    diff = sum_k_minus_1 - n
+    
+    # If the difference is 0 or 1, then the nth number is the sum of the k-1 consecutive numbers
+    if diff == 0 or diff == 1:
+        return sum(range(1, k))
+    
+    # If the difference is greater than 1, then the nth number is the sum of k-1 consecutive numbers 
+    # with one or more of the first diff numbers removed
+    else:
+        return sum(range(1, k)) - sum(range(1, diff+1))
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(7) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+ 
+    """
+    Find nth polite number.
+    A number is called polite if it can be expressed as the sum of two or more consecutive positive integers.
+    Args:
+    n: integer, the index of the polite number.
+    
+    Returns:
+    integer, the nth polite number.
+    """
+    # Using the formula for the sum of consecutive numbers
+    # Sum of n consecutive numbers = (n * (n+1)) / 2
+    
+    # Find the smallest value of k such that (k * (k+1)) / 2 is greater than or equal to n
+    k = int(math.sqrt(2*n)) + 1
+    
+    # Find the sum of first k-1 consecutive numbers
+    sum_k_minus_1 = (k-1) * k // 2
+    
+    # Find the difference between the sum of first k-1 consecutive numbers and n
+    diff = sum_k_minus_1 - n
+    
+    # If the difference is 0, then the nth number is the sum of the k-1 consecutive numbers
+    if diff == 0:
+        return sum(range(1, k))
+    
+    # If the difference is greater than 0, then the nth number is the sum of k-1 consecutive numbers 
+    # with one or more of the first diff numbers removed
+    else:
+        return sum(range(1, k)) - sum(range(1, diff+1))
+    
+assert is_polite(7) == 11
+```

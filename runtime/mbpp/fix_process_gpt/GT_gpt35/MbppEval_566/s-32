@@ -1,0 +1,58 @@
+task_id:MbppEval/566
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sum_digits(n):
+    '''
+    Write a function to get the sum of the digits of a non-negative integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sum_digits(n):
+    '''
+    Write a function to get the sum of the digits of a non-negative integer.
+    '''
+
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-43<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sum_digits(-1234) == 30
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert sum_digits(1234567891011121314151617181920) == 102
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sum_digits(n):
+    '''
+    Write a function to get the sum of the digits of a non-negative integer.
+    '''
+
+    n = abs(n)
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+```

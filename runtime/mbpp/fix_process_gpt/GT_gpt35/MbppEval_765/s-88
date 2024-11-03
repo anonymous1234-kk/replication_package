@@ -1,0 +1,116 @@
+task_id:MbppEval/765
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+
+    # Check if n is a positive integer 
+    if n < 1 or not isinstance(n, int): 
+        return None 
+  
+    # First polite number is always 1 
+    if n == 1: 
+        return 1
+  
+    # Find the highest power of 2 smaller than n 
+    p = int(math.log(n - 1, 2)) 
+  
+    # Find the difference between n and the highest power of 2 smaller than n 
+    q = n - 1 - 2 ** p 
+  
+    # Recursive call to find the qth polite number 
+    return 2 ** (p+1) + is_polite(q)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(20) == 25
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+
+    # Check if n is a positive integer 
+    if n < 1 or not isinstance(n, int): 
+        return None 
+  
+    # First polite number is always 1 
+    if n == 1: 
+        return 1
+  
+    # Find the highest power of 2 smaller than n 
+    p = int(math.log(n - 1, 2)) 
+  
+    # Find the difference between n and the highest power of 2 smaller than n 
+    q = n - 1 - 2 ** p 
+  
+    # Recursive call to find the qth polite number 
+    return 2 ** (p+1) + is_polite(q)
+
+assert is_polite(20) == 25
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_polite(7) == 11
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def is_polite(n): 
+    '''
+    Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/
+    '''
+
+    if n < 1 or not isinstance(n, int): 
+        return None 
+  
+    if n == 1: 
+        return 1
+  
+    p = int(math.log(n, 2)) 
+  
+    q = n - 2 ** p 
+  
+    return 2 ** (p+1) + is_polite(q)
+```

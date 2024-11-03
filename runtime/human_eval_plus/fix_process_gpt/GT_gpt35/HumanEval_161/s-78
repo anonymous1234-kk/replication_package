@@ -1,0 +1,131 @@
+task_id:HumanEval/161
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def solve(s):
+    """You are given a string s.
+    if s[i] is a letter, reverse its case from lower to upper or vise versa, 
+    otherwise keep it as it is.
+    If the string contains no letters, reverse the string.
+    The function should return the resulted string.
+    Examples
+    solve("1234") = "4321"
+    solve("ab") = "AB"
+    solve("#a@C") = "#A@c"
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def solve(s):
+    """You are given a string s.
+    if s[i] is a letter, reverse its case from lower to upper or vise versa, 
+    otherwise keep it as it is.
+    If the string contains no letters, reverse the string.
+    The function should return the resulted string.
+    Examples
+    solve("1234") = "4321"
+    solve("ab") = "AB"
+    solve("#a@C") = "#A@c"
+    """
+
+    letters = []
+    others = []
+    
+    for char in s:
+        if char.isalpha():
+            letters.append(char)
+        else:
+            others.append(char)
+    
+    if len(letters) == 0:
+        return s[::-1]
+    
+    letters = "".join(letters)
+    letters = letters.swapcase()
+    
+    result = []
+    i = j = 0
+    
+    for char in s:
+        if char.isalpha():
+            result.append(letters[i])
+            i += 1
+        else:
+            result.append(others[j])
+            j += 1
+    
+    return "".join(result)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert solve('hello','llooh') == HELLOLLOOH
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert solve('1a2b3C4d') == 1A2B3c4D
+assert solve('ababcbacadefegdehijhklij') == ABABCBACADEFEGDEHIJHKLIJ
+assert solve('abC') == ABc
+assert solve('1234as') == 1234AS
+assert solve('a#B$c') == A#b$C
+assert solve('1aA') == 1Aa
+assert solve('1234aladdin') == 1234ALADDIN
+assert solve('aavvvvzzz') == AAVVVVZZZ
+assert solve('zeusnilemacaronimaisanitratetartinasiaminoracamelinsuez') == ZEUSNILEMACARONIMAISANITRATETARTINASIAMINORACAMELINSUEZ
+assert solve('aBcDeFgHiJkLmNoPqRsTuVwXyZ') == AbCdEfGhIjKlMnOpQrStUvWxYz
+assert solve('my Name is') == MY nAME IS
+assert solve(['a', 'b', 'c']) == ABC
+assert solve('cdefg') == CDEFG
+assert solve('1234AB#$cd') == 1234ab#$CD
+assert solve('1e2g3') == 1E2G3
+assert solve('abcd123') == ABCD123
+assert solve('bR5$&89x') == Br5$&89X
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def solve(s):
+    letters = []
+    others = []
+    
+    for char in s:
+        if char.isalpha():
+            letters.append(char)
+        else:
+            others.append(char)
+    
+    if len(letters) == 0:
+        return s[::-1]
+    
+    letters = "".join(letters)
+    letters = letters.swapcase()
+    
+    result = []
+    i = j = 0
+    
+    for char in s:
+        if char.isalpha():
+            result.append(letters[i])
+            i += 1
+        else:
+            result.append(others[j])
+            j += 1
+    
+    return "".join(result)
+
+```

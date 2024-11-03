@@ -1,0 +1,58 @@
+task_id:MbppEval/94
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from operator import itemgetter 
+def index_minimum(test_list):
+    '''
+    Given a list of tuples, write a function that returns the first value of the tuple with the smallest second value.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from operator import itemgetter 
+def index_minimum(test_list):
+    '''
+    Given a list of tuples, write a function that returns the first value of the tuple with the smallest second value.
+    '''
+
+    # Find the index of the smallest second value in the list of tuples
+    min_index = min(enumerate(test_list), key=itemgetter(1))[0]
+    # Return the first value of the tuple with the smallest second value
+    return test_list[min_index][0]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert index_minimum([(4, 1), (1, 2), (9, 0), (3, 5), (2, 3)]) == 9
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from operator import itemgetter 
+def index_minimum(test_list):
+    '''
+    Given a list of tuples, write a function that returns the first value of the tuple with the smallest second value.
+    '''
+
+    # Find the index of the smallest second value in the list of tuples
+    min_index = min(enumerate(test_list), key=itemgetter(1))[0]
+    # Return the first value of the tuple with the smallest second value
+    return test_list[min_index][0]
+```

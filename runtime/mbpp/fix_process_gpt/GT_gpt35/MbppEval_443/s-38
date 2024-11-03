@@ -1,0 +1,80 @@
+task_id:MbppEval/443
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def largest_neg(list1): 
+    '''
+    Write a python function to find the largest negative number from the given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def largest_neg(list1): 
+    '''
+    Write a python function to find the largest negative number from the given list.
+    '''
+
+    max_neg = None
+    for num in list1:
+        if num < 0 and (max_neg is None or num > max_neg):
+            max_neg = num
+    return max_neg
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-25<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert largest_neg(['2,3,1,7,8']) == 2,3,1,7,8
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def largest_neg(list1): 
+    '''
+    Write a python function to find the largest negative number from the given list.
+    '''
+
+    max_neg = None
+    for num in list1:
+        if isinstance(num, int) or isinstance(num, float):
+            if num < 0 and (max_neg is None or num > max_neg):
+                max_neg = num
+    return max_neg
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert largest_neg(['2,3,1,7.5,8.5']) == 2,3,1,7.5,8.5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert largest_neg([-2.5, 3.5, 1.1, -7.8, -8.8]) == -2.5
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def largest_neg(list1): 
+    max_neg = None
+    for num in list1:
+        if isinstance(num, (int, float)) and num < 0 and (max_neg is None or num > max_neg):
+            max_neg = num
+    return max_neg
+
+```

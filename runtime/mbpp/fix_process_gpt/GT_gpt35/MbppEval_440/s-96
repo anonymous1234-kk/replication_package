@@ -1,0 +1,80 @@
+task_id:MbppEval/440
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    # Split the sentence into words
+    words = text.split()
+    
+    # Define a list of adverbs
+    adverbs = ['quickly', 'slowly', 'rudely', 'kindly', 'quietly', 'loudly', 'softly', 'hardly', 'easily', 'happily', 'sadly', 'angrily', 'proudly', 'anxiously', 'hungrily', 'thirstily', 'greedily', 'gracefully', 'carefully', 'honestly', 'patiently', 'bravely', 'generously', 'wisely', 'cleverly', 'diligently', 'eagerly', 'enthusiastically', 'fiercely', 'gently', 'nervously', 'politely', 'shyly', 'slyly', 'vigorously', 'warmly']
+    
+    # Iterate over each word in the sentence
+    for i, word in enumerate(words):
+        # Check if the word is an adverb
+        if word in adverbs:
+            # Return the position of the adverb
+            return i+1  # Add 1 to the index since we started counting from 0
+    
+    # If no adverb is found, return -1
+    return -1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverb_position('I am early in the morning at the office') == (5, 10, 'early')
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    # Split the sentence into words
+    words = text.split()
+    
+    # Define a list of adverbs
+    adverbs = ['quickly', 'slowly', 'rudely', 'kindly', 'quietly', 'loudly', 'softly', 'hardly', 'easily', 'happily', 'sadly', 'angrily', 'proudly', 'anxiously', 'hungrily', 'thirstily', 'greedily', 'gracefully', 'carefully', 'honestly', 'patiently', 'bravely', 'generously', 'wisely', 'cleverly', 'diligently', 'eagerly', 'enthusiastically', 'fiercely', 'gently', 'nervously', 'politely', 'shyly', 'slyly', 'vigorously', 'warmly']
+    
+    # Iterate over each word in the sentence
+    for i, word in enumerate(words):
+        # Check if the word is an adverb
+        if word in adverbs:
+            # Return the position of the adverb
+            return i+1, i+1+len(word), word  # Add len(word) to the index to get the position of the adverb's last character
+    
+    # If no adverb is found, return -1
+    return -1, -1, None
+```

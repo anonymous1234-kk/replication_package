@@ -1,0 +1,95 @@
+task_id:MbppEval/390
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def add_string(list_, string):
+    '''
+    Write a function to apply a given format string to all of the elements in a list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    '''
+    Write a function to apply a given format string to all of the elements in a list.
+    '''
+
+    """
+    Given a list and a format string, apply the format string to each element in the list
+    and return a new list with the formatted strings.
+
+    Args:
+    - list_ (list): A list of elements
+    - string (str): A format string to apply to each element in the list
+
+    Returns:
+    - result (list): A new list of formatted strings
+    """
+
+    # Create a new empty list to store formatted strings
+    result = []
+
+    # Iterate over each element in the list
+    for element in list_:
+
+        # Apply the format string to the element and append the result to the new list
+        result.append(string.format(element))
+
+    # Return the new list of formatted strings
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert add_string(['a', 'b', 'c'],'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def add_string(list_, string):
+    '''
+    Write a function to apply a given format string to all of the elements in a list.
+    '''
+
+    """
+    Given a list and a format string, apply the format string to each element in the list
+    and return a new list with the formatted strings.
+
+    Args:
+    - list_ (list): A list of elements
+    - string (str): A format string to apply to each element in the list
+
+    Returns:
+    - result (list): A new list of formatted strings
+    """
+
+    # Create a new empty list to store formatted strings
+    result = []
+
+    # Iterate over each index and element in the list
+    for index, element in enumerate(list_):
+
+        # Apply the format string to the index and element and append the result to the new list
+        result.append(string.format(index, element))
+
+    # Return the new list of formatted strings
+    return result
+
+assert add_string(['a', 'b', 'c'], 'Indexes of the element is {}. Element is {}') == ['Indexes of the element is 0. Element is a', 'Indexes of the element is 1. Element is b', 'Indexes of the element is 2. Element is c']
+```

@@ -1,0 +1,58 @@
+task_id:MbppEval/722
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def filter_data(students,h,w):
+    '''
+    The input is given as - a dictionary with a student name as a key and a tuple of float (student_height, student_weight) as a value, - minimal height, - minimal weight. Write a function to filter students that have height and weight above the minimum.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def filter_data(students,h,w):
+    '''
+    The input is given as - a dictionary with a student name as a key and a tuple of float (student_height, student_weight) as a value, - minimal height, - minimal weight. Write a function to filter students that have height and weight above the minimum.
+    '''
+
+    filtered_students = {}
+    for student, (height, weight) in students.items():
+        if height >= h and weight >= w:
+            filtered_students[student] = (height, weight)
+    return filtered_students
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert filter_data({'Dima': (1.8, 70), 'Tima': (1.6, 50), 'Lena': (1.67, 55), 'Fima': (1.77, 98), 'Mima': (1.87, 67)},1.8,50) == {'Mima': (1.87, 67)}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def filter_data(students,h,w):
+    '''
+    The input is given as - a dictionary with a student name as a key and a tuple of float (student_height, student_weight) as a value, - minimal height, - minimal weight. Write a function to filter students that have height and weight above the minimum.
+    '''
+
+    filtered_students = {}
+    for student, (height, weight) in students.items():
+        if height > h and weight > w:
+            filtered_students[student] = (height, weight)
+    return filtered_students
+
+```

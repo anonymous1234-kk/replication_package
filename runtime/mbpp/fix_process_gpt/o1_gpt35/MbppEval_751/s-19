@@ -1,0 +1,73 @@
+task_id:MbppEval/751
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def check_min_heap_helper(arr, i):
+    '''
+    Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def check_min_heap_helper(arr, i):
+    '''
+    Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/
+    '''
+
+    n = len(arr)
+    
+    # If the node is a leaf node, then it is a min heap
+    if i >= int(n/2):
+        return True
+    
+    # If the node has only one child, then check if the value of the node
+    # is smaller than that of its only child. If yes, then it is a min heap
+    if 2*i + 1 == n:
+        return arr[i] <= arr[2*i]
+    
+    # If the node has two children, then check if the value of the node
+    # is smaller than that of its children. If yes, then it is a min heap
+    if arr[i] <= arr[2*i] and arr[i] <= arr[2*i + 1]:
+        return check_min_heap_helper(arr, 2*i) and check_min_heap_helper(arr, 2*i + 1)
+    
+    return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-15<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert check_min_heap_helper([1, 2, 3, 4, 5, 6, 7, 8, 9],0) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert check_min_heap_helper([90, 15, 10, 7, 12, 2],0) == False
+assert check_min_heap_helper([9, 8, 7, 6, 5, 4, 3, 2, 1],0) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def check_min_heap_helper(arr, i):
+    n = len(arr)
+    
+    if i >= int(n/2):
+        return True
+    
+    if 2*i + 1 == n:
+        return arr[i] <= arr[2*i]
+    
+    if arr[i] <= arr[2*i] and arr[i] <= arr[2*i + 1]:
+        return check_min_heap_helper(arr, 2*i) and check_min_heap_helper(arr, 2*i + 1)
+    
+    return False
+```

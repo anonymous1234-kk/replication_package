@@ -1,0 +1,86 @@
+task_id:MbppEval/160
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_solution(a, b, n):
+    '''
+    Write a function that returns integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_solution(a, b, n):
+    '''
+    Write a function that returns integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists.
+    '''
+
+    """
+    This function finds integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists.
+    """
+    if n % gcd(a, b) != 0:
+        return None
+    (x, y) = extended_gcd(a, b)
+    return (x * (n // gcd(a, b)), y * (n // gcd(a, b)))
+    
+def gcd(a, b):
+    """
+    This function returns the greatest common divisor of the two numbers using Euclid's algorithm.
+    """
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+    
+def extended_gcd(a, b):
+    """
+    This function returns a tuple (x, y) such that ax + by = gcd(a, b)
+    """
+    if b == 0:
+        return (1, 0)
+    else:
+        (x, y) = extended_gcd(b, a % b)
+        return (y, x - (a // b) * y)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_solution(2,3,12) == (0, 4)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_solution(a, b, n):
+    if n % gcd(a, b) != 0:
+        return None
+    (x, y) = extended_gcd(a, b)
+    return (x * (n // gcd(a, b)), y * (n // gcd(a, b)))
+    
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
+    
+def extended_gcd(a, b):
+    if b == 0:
+        return (1, 0)
+    else:
+        (x, y) = extended_gcd(b, a % b)
+        return (y, x - (a // b) * y)
+```

@@ -1,0 +1,217 @@
+task_id:MbppEval/440
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+    # Define a list of adverbs
+    adverbs = ['abnormally', 'absentmindedly', 'accidentally', 'acidly', 'actually', 'adventurously', 'almost', 'always', 'angrily', 'annually', 'anxiously', 'arrogantly', 'awkwardly', 'badly', 'bashfully', 'beautifully', 'bitterly', 'bleakly', 'blindly', 'blissfully', 'boastfully', 'boldly', 'bravely', 'briefly', 'brightly', 'briskly', 'broadly', 'busily', 'calmly', 'carelessly', 'cautiously', 'certainly', 'cheerfully', 'clearly', 'cleverly', 'closely', 'coaxingly', 'colorfully', 'commonly', 'continually', 'coolly', 'correctly', 'courageously', 'crossly', 'cruelly', 'curiously', 'daily', 'daintily', 'dearly', 'deceivingly', 'deeply', 'defiantly', 'deliberately', 'delightfully', 'densely', 'diagonally', 'differently', 'diligently', 'dimly', 'dizzily', 'eagerly', 'early', 'easily', 'elegantly', 'energetically', 'enormously', 'enthusiastically', 'equally', 'especially', 'even', 'evenly', 'eventually', 'exactly', 'excitedly', 'extremely', 'fairly', 'faithfully', 'famously', 'far', 'fast', 'fatally', 'ferociously', 'fervently', 'fiercely', 'fondly', 'foolishly', 'fortunately', 'frankly', 'frantically', 'freely', 'frenetically', 'frightfully', 'fully', 'furiously', 'generally', 'generously', 'gently', 'gladly', 'gleefully', 'gracefully', 'gratefully', 'greatly', 'greedily', 'happily', 'hastily', 'healthily', 'heavily', 'helpfully', 'helplessly', 'highly', 'honestly', 'hopelessly', 'hourly', 'hungrily', 'immediately', 'innocently', 'inquisitively', 'instantly', 'intensely', 'intently', 'interestingly', 'inwardly', 'irritably', 'jaggedly', 'jealously', 'joshingly', 'jovially', 'joyfully', 'joylessly', 'jubilantly', 'judgmentally', 'justly', 'keenly', 'kiddingly', 'kindheartedly', 'kindly', 'kissingly', 'knavishly', 'knottily', 'knowingly', 'knowledgeably', 'kookily', 'lazily', 'less', 'lightly', 'likely', 'limply', 'lively', 'loftily', 'longingly', 'loosely', 'loudly', 'lovingly', 'loyally', 'luckily', 'luxuriously', 'madly', 'majestically', 'meaningfully', 'mechanically', 'merrily', 'miserably', 'mockingly', 'monthly', 'more', 'mortally', 'mostly', 'mysteriously', 'naturally', 'nearly', 'neatly', 'needily', 'nervously', 'never', 'nicely', 'noisily', 'not', 'obediently', 'obnoxiously', 'oddly', 'offensively', 'officially', 'often', 'only', 'openly', 'optimistically', 'overconfidently', 'owlishly', 'painfully', 'partially', 'patiently', 'perfectly', 'physically', 'playfully', 'politely', 'poorly', 'positively', 'potentially', 'powerfully', 'promptly', 'properly', 'punctually', 'quaintly', 'quarrelsomely', 'queasily', 'queerly', 'questionably', 'questioningly', 'quicker', 'quickly', 'quietly', 'quirkily', 'quizzically', 'randomly', 'rapidly', 'rarely', 'readily', 'really', 'reassuringly', 'recklessly', 'regularly', 'reluctantly', 'repeatedly', 'reproachfully', 'restfully', 'righteously', 'rightfully', 'rigidly', 'roughly', 'rudely', 'sadly', 'safely', 'scarcely', 'scarily', 'searchingly', 'sedately', 'seemingly', 'seldom', 'selfishly', 'separately', 'seriously', 'shakily', 'sharply', 'sheepishly', 'shrilly', 'shyly', 'silently', 'sleepily', 'slowly', 'smoothly', 'softly', 'solemnly', 'solidly', 'sometimes', 'soon', 'speedily', 'stealthily', 'sternly', 'strictly', 'successfully', 'suddenly', 'surprisingly', 'suspiciously', 'sweetly', 'swiftly', 'sympathetically', 'tenderly', 'tensely', 'terribly', 'thankfully', 'thoroughly', 'thoughtfully', 'tightly', 'tomorrow', 'too', 'tremendously', 'triumphantly', 'truly', 'truthfully', 'ultimately', 'unabashedly', 'unaccountably', 'unbearably', 'unethically', 'unexpectedly', 'unfortunately', 'unimpressively', 'unnaturally', 'unnecessarily', 'unquestionably', 'unwillingly', 'upbeat', 'upliftingly', 'upward', 'upwardly', 'urgently', 'usefully', 'uselessly', 'usually', 'utterly', 'vacantly', 'vaguely', 'vainly', 'valiantly', 'vastly', 'verbally', 'very', 'viciously', 'victoriously', 'violently', 'vivaciously', 'voluntarily', 'warmly', 'weakly', 'wearily', 'well', 'wetly', 'wholly', 'wildly', 'willfully', 'wisely', 'woefully', 'wonderfully', 'worriedly', 'wrongly', 'yawningly', 'yearly', 'yearningly', 'yesterday', 'yieldingly', 'youthfully', 'zealously', 'zestfully', 'zestily']
+
+    # Split the sentence into words
+    words = re.findall(r'\w+', text)
+
+    # Initialize position variable as None
+    pos = None
+
+    # Loop through each word and check if it's an adverb
+    for i, word in enumerate(words):
+        if word.lower() in adverbs:
+            pos = i
+            break
+
+    # If no adverb is found, return None
+    if pos == None:
+        return None
+
+    # Return the position of the first adverb
+    return pos
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverb_position('I am early in the morning at the office') == ('early', 5)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+    # Define a list of adverbs
+    adverbs = ['abnormally', 'absentmindedly', 'accidentally', 'acidly', 'actually', 'adventurously', 'almost', 'always', 'angrily', 'annually', 'anxiously', 'arrogantly', 'awkwardly', 'badly', 'bashfully', 'beautifully', 'bitterly', 'bleakly', 'blindly', 'blissfully', 'boastfully', 'boldly', 'bravely', 'briefly', 'brightly', 'briskly', 'broadly', 'busily', 'calmly', 'carelessly', 'cautiously', 'certainly', 'cheerfully', 'clearly', 'cleverly', 'closely', 'coaxingly', 'colorfully', 'commonly', 'continually', 'coolly', 'correctly', 'courageously', 'crossly', 'cruelly', 'curiously', 'daily', 'daintily', 'dearly', 'deceivingly', 'deeply', 'defiantly', 'deliberately', 'delightfully', 'densely', 'diagonally', 'differently', 'diligently', 'dimly', 'dizzily', 'eagerly', 'early', 'easily', 'elegantly', 'energetically', 'enormously', 'enthusiastically', 'equally', 'especially', 'even', 'evenly', 'eventually', 'exactly', 'excitedly', 'extremely', 'fairly', 'faithfully', 'famously', 'far', 'fast', 'fatally', 'ferociously', 'fervently', 'fiercely', 'fondly', 'foolishly', 'fortunately', 'frankly', 'frantically', 'freely', 'frenetically', 'frightfully', 'fully', 'furiously', 'generally', 'generously', 'gently', 'gladly', 'gleefully', 'gracefully', 'gratefully', 'greatly', 'greedily', 'happily', 'hastily', 'healthily', 'heavily', 'helpfully', 'helplessly', 'highly', 'honestly', 'hopelessly', 'hourly', 'hungrily', 'immediately', 'innocently', 'inquisitively', 'instantly', 'intensely', 'intently', 'interestingly', 'inwardly', 'irritably', 'jaggedly', 'jealously', 'joshingly', 'jovially', 'joyfully', 'joylessly', 'jubilantly', 'judgmentally', 'justly', 'keenly', 'kiddingly', 'kindheartedly', 'kindly', 'kissingly', 'knavishly', 'knottily', 'knowingly', 'knowledgeably', 'kookily', 'lazily', 'less', 'lightly', 'likely', 'limply', 'lively', 'loftily', 'longingly', 'loosely', 'loudly', 'lovingly', 'loyally', 'luckily', 'luxuriously', 'madly', 'majestically', 'meaningfully', 'mechanically', 'merrily', 'miserably', 'mockingly', 'monthly', 'more', 'mortally', 'mostly', 'mysteriously', 'naturally', 'nearly', 'neatly', 'needily', 'nervously', 'never', 'nicely', 'noisily', 'not', 'obediently', 'obnoxiously', 'oddly', 'offensively', 'officially', 'often', 'only', 'openly', 'optimistically', 'overconfidently', 'owlishly', 'painfully', 'partially', 'patiently', 'perfectly', 'physically', 'playfully', 'politely', 'poorly', 'positively', 'potentially', 'powerfully', 'promptly', 'properly', 'punctually', 'quaintly', 'quarrelsomely', 'queasily', 'queerly', 'questionably', 'questioningly', 'quicker', 'quickly', 'quietly', 'quirkily', 'quizzically', 'randomly', 'rapidly', 'rarely', 'readily', 'really', 'reassuringly', 'recklessly', 'regularly', 'reluctantly', 'repeatedly', 'reproachfully', 'restfully', 'righteously', 'rightfully', 'rigidly', 'roughly', 'rudely', 'sadly', 'safely', 'scarcely', 'scarily', 'searchingly', 'sedately', 'seemingly', 'seldom', 'selfishly', 'separately', 'seriously', 'shakily', 'sharply', 'sheepishly', 'shrilly', 'shyly', 'silently', 'sleepily', 'slowly', 'smoothly', 'softly', 'solemnly', 'solidly', 'sometimes', 'soon', 'speedily', 'stealthily', 'sternly', 'strictly', 'successfully', 'suddenly', 'surprisingly', 'suspiciously', 'sweetly', 'swiftly', 'sympathetically', 'tenderly', 'tensely', 'terribly', 'thankfully', 'thoroughly', 'thoughtfully', 'tightly', 'tomorrow', 'too', 'tremendously', 'triumphantly', 'truly', 'truthfully', 'ultimately', 'unabashedly', 'unaccountably', 'unbearably', 'unethically', 'unexpectedly', 'unfortunately', 'unimpressively', 'unnaturally', 'unnecessarily', 'unquestionably', 'unwillingly', 'upbeat', 'upliftingly', 'upward', 'upwardly', 'urgently', 'usefully', 'uselessly', 'usually', 'utterly', 'vacantly', 'vaguely', 'vainly', 'valiantly', 'vastly', 'verbally', 'very', 'viciously', 'victoriously', 'violently', 'vivaciously', 'voluntarily', 'warmly', 'weakly', 'wearily', 'well', 'wetly', 'wholly', 'wildly', 'willfully', 'wisely', 'woefully', 'wonderfully', 'worriedly', 'wrongly', 'yawningly', 'yearly', 'yearningly', 'yesterday', 'yieldingly', 'youthfully', 'zealously', 'zestfully', 'zestily']
+
+    # Split the sentence into words
+    words = re.findall(r'\w+', text)
+
+    # Initialize position variable as None
+    pos = None
+
+    # Loop through each word and check if it's an adverb
+    for i, word in enumerate(words):
+        if word.lower() in adverbs:
+            pos = i
+            break
+
+    # If no adverb is found, return None
+    if pos == None:
+        return None
+
+    # Return the first adverb and its position
+    return (words[pos], pos)
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverb_position('She sang sweetly') == ('sweetly', 9)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    # Define a list of adverbs
+    adverbs = ['abnormally', 'absentmindedly', 'accidentally', 'acidly', 'actually', 'adventurously', 'almost', 'always', 'angrily', 'annually', 'anxiously', 'arrogantly', 'awkwardly', 'badly', 'bashfully', 'beautifully', 'bitterly', 'bleakly', 'blindly', 'blissfully', 'boastfully', 'boldly', 'bravely', 'briefly', 'brightly', 'briskly', 'broadly', 'busily', 'calmly', 'carelessly', 'cautiously', 'certainly', 'cheerfully', 'clearly', 'cleverly', 'closely', 'coaxingly', 'colorfully', 'commonly', 'continually', 'coolly', 'correctly', 'courageously', 'crossly', 'cruelly', 'curiously', 'daily', 'daintily', 'dearly', 'deceivingly', 'deeply', 'defiantly', 'deliberately', 'delightfully', 'densely', 'diagonally', 'differently', 'diligently', 'dimly', 'dizzily', 'eagerly', 'early', 'easily', 'elegantly', 'energetically', 'enormously', 'enthusiastically', 'equally', 'especially', 'even', 'evenly', 'eventually', 'exactly', 'excitedly', 'extremely', 'fairly', 'faithfully', 'famously', 'far', 'fast', 'fatally', 'ferociously', 'fervently', 'fiercely', 'fondly', 'foolishly', 'fortunately', 'frankly', 'frantically', 'freely', 'frenetically', 'frightfully', 'fully', 'furiously', 'generally', 'generously', 'gently', 'gladly', 'gleefully', 'gracefully', 'gratefully', 'greatly', 'greedily', 'happily', 'hastily', 'healthily', 'heavily', 'helpfully', 'helplessly', 'highly', 'honestly', 'hopelessly', 'hourly', 'hungrily', 'immediately', 'innocently', 'inquisitively', 'instantly', 'intensely', 'intently', 'interestingly', 'inwardly', 'irritably', 'jaggedly', 'jealously', 'joshingly', 'jovially', 'joyfully', 'joylessly', 'jubilantly', 'judgmentally', 'justly', 'keenly', 'kiddingly', 'kindheartedly', 'kindly', 'kissingly', 'knavishly', 'knottily', 'knowingly', 'knowledgeably', 'kookily', 'lazily', 'less', 'lightly', 'likely', 'limply', 'lively', 'loftily', 'longingly', 'loosely', 'loudly', 'lovingly', 'loyally', 'luckily', 'luxuriously', 'madly', 'majestically', 'meaningfully', 'mechanically', 'merrily', 'miserably', 'mockingly', 'monthly', 'more', 'mortally', 'mostly', 'mysteriously', 'naturally', 'nearly', 'neatly', 'needily', 'nervously', 'never', 'nicely', 'noisily', 'not', 'obediently', 'obnoxiously', 'oddly', 'offensively', 'officially', 'often', 'only', 'openly', 'optimistically', 'overconfidently', 'owlishly', 'painfully', 'partially', 'patiently', 'perfectly', 'physically', 'playfully', 'politely', 'poorly', 'positively', 'potentially', 'powerfully', 'promptly', 'properly', 'punctually', 'quaintly', 'quarrelsomely', 'queasily', 'queerly', 'questionably', 'questioningly', 'quicker', 'quickly', 'quietly', 'quirkily', 'quizzically', 'randomly', 'rapidly', 'rarely', 'readily', 'really', 'reassuringly', 'recklessly', 'regularly', 'reluctantly', 'repeatedly', 'reproachfully', 'restfully', 'righteously', 'rightfully', 'rigidly', 'roughly', 'rudely', 'sadly', 'safely', 'scarcely', 'scarily', 'searchingly', 'sedately', 'seemingly', 'seldom', 'selfishly', 'separately', 'seriously', 'shakily', 'sharply', 'sheepishly', 'shrilly', 'shyly', 'silently', 'sleepily', 'slowly', 'smoothly', 'softly', 'solemnly', 'solidly', 'sometimes', 'soon', 'speedily', 'stealthily', 'sternly', 'strictly', 'successfully', 'suddenly', 'surprisingly', 'suspiciously', 'sweetly', 'swiftly', 'sympathetically', 'tenderly', 'tensely', 'terribly', 'thankfully', 'thoroughly', 'thoughtfully', 'tightly', 'tomorrow', 'too', 'tremendously', 'triumphantly', 'truly', 'truthfully', 'ultimately', 'unabashedly', 'unaccountably', 'unbearably', 'unethically', 'unexpectedly', 'unfortunately', 'unimpressively', 'unnaturally', 'unnecessarily', 'unquestionably', 'unwillingly', 'upbeat', 'upliftingly', 'upward', 'upwardly', 'urgently', 'usefully', 'uselessly', 'usually', 'utterly', 'vacantly', 'vaguely', 'vainly', 'valiantly', 'vastly', 'verbally', 'very', 'viciously', 'victoriously', 'violently', 'vivaciously', 'voluntarily', 'warmly', 'weakly', 'wearily', 'well', 'wetly', 'wholly', 'wildly', 'willfully', 'wisely', 'woefully', 'wonderfully', 'worriedly', 'wrongly', 'yawningly', 'yearly', 'yearningly', 'yesterday', 'yieldingly', 'youthfully', 'zealously', 'zestfully', 'zestily']
+
+    # Split the sentence into words
+    words = re.findall(r'\w+', text)
+
+    # Initialize position variable as None
+    pos = None
+
+    # Loop through each word and check if it's an adverb
+    for i, word in enumerate(words):
+        if word.lower() in adverbs:
+            pos = (word, text.index(word))
+            break
+
+    # If no adverb is found, return None
+    if pos == None:
+        return None
+
+    # Return the adverb and its position
+    return pos
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverb_position('He plays the guitar joyfully') == ('joyfully', 20)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    # Define a list of adverbs
+    adverbs = ['abnormally', 'absentmindedly', 'accidentally', 'acidly', 'actually', 'adventurously', 'almost', 'always', 'angrily', 'annually', 'anxiously', 'arrogantly', 'awkwardly', 'badly', 'bashfully', 'beautifully', 'bitterly', 'bleakly', 'blindly', 'blissfully', 'boastfully', 'boldly', 'bravely', 'briefly', 'brightly', 'briskly', 'broadly', 'busily', 'calmly', 'carelessly', 'cautiously', 'certainly', 'cheerfully', 'clearly', 'cleverly', 'closely', 'coaxingly', 'colorfully', 'commonly', 'continually', 'coolly', 'correctly', 'courageously', 'crossly', 'cruelly', 'curiously', 'daily', 'daintily', 'dearly', 'deceivingly', 'deeply', 'defiantly', 'deliberately', 'delightfully', 'densely', 'diagonally', 'differently', 'diligently', 'dimly', 'dizzily', 'eagerly', 'early', 'easily', 'elegantly', 'energetically', 'enormously', 'enthusiastically', 'equally', 'especially', 'even', 'evenly', 'eventually', 'exactly', 'excitedly', 'extremely', 'fairly', 'faithfully', 'famously', 'far', 'fast', 'fatally', 'ferociously', 'fervently', 'fiercely', 'fondly', 'foolishly', 'fortunately', 'frankly', 'frantically', 'freely', 'frenetically', 'frightfully', 'fully', 'furiously', 'generally', 'generously', 'gently', 'gladly', 'gleefully', 'gracefully', 'gratefully', 'greatly', 'greedily', 'happily', 'hastily', 'healthily', 'heavily', 'helpfully', 'helplessly', 'highly', 'honestly', 'hopelessly', 'hourly', 'hungrily', 'immediately', 'innocently', 'inquisitively', 'instantly', 'intensely', 'intently', 'interestingly', 'inwardly', 'irritably', 'jaggedly', 'jealously', 'joshingly', 'jovially', 'joyfully', 'joylessly', 'jubilantly', 'judgmentally', 'justly', 'keenly', 'kiddingly', 'kindheartedly', 'kindly', 'kissingly', 'knavishly', 'knottily', 'knowingly', 'knowledgeably', 'kookily', 'lazily', 'less', 'lightly', 'likely', 'limply', 'lively', 'loftily', 'longingly', 'loosely', 'loudly', 'lovingly', 'loyally', 'luckily', 'luxuriously', 'madly', 'majestically', 'meaningfully', 'mechanically', 'merrily', 'miserably', 'mockingly', 'monthly', 'more', 'mortally', 'mostly', 'mysteriously', 'naturally', 'nearly', 'neatly', 'needily', 'nervously', 'never', 'nicely', 'noisily', 'not', 'obediently', 'obnoxiously', 'oddly', 'offensively', 'officially', 'often', 'only', 'openly', 'optimistically', 'overconfidently', 'owlishly', 'painfully', 'partially', 'patiently', 'perfectly', 'physically', 'playfully', 'politely', 'poorly', 'positively', 'potentially', 'powerfully', 'promptly', 'properly', 'punctually', 'quaintly', 'quarrelsomely', 'queasily', 'queerly', 'questionably', 'questioningly', 'quicker', 'quickly', 'quietly', 'quirkily', 'quizzically', 'randomly', 'rapidly', 'rarely', 'readily', 'really', 'reassuringly', 'recklessly', 'regularly', 'reluctantly', 'repeatedly', 'reproachfully', 'restfully', 'righteously', 'rightfully', 'rigidly', 'roughly', 'rudely', 'sadly', 'safely', 'scarcely', 'scarily', 'searchingly', 'sedately', 'seemingly', 'seldom', 'selfishly', 'separately', 'seriously', 'shakily', 'sharply', 'sheepishly', 'shrilly', 'shyly', 'silently', 'sleepily', 'slowly', 'smoothly', 'softly', 'solemnly', 'solidly', 'sometimes', 'soon', 'speedily', 'stealthily', 'sternly', 'strictly', 'successfully', 'suddenly', 'surprisingly', 'suspiciously', 'sweetly', 'swiftly', 'sympathetically', 'tenderly', 'tensely', 'terribly', 'thankfully', 'thoroughly', 'thoughtfully', 'tightly', 'tomorrow', 'too', 'tremendously', 'triumphantly', 'truly', 'truthfully', 'ultimately', 'unabashedly', 'unaccountably', 'unbearably', 'unethically', 'unexpectedly', 'unfortunately', 'unimpressively', 'unnaturally', 'unnecessarily', 'unquestionably', 'unwillingly', 'upbeat', 'upliftingly', 'upward', 'upwardly', 'urgently', 'usefully', 'uselessly', 'usually', 'utterly', 'vacantly', 'vaguely', 'vainly', 'valiantly', 'vastly', 'verbally', 'very', 'viciously', 'victoriously', 'violently', 'vivaciously', 'voluntarily', 'warmly', 'weakly', 'wearily', 'well', 'wetly', 'wholly', 'wildly', 'willfully', 'wisely', 'woefully', 'wonderfully', 'worriedly', 'wrongly', 'yawningly', 'yearly', 'yearningly', 'yesterday', 'yieldingly', 'youthfully', 'zealously', 'zestfully', 'zestily']
+
+    # Split the sentence into words
+    words = re.findall(r'\w+', text)
+
+    # Initialize position variable as None
+    pos = None
+
+    # Loop through each word and check if it's an adverb
+    for i, word in enumerate(words):
+        if word.lower() in adverbs:
+            pos = (word, text.index(word))
+            break
+
+    # If no adverb is found, return None
+    if pos == None:
+        return None
+
+    # Return the adverb and its position
+    return pos
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_adverb_position('He works very hard') == None
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_adverb_position('He plays the guitar joyfully') == ('joyfully', 20)
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def find_adverb_position(text):
+    '''
+    Write a function to find the first adverb and their positions in a given sentence.
+    '''
+
+    adverbs = ['abnormally', 'absentmindedly', 'accidentally', 'acidly', 'actually', 'adventurously', 'almost', 'always', 'angrily', 'annually', 'anxiously', 'arrogantly', 'awkwardly', 'badly', 'bashfully', 'beautifully', 'bitterly', 'bleakly', 'blindly', 'blissfully', 'boastfully', 'boldly', 'bravely', 'briefly', 'brightly', 'briskly', 'broadly', 'busily', 'calmly', 'carelessly', 'cautiously', 'certainly', 'cheerfully', 'clearly', 'cleverly', 'closely', 'coaxingly', 'colorfully', 'commonly', 'continually', 'coolly', 'correctly', 'courageously', 'crossly', 'cruelly', 'curiously', 'daily', 'daintily', 'dearly', 'deceivingly', 'deeply', 'defiantly', 'deliberately', 'delightfully', 'densely', 'diagonally', 'differently', 'diligently', 'dimly', 'dizzily', 'eagerly', 'early', 'easily', 'elegantly', 'energetically', 'enormously', 'enthusiastically', 'equally', 'especially', 'even', 'evenly', 'eventually', 'exactly', 'excitedly', 'extremely', 'fairly', 'faithfully', 'famously', 'far', 'fast', 'fatally', 'ferociously', 'fervently', 'fiercely', 'fondly', 'foolishly', 'fortunately', 'frankly', 'frantically', 'freely', 'frenetically', 'frightfully', 'fully', 'furiously', 'generally', 'generously', 'gently', 'gladly', 'gleefully', 'gracefully', 'gratefully', 'greatly', 'greedily', 'happily', 'hastily', 'healthily', 'heavily', 'helpfully', 'helplessly', 'highly', 'honestly', 'hopelessly', 'hourly', 'hungrily', 'immediately', 'innocently', 'inquisitively', 'instantly', 'intensely', 'intently', 'interestingly', 'inwardly', 'irritably', 'jaggedly', 'jealously', 'joshingly', 'jovially', 'joyfully', 'joylessly', 'jubilantly', 'judgmentally', 'justly', 'keenly', 'kiddingly', 'kindheartedly', 'kindly', 'kissingly', 'knavishly', 'knottily', 'knowingly', 'knowledgeably', 'kookily', 'lazily', 'less', 'lightly', 'likely', 'limply', 'lively', 'loftily', 'longingly', 'loosely', 'loudly', 'lovingly', 'loyally', 'luckily', 'luxuriously', 'madly', 'majestically', 'meaningfully', 'mechanically', 'merrily', 'miserably', 'mockingly', 'monthly', 'more', 'mortally', 'mostly', 'mysteriously', 'naturally', 'nearly', 'neatly', 'needily', 'nervously', 'never', 'nicely', 'noisily', 'not', 'obediently', 'obnoxiously', 'oddly', 'offensively', 'officially', 'often', 'only', 'openly', 'optimistically', 'overconfidently', 'owlishly', 'painfully', 'partially', 'patiently', 'perfectly', 'physically', 'playfully', 'politely', 'poorly', 'positively', 'potentially', 'powerfully', 'promptly', 'properly', 'punctually', 'quaintly', 'quarrelsomely', 'queasily', 'queerly', 'questionably', 'questioningly', 'quicker', 'quickly', 'quietly', 'quirkily', 'quizzically', 'randomly', 'rapidly', 'rarely', 'readily', 'really', 'reassuringly', 'recklessly', 'regularly', 'reluctantly', 'repeatedly', 'reproachfully', 'restfully', 'righteously', 'rightfully', 'rigidly', 'roughly', 'rudely', 'sadly', 'safely', 'scarcely', 'scarily', 'searchingly', 'sedately', 'seemingly', 'seldom', 'selfishly', 'separately', 'seriously', 'shakily', 'sharply', 'sheepishly', 'shrilly', 'shyly', 'silently', 'sleepily', 'slowly', 'smoothly', 'softly', 'solemnly', 'solidly', 'sometimes', 'soon', 'speedily', 'stealthily', 'sternly', 'strictly', 'successfully', 'suddenly', 'surprisingly', 'suspiciously', 'sweetly', 'swiftly', 'sympathetically', 'tenderly', 'tensely', 'terribly', 'thankfully', 'thoroughly', 'thoughtfully', 'tightly', 'tomorrow', 'too', 'tremendously', 'triumphantly', 'truly', 'truthfully', 'ultimately', 'unabashedly', 'unaccountably', 'unbearably', 'unethically', 'unexpectedly', 'unfortunately', 'unimpressively', 'unnaturally', 'unnecessarily', 'unquestionably', 'unwillingly', 'upbeat', 'upliftingly', 'upward', 'upwardly', 'urgently', 'usefully', 'uselessly', 'usually', 'utterly', 'vacantly', 'vaguely', 'vainly', 'valiantly', 'vastly', 'verbally', 'very', 'viciously', 'victoriously', 'violently', 'vivaciously', 'voluntarily', 'warmly', 'weakly', 'wearily', 'well', 'wetly', 'wholly', 'wildly', 'willfully', 'wisely', 'woefully', 'wonderfully', 'worriedly', 'wrongly', 'yawningly', 'yearly', 'yearningly', 'yesterday', 'yieldingly', 'youthfully', 'zealously', 'zestfully', 'zestily']
+
+    words = re.findall(r'\w+', text)
+    pos = None
+
+    for i, word in enumerate(words):
+        if word.lower() in adverbs:
+            pos = (word, text.find(word))
+            break
+
+    if pos == None:
+        return None
+
+    return pos
+```

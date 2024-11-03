@@ -1,0 +1,98 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string, then split it into digits
+    digits = list(str(n))
+
+    # Find the first digit from the right that is smaller than the digit to its left
+    pivot_index = len(digits) - 2
+    while pivot_index >= 0 and digits[pivot_index] >= digits[pivot_index + 1]:
+        pivot_index -= 1
+
+    # If there is no such digit, return the original number
+    if pivot_index < 0:
+        return n
+
+    # Find the smallest digit to the right of the pivot that is still greater than the pivot
+    successor_index = len(digits) - 1
+    while successor_index > pivot_index and digits[successor_index] <= digits[pivot_index]:
+        successor_index -= 1
+
+    # Swap the pivot and the successor
+    digits[pivot_index], digits[successor_index] = digits[successor_index], digits[pivot_index]
+
+    # Reverse the digits to the right of the pivot
+    digits[pivot_index + 1:] = reversed(digits[pivot_index + 1:])
+
+    # Convert the digits back to a number and return it
+    return int(''.join(digits))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(999999999) == -1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert rearrange_bigger(123) == 132
+assert rearrange_bigger(132) == 213
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the number to a string, then split it into digits
+    digits = list(str(n))
+
+    # Find the first digit from the right that is smaller than the digit to its left
+    pivot_index = len(digits) - 2
+    while pivot_index >= 0 and digits[pivot_index] >= digits[pivot_index + 1]:
+        pivot_index -= 1
+
+    # If there is no such digit, return -1
+    if pivot_index < 0:
+        return -1
+
+    # Find the smallest digit to the right of the pivot that is still greater than the pivot
+    successor_index = len(digits) - 1
+    while successor_index > pivot_index and digits[successor_index] <= digits[pivot_index]:
+        successor_index -= 1
+
+    # Swap the pivot and the successor
+    digits[pivot_index], digits[successor_index] = digits[successor_index], digits[pivot_index]
+
+    # Reverse the digits to the right of the pivot
+    digits[pivot_index + 1:] = reversed(digits[pivot_index + 1:])
+
+    # Convert the digits back to a number and return it
+    return int(''.join(digits))
+```

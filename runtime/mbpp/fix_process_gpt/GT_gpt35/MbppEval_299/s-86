@@ -1,0 +1,60 @@
+task_id:MbppEval/299
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+    aggregate_scores = defaultdict(int)
+    for name, score in stdata:
+        aggregate_scores[name] += score
+    return max(aggregate_scores.values())
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_aggregate([(1, 40), (2, 50), (3, 60), (1, 70), (2, 80), (3, 90)]) == (3, 150)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    aggregate_scores = defaultdict(int)
+    for name, score in stdata:
+        aggregate_scores[name] += score
+    max_score = max(aggregate_scores.values())
+    for name, score in aggregate_scores.items():
+        if score == max_score:
+            return (name, max_score)
+```

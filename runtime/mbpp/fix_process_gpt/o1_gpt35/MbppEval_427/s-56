@@ -1,0 +1,106 @@
+task_id:MbppEval/427
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+    match = re.match(r'(\d{4})-(\d{2})-(\d{2})', dt)
+    if match:
+        year, month, day = match.groups()
+        return f"{day}-{month}-{year}"
+    else:
+        raise ValueError("Invalid date format, expected yyyy-mm-dd")
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert change_date_format('1996-2-29') == 29-2-1996
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert change_date_format('2022-01-00') == 00-01-2022
+assert change_date_format('2022-13-01') == 01-13-2022
+assert change_date_format('2022-01-32') == 32-01-2022
+assert change_date_format('2022-25-12') == 12-25-2022
+assert change_date_format('2022-11-31') == 31-11-2022
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+    match = re.match(r'(\d{4})-(\d{1,2})-(\d{1,2})', dt)
+    if match:
+        year, month, day = match.groups()
+        return f"{day}-{month}-{year}"
+    else:
+        raise ValueError("Invalid date format, expected yyyy-mm-dd")
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert change_date_format('2022-2-29') == 29-2-2022
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert change_date_format('2022-01-00') == 00-01-2022
+assert change_date_format('2022-13-01') == 01-13-2022
+assert change_date_format('2022-01-32') == 32-01-2022
+assert change_date_format('2022-25-12') == 12-25-2022
+assert change_date_format('2022-11-31') == 31-11-2022
+assert change_date_format('2022-11-31') == 31-11-2022
+assert change_date_format('2022-06-31') == 31-06-2022
+assert change_date_format('2022-08-32') == 32-08-2022
+assert change_date_format('2022-02-29') == 29-02-2022
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    match = re.match(r'(\d{4})-(\d{2})-(\d{2})', dt)
+    if match:
+        year, month, day = match.groups()
+        if int(day) > 0 and int(day) <= 31 and int(month) > 0 and int(month) <= 12:
+            return f"{day}-{month}-{year}"
+        else:
+            raise ValueError("Invalid date format, expected yyyy-mm-dd")
+    else:
+        raise ValueError("Invalid date format, expected yyyy-mm-dd")
+```

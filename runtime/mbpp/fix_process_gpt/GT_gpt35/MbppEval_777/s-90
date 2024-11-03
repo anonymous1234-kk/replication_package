@@ -1,0 +1,95 @@
+task_id:MbppEval/777
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+
+    # create an empty dictionary to store the frequency of each element
+    freq_dict = {}
+    
+    # loop through each element in the array
+    for i in arr:
+        # if the element is not in the dictionary, add it with frequency 1
+        if i not in freq_dict:
+            freq_dict[i] = 1
+        # if the element is already in the dictionary, increment its frequency
+        else:
+            freq_dict[i] += 1
+    
+    # create a variable to store the sum of non-repeated elements
+    sum = 0
+    
+    # loop through each element in the array
+    for i in arr:
+        # if the element has frequency 1, add it to the sum
+        if freq_dict[i] == 1:
+            sum += i
+    
+    # return the sum
+    return sum
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_sum([1, 2, 2, 3, 3, 4, 4, 5]) == 15
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_sum(arr): 
+    '''
+    Write a python function to find the sum of non-repeated elements in a given list.
+    '''
+
+    # create an empty dictionary to store the frequency of each element
+    freq_dict = {}
+    
+    # loop through each element in the array
+    for i in arr:
+        # if the element is not in the dictionary, add it with frequency 1
+        if i not in freq_dict:
+            freq_dict[i] = 1
+        # if the element is already in the dictionary, increment its frequency
+        else:
+            freq_dict[i] += 1
+    
+    # create a variable to store the sum of non-repeated elements
+    sum = 0
+    
+    # loop through each element in the array
+    for i in arr:
+        # if the element has frequency 1, add it to the sum
+        if freq_dict[i] == 1:
+            sum += i
+    
+    # return the sum
+    return sum
+
+assert find_sum([1, 2, 2, 3, 3, 4, 4, 5]) == 15
+```

@@ -1,0 +1,64 @@
+task_id:MbppEval/734
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def sum_Of_Subarray_Prod(arr):
+    '''
+    Write a python function to find sum of products of all possible sublists of a given list. https://www.geeksforgeeks.org/sum-of-products-of-all-possible-subarrays/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def sum_Of_Subarray_Prod(arr):
+    '''
+    Write a python function to find sum of products of all possible sublists of a given list. https://www.geeksforgeeks.org/sum-of-products-of-all-possible-subarrays/
+    '''
+
+    n = len(arr) 
+    result = 0
+    for i in range(n): 
+        temp = 0
+        for j in range(i, n): 
+            temp = temp * arr[j] + arr[j] 
+            result += temp 
+    return result
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert sum_Of_Subarray_Prod([10, 3, 7]) == 281
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def sum_Of_Subarray_Prod(arr):
+    '''
+    Write a python function to find sum of products of all possible sublists of a given list. https://www.geeksforgeeks.org/sum-of-products-of-all-possible-subarrays/
+    '''
+
+    n = len(arr) 
+    result = 0
+    for i in range(n): 
+        temp = 1
+        for j in range(i, n): 
+            temp = temp * arr[j] 
+            result += temp 
+    return result
+
+```

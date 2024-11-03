@@ -1,0 +1,112 @@
+task_id:HumanEval/17
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """ Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    >>> parse_music('o o| .| o| o| .| .| .| .| o o')
+    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """ Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    >>> parse_music('o o| .| o| o| .| .| .| .| o o')
+    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+    """
+
+    notes = music_string.split()
+    durations = []
+
+    for note in notes:
+        if note == 'o':
+            durations.append(4)
+        elif note == 'o|':
+            durations.append(2)
+        elif note == '.|':
+            durations.append(1)
+
+    return durations
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert parse_music('o|. .| o|. o|. o|. o|. o| o|. o|. o|. o| o|. o|') == [None, 1, None, None, None, None, 2, None, None, None, 2, None, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert parse_music('o o o| o| o o| o| o o| o| o| .| .|') == [4, 4, 2, 2, 4, 2, 2, 4, 2, 2, 2, 1, 1]
+assert parse_music('o| .| o o| o| o|') == [2, 1, 4, 2, 2, 2]
+assert parse_music('o| .| .| o|') == [2, 1, 1, 2]
+assert parse_music('o o o o| o| o| o|') == [4, 4, 4, 2, 2, 2, 2]
+assert parse_music('.| o| .| o| o| .|') == [1, 2, 1, 2, 2, 1]
+assert parse_music('o o| o o| o o| o o| o| o| .| o o| o o| o o| o o| o| o| .| o o') == [4, 2, 4, 2, 4, 2, 4, 2, 2, 2, 1, 4, 2, 4, 2, 4, 2, 4, 2, 2, 2, 1, 4, 4]
+assert parse_music('o .| o o|') == [4, 1, 4, 2]
+assert parse_music('o o| .| o| o| .| .| .| o') == [4, 2, 1, 2, 2, 1, 1, 1, 4]
+assert parse_music('o .| o| o| o| o| .| o| o| o| o') == [4, 1, 2, 2, 2, 2, 1, 2, 2, 2, 4]
+assert parse_music('o| o| o| o| o| o| .| .| o| o| o| o| .|') == [2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1]
+assert parse_music('.| .| o') == [1, 1, 4]
+assert parse_music('o o| o| o| o| o| o| o| o| .| .| o| o| o| o| o| o| o| o| o| o| .|') == [4, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1]
+assert parse_music('o o| o| o|') == [4, 2, 2, 2]
+assert parse_music('.| o| o') == [1, 2, 4]
+assert parse_music('o o| .| o| o| .| o| o| .| .| .| .| o|') == [4, 2, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2]
+assert parse_music('o o| o| o| o| .| .| .| .| .| .| o o| .|') == [4, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 4, 2, 1]
+assert parse_music('.| o o| .| o| .|') == [1, 4, 2, 1, 2, 1]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    notes = music_string.split()
+    durations = []
+
+    for note in notes:
+        if note == 'o':
+            durations.append(4)
+        elif note == 'o|':
+            durations.append(2)
+        elif note == '.|':
+            durations.append(1)
+        else:
+            durations.append(None)
+
+    return durations
+```

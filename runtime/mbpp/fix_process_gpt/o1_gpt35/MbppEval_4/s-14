@@ -1,0 +1,82 @@
+task_id:MbppEval/4
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import heapq as hq
+def heap_queue_largest(nums,n):
+    '''
+    Write a function to find the n largest integers from a given list of numbers, returned in descending order.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import heapq as hq
+def heap_queue_largest(nums,n):
+    '''
+    Write a function to find the n largest integers from a given list of numbers, returned in descending order.
+    '''
+
+    """
+    Find the n largest integers from a given list of numbers, returned in descending order.
+    """
+    # Create a heap of the first n numbers
+    heap = nums[:n]
+    hq.heapify(heap)
+
+    # Add the remaining numbers to the heap
+    for num in nums[n:]:
+        if num > heap[0]:
+            hq.heappushpop(heap, num)
+
+    # Sort the heap in descending order
+    largest_nums = [hq.heappop(heap) for _ in range(n)][::-1]
+
+    return largest_nums
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-41<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert heap_queue_largest([1],2) == [1]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import heapq as hq
+def heap_queue_largest(nums,n):
+    '''
+    Write a function to find the n largest integers from a given list of numbers, returned in descending order.
+    '''
+
+    """
+    Find the n largest integers from a given list of numbers, returned in descending order.
+    """
+    # Create a heap of the first n numbers
+    heap = nums[:n]
+    hq.heapify(heap)
+
+    # Add the remaining numbers to the heap
+    for num in nums[n:]:
+        if len(heap) < n or num > heap[0]:
+            hq.heappushpop(heap, num)
+
+    # Sort the heap in descending order
+    largest_nums = [hq.heappop(heap) for _ in range(n)][::-1]
+
+    return largest_nums
+```

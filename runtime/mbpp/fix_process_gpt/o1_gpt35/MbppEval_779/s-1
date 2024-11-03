@@ -1,0 +1,74 @@
+task_id:MbppEval/779
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def unique_sublists(list1):
+    '''
+    Write a function to count the number of lists within a list. The function should return a dictionary, where every list is turned to a tuple, and the value of the tuple is the number of its occurrences.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def unique_sublists(list1):
+    '''
+    Write a function to count the number of lists within a list. The function should return a dictionary, where every list is turned to a tuple, and the value of the tuple is the number of its occurrences.
+    '''
+
+    """
+    Count the number of lists within a list. Return a dictionary where every list is turned to a tuple, 
+    and the value of the tuple is the number of its occurrences.
+    """
+    # Create an empty dictionary
+    dict_count = {}
+
+    # Loop through the input list
+    for sublist in list1:
+        # Convert the sublist to a tuple
+        sublist_tuple = tuple(sublist)
+        # Check if the tuple exists in the dictionary
+        if sublist_tuple in dict_count:
+            # If the tuple exists, increment its count
+            dict_count[sublist_tuple] += 1
+        else:
+            # If the tuple does not exist, add it to the dictionary with count 1
+            dict_count[sublist_tuple] = 1
+
+    # Return the dictionary
+    return dict_count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert unique_sublists(['sam', [1, 2], 3, 4, [1, 2], 'john', 'mike', [1, 2], 'john']) == {(1, 2): 3}
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def unique_sublists(list1):
+    dict_count = {}
+    for sublist in list1:
+        if isinstance(sublist, list):  # Check if the element is a list
+            sublist_tuple = tuple(sublist)
+            if sublist_tuple in dict_count:
+                dict_count[sublist_tuple] += 1
+            else:
+                dict_count[sublist_tuple] = 1
+    return dict_count
+```
+

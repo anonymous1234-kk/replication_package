@@ -1,0 +1,111 @@
+task_id:MbppEval/784
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def mul_even_odd(list1):
+    '''
+    Write a function to find the product of first even and odd number of a given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def mul_even_odd(list1):
+    '''
+    Write a function to find the product of first even and odd number of a given list.
+    '''
+
+    even_prod = 1
+    odd_prod = 1
+    for i in range(len(list1)):
+        if list1[i]%2 == 0:
+            even_prod *= list1[i]
+            if odd_prod != 1:
+                break
+        else:
+            odd_prod *= list1[i]
+            if even_prod != 1:
+                break
+    return even_prod * odd_prod
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert mul_even_odd([3, 5, 10, 15, 20, 2, 4]) == 30
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert mul_even_odd([3, 4, 6, 9, 1, 2]) == 12
+assert mul_even_odd([3, 6, 7, 8, 15, 20, 25, 36]) == 18
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def mul_even_odd(list1):
+    '''
+    Write a function to find the product of first even and odd number of a given list.
+    '''
+
+    even_prod = 1
+    odd_prod = 1
+    for i in range(len(list1)):
+        if list1[i]%2 == 0:
+            even_prod *= list1[i]
+            if odd_prod != 1:
+                break
+        else:
+            odd_prod *= list1[i]
+            if even_prod != 1:
+                break
+    if even_prod == 1 or odd_prod == 1:
+        return 0
+    else:
+        return even_prod * odd_prod
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert mul_even_odd([3, 5, 9, 2, 8, 7, 10, 15, 20, 2, 4]) == 6
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert mul_even_odd([3, 4, 6, 9, 1, 2]) == 12
+assert mul_even_odd([3, 6, 7, 8, 15, 20, 25, 36]) == 18
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def mul_even_odd(list1):
+    '''
+    Write a function to find the product of first even and odd number of a given list.
+    '''
+
+    even_prod = 1
+    odd_prod = 1
+    found_even = False
+    found_odd = False
+    for i in range(len(list1)):
+        if list1[i] % 2 == 0 and not found_even:
+            even_prod *= list1[i]
+            found_even = True
+        elif list1[i] % 2 != 0 and not found_odd:
+            odd_prod *= list1[i]
+            found_odd = True
+        if found_even and found_odd:
+            break
+    return even_prod * odd_prod
+```

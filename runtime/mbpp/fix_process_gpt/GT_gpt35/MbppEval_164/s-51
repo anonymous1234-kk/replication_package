@@ -1,0 +1,83 @@
+task_id:MbppEval/164
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def div_sum(n): 
+    '''
+    Write a function to determine if the sum of the divisors of two integers are the same.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def div_sum(n): 
+    '''
+    Write a function to determine if the sum of the divisors of two integers are the same.
+    '''
+ 
+    sum1 = 1
+    for i in range(2, int(math.sqrt(n)) + 1): 
+        if n % i == 0: 
+            sum1 += i 
+            if i != n // i: 
+                sum1 += n // i 
+    sum2 = 1
+    for i in range(2, int(math.sqrt(sum1)) + 1): 
+        if sum1 % i == 0: 
+            sum2 += i 
+            if i != sum1 // i: 
+                sum2 += sum1 // i 
+    if n == sum2: 
+        return True
+    else: 
+        return False
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert div_sum(6) == 6
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math 
+def div_sum(n): 
+    '''
+    Write a function to determine if the sum of the divisors of two integers are the same.
+    '''
+ 
+    sum1 = 1
+    for i in range(2, int(math.sqrt(n)) + 1): 
+        if n % i == 0: 
+            sum1 += i 
+            if i != n // i: 
+                sum1 += n // i 
+    sum2 = 1
+    for i in range(2, int(math.sqrt(sum1)) + 1): 
+        if sum1 % i == 0: 
+            sum2 += i 
+            if i != sum1 // i: 
+                sum2 += sum1 // i 
+    if n == sum2: 
+        return True
+    else: 
+        return False
+```
+

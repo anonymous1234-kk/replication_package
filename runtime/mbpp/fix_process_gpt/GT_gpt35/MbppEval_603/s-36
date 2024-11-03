@@ -1,0 +1,92 @@
+task_id:MbppEval/603
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def get_ludic(n):
+    '''
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+    '''
+
+    """
+    Write a function to get all lucid numbers smaller than or equal to a given integer.
+
+    A lucid number is a positive integer that can be represented as the sum of distinct powers of 2.
+    For example, 10 is a lucid number because it can be represented as 2^1 + 2^3. 
+
+    Args:
+    n -- the maximum integer to check for lucid numbers
+
+    Returns:
+    A list of all lucid numbers smaller than or equal to n.
+    """
+
+    lucid_numbers = [1]
+    current_number = 2
+
+    while current_number <= n:
+        count = 0
+        temp = current_number
+
+        while temp % 2 == 0:
+            temp //= 2
+            count += 1
+
+        if count <= len(lucid_numbers):
+            lucid_numbers.append(current_number)
+
+        current_number += 1
+
+    return lucid_numbers
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert get_ludic(4) == [1, 2, 3]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert get_ludic(1) == [1]
+assert get_ludic(2) == [1, 2]
+assert get_ludic(3) == [1, 2, 3]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def get_ludic(n):
+    lucid_numbers = [1]
+    current_number = 2
+
+    while current_number <= n:
+        count = 0
+        temp = current_number
+
+        while temp % 2 == 0:
+            temp //= 2
+            count += 1
+
+        if count <= len(lucid_numbers):
+            lucid_numbers.append(current_number)
+
+        current_number += 1
+
+    return lucid_numbers
+```

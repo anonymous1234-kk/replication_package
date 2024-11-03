@@ -1,0 +1,53 @@
+task_id:MbppEval/142
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def count_samepair(list1,list2,list3):
+    '''
+    Write a function to count number items that are identical in the same position of three given lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def count_samepair(list1,list2,list3):
+    '''
+    Write a function to count number items that are identical in the same position of three given lists.
+    '''
+
+    count = 0
+    for i in range(len(list1)):
+        if list1[i] == list2[i] == list3[i]:
+            count += 1
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_samepair([1, 2, 3, 4],[1, 2, 3],[3, 2, 1]) == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert count_samepair([1, 2, 3],[1, 2, 3],[3, 2, 1]) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_samepair(list1, list2, list3):
+    count = 0
+    for i in range(min(len(list1), len(list2), len(list3))):
+        if list1[i] == list2[i] == list3[i]:
+            count += 1
+    return count
+```

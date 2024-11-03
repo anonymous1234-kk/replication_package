@@ -1,0 +1,78 @@
+task_id:MbppEval/299
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+    # create a dictionary to store the aggregate score of each student
+    scores = defaultdict(int)
+    
+    # iterate over each tuple in the list
+    for name, subj, marks in stdata:
+        # add the marks to the total score of the student
+        scores[name] += marks
+    
+    # return the maximum aggregate score
+    return max(scores.values())
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_aggregate([(1, 40), (2, 50), (3, 60), (1, 70), (2, 80), (3, 90)]) == (3, 150)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import defaultdict
+def max_aggregate(stdata):
+    '''
+    Write a function to calculate the maximum aggregate from the list of tuples.
+    '''
+
+    # create a dictionary to store the aggregate score of each student
+    scores = defaultdict(int)
+    
+    # iterate over each tuple in the list
+    for name, marks in stdata:
+        # add the marks to the total score of the student
+        scores[name] += marks
+    
+    # find the student with the maximum aggregate score
+    max_student = max(scores, key=scores.get)
+    max_score = scores[max_student]
+    
+    # return the student and their maximum aggregate score
+    return (max_student, max_score)
+```
+

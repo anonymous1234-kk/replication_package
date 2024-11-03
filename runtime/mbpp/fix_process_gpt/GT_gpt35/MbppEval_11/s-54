@@ -1,0 +1,49 @@
+task_id:MbppEval/11
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def remove_Occ(s,ch): 
+    '''
+    Write a python function to remove first and last occurrence of a given character from the string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def remove_Occ(s,ch): 
+    '''
+    Write a python function to remove first and last occurrence of a given character from the string.
+    '''
+
+    return s.replace(ch,'',1).rstrip(ch)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert remove_Occ('Merry Christmas','r') == Mery Chistmas
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def remove_Occ(s,ch): 
+    '''
+    Write a python function to remove first and last occurrence of a given character from the string.
+    '''
+
+    return s.replace(ch,'',1).replace(ch,'',s.count(ch)-1).rstrip(ch)
+```

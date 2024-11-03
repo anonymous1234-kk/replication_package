@@ -1,0 +1,79 @@
+task_id:MbppEval/747
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+
+    m = len(X)
+    n = len(Y)
+    o = len(Z)
+    L = [[[0 for k in range(o + 1)] for j in range(n + 1)] for i in range(m + 1)]
+
+    for i in range(m + 1):
+        for j in range(n + 1):
+            for k in range(o + 1):
+                if i == 0 or j == 0 or k == 0:
+                    L[i][j][k] = 0
+                elif X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else:
+                    L[i][j][k] = max(max(max(max(max(max(L[i-1][j][k], L[i][j-1][k]), L[i][j][k-1]), L[i-1][j-1][k]), L[i-1][j][k-1]), L[i][j-1][k-1]))
+
+    return L[m][n][o]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lcs_of_three('AAB','AAC','AAC') == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+
+    m = len(X)
+    n = len(Y)
+    o = len(Z)
+    L = [[[0 for k in range(o + 1)] for j in range(n + 1)] for i in range(m + 1)]
+
+    for i in range(m + 1):
+        for j in range(n + 1):
+            for k in range(o + 1):
+                if i == 0 or j == 0 or k == 0:
+                    L[i][j][k] = 0
+                elif X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else:
+                    L[i][j][k] = max(max(max(max(max(max(L[i-1][j][k], L[i][j-1][k]), L[i][j][k-1]), L[i-1][j-1][k]), L[i-1][j][k-1]), L[i][j-1][k-1]))
+
+    return L[m][n][o]
+```

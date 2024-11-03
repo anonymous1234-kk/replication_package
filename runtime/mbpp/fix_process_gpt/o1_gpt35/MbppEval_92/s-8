@@ -1,0 +1,118 @@
+task_id:MbppEval/92
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+ 
+    s = str(n)
+    if len(s) < 3:
+        return False
+    if s[0] == s[1]:
+        return False
+    for i in range(2, len(s)):
+        if i % 2 == 0 and s[i] == s[i-2]:
+            return False
+        elif i % 2 != 0 and s[i] != s[i-2]:
+            return False
+    return True
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_undulating(303) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_undulating(4554) == False
+assert is_undulating(7887) == False
+assert is_undulating(1221) == False
+assert is_undulating(123456789) == False
+assert is_undulating(121234) == False
+assert is_undulating(1234567890987654321) == False
+assert is_undulating(76557567) == False
+assert is_undulating(121213) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+ 
+    s = str(n)
+    if len(s) < 3:
+        return False
+    if s[0] == s[1]:
+        return False
+    for i in range(2, len(s)):
+        if i % 2 == 0 and s[i] != s[i-2]:
+            return False
+        elif i % 2 != 0 and s[i] == s[i-2]:
+            return False
+    return True
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_undulating(98989898989898989898989) == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_undulating(4554) == False
+assert is_undulating(7887) == False
+assert is_undulating(1221) == False
+assert is_undulating(123456789) == False
+assert is_undulating(121234) == False
+assert is_undulating(1234567890987654321) == False
+assert is_undulating(76557567) == False
+assert is_undulating(121213) == False
+assert is_undulating(303) == True
+assert is_undulating(919) == True
+assert is_undulating(878) == True
+assert is_undulating(131) == True
+assert is_undulating(121) == True
+assert is_undulating(121) == True
+assert is_undulating(121) == True
+assert is_undulating(232) == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    s = str(n)
+    if len(s) < 3:
+        return False
+    if s[0] == s[1]:
+        return False
+    for i in range(2, len(s)):
+        if i % 2 == 0 and s[i] != s[i-2]:
+            return False
+        elif i % 2 != 0 and s[i] == s[i-2]:
+            return False
+    return True
+```

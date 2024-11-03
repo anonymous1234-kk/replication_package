@@ -1,0 +1,134 @@
+task_id:MbppEval/620
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def largest_subset(a):
+    '''
+    Write a function to find the size of the largest subset of a list of numbers so that every pair is divisible.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def largest_subset(a):
+    '''
+    Write a function to find the size of the largest subset of a list of numbers so that every pair is divisible.
+    '''
+
+    """
+    Returns the size of the largest subset of a list of numbers so that every pair is divisible.
+
+    Parameters:
+    a (list): A list of integers.
+
+    Returns:
+    int: The size of the largest subset of a list of numbers so that every pair is divisible.
+    """
+    n = len(a)
+    max_size = 0
+    for i in range(1, n+1):
+        for subset in combinations(a, i):
+            if all(subset[j] % subset[k] == 0 or subset[k] % subset[j] == 0 for j in range(len(subset)) for k in range(j+1, len(subset))):
+                max_size = max(max_size, len(subset))
+    return max_size
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert largest_subset([1, 3]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def largest_subset(a):
+    '''
+    Write a function to find the size of the largest subset of a list of numbers so that every pair is divisible.
+    '''
+
+    """
+    Returns the size of the largest subset of a list of numbers so that every pair is divisible.
+
+    Parameters:
+    a (list): A list of integers.
+
+    Returns:
+    int: The size of the largest subset of a list of numbers so that every pair is divisible.
+    """
+    from itertools import combinations
+
+    n = len(a)
+    max_size = 0
+    for i in range(1, n+1):
+        for subset in combinations(a, i):
+            if all(subset[j] % subset[k] == 0 or subset[k] % subset[j] == 0 for j in range(len(subset)) for k in range(j+1, len(subset))):
+                max_size = max(max_size, len(subset))
+    return max_size
+
+assert largest_subset([1, 3]) == 2
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-23<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert largest_subset([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) == 5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert largest_subset([1, 3]) == 2
+assert largest_subset([1, 2, 3, 4, 6, 8, 12]) == 4
+assert largest_subset([3, 6, 9]) == 2
+assert largest_subset([1, 2, 3, 4, 5, 6, 7, 8, 9]) == 4
+assert largest_subset([2, 4, 6, 8, 10, 12, 14, 16]) == 4
+assert largest_subset([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]) == 3
+assert largest_subset([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == 4
+assert largest_subset([3, 6, 9, 12, 15, 18, 21, 24, 27, 30]) == 4
+assert largest_subset([1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31]) == 4
+assert largest_subset([3, 5, 10, 20, 21]) == 3
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here is the fixed code:
+
+```python
+def largest_subset(a):
+    '''
+    Write a function to find the size of the largest subset of a list of numbers so that every pair is divisible.
+    '''
+
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
+    def is_divisible(pair):
+        x, y = pair
+        return gcd(x, y) != 1
+
+    from itertools import combinations
+
+    n = len(a)
+    max_size = 0
+    for i in range(1, n+1):
+        for subset in combinations(a, i):
+            if all(is_divisible(pair) for pair in combinations(subset, 2)):
+                max_size = max(max_size, len(subset))
+    return max_size
+```
+
+Please note that the code has been modified to include a helper function `gcd` to calculate the greatest common divisor between two numbers. Additionally, the condition to check if every pair in the subset is divisible has been updated using the `is_divisible` function.

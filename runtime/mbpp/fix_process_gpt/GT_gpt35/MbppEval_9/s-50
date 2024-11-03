@@ -1,0 +1,69 @@
+task_id:MbppEval/9
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_Rotations(str): 
+    '''
+    Write a python function to find the minimum number of rotations (greater than 0) required to get the same string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_Rotations(str): 
+    '''
+    Write a python function to find the minimum number of rotations (greater than 0) required to get the same string.
+    '''
+ 
+    n = len(str) 
+  
+    # Initialize least rotation 
+    minn = str 
+    for i in range(n): 
+  
+        # Rotate string by 1 
+        # till point of rotation becomes i 
+        a = str[i:n] + str[0:i] 
+  
+        # check if the rotation 
+        # is minimum so far 
+        if a < minn: 
+            minn = a 
+            index = i 
+  
+    return index+1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-3<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_Rotations('aaaabbbb') == 8
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_Rotations('abba') == 4
+assert find_Rotations('aba') == 3
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_Rotations(str): 
+    n = len(str) 
+    minn = str 
+    for i in range(n): 
+        a = str[i:n] + str[0:i] 
+        if a <= minn: 
+            minn = a 
+            index = i 
+    return index+1
+```

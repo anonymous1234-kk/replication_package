@@ -1,0 +1,116 @@
+task_id:HumanEval/147
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def get_max_triples(n):
+    """
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, 
+    and a[i] + a[j] + a[k] is a multiple of 3.
+
+    Example :
+        Input: n = 5
+        Output: 1
+        Explanation: 
+        a = [1, 3, 7, 13, 21]
+        The only valid triple is (1, 7, 13).
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def get_max_triples(n):
+    """
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, 
+    and a[i] + a[j] + a[k] is a multiple of 3.
+
+    Example :
+        Input: n = 5
+        Output: 1
+        Explanation: 
+        a = [1, 3, 7, 13, 21]
+        The only valid triple is (1, 7, 13).
+    """
+
+    a = [i*i - i + 1 for i in range(1, n+1)]
+    count = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if (a[i] + a[j] + a[k]) % 3 == 0:
+                    count += 1
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-46<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert get_max_triples(1000) == 55333611
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert get_max_triples(11) == 39
+assert get_max_triples(12) == 60
+assert get_max_triples(7) == 10
+assert get_max_triples(6) == 4
+assert get_max_triples(14) == 94
+assert get_max_triples(20) == 321
+assert get_max_triples(100) == 53361
+assert get_max_triples(11) == 39
+assert get_max_triples(7) == 10
+assert get_max_triples(23) == 511
+assert get_max_triples(51) == 6664
+assert get_max_triples(50) == 6136
+assert get_max_triples(0) == 0
+assert get_max_triples(35) == 1991
+assert get_max_triples(17) == 185
+assert get_max_triples(40) == 3211
+assert get_max_triples(20) == 321
+assert get_max_triples(8) == 11
+assert get_max_triples(4) == 1
+assert get_max_triples(50) == 6136
+assert get_max_triples(6) == 4
+assert get_max_triples(20) == 321
+assert get_max_triples(20) == 321
+assert get_max_triples(11) == 39
+assert get_max_triples(7) == 10
+assert get_max_triples(20) == 321
+assert get_max_triples(8) == 11
+assert get_max_triples(25) == 736
+assert get_max_triples(8) == 11
+assert get_max_triples(13) == 88
+assert get_max_triples(7) == 10
+assert get_max_triples(9) == 21
+assert get_max_triples(15) == 130
+assert get_max_triples(11) == 39
+assert get_max_triples(10) == 36
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def get_max_triples(n):
+    a = [i * i - i + 1 for i in range(1, n + 1)]
+    count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                if (a[i] + a[j] + a[k]) % 3 == 0:
+                    count += 1
+    return count
+```

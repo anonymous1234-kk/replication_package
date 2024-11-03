@@ -1,0 +1,106 @@
+task_id:MbppEval/438
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def count_bidirectional(test_list):
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+
+    '''
+    Write a function to count bidirectional tuple pairs.
+    '''
+    count = 0
+    for i in range(len(test_list)):
+        for j in range(i+1, len(test_list)):
+            if test_list[i] == test_list[j][::-1]:
+                count += 1
+    return count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 1), (2, 3), (3, 2), (4, 3), (4, 4)]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    count = 0
+    for i in range(len(test_list)):
+        for j in range(i+1, len(test_list)):
+            if test_list[i] == test_list[j][::-1]:
+                count += 1
+            if test_list[i] == test_list[j]:
+                count += 1
+    return count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 1), (2, 3), (3, 2)]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    count = 0
+    for i in range(len(test_list)):
+        for j in range(i+1, len(test_list)):
+            if test_list[i] == test_list[j][::-1]:
+                count += 1
+            if test_list[i] == test_list[j]:
+                count += 1
+    return count
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-11<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_bidirectional([(1, 2), (2, 3), (4, 3), (2, 1), (4, 5)]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def count_bidirectional(test_list):
+    count = 0
+    for i in range(len(test_list)):
+        for j in range(i+1, len(test_list)):
+            if test_list[i] == test_list[j][::-1]:
+                count += 1
+    return count
+```

@@ -1,0 +1,122 @@
+task_id:HumanEval/90
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def next_smallest(lst):
+    """
+    You are given a list of integers.
+    Write a function next_smallest() that returns the 2nd smallest element of the list.
+    Return None if there is no such element.
+    
+    next_smallest([1, 2, 3, 4, 5]) == 2
+    next_smallest([5, 1, 4, 3, 2]) == 2
+    next_smallest([]) == None
+    next_smallest([1, 1]) == None
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def next_smallest(lst):
+    """
+    You are given a list of integers.
+    Write a function next_smallest() that returns the 2nd smallest element of the list.
+    Return None if there is no such element.
+    
+    next_smallest([1, 2, 3, 4, 5]) == 2
+    next_smallest([5, 1, 4, 3, 2]) == 2
+    next_smallest([]) == None
+    next_smallest([1, 1]) == None
+    """
+
+    if len(lst) < 2:
+        return None
+
+    smallest = lst[0]
+    second_smallest = None
+
+    for i in range(1, len(lst)):
+        if lst[i] < smallest:
+            second_smallest = smallest
+            smallest = lst[i]
+        elif lst[i] != smallest and (second_smallest is None or lst[i] < second_smallest):
+            second_smallest = lst[i]
+
+    return second_smallest
+```
+
+You can test the function with the following inputs:
+
+```python
+print(next_smallest([1, 2, 3, 4, 5]))  # output: 2
+print(next_smallest([5, 1, 4, 3, 2]))  # output: 2
+print(next_smallest([]))              # output: None
+print(next_smallest([1, 1]))           # output: None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert next_smallest([1, 2]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def next_smallest(lst):
+    """
+    You are given a list of integers.
+    Write a function next_smallest() that returns the 2nd smallest element of the list.
+    Return None if there is no such element.
+    
+    next_smallest([1, 2, 3, 4, 5]) == 2
+    next_smallest([5, 1, 4, 3, 2]) == 2
+    next_smallest([]) == None
+    next_smallest([1, 1]) == None
+    """
+
+    if len(lst) < 2:
+        return None
+
+    smallest = float('inf')
+    second_smallest = float('inf')
+
+    for i in range(len(lst)):
+        if lst[i] < smallest:
+            second_smallest = smallest
+            smallest = lst[i]
+        elif lst[i] != smallest and (lst[i] < second_smallest):
+            second_smallest = lst[i]
+
+    if second_smallest == float('inf'):
+        return None
+
+    return second_smallest
+```
+
+You can test the function with the following inputs:
+
+```python
+print(next_smallest([1, 2, 3, 4, 5]))  # output: 2
+print(next_smallest([5, 1, 4, 3, 2]))  # output: 2
+print(next_smallest([]))              # output: None
+print(next_smallest([1, 1]))           # output: None
+print(next_smallest([1, 2]))           # output: 2
+
+```

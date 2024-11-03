@@ -1,0 +1,68 @@
+task_id:MbppEval/446
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    '''
+    Write a python function to count the occurence of all elements of list in a tuple.
+    '''
+ 
+    # Count the occurence of each element in the tuple
+    count = Counter(tup) 
+    # Initialize a dictionary to store the count of each element in the list
+    dict = {} 
+    # Iterate over the list
+    for item in lst:
+        # If the element is present in the tuple, add it to the dictionary with its count
+        if item in count:
+            dict[item] = count[item]
+        # If the element is not present in the tuple, add it to the dictionary with count 0
+        else:
+            dict[item] = 0
+    # Return the dictionary
+    return dict
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-19<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_Occurrence(('a', 'b', 'a', 'c', 'd', 'd', 'a', 'd', 'd', 'c', 'c', 'e', 'e', 'd', 'a'),['a', 'c', 'd']) == 12
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from collections import Counter 
+def count_Occurrence(tup, lst): 
+    count = Counter(tup) 
+    dict = {} 
+    for item in lst:
+        if item in count:
+            dict[item] = count[item]
+        else:
+            dict[item] = 0
+    return sum(dict.values())
+```

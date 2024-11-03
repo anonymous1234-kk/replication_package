@@ -1,0 +1,115 @@
+task_id:MbppEval/427
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    dt_regex = re.compile(r'\d{4}-\d{2}-\d{2}')
+    matches = dt_regex.findall(dt)
+    if matches:
+        date = matches[0]
+        year, month, day = date.split('-')
+        new_date = day + '-' + month + '-' + year
+        return dt.replace(date, new_date)
+    else:
+        return "Invalid date format. Please enter date in yyyy-mm-dd format."
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert change_date_format('1996-2-29') == 29-2-1996
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert change_date_format('2022-01-00') == 00-01-2022
+assert change_date_format('2022-13-01') == 01-13-2022
+assert change_date_format('2022-01-32') == 32-01-2022
+assert change_date_format('2022-25-12') == 12-25-2022
+assert change_date_format('2022-11-31') == 31-11-2022
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def change_date_format(dt):
+    '''
+    Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.
+    '''
+
+    dt_regex = re.compile(r'\d{4}-\d{2}-\d{2}')
+    matches = dt_regex.findall(dt)
+    if matches:
+        date = matches[0]
+        year, month, day = date.split('-')
+        if int(day) > 31 or int(month) > 12:
+            return "Invalid date format. Please enter date in yyyy-mm-dd format."
+        new_date = day + '-' + month + '-' + year
+        return dt.replace(date, new_date)
+    else:
+        return "Invalid date format. Please enter date in yyyy-mm-dd format."
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert change_date_format('2022-2-29') == 29-2-2022
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert change_date_format('2022-01-00') == 00-01-2022
+assert change_date_format('2022-13-01') == 01-13-2022
+assert change_date_format('2022-01-32') == 32-01-2022
+assert change_date_format('2022-25-12') == 12-25-2022
+assert change_date_format('2022-11-31') == 31-11-2022
+assert change_date_format('2022-11-31') == 31-11-2022
+assert change_date_format('2022-06-31') == 31-06-2022
+assert change_date_format('2022-08-32') == 32-08-2022
+assert change_date_format('2022-02-29') == 29-02-2022
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+
+def change_date_format(dt):
+    dt_regex = re.compile(r'\d{4}-\d{2}-\d{2}')
+    matches = dt_regex.findall(dt)
+    if matches:
+        date = matches[0]
+        year, month, day = date.split('-')
+        
+        if len(day) < 2:
+            day = '0' + day
+        if len(month) < 2:
+            month = '0' + month
+        
+        new_date = day + '-' + month + '-' + year
+        return dt.replace(date, new_date)
+    else:
+        return "Invalid date format. Please enter date in yyyy-mm-dd format."
+```

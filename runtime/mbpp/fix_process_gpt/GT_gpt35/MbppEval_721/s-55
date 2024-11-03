@@ -1,0 +1,74 @@
+task_id:MbppEval/721
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def maxAverageOfPath(cost):
+    '''
+    Given a square matrix of size N*N given as a list of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def maxAverageOfPath(cost):
+    '''
+    Given a square matrix of size N*N given as a list of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path.
+    '''
+
+    N = len(cost)
+    # Create a 2D list to store the maximum average of each cell
+    max_avg = [[0 for _ in range(N)] for _ in range(N)]
+    # Set the last cell's maximum average to its own cost
+    max_avg[N-1][N-1] = cost[N-1][N-1]
+    
+    # Calculate the maximum average for cells in the last column and last row
+    for i in range(N-2, -1, -1):
+        max_avg[i][N-1] = (cost[i][N-1] + max_avg[i+1][N-1]*(N-i-1))/(N-i)
+        max_avg[N-1][i] = (cost[N-1][i] + max_avg[N-1][i+1]*(N-i-1))/(N-i)
+    
+    # Calculate the maximum average for cells in the remaining part of the matrix
+    for i in range(N-2, -1, -1):
+        for j in range(N-2, -1, -1):
+            max_avg[i][j] = max((cost[i][j] + max_avg[i+1][j]*((N-i-1)+(N-j-1))/(2*N-i-j-2)), (cost[i][j] + max_avg[i][j+1]*((N-i-1)+(N-j-1))/(2*N-i-j-2)))
+    
+    # Return the maximum average of the first cell
+    return max_avg[0][0]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert maxAverageOfPath([[1, 2], [3, 4]]) == 2.6666666666666665
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def maxAverageOfPath(cost):
+    N = len(cost)
+    max_avg = [[0 for _ in range(N)] for _ in range(N)]
+    max_avg[N-1][N-1] = cost[N-1][N-1]
+    
+    for i in range(N-2, -1, -1):
+        max_avg[i][N-1] = (cost[i][N-1] + max_avg[i+1][N-1]*(N-i-1))/(N-i)
+        max_avg[N-1][i] = (cost[N-1][i] + max_avg[N-1][i+1]*(N-i-1))/(N-i)
+    
+    for i in range(N-2, -1, -1):
+        for j in range(N-2, -1, -1):
+            max_avg[i][j] = max((cost[i][j] + max_avg[i+1][j]*((N-i-1)+(N-j-1))/(2*N-i-j-2)), (cost[i][j] + max_avg[i][j+1]*((N-i-1)+(N-j-1))/(2*N-i-j-2)))
+    
+    return max_avg[0][0]
+```

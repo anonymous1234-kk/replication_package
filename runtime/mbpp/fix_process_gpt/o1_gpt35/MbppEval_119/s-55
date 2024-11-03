@@ -1,0 +1,138 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # If array is empty, return None
+    if len(arr) == 0:
+        return None
+
+    # If array has only one element, return that element
+    if len(arr) == 1:
+        return arr[0]
+
+    # Loop through the array
+    for i in range(0, len(arr), 2):
+        # If we reach the end of the array or find the element that appears only once
+        if i == len(arr) - 1 or arr[i] != arr[i + 1]:
+            return arr[i]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 150]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # If array is empty, return None
+    if len(arr) == 0:
+        return None
+
+    # If array has only one element, return that element
+    if len(arr) == 1:
+        return arr[0]
+
+    # Loop through the array
+    left, right = 0, len(arr)-1
+    while left < right:
+        mid = (left + right) // 2
+
+        # Check if mid is the element that appears only once
+        if arr[mid] != arr[mid-1] and arr[mid] != arr[mid+1]:
+            return arr[mid]
+
+        # Check if mid is the start of a pair
+        if arr[mid] == arr[mid+1]:
+            # Move left pointer to the right of the pair
+            left = mid + 2
+        else:
+            # Move right pointer to the left of the pair
+            right = mid - 1
+
+    # If no element appears only once, return None
+    return None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-33<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # If array is empty, return None
+    if len(arr) == 0:
+        return None
+
+    # If array has only one element, return that element
+    if len(arr) == 1:
+        return arr[0]
+
+    # Loop through the array
+    left, right = 0, len(arr)-1
+    while left <= right:
+        mid = (left + right) // 2
+
+        # Check if mid is the element that appears only once
+        if mid == 0 and arr[mid] != arr[mid+1]:
+            return arr[mid]
+        if mid == len(arr)-1 and arr[mid] != arr[mid-1]:
+            return arr[mid]
+        if arr[mid] != arr[mid-1] and arr[mid] != arr[mid+1]:
+            return arr[mid]
+
+        # Check if mid is the start of a pair
+        if arr[mid] == arr[mid+1]:
+            # Move left pointer to the right of the pair
+            left = mid + 2
+        else:
+            # Move right pointer to the left of the pair
+            right = mid - 1
+
+    # If no element appears only once, return None
+    return None
+```

@@ -1,0 +1,114 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Traverse through all elements in the array
+    for i in range(0, len(arr), 2):
+        # If the current element is not equal to the next element
+        if i == len(arr)-1 or arr[i] != arr[i+1]:
+            # Return the current element as it appears only once
+            return arr[i]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 150]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    # Initialize variables
+    left = 0
+    right = len(arr) - 1
+
+    # Perform binary search
+    while left < right:
+        mid = (left + right) // 2
+
+        # Check if the mid element is equal to its adjacent elements
+        if arr[mid] == arr[mid-1]:
+            # If so, move left pointer to the right
+            left = mid + 1
+        elif arr[mid] == arr[mid+1]:
+            # If so, move right pointer to the left
+            right = mid - 1
+        else:
+            # If the mid element is not equal to its adjacent elements, it is the element that appears only once
+            return arr[mid]
+
+    # If no element is found, return the last element
+    return arr[left]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-33<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    def binary_search(arr, left, right):
+        if left > right:
+            return None
+
+        mid = (left + right) // 2
+
+        if arr[mid] == arr[mid - 1]:
+            if (mid - left + 1) % 2 == 0:
+                return binary_search(arr, mid + 1, right)
+            else:
+                return binary_search(arr, left, mid - 2)
+        elif arr[mid] == arr[mid + 1]:
+            if (right - mid + 1) % 2 == 0:
+                return binary_search(arr, left, mid - 1)
+            else:
+                return binary_search(arr, mid + 2, right)
+        else:
+            return arr[mid]
+
+    return binary_search(arr, 0, len(arr) - 1)
+```

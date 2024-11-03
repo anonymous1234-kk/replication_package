@@ -1,0 +1,222 @@
+task_id:MbppEval/18
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+NO_OF_CHARS = 256
+def str_to_list(string): 
+    '''
+    Write a function to remove characters from the first string which are present in the second string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+NO_OF_CHARS = 256
+def str_to_list(string): 
+    '''
+    Write a function to remove characters from the first string which are present in the second string.
+    '''
+ 
+    # Create a list to store the characters in the second string
+    chars_to_remove = [False] * NO_OF_CHARS 
+
+    # Mark the characters that are present in the second string
+    for char in second_string:
+        chars_to_remove[ord(char)] = True
+
+    # Create a new string without the marked characters
+    new_string = ""
+    for char in string:
+        if not chars_to_remove[ord(char)]:
+            new_string += char
+
+    return new_string
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert str_to_list('mask','geeksforgeeks') == ma
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+NO_OF_CHARS = 256
+def str_to_list(string): 
+    '''
+    Write a function to remove characters from the first string which are present in the second string.
+    '''
+ 
+    # Create a list to store the characters in the second string
+    chars_to_remove = [False] * NO_OF_CHARS 
+
+    # Mark the characters that are present in the second string
+    for char in second_string:
+        chars_to_remove[ord(char)] = True
+
+    # Create a new string without the marked characters
+    new_string = ""
+    for char in string:
+        if not chars_to_remove[ord(char)]:
+            new_string += char
+
+    return new_string
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert str_to_list('geeks','mask') == gee
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+NO_OF_CHARS = 256
+def str_to_list(string): 
+    '''
+    Write a function to remove characters from the first string which are present in the second string.
+    '''
+ 
+    # Create a list to store the characters in the second string
+    chars_to_remove = [False] * NO_OF_CHARS 
+
+    # Mark the characters that are present in the second string
+    for char in second_string:
+        chars_to_remove[ord(char)] = True
+
+    # Create a new string without the marked characters
+    new_string = ""
+    for char in string:
+        if not chars_to_remove[ord(char)]:
+            new_string += char
+
+    return new_string
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert str_to_list('abcde','abd') == ce
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+NO_OF_CHARS = 256
+def str_to_list(string): 
+    '''
+    Write a function to remove characters from the first string which are present in the second string.
+    '''
+ 
+    # Create a list to store the characters in the second string
+    chars_to_remove = [False] * NO_OF_CHARS 
+
+    # Mark the characters that are present in the second string
+    for char in second_string:
+        chars_to_remove[ord(char)] = True
+
+    # Create a new string without the marked characters
+    new_string = ""
+    for char in string:
+        if not chars_to_remove[ord(char)]:
+            new_string += char
+
+    return new_string
+
+```
+```python
+NO_OF_CHARS = 256
+def str_to_list(string): 
+    '''
+    Write a function to remove characters from the first string which are present in the second string.
+    '''
+ 
+    # Create a list to store the characters in the second string
+    chars_to_remove = [False] * NO_OF_CHARS 
+
+    # Mark the characters that are present in the second string
+    for char in string:
+        chars_to_remove[ord(char)] = True
+
+    # Create a new string without the marked characters
+    new_string = ""
+    for char in string:
+        if not chars_to_remove[ord(char)]:
+            new_string += char
+
+    return new_string
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert str_to_list('Maryam','rya') == Mm
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+NO_OF_CHARS = 256
+def str_to_list(string): 
+    '''
+    Write a function to remove characters from the first string which are present in the second string.
+    '''
+ 
+    # Create a list to store the characters in the second string
+    chars_to_remove = [False] * NO_OF_CHARS 
+
+    # Mark the characters that are present in the second string
+    for char in second_string:
+        chars_to_remove[ord(char)] = True
+
+    # Create a new string without the marked characters
+    new_string = ""
+    for char in string:
+        if not chars_to_remove[ord(char)]:
+            new_string += char
+
+    return new_string
+
+
+# Fixing the code
+def str_to_list(string, second_string): 
+    chars_to_remove = [False] * NO_OF_CHARS 
+
+    for char in second_string:
+        chars_to_remove[ord(char)] = True
+
+    new_string = ""
+    for char in string:
+        if not chars_to_remove[ord(char)]:
+            new_string += char
+
+    return new_string
+```

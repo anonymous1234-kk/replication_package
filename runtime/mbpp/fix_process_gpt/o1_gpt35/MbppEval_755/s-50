@@ -1,0 +1,66 @@
+task_id:MbppEval/755
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def second_smallest(numbers):
+    '''
+    Write a function to find the second smallest number in a list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def second_smallest(numbers):
+    '''
+    Write a function to find the second smallest number in a list.
+    '''
+
+    if len(numbers) < 2:
+        return None
+    else:
+        smallest = second_smallest = float('inf')
+        for num in numbers:
+            if num < smallest:
+                second_smallest = smallest
+                smallest = num
+            elif num < second_smallest:
+                second_smallest = num
+        return second_smallest
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-12<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert second_smallest([1, 1, 2, 3, 4, 5]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def second_smallest(numbers):
+    if len(numbers) < 2:
+        return None
+    else:
+        smallest = second_smallest = float('inf')
+        for num in numbers:
+            if num < smallest:
+                second_smallest = smallest
+                smallest = num
+            elif num < second_smallest and num != smallest:  # Fix: Add condition to exclude duplicates
+                second_smallest = num
+        return second_smallest
+
+```

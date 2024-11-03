@@ -1,0 +1,66 @@
+task_id:MbppEval/628
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def replace_spaces(string):
+    '''
+    Write a function to replace all spaces in the given string with '%20'.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def replace_spaces(string):
+    '''
+    Write a function to replace all spaces in the given string with '%20'.
+    '''
+
+    '''
+    Write a function to replace all spaces in the given string with '%20'.
+    '''
+    # Split the string into a list of words
+    words = string.split()
+
+    # Join the words using '%20' as separator
+    new_string = '%20'.join(words)
+
+    # Return the new string with replaced spaces
+    return new_string
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-11<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert replace_spaces('       ') == %20%20%20%20%20%20%20
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def replace_spaces(string):
+    '''
+    Write a function to replace all spaces in the given string with '%20'.
+    '''
+
+    # Split the string into a list of words
+    words = string.split()
+
+    # Join the words using '%20' as separator
+    new_string = '%20'.join(words)
+
+    # Return the new string with replaced spaces
+    return new_string.strip() if new_string else ''
+```

@@ -1,0 +1,65 @@
+task_id:MbppEval/791
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def remove_nested(test_tup):
+    '''
+    Write a function to remove tuples from the given tuple.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def remove_nested(test_tup):
+    '''
+    Write a function to remove tuples from the given tuple.
+    '''
+
+    res = []
+    for i in test_tup:
+        if isinstance(i, tuple):
+            for j in i:
+                res.append(j)
+        else:
+            res.append(i)
+    return tuple(res)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert remove_nested(((1, 2), (3, 4, 5), 6)) == (6,)
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert remove_nested((1, 2, 3, 4, 5)) == (1, 2, 3, 4, 5)
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def remove_nested(test_tup):
+    '''
+    Write a function to remove tuples from the given tuple.
+    '''
+
+    res = []
+    for i in test_tup:
+        if isinstance(i, tuple):
+            for j in i:
+                res.append(j)
+        else:
+            res.append(i)
+    if len(res) == 1 and not isinstance(res[0], tuple):
+        return (res[0],)
+    return tuple(res)
+```

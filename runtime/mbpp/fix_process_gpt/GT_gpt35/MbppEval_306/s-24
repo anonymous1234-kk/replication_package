@@ -1,0 +1,57 @@
+task_id:MbppEval/306
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_sum_increasing_subseq(a, n, index, k):
+    '''
+    Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_sum_increasing_subseq(a, n, index, k):
+    '''
+    Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .
+    '''
+
+    dp = [0] * (n + 1)
+    dp[index] = a[index]
+    for i in range(index+1, k+1):
+        for j in range(index, i):
+            if a[j] < a[i]:
+                dp[i] = max(dp[i], dp[j] + a[i])
+    return max(dp)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_sum_increasing_subseq([3, 4, 5, 10],4,0,3) == 13
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_sum_increasing_subseq(a, n, index, k):
+    dp = [0] * (n + 1)
+    dp[index] = a[index]
+    for i in range(index+1, k+1):
+        for j in range(index, i):
+            if a[j] < a[i]:
+                dp[i] = max(dp[i], dp[j] + a[i])
+    return max(dp)
+```

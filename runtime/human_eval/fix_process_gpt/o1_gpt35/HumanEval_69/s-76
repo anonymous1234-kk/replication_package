@@ -1,0 +1,146 @@
+task_id:HumanEval/69
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def search(lst):
+    '''
+    You are given a non-empty list of positive integers. Return the greatest integer that is greater than 
+    zero, and has a frequency greater than or equal to the value of the integer itself. 
+    The frequency of an integer is the number of times it appears in the list.
+    If no such a value exist, return -1.
+    Examples:
+        search([4, 1, 2, 2, 3, 1]) == 2
+        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3
+        search([5, 5, 4, 4, 4]) == -1
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def search(lst):
+    '''
+    You are given a non-empty list of positive integers. Return the greatest integer that is greater than 
+    zero, and has a frequency greater than or equal to the value of the integer itself. 
+    The frequency of an integer is the number of times it appears in the list.
+    If no such a value exist, return -1.
+    Examples:
+        search([4, 1, 2, 2, 3, 1]) == 2
+        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3
+        search([5, 5, 4, 4, 4]) == -1
+    '''
+
+    """
+    You are given a non-empty list of positive integers. Return the greatest integer that is greater than 
+    zero, and has a frequency greater than or equal to the value of the integer itself. 
+    The frequency of an integer is the number of times it appears in the list.
+    If no such a value exist, return -1.
+    Examples:
+        search([4, 1, 2, 2, 3, 1]) == 2
+        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3
+        search([5, 5, 4, 4, 4]) == -1
+    """
+    frequency_dict = {}
+    for num in lst:
+        if num not in frequency_dict:
+            frequency_dict[num] = 1
+        else:
+            frequency_dict[num] += 1
+
+    max_num = -1
+    for num, freq in frequency_dict.items():
+        if num == freq and num > max_num:
+            max_num = num
+
+    return max_num
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 3, 3, 5, 5, 5]) == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([22, 11, 22, 11]) == -1
+assert search([5, 5, 4, 4, 4, 3]) == -1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def search(lst):
+    frequency_dict = {}
+    for num in lst:
+        if num not in frequency_dict:
+            frequency_dict[num] = 1
+        else:
+            frequency_dict[num] += 1
+
+    max_num = -1
+    for num, freq in frequency_dict.items():
+        if num == freq and num > max_num:
+            max_num = num
+
+    if max_num == -1:
+        for num, freq in frequency_dict.items():
+            if freq >= num and num > max_num:
+                max_num = num
+
+    return max_num
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-17<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 2, 2, 3, 3, 3, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 5, 5]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([22, 11, 22, 11]) == -1
+assert search([5, 5, 4, 4, 4, 3]) == -1
+assert search([1, 1, 3, 3, 5, 5, 5]) == 1
+assert search([4, 4, 4, 4, 4]) == 4
+assert search([10, 10, 10, 10, 10, 1, 1, 1]) == 1
+assert search([1, 1, 2, 2, 3, 3, 4, 4, 4]) == 2
+assert search([1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]) == 3
+assert search([2, 2, 2, 2, 2]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def search(lst):
+    frequency_dict = {}
+    for num in lst:
+        if num not in frequency_dict:
+            frequency_dict[num] = 1
+        else:
+            frequency_dict[num] += 1
+
+    max_num = -1
+    for num, freq in frequency_dict.items():
+        if num == freq and num > max_num:
+            max_num = num
+
+    if max_num == -1:
+        for num, freq in frequency_dict.items():
+            if freq >= num and num > max_num:
+                max_num = num
+
+    return max_num
+
+```

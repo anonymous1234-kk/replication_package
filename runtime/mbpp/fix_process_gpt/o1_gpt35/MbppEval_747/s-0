@@ -1,0 +1,311 @@
+task_id:MbppEval/747
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+
+    m, n, o = len(X), len(Y), len(Z)
+    L = [[[0 for _ in range(o+1)] for _ in range(n+1)] for _ in range(m+1)]
+  
+    for i in range(m+1):
+        for j in range(n+1):
+            for k in range(o+1):
+                if i == 0 or j == 0 or k == 0:
+                    L[i][j][k] = 0
+                elif X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else:
+                    L[i][j][k] = max(max(L[i-1][j][k], L[i][j-1][k]), L[i][j][k-1])
+    return L[m][n][o]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lcs_of_three('AGGT12','12TXAYB','12XBA') == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert lcs_of_three('AAB','AAC','AAC') == 2
+assert lcs_of_three('aaa','bbbb','cc') == 0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+
+    m, n, o = len(X), len(Y), len(Z)
+    L = [[[0 for _ in range(o+1)] for _ in range(n+1)] for _ in range(m+1)]
+  
+    for i in range(m+1):
+        for j in range(n+1):
+            for k in range(o+1):
+                if i == 0 or j == 0 or k == 0:
+                    L[i][j][k] = 0
+                elif X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else:
+                    L[i][j][k] = max(max(L[i-1][j][k], L[i][j-1][k]), L[i][j][k-1])
+    return L[m][n][o]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-44<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lcs_of_three('1234567890','347892389489','lifjkewe324324') == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert lcs_of_three('AAB','AAC','AAC') == 2
+assert lcs_of_three('aaa','bbbb','cc') == 0
+assert lcs_of_three('abca','defb','ghic') == 0
+assert lcs_of_three('ABCDGH','AEDFHR','ABCDGH') == 3
+assert lcs_of_three('ab','bc','cd') == 0
+assert lcs_of_three('abcde','abcde','abcde') == 5
+assert lcs_of_three('abcd','efgh','ijkl') == 0
+assert lcs_of_three('a','b','c') == 0
+assert lcs_of_three('a','a','a') == 1
+assert lcs_of_three('AAABBBCCC','AAACCCBBB','AABCAAACCAAAACB') == 6
+assert lcs_of_three('GXTXAYB','AGGTAB','GTAB') == 4
+assert lcs_of_three('ABC','DEF','GHI') == 0
+assert lcs_of_three('','DEF','GHI') == 0
+assert lcs_of_three('ABC','','GHI') == 0
+assert lcs_of_three('ABC','DEF','') == 0
+assert lcs_of_three('a','a','b') == 0
+assert lcs_of_three('ab','a','ba') == 1
+assert lcs_of_three('AGGT12','12TXAYB','12XBA') == 2
+assert lcs_of_three('','12TXAYB','12XBA') == 0
+assert lcs_of_three('KLM','KLMN','KLMNOPQ') == 3
+assert lcs_of_three('aaa','ab','acba') == 1
+assert lcs_of_three('abcd','efgh','ijkl') == 0
+assert lcs_of_three('a','b','c') == 0
+assert lcs_of_three('abc','abc','abc') == 3
+assert lcs_of_three('abcabcaa','bcabcaa','aab') == 2
+assert lcs_of_three('b','a','b') == 0
+assert lcs_of_three('ABCDGH','AEDFHR','ABCD') == 2
+assert lcs_of_three('','a','b') == 0
+assert lcs_of_three('a','','b') == 0
+assert lcs_of_three('a','b','') == 0
+assert lcs_of_three('a','a','ab') == 1
+assert lcs_of_three('abc','abc','abc') == 3
+assert lcs_of_three('abc','abc','ab') == 2
+assert lcs_of_three('abc','ab','ab') == 2
+assert lcs_of_three('abc','ab','a') == 1
+assert lcs_of_three('GeeksforGeeks','GeeksQuiz','Geeks') == 5
+assert lcs_of_three('','','') == 0
+assert lcs_of_three('abs','dbs','cbs') == 2
+assert lcs_of_three('aaa','aaa','aaa') == 3
+assert lcs_of_three('abc','def','zyx') == 0
+assert lcs_of_three('aabbcc','ddeecc','eemmcc') == 2
+assert lcs_of_three('123','456','789') == 0
+assert lcs_of_three('boy','girl','man') == 0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+
+    m, n, o = len(X), len(Y), len(Z)
+    L = [[[0 for _ in range(o+1)] for _ in range(n+1)] for _ in range(m+1)]
+  
+    for i in range(m+1):
+        for j in range(n+1):
+            for k in range(o+1):
+                if i == 0 or j == 0 or k == 0:
+                    L[i][j][k] = 0
+                elif X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else:
+                    L[i][j][k] = max(max(L[i-1][j][k], L[i][j-1][k]), L[i][j][k-1])
+    return L[m][n][o]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-46<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lcs_of_three('thisisatest','testing123testing','wtfisthisdoing') == 6
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert lcs_of_three('AAB','AAC','AAC') == 2
+assert lcs_of_three('aaa','bbbb','cc') == 0
+assert lcs_of_three('abca','defb','ghic') == 0
+assert lcs_of_three('ABCDGH','AEDFHR','ABCDGH') == 3
+assert lcs_of_three('ab','bc','cd') == 0
+assert lcs_of_three('abcde','abcde','abcde') == 5
+assert lcs_of_three('abcd','efgh','ijkl') == 0
+assert lcs_of_three('a','b','c') == 0
+assert lcs_of_three('a','a','a') == 1
+assert lcs_of_three('AAABBBCCC','AAACCCBBB','AABCAAACCAAAACB') == 6
+assert lcs_of_three('GXTXAYB','AGGTAB','GTAB') == 4
+assert lcs_of_three('ABC','DEF','GHI') == 0
+assert lcs_of_three('','DEF','GHI') == 0
+assert lcs_of_three('ABC','','GHI') == 0
+assert lcs_of_three('ABC','DEF','') == 0
+assert lcs_of_three('a','a','b') == 0
+assert lcs_of_three('ab','a','ba') == 1
+assert lcs_of_three('AGGT12','12TXAYB','12XBA') == 2
+assert lcs_of_three('','12TXAYB','12XBA') == 0
+assert lcs_of_three('KLM','KLMN','KLMNOPQ') == 3
+assert lcs_of_three('aaa','ab','acba') == 1
+assert lcs_of_three('abcd','efgh','ijkl') == 0
+assert lcs_of_three('a','b','c') == 0
+assert lcs_of_three('abc','abc','abc') == 3
+assert lcs_of_three('abcabcaa','bcabcaa','aab') == 2
+assert lcs_of_three('b','a','b') == 0
+assert lcs_of_three('ABCDGH','AEDFHR','ABCD') == 2
+assert lcs_of_three('','a','b') == 0
+assert lcs_of_three('a','','b') == 0
+assert lcs_of_three('a','b','') == 0
+assert lcs_of_three('a','a','ab') == 1
+assert lcs_of_three('abc','abc','abc') == 3
+assert lcs_of_three('abc','abc','ab') == 2
+assert lcs_of_three('abc','ab','ab') == 2
+assert lcs_of_three('abc','ab','a') == 1
+assert lcs_of_three('GeeksforGeeks','GeeksQuiz','Geeks') == 5
+assert lcs_of_three('','','') == 0
+assert lcs_of_three('abs','dbs','cbs') == 2
+assert lcs_of_three('aaa','aaa','aaa') == 3
+assert lcs_of_three('abc','def','zyx') == 0
+assert lcs_of_three('aabbcc','ddeecc','eemmcc') == 2
+assert lcs_of_three('123','456','789') == 0
+assert lcs_of_three('boy','girl','man') == 0
+assert lcs_of_three('zabcde','yzabcde','xyzabcde') == 6
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lcs_of_three(X, Y, Z): 
+    '''
+    Write a function to find the longest common subsequence for the given three string sequence. https://www.geeksforgeeks.org/lcs-longest-common-subsequence-three-strings/
+    '''
+
+    m, n, o = len(X), len(Y), len(Z)
+    L = [[[0 for _ in range(o+1)] for _ in range(n+1)] for _ in range(m+1)]
+  
+    for i in range(m+1):
+        for j in range(n+1):
+            for k in range(o+1):
+                if i == 0 or j == 0 or k == 0:
+                    L[i][j][k] = 0
+                elif X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else:
+                    L[i][j][k] = max(max(L[i-1][j][k], L[i][j-1][k]), L[i][j][k-1])
+    return L[m][n][o]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert lcs_of_three('itwasabrightcolddayinaprilandtheclockswerestrikingthirteen','abrightcolddayinaprilandtheclockswerestrikingthirteenandthehundredsofpeopleforthestationwerepushinguptheotherplatform','bitterlycoldforaprildayandtheclockswerestrikingthirteen') == abrightcolddayinaprilandtheclockswerestrikingthirteen
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert lcs_of_three('AAB','AAC','AAC') == 2
+assert lcs_of_three('aaa','bbbb','cc') == 0
+assert lcs_of_three('abca','defb','ghic') == 0
+assert lcs_of_three('ABCDGH','AEDFHR','ABCDGH') == 3
+assert lcs_of_three('ab','bc','cd') == 0
+assert lcs_of_three('abcde','abcde','abcde') == 5
+assert lcs_of_three('abcd','efgh','ijkl') == 0
+assert lcs_of_three('a','b','c') == 0
+assert lcs_of_three('a','a','a') == 1
+assert lcs_of_three('AAABBBCCC','AAACCCBBB','AABCAAACCAAAACB') == 6
+assert lcs_of_three('GXTXAYB','AGGTAB','GTAB') == 4
+assert lcs_of_three('ABC','DEF','GHI') == 0
+assert lcs_of_three('','DEF','GHI') == 0
+assert lcs_of_three('ABC','','GHI') == 0
+assert lcs_of_three('ABC','DEF','') == 0
+assert lcs_of_three('a','a','b') == 0
+assert lcs_of_three('ab','a','ba') == 1
+assert lcs_of_three('AGGT12','12TXAYB','12XBA') == 2
+assert lcs_of_three('','12TXAYB','12XBA') == 0
+assert lcs_of_three('KLM','KLMN','KLMNOPQ') == 3
+assert lcs_of_three('aaa','ab','acba') == 1
+assert lcs_of_three('abcd','efgh','ijkl') == 0
+assert lcs_of_three('a','b','c') == 0
+assert lcs_of_three('abc','abc','abc') == 3
+assert lcs_of_three('abcabcaa','bcabcaa','aab') == 2
+assert lcs_of_three('b','a','b') == 0
+assert lcs_of_three('ABCDGH','AEDFHR','ABCD') == 2
+assert lcs_of_three('','a','b') == 0
+assert lcs_of_three('a','','b') == 0
+assert lcs_of_three('a','b','') == 0
+assert lcs_of_three('a','a','ab') == 1
+assert lcs_of_three('abc','abc','abc') == 3
+assert lcs_of_three('abc','abc','ab') == 2
+assert lcs_of_three('abc','ab','ab') == 2
+assert lcs_of_three('abc','ab','a') == 1
+assert lcs_of_three('GeeksforGeeks','GeeksQuiz','Geeks') == 5
+assert lcs_of_three('','','') == 0
+assert lcs_of_three('abs','dbs','cbs') == 2
+assert lcs_of_three('aaa','aaa','aaa') == 3
+assert lcs_of_three('abc','def','zyx') == 0
+assert lcs_of_three('aabbcc','ddeecc','eemmcc') == 2
+assert lcs_of_three('123','456','789') == 0
+assert lcs_of_three('boy','girl','man') == 0
+assert lcs_of_three('zabcde','yzabcde','xyzabcde') == 6
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def lcs_of_three(X, Y, Z): 
+    m, n, o = len(X), len(Y), len(Z)
+    L = [[[0 for _ in range(o+1)] for _ in range(n+1)] for _ in range(m+1)]
+  
+    for i in range(m+1):
+        for j in range(n+1):
+            for k in range(o+1):
+                if i == 0 or j == 0 or k == 0:
+                    L[i][j][k] = 0
+                elif X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else:
+                    L[i][j][k] = max(max(L[i-1][j][k], L[i][j-1][k]), L[i][j][k-1])
+    result = ""
+    i, j, k = m, n, o
+    while i > 0 and j > 0 and k > 0:
+        if X[i-1] == Y[j-1] and X[i-1] == Z[k-1]:
+            result = X[i-1] + result
+            i -= 1
+            j -= 1
+            k -= 1
+        elif L[i-1][j][k] >= L[i][j-1][k] and L[i-1][j][k] >= L[i][j][k-1]:
+            i -= 1
+        elif L[i][j-1][k] >= L[i-1][j][k] and L[i][j-1][k] >= L[i][j][k-1]:
+            j -= 1
+        else:
+            k -= 1
+    return result
+```

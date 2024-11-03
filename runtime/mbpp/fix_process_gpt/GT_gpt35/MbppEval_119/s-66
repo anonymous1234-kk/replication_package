@@ -1,0 +1,77 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    n = len(arr)
+    # If array is empty or contains more than one element, then return None
+    if n == 0 or n % 2 == 0:
+        return None
+    # If array contains only one element, then return that element
+    if n == 1:
+        return arr[0]
+    # Find the middle element of the array
+    mid = n // 2
+    # Check if the middle element is the element that appears only once
+    if arr[mid] != arr[mid - 1] and arr[mid] != arr[mid + 1]:
+        return arr[mid]
+    # If the middle element is not the element that appears only once,
+    # then check which half of the array it is in and recurse
+    if arr[mid] == arr[mid - 1]:
+        return search(arr[:mid - 1])
+    else:
+        return search(arr[mid + 1:])
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140, 140]) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    n = len(arr)
+    if n == 0 or n % 2 == 0:
+        return None
+    if n == 1:
+        return arr[0]
+    mid = n // 2
+    if arr[mid] != arr[mid - 1] and arr[mid] != arr[mid + 1]:
+        return arr[mid]
+    if arr[mid] == arr[mid - 1]:
+        return search(arr[:mid - 2])  # fix here
+    else:
+        return search(arr[mid + 2:])  # fix here
+```

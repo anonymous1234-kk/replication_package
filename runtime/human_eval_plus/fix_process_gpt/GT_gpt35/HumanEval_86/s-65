@@ -1,0 +1,92 @@
+task_id:HumanEval/86
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+
+    words = s.split()
+    for i, word in enumerate(words):
+        words[i] = ''.join(sorted(word))
+    return ' '.join(words)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert anti_shuffle('how ') == how 
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert anti_shuffle('Good job') == Gdoo bjo
+assert anti_shuffle('Hello!!! World!!!') == !!!Hello !!!Wdlor
+assert anti_shuffle('time flies') == eimt efils
+assert anti_shuffle('Abc AbD') == Abc ADb
+assert anti_shuffle('This is a test case for anti_shuffle') == This is a estt aces for _aeffhilnstu
+assert anti_shuffle('how much wood would a woodchuck chuck if a woodchuck could chuck wood') == how chmu doow dlouw a ccdhkoouw cchku fi a ccdhkoouw cdlou cchku doow
+assert anti_shuffle('Sphinx of black quartz judge my vow') == Shinpx fo abckl aqrtuz degju my ovw
+assert anti_shuffle('Ultrasonic subspace frequency modulator') == Uacilnorst abcepssu ceefnqruy adlmoortu
+assert anti_shuffle('Hellow, Wold!') == ,Hellow !Wdlo
+assert anti_shuffle('Hello, world!') == ,Hello !dlorw
+assert anti_shuffle('h e l l o') == h e l l o
+assert anti_shuffle('This code is not hard') == This cdeo is not adhr
+assert anti_shuffle('Python is an interpreted language') == Phnoty is an deeeinprrtt aaegglnu
+assert anti_shuffle('Cba dcb') == Cab bcd
+assert anti_shuffle('1, 2, 3, 4, 5, 6, 7, 8, 9') == ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 9
+assert anti_shuffle('tacocat') == aaccott
+assert anti_shuffle('hi there') == hi eehrt
+assert anti_shuffle('pneumonoultramicroscopicsilicovolcanoconiosis') == aacccccceiiiiiilllmmnnnnooooooooopprrsssstuuv
+assert anti_shuffle('I am a student') == I am a densttu
+assert anti_shuffle('I am a student at wwu.') == I am a densttu at .uww
+assert anti_shuffle('Python Bootcamp') == Phnoty Bacmoopt
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def anti_shuffle(s):
+    words = s.split()
+    for i, word in enumerate(words):
+        words[i] = ''.join(sorted(word))
+    return ' '.join(words)
+```

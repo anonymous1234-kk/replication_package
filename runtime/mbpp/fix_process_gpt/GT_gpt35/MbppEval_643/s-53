@@ -1,0 +1,101 @@
+task_id:MbppEval/643
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def text_match_wordz_middle(text):
+    '''
+    Write a function that checks if a strings contains 'z', except at the start and end of the word.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def text_match_wordz_middle(text):
+    '''
+    Write a function that checks if a strings contains 'z', except at the start and end of the word.
+    '''
+
+    pattern = r'\b\w*z\w*\b'
+    return re.search(pattern, text) is not None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert text_match_wordz_middle('A zebra?') == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert text_match_wordz_middle('Zebrazi') == True
+assert text_match_wordz_middle('sdza') == True
+assert text_match_wordz_middle('asldkjaasdzal') == True
+assert text_match_wordz_middle('aazathoth') == True
+assert text_match_wordz_middle('Azam') == True
+assert text_match_wordz_middle('Fzfstfzt') == True
+assert text_match_wordz_middle('fzfs t fzt') == True
+assert text_match_wordz_middle('fzfs t fz') == True
+assert text_match_wordz_middle('fzfs t fztz') == True
+assert text_match_wordz_middle('fzfz tfzt') == True
+assert text_match_wordz_middle('fzfs ttfzt') == True
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def text_match_wordz_middle(text):
+    '''
+    Write a function that checks if a strings contains 'z', except at the start and end of the word.
+    '''
+
+    pattern = r'\b[^z\s]\w*z\w*[^z\s]\b'
+    return re.search(pattern, text) is not None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert text_match_wordz_middle('jazz') == True
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert text_match_wordz_middle('Zebrazi') == True
+assert text_match_wordz_middle('sdza') == True
+assert text_match_wordz_middle('asldkjaasdzal') == True
+assert text_match_wordz_middle('aazathoth') == True
+assert text_match_wordz_middle('Azam') == True
+assert text_match_wordz_middle('Fzfstfzt') == True
+assert text_match_wordz_middle('fzfs t fzt') == True
+assert text_match_wordz_middle('fzfs t fz') == True
+assert text_match_wordz_middle('fzfs t fztz') == True
+assert text_match_wordz_middle('fzfz tfzt') == True
+assert text_match_wordz_middle('fzfs ttfzt') == True
+assert text_match_wordz_middle('A zebra?') == False
+assert text_match_wordz_middle('dudez') == False
+assert text_match_wordz_middle('Zaz') == False
+assert text_match_wordz_middle('Applez') == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def text_match_wordz_middle(text):
+    '''
+    Write a function that checks if a strings contains 'z', except at the start and end of the word.
+    '''
+
+    pattern = r'\b[a-yA-Y]\w*z\w*[a-yA-Y]\b'
+    return re.search(pattern, text) is not None
+```

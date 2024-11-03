@@ -1,0 +1,137 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    for i in range(0, len(arr), 2):
+        if i == len(arr) - 1 or arr[i] != arr[i + 1]:
+            return arr[i]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 150]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    low = 0
+    high = len(arr) - 1
+
+    while low < high:
+        mid = (low + high) // 2
+
+        if mid % 2 == 1:
+            mid -= 1
+
+        if arr[mid] != arr[mid + 1]:
+            high = mid
+        else:
+            low = mid + 2
+
+    return arr[low]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    low = 0
+    high = len(arr) - 1
+
+    while low < high:
+        mid = (low + high) // 2
+        if mid % 2 == 1:
+            mid -= 1
+        if arr[mid] != arr[mid + 1]:
+            high = mid
+        else:
+            low = mid + 2
+
+    return arr[low]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 140, 150]) == [3, 150]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if mid % 2 == 0:
+            if mid + 1 <= high and arr[mid] == arr[mid + 1]:
+                low = mid + 2
+            else:
+                high = mid
+        else:
+            if mid - 1 >= low and arr[mid] == arr[mid - 1]:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+    return arr[low]
+```

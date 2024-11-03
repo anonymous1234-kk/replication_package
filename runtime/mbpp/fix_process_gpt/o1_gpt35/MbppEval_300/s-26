@@ -1,0 +1,105 @@
+task_id:MbppEval/300
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def count_binary_seq(n): 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def count_binary_seq(n): 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+
+    # Calculate the number of valid sequences using combinatorics
+    return int((factorial(2*n)) / ((factorial(n)) ** 2 * (n + 1)))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-22<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_binary_seq(12) == 2704156
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math
+
+def count_binary_seq(n): 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+
+    # Calculate the number of valid sequences using combinatorics
+    return int((math.factorial(2*n)) / ((math.factorial(n)) ** 2 * (n + 1)))
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-27<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_binary_seq(4) == 70
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from math import factorial
+
+def count_binary_seq(n): 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+
+    # Calculate the number of valid sequences using combinatorics
+    return int((factorial(2*n)) / ((factorial(n)) ** 2 * (n + 1)))
+
+assert count_binary_seq(4) == 70
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert count_binary_seq(6) == 924
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+from math import factorial
+
+def count_binary_seq(n): 
+    '''
+    Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits.
+    '''
+
+    # Calculate the number of valid sequences using combinatorics
+    return int((factorial(2*n)) / ((factorial(n)) ** 2))
+
+```

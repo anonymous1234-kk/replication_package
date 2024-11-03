@@ -1,0 +1,108 @@
+task_id:MbppEval/607
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+
+def find_literals(text, pattern):
+    '''
+    Write a function to search a string for a regex pattern. The function should return the matching subtring, a start index and an end index.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+
+def find_literals(text, pattern):
+    '''
+    Write a function to search a string for a regex pattern. The function should return the matching subtring, a start index and an end index.
+    '''
+
+    regex_pattern = re.compile(pattern)
+    match = regex_pattern.search(text)
+    if match:
+        return match.group(), match.start(), match.end()
+    else:
+        return None, None, None
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_literals('sean','z+') == None
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_literals('sean','[a-z]') == ('s', 0, 1)
+assert find_literals('sean','[a-z]+') == ('sean', 0, 4)
+assert find_literals('sean','[a-z]$') == ('n', 3, 4)
+assert find_literals('sean','a+') == ('a', 2, 3)
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+
+def find_literals(text, pattern):
+    '''
+    Write a function to search a string for a regex pattern. The function should return the matching subtring, a start index and an end index.
+    '''
+
+    regex_pattern = re.compile(pattern)
+    match = regex_pattern.search(text)
+    if match:
+        return match.group(), match.start(), match.end()
+    else:
+        return None, None, None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-14<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_literals('sean','z+') == None
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_literals('sean','[a-z]') == ('s', 0, 1)
+assert find_literals('sean','[a-z]+') == ('sean', 0, 4)
+assert find_literals('sean','[a-z]$') == ('n', 3, 4)
+assert find_literals('sean','a+') == ('a', 2, 3)
+assert find_literals('I love cake','o\\w+') == ('ove', 3, 6)
+assert find_literals('I love cake','c\\w*e') == ('cake', 7, 11)
+assert find_literals('I have a green drink','e\\w+') == ('een', 11, 14)
+assert find_literals('I have a green drink','^\\w+') == ('I', 0, 1)
+assert find_literals('I have a green drink','\\w\\w\\w\\w\\w') == ('green', 9, 14)
+assert find_literals('sean','[a-z]') == ('s', 0, 1)
+assert find_literals('sean','[a-z]+') == ('sean', 0, 4)
+assert find_literals('sean','[a-z]$') == ('n', 3, 4)
+assert find_literals('sean','a+') == ('a', 2, 3)
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+
+def find_literals(text, pattern):
+    '''
+    Write a function to search a string for a regex pattern. The function should return the matching subtring, a start index and an end index.
+    '''
+
+    regex_pattern = re.compile(pattern)
+    match = regex_pattern.search(text)
+    if match:
+        return match.group(), match.start(), match.end()
+    else:
+        return None, None, None
+```

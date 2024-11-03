@@ -1,0 +1,73 @@
+task_id:MbppEval/721
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def maxAverageOfPath(cost):
+    '''
+    Given a square matrix of size N*N given as a list of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def maxAverageOfPath(cost):
+    '''
+    Given a square matrix of size N*N given as a list of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path.
+    '''
+
+    N = len(cost)
+    # create a DP table to store the maximum average value
+    dp = [[0 for _ in range(N)] for _ in range(N)]
+    # initialize the first cell
+    dp[0][0] = cost[0][0]
+    # calculate the first row
+    for i in range(1, N):
+        dp[0][i] = (dp[0][i-1] * i + cost[0][i]) / (i+1)
+    # calculate the first column
+    for j in range(1, N):
+        dp[j][0] = (dp[j-1][0] * j + cost[j][0]) / (j+1)
+    # fill the rest of the DP table
+    for i in range(1, N):
+        for j in range(1, N):
+            dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + cost[i][j]
+            dp[i][j] /= 2 + max(i, j) - 1
+    # return the maximum average value
+    return dp[N-1][N-1]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert maxAverageOfPath([[1, 2], [3, 4]]) == 2.6666666666666665
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def maxAverageOfPath(cost):
+    N = len(cost)
+    dp = [[0 for _ in range(N)] for _ in range(N)]
+    dp[0][0] = cost[0][0]
+    for i in range(1, N):
+        dp[0][i] = (dp[0][i-1] * i + cost[0][i]) / (i+1)
+    for j in range(1, N):
+        dp[j][0] = (dp[j-1][0] * j + cost[j][0]) / (j+1)
+    for i in range(1, N):
+        for j in range(1, N):
+            dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + cost[i][j]
+            dp[i][j] /= 1 + max(i, j)
+    return dp[N-1][N-1]
+```

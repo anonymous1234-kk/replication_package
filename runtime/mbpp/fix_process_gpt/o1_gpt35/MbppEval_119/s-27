@@ -1,0 +1,126 @@
+task_id:MbppEval/119
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    n = len(arr)
+    # Traverse the array from 0 to n-1
+    for i in range(0, n, 2):
+        # Check if current element is not the last element
+        if i < n - 1:
+            # If current element is not equal to next element
+            if arr[i] != arr[i+1]:
+                return arr[i]
+        else:
+            # If current element is the last element
+            return arr[i]
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 150]) == 3
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    n = len(arr)
+    for i in range(0, n, 2):
+        if i < n - 1:
+            if arr[i] != arr[i+1]:
+                return arr[i]
+        else:
+            return arr[i]
+
+    return None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    '''
+    Write a python function to find the element that appears only once in a sorted array.
+    '''
+
+    n = len(arr)
+    # Traverse the array from 0 to n-1
+    for i in range(0, n, 2):
+        # Check if current element is not the last element
+        if i < n - 1:
+            # If current element is not equal to next element
+            if arr[i] != arr[i+1]:
+                return arr[i]
+        else:
+            # If current element is the last element
+            return arr[i]
+    
+    return None
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-38<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert search([1, 1, 2, 2, 2, 3, 50, 50, 60, 60, 140, 140, 150]) == [3, 150]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert search([1, 1, 2, 2, 3, 3, 50, 50, 60, 60, 140]) == 140
+assert search([1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]) == 2
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def search(arr):
+    n = len(arr)
+    for i in range(0, n, 2):
+        if i < n - 1:
+            if arr[i] != arr[i+1]:
+                if i == 0 or arr[i] != arr[i-1]:
+                    if i == n - 2 or arr[i+1] != arr[i+2]:
+                        return [arr[i], arr[i+1]]
+        else:
+            return arr[i]
+```

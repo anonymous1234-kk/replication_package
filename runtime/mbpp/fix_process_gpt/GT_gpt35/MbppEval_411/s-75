@@ -1,0 +1,77 @@
+task_id:MbppEval/411
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts])
+    
+    # return the camel case string
+    return camel_case
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-37<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('happy___grocery_24') == Happy__Grocery24
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert snake_to_camel('happy_24_grocery') == Happy24Grocery
+assert snake_to_camel('happy_grocery_shopping') == HappyGroceryShopping
+assert snake_to_camel('happy_grocery') == HappyGrocery
+assert snake_to_camel('happy') == Happy
+assert snake_to_camel('happy24') == Happy24
+assert snake_to_camel('happy_grocery_24') == HappyGrocery24
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import re
+def snake_to_camel(word):
+    '''
+    Write a function to convert the given snake case string to camel case string.
+    '''
+
+    # split the string at underscores
+    parts = word.split('_')
+    
+    # convert the first letter of each part to uppercase and join them
+    # using an empty string as the separator
+    camel_case = ''.join([part.capitalize() for part in parts if part])
+    
+    # handle the case where the first letter of the original string is lowercase
+    if word[0].islower():
+        camel_case = camel_case[0].lower() + camel_case[1:]
+    
+    # return the camel case string
+    return camel_case
+```

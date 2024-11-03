@@ -1,0 +1,106 @@
+task_id:MbppEval/92
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+ 
+    '''
+    Write a function to check whether the given number is undulating or not.
+    '''
+    # convert the number to a string and check if its length is greater than or equal to 3
+    if len(str(n)) < 3:
+        return False
+    
+    # initialize variables to keep track of the previous difference and whether the previous difference was positive or negative
+    prev_diff = None
+    prev_diff_positive = None
+    
+    # iterate through the digits of the number starting at the second digit
+    for i in range(1, len(str(n))):
+        # calculate the difference between the current and previous digits
+        diff = int(str(n)[i]) - int(str(n)[i-1])
+        
+        # if this is the first digit pair, record the difference and continue to the next pair
+        if prev_diff is None:
+            prev_diff = diff
+            prev_diff_positive = diff > 0
+            continue
+        
+        # if the current difference is the same as the previous difference, return False
+        if diff == prev_diff:
+            return False
+        
+        # if the signs of the two differences are the same, return False
+        if (diff > 0 and prev_diff_positive) or (diff < 0 and not prev_diff_positive):
+            return False
+        
+        # record the current difference and whether it is positive or negative
+        prev_diff = diff
+        prev_diff_positive = diff > 0
+    
+    # if we made it through the loop without returning False, the number is undulating
+    return True
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert is_undulating(121213) == False
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert is_undulating(4554) == False
+assert is_undulating(7887) == False
+assert is_undulating(1221) == False
+assert is_undulating(123456789) == False
+assert is_undulating(121234) == False
+assert is_undulating(1234567890987654321) == False
+assert is_undulating(76557567) == False
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def is_undulating(n): 
+    if len(str(n)) < 3:
+        return False
+    
+    prev_diff = None
+    prev_diff_positive = None
+    
+    for i in range(1, len(str(n))):
+        diff = int(str(n)[i]) - int(str(n)[i-1])
+        
+        if prev_diff is None:
+            prev_diff = diff
+            prev_diff_positive = diff > 0
+            continue
+        
+        if diff == prev_diff or (diff > 0 and prev_diff_positive) or (diff < 0 and not prev_diff_positive):
+            return False
+        
+        prev_diff = diff
+        prev_diff_positive = diff > 0
+    
+    return True
+```

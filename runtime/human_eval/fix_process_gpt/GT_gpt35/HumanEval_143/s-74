@@ -1,0 +1,125 @@
+task_id:HumanEval/143
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def words_in_sentence(sentence):
+    """
+    You are given a string representing a sentence,
+    the sentence contains some words separated by a space,
+    and you have to return a string that contains the words from the original sentence,
+    whose lengths are prime numbers,
+    the order of the words in the new string should be the same as the original one.
+
+    Example 1:
+        Input: sentence = "This is a test"
+        Output: "is"
+
+    Example 2:
+        Input: sentence = "lets go for swimming"
+        Output: "go for"
+
+    Constraints:
+        * 1 <= len(sentence) <= 100
+        * sentence contains only letters
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def words_in_sentence(sentence):
+    """
+    You are given a string representing a sentence,
+    the sentence contains some words separated by a space,
+    and you have to return a string that contains the words from the original sentence,
+    whose lengths are prime numbers,
+    the order of the words in the new string should be the same as the original one.
+
+    Example 1:
+        Input: sentence = "This is a test"
+        Output: "is"
+
+    Example 2:
+        Input: sentence = "lets go for swimming"
+        Output: "go for"
+
+    Constraints:
+        * 1 <= len(sentence) <= 100
+        * sentence contains only letters
+    """
+
+    def is_prime(num):
+        if num < 2:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+    def get_word_length(word):
+        return len(word.strip(',.'))
+
+    prime_words = []
+    for word in sentence.split():
+        word_length = get_word_length(word)
+        if is_prime(word_length):
+            prime_words.append(word)
+
+    return ' '.join(prime_words)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-14<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert words_in_sentence('Hello, how are you doing today?') == how are you doing
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert words_in_sentence('Consequetive numbers are here 1 2 3 4 5 6 7 8 9') == numbers are
+assert words_in_sentence('Its fun to learn python') == Its fun to learn
+assert words_in_sentence('I have a lovely dog') == dog
+assert words_in_sentence('life is a journey') == is journey
+assert words_in_sentence('Are you really trying to write something') == Are you to write
+assert words_in_sentence('life is short') == is short
+assert words_in_sentence('happy world') == happy world
+assert words_in_sentence('The boy is playing a game') == The boy is playing
+assert words_in_sentence('no is not enough') == no is not
+assert words_in_sentence('The sun is shining') == The sun is shining
+assert words_in_sentence('A man a plan a canal Panama') == man canal
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+
+def words_in_sentence(sentence):
+    def is_prime(num):
+        if num < 2:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+    def get_word_length(word):
+        return len(word.strip(',.'))
+
+    prime_words = []
+    for word in sentence.split():
+        word_length = get_word_length(word)
+        if is_prime(word_length):
+            prime_words.append(word)
+
+    return ' '.join(prime_words)
+
+```

@@ -1,0 +1,132 @@
+task_id:MbppEval/479
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def first_Digit(n) :  
+    '''
+    Write a python function to find the first digit of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def first_Digit(n) :  
+    '''
+    Write a python function to find the first digit of a given number.
+    '''
+  
+    while n >= 10:
+        n = n // 10
+    return n
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert first_Digit(2.34e-06) == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def first_Digit(n) :  
+    '''
+    Write a python function to find the first digit of a given number.
+    '''
+  
+    while n >= 10 or n <= -10:
+        n = n / 10
+    return int(n)
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-33<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert first_Digit(-9.3) == 9
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def first_Digit(n) :  
+    '''
+    Write a python function to find the first digit of a given number.
+    '''
+  
+    n = abs(n)
+    while n >= 10:
+        n = n // 10
+    return n
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert first_Digit(-57390) == 5
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def first_Digit(n) :  
+    '''
+    Write a python function to find the first digit of a given number.
+    '''
+  
+    n = abs(n)
+    while n >= 10:
+        n = n // 10
+    return n
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-36<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert first_Digit(-1e-22) == 1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert first_Digit(-57390) == 5
+assert first_Digit(-1) == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def first_Digit(n) :  
+    '''
+    Write a python function to find the first digit of a given number.
+    '''
+  
+    n = abs(n)
+    if n < 1:
+        while n < 1:
+            n *= 10
+    while n >= 10:
+        n = n // 10
+    return n
+
+```

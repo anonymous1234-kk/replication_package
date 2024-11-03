@@ -1,0 +1,86 @@
+task_id:MbppEval/125
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+ 
+    max_diff = 0
+    curr_diff = 0
+    for i in range(len(string)): 
+        curr_diff += 1 if string[i] == '0' else -1
+        if curr_diff < 0: 
+            curr_diff = 0
+        max_diff = max(max_diff, curr_diff)
+    return max_diff
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_length('11111111') == -1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_length('0000100') == 5
+assert find_length('0011101') == 2
+assert find_length('0') == 1
+assert find_length('00000000000000') == 14
+assert find_length('11100100100000') == 7
+assert find_length('101010') == 1
+assert find_length('01010101010101') == 1
+assert find_length('11101010101111') == 1
+assert find_length('1010') == 1
+assert find_length('0000000000') == 10
+assert find_length('00100101') == 3
+assert find_length('110110110') == 1
+assert find_length('0111') == 1
+assert find_length('1000') == 3
+assert find_length('111000') == 3
+assert find_length('11011') == 1
+assert find_length('1101010110') == 1
+assert find_length('0101010101') == 1
+assert find_length('0000011111') == 5
+assert find_length('001110001') == 3
+assert find_length('1101011001101101') == 2
+assert find_length('010101011101010') == 1
+assert find_length('000111000111111000000') == 6
+assert find_length('1011010101010101') == 1
+assert find_length('1110001101011010') == 3
+assert find_length('1010110') == 1
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    max_diff = 0
+    curr_diff = 0
+    for i in range(len(string)): 
+        curr_diff += 1 if string[i] == '0' else -1
+        if curr_diff < 0: 
+            curr_diff = 0
+        max_diff = max(max_diff, curr_diff)
+    if max_diff == 0:
+        return -1
+    return max_diff
+```

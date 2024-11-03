@@ -1,0 +1,60 @@
+task_id:MbppEval/632
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def move_zero(num_list):
+    '''
+    Write a python function to move all zeroes to the end of the given list.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def move_zero(num_list):
+    '''
+    Write a python function to move all zeroes to the end of the given list.
+    '''
+
+    """
+    Move all zeroes to the end of the given list.
+    """
+    zero_count = num_list.count(0)
+    num_list[:] = [num for num in num_list if num != 0]
+    num_list += [0] * zero_count
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-0<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert move_zero([0, 1, 0, 2, 3, 4, 0, 56, 0, 78, 0, 0]) == [1, 2, 3, 4, 56, 78, 0, 0, 0, 0, 0, 0]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def move_zero(num_list):
+    '''
+    Write a python function to move all zeroes to the end of the given list.
+    '''
+
+    """
+    Move all zeroes to the end of the given list.
+    """
+    zero_count = num_list.count(0)
+    num_list[:] = [num for num in num_list if num != 0]
+    num_list += [0] * zero_count
+    return num_list
+```

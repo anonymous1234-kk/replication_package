@@ -1,0 +1,93 @@
+task_id:MbppEval/595
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+ 
+    # Find pairs where one character is 0 
+    # and the other character is 1 in str1 and str2 
+    diff_pairs = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            diff_pairs += 1
+            
+    # If number of such pairs is odd, then there is no way 
+    # two binary numbers can be made identical by swapping
+    if diff_pairs % 2 == 1:
+        return -1
+    
+    # Count the number of adjacent pairs of different characters
+    # in both str1 and str2
+    adj_diff_pairs = 0
+    for i in range(len(str1)-1):
+        if str1[i] != str1[i+1] and str2[i] != str2[i+1]:
+            adj_diff_pairs += 1
+    
+    # Return the minimum number of swaps required
+    return (diff_pairs // 2) + max(adj_diff_pairs - (diff_pairs // 2), 0)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-2<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert min_Swaps('111','010') == -1
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert min_Swaps('1101010','0011101') == 3
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def min_Swaps(str1,str2) : 
+    '''
+    Write a python function to count minimum number of swaps required to convert one binary number represented as a string to another.
+    '''
+ 
+    # Find pairs where one character is 0 
+    # and the other character is 1 in str1 and str2 
+    diff_pairs = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            diff_pairs += 1
+            
+    # If number of such pairs is odd, then there is no way 
+    # two binary numbers can be made identical by swapping
+    if diff_pairs % 2 == 1:
+        return -1
+    
+    # Count the number of adjacent pairs of different characters
+    # in both str1 and str2
+    adj_diff_pairs = 0
+    for i in range(len(str1)-1):
+        if str1[i] != str1[i+1] and str2[i] != str2[i+1]:
+            adj_diff_pairs += 1
+    
+    # If there are an odd number of adjacent pairs, add one to the count
+    if diff_pairs % 2 == 1 and adj_diff_pairs % 2 == 1:
+        adj_diff_pairs += 1
+    
+    # Return the minimum number of swaps required
+    return (diff_pairs // 2) + max(adj_diff_pairs - (diff_pairs // 2), 0)
+```

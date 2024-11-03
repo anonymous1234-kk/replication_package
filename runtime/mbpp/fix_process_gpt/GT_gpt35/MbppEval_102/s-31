@@ -1,0 +1,57 @@
+task_id:MbppEval/102
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+
+    return ''.join(word.title().split('_'))
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert snake_to_camel('word_count_') == WordCount_
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert snake_to_camel(' ') ==  
+assert snake_to_camel('arun') == Arun
+assert snake_to_camel('wordCount') == Wordcount
+assert snake_to_camel('happy_new_year') == HappyNewYear
+assert snake_to_camel('happy_new_year_2020') == HappyNewYear2020
+assert snake_to_camel('happy_New_Year_2020') == HappyNewYear2020
+assert snake_to_camel('snake_case') == SnakeCase
+assert snake_to_camel('happy_new_year') == HappyNewYear
+assert snake_to_camel('word_count') == WordCount
+assert snake_to_camel('name_with_surname') == NameWithSurname
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def snake_to_camel(word):
+    '''
+    Write a function to convert a snake case string to camel case string.
+    '''
+    return ''.join([w.capitalize() for w in word.split('_')])
+```

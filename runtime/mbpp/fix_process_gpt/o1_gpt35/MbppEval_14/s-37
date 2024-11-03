@@ -1,0 +1,60 @@
+task_id:MbppEval/14
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_Volume(l,b,h) : 
+    '''
+    Write a python function to find the volume of a triangular prism.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_Volume(l,b,h) : 
+    '''
+    Write a python function to find the volume of a triangular prism.
+    '''
+
+    volume = (1 / 2) * l * b * h
+    return volume
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_Volume(1.5,2.7,3.5) == 7.0875
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_Volume(1,1,1) == 0.5
+assert find_Volume(-3,4,5) == -30.0
+assert find_Volume(-3,-4,-5) == -30.0
+assert find_Volume(1,1,1) == 0.5
+assert find_Volume(2,2,2) == 4.0
+assert find_Volume(3,3,3) == 13.5
+assert find_Volume(4,4,4) == 32.0
+assert find_Volume(2.5,2.5,3.5) == 10.9375
+assert find_Volume(-2,-2,-3) == -6.0
+assert find_Volume(2,2,2) == 4.0
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_Volume(l, b, h):
+    '''
+    Write a python function to find the volume of a triangular prism.
+    '''
+
+    volume = (1 / 2) * abs(l) * abs(b) * abs(h)
+    return volume
+```

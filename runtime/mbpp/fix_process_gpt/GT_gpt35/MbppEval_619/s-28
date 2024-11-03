@@ -1,0 +1,73 @@
+task_id:MbppEval/619
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def move_num(test_str):
+    '''
+    Write a function to move all the numbers to the end of the given string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def move_num(test_str):
+    '''
+    Write a function to move all the numbers to the end of the given string.
+    '''
+
+    # initializing empty strings to hold the characters and numbers
+    chars = ''
+    nums = ''
+
+    # separating the characters and numbers
+    for i in test_str:
+        if i.isalpha():
+            chars += i
+        elif i.isnumeric():
+            nums += i
+
+    # returning the result by concatenating characters and numbers
+    return chars + nums
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert move_num('0 1 2 3 4 5 6 7 8 9') ==          0123456789
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert move_num('123456789') == 123456789
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def move_num(test_str):
+    '''
+    Write a function to move all the numbers to the end of the given string.
+    '''
+
+    # initializing empty strings to hold the characters and numbers
+    chars = ''
+    nums = ''
+
+    # separating the characters and numbers
+    for i in test_str:
+        if i.isalpha():
+            chars += i
+        elif i.isnumeric():
+            nums += i
+
+    # returning the result by concatenating characters and numbers
+    return nums + chars
+```

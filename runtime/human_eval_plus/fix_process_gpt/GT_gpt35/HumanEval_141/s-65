@@ -1,0 +1,80 @@
+task_id:HumanEval/141
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+
+def file_name_check(file_name):
+    """Create a function which takes a string representing a file's name, and returns
+    'Yes' if the the file's name is valid, and returns 'No' otherwise.
+    A file's name is considered to be valid if and only if all the following conditions 
+    are met:
+    - There should not be more than three digits ('0'-'9') in the file's name.
+    - The file's name contains exactly one dot '.'
+    - The substring before the dot should not be empty, and it starts with a letter from 
+    the latin alphapet ('a'-'z' and 'A'-'Z').
+    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']
+    Examples:
+    file_name_check("example.txt") # => 'Yes'
+    file_name_check("1example.dll") # => 'No' (the name should start with a latin alphapet letter)
+    """
+```
+
+----------------------Assistant Message----------------------
+```python
+
+def file_name_check(file_name):
+    """Create a function which takes a string representing a file's name, and returns
+    'Yes' if the the file's name is valid, and returns 'No' otherwise.
+    A file's name is considered to be valid if and only if all the following conditions 
+    are met:
+    - There should not be more than three digits ('0'-'9') in the file's name.
+    - The file's name contains exactly one dot '.'
+    - The substring before the dot should not be empty, and it starts with a letter from 
+    the latin alphapet ('a'-'z' and 'A'-'Z').
+    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']
+    Examples:
+    file_name_check("example.txt") # => 'Yes'
+    file_name_check("1example.dll") # => 'No' (the name should start with a latin alphapet letter)
+    """
+
+    import re
+    pattern = '^[a-zA-Z][a-zA-Z0-9]{0,}[.][txt|exe|dll]$'
+    if re.search(pattern,file_name) and len(re.findall('[0-9]',file_name))<=3:
+        return 'Yes'
+    else:
+        return 'No'
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-34<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert file_name_check('examplepdf.exe') == Yes
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert file_name_check('example.txt22') == No
+assert file_name_check('0_example.txt') == No
+assert file_name_check('a.b.dll') == No
+assert file_name_check('example.abc.txt') == No
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def file_name_check(file_name):
+    import re
+    pattern = '^[a-zA-Z][a-zA-Z0-9]{0,}[.](txt|exe|dll)$'
+    if re.search(pattern, file_name) and len(re.findall('[0-9]', file_name)) <= 3:
+        return 'Yes'
+    else:
+        return 'No'
+```

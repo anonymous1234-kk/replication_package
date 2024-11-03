@@ -1,0 +1,64 @@
+task_id:MbppEval/724
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def power_base_sum(base, power):
+    '''
+    Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def power_base_sum(base, power):
+    '''
+    Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.
+    '''
+
+    total = 0
+    num = base ** power
+    while num > 0:
+        total += num % 10
+        num //= 10
+    return total
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-21<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert power_base_sum(2222,10000) == 150112
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert power_base_sum(3,3) == 9
+assert power_base_sum(9,2) == 9
+assert power_base_sum(3,4) == 9
+assert power_base_sum(6,2) == 9
+assert power_base_sum(2,3) == 8
+assert power_base_sum(7,5) == 22
+assert power_base_sum(9,4) == 18
+assert power_base_sum(2,0) == 1
+assert power_base_sum(8,6) == 19
+assert power_base_sum(123,10000) == 93897
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def power_base_sum(base, power):
+    total = 0
+    num = base ** power
+    num_str = str(num)
+    for digit in num_str:
+        total += int(digit)
+    return total
+```

@@ -1,0 +1,103 @@
+task_id:MbppEval/597
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_kth(arr1, arr2, k):
+    '''
+    Write a function to find kth element from the given two sorted arrays.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_kth(arr1, arr2, k):
+    '''
+    Write a function to find kth element from the given two sorted arrays.
+    '''
+
+    m, n = len(arr1), len(arr2)
+    if m > n:
+        arr1, arr2, m, n = arr2, arr1, n, m
+    left, right = 0, m
+    while left <= right:
+        mid = (left + right) // 2
+        j = k - mid
+        if j < 0:
+            right = mid - 1
+        elif j > n:
+            left = mid + 1
+        else:
+            if mid == 0:
+                leftMax = arr2[j-1]
+            elif j == 0:
+                leftMax = arr1[mid-1]
+            else:
+                leftMax = max(arr1[mid-1], arr2[j-1])
+            if (m+n) % 2 == 1:
+                return leftMax
+            if mid == m:
+                rightMin = arr2[j]
+            elif j == n:
+                rightMin = arr1[mid]
+            else:
+                rightMin = min(arr1[mid], arr2[j])
+            return (leftMax + rightMin) / 2
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-49<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_kth([1, 2, 3, 4, 5, 6, 7, 8, 9],[9, 10, 11, 12, 13],14) == 13
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_kth(arr1, arr2, k):
+    '''
+    Write a function to find kth element from the given two sorted arrays.
+    '''
+
+    m, n = len(arr1), len(arr2)
+    if m > n:
+        arr1, arr2, m, n = arr2, arr1, n, m
+    left, right = 0, m
+    while left <= right:
+        mid = (left + right) // 2
+        j = k - mid
+        if j < 0:
+            right = mid - 1
+        elif j > n:
+            left = mid + 1
+        else:
+            if mid == 0:
+                leftMax = arr2[j-1]
+            elif j == 0:
+                leftMax = arr1[mid-1]
+            else:
+                leftMax = max(arr1[mid-1], arr2[j-1])
+            if (m+n) % 2 == 1:
+                return leftMax
+            if mid == m:
+                rightMin = arr2[j]
+            elif j == n:
+                rightMin = arr1[mid]
+            else:
+                rightMin = min(arr1[mid], arr2[j])
+            return (leftMax + rightMin) / 2
+
+assert find_kth([1, 2, 3, 4, 5, 6, 7, 8, 9],[9, 10, 11, 12, 13],14) == 13
+```

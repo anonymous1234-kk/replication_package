@@ -1,0 +1,54 @@
+task_id:MbppEval/611
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def max_of_nth(test_list, N):
+    '''
+    Write a function which given a matrix represented as a list of lists returns the max of the n'th column.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def max_of_nth(test_list, N):
+    '''
+    Write a function which given a matrix represented as a list of lists returns the max of the n'th column.
+    '''
+
+    '''
+    Write a function which given a matrix represented as a list of lists returns the max of the n'th column.
+    '''
+    max_val = float('-inf') # initialize the maximum value to negative infinity
+    for i in range(len(test_list)):
+        max_val = max(max_val, test_list[i][N-1]) # check if the value in the nth column is greater than the current max value
+    return max_val # return the maximum value found in the nth column
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-4<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert max_of_nth([[-11, 20, -23], [-42, 26, -15], [-10, 12, -7]],1) == 26
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def max_of_nth(test_list, N):
+    max_val = float('-inf')
+    for i in range(len(test_list)):
+        max_val = max(max_val, test_list[i][N-1])
+    return max_val
+```

@@ -1,0 +1,92 @@
+task_id:MbppEval/407
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the integer to a string and get its length
+    num_str = str(n)
+    num_len = len(num_str)
+    
+    # Convert the string to a list of digits and sort them in descending order
+    digits = [int(i) for i in num_str]
+    digits.sort(reverse=True)
+    
+    # Check if the original number is already the largest possible number
+    if digits[0] == int(num_str[0]):
+        return -1
+    
+    # Rearrange the digits to create the next bigger number
+    for i in range(num_len):
+        if digits[i] < int(num_str[i]):
+            temp = digits[i]
+            digits[i] = int(num_str[i])
+            num_str = num_str[:i] + str(temp) + ''.join(map(str, digits[i+1:]))
+            break
+    
+    # Convert the string back to an integer and return it
+    return int(num_str)
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-1<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert rearrange_bigger(123) == 132
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def rearrange_bigger(n):
+    '''
+    Write a function to create the next bigger number by rearranging the digits of a given number.
+    '''
+
+    # Convert the integer to a string and get its length
+    num_str = str(n)
+    num_len = len(num_str)
+    
+    # Convert the string to a list of digits and sort them in descending order
+    digits = [int(i) for i in num_str]
+    digits.sort(reverse=True)
+    
+    # Check if the original number is already the largest possible number
+    if digits[0] == int(num_str[0]):
+        return -1
+    
+    # Rearrange the digits to create the next bigger number
+    for i in range(num_len):
+        if digits[i] < int(num_str[i]):
+            temp = digits[i]
+            digits[i] = int(num_str[i])
+            num_str = num_str[:i] + str(temp) + ''.join(map(str, digits[i+1:]))
+            break
+    
+    # Convert the string back to an integer and return it
+    return int(num_str)
+```
+

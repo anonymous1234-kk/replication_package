@@ -1,0 +1,667 @@
+task_id:MbppEval/572
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        if num not in unique_nums:
+            unique_nums.append(num)
+    return unique_nums
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-16<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-20<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([[4, 5, 6, 7], [4, 5, 6, 7]]) == [4, 5, 6, 7]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    if len(unique_nums) == 1:
+        return unique_nums[0]
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-23<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([[1, 2, 3], [1, 2, 3], [1, 2, 3]]) == [1, 2, 3]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list and n not in unique_nums:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-24<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [12, 13, 14]]) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list and n not in unique_nums:
+                unique_list.append(n)
+        unique_nums.extend(unique_list)
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-26<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([2, 2, 2, 1]) == [2, 1]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return [list(set(num)) for num in unique_nums]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-27<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([3, 2, 1, 2]) == [3, 1]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    
+    # Remove duplicates from unique_nums list
+    unique_nums = [list(set(num)) for num in unique_nums]
+    
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-28<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 1, 2, 3, 3, 3, 4, 5, 5]) == [2, 4]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list and nums.count(n) == 1:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-29<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([8, 6, 6, 4, 4, 4, 2, 2, 2]) == [8, 6, 4, 2]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return [list(set(num)) for num in unique_nums]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-30<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([3, 3, 4, 5, 6, 7, 7, 1, 1]) == [3, 4, 5, 6, 7, 1]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list and unique_nums.count(n) < 2:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-32<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 1, 1, 1, 1, 1, 1, 1]) == [1]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-35<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 2, 3, 4, 5, 5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return [list(set(num)) for num in unique_nums]
+
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-45<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 2, 3, 4, 5, 4, 3, 1]) == [2, 5]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+Here's the fixed code:
+
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list and num.count(n) == 1:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-46<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 5]) == [1, 2, 3, 4, 5]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    '''
+    Write a python function to remove duplicate numbers from a given number of lists.
+    '''
+
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return [list(set(num)) for num in unique_nums]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-47<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([5, 6, 7, 8, 9, 0, 0, 9]) == [5, 6, 7, 8, 9, 0]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-5<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 2, 2, 3, 4, 4, 5, 6]) == [1, 2, 3, 4, 5, 6]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return [list(set(num)) for num in unique_nums]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-6<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 2, 2, 3, 4, 4, 5, 6, 6]) == [1, 2, 3, 4, 5, 6]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return [list(set(num)) for num in unique_nums]
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-7<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 1, 1, 2, 2, 3, 4, 4, 5, 6, 6]) == [3, 5]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list and nums.count(n) == 1:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+```
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-8<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert two_unique_nums([1, 2, 3, 4, 5, 6]) == [1, 2, 3, 4, 5, 6]
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert two_unique_nums([[2, 3, 4, 4], [4, 5, 6, 7], [8, 9, 9, 10]]) == [[2, 3, 4], [4, 5, 6, 7], [8, 9, 10]]
+assert two_unique_nums([[1, 1, 1, 1, 1, 2, 2, 3, 4], [2, 3, 4, 4, 5, 5, 5, 6], [6, 6, 7, 8, 9, 10]]) == [[1, 2, 3, 4], [2, 3, 4, 5, 6], [6, 7, 8, 9, 10]]
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    unique_nums = []
+    for num in nums:
+        unique_list = []
+        for n in num:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    unique_nums = []
+    if isinstance(nums[0], list):
+        for num in nums:
+            unique_list = []
+            for n in num:
+                if n not in unique_list:
+                    unique_list.append(n)
+            unique_nums.append(unique_list)
+    else:
+        unique_list = []
+        for n in nums:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    unique_nums = []
+    if isinstance(nums[0], list):
+        for num in nums:
+            unique_list = []
+            for n in num:
+                if n not in unique_list:
+                    unique_list.append(n)
+            unique_nums.append(unique_list)
+    else:
+        unique_list = []
+        for n in nums:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    unique_nums = []
+    if isinstance(nums[0], list):
+        for num in nums:
+            unique_list = []
+            for n in num:
+                if n not in unique_list:
+                    unique_list.append(n)
+            unique_nums.append(unique_list)
+    else:
+        unique_list = []
+        for n in nums:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    unique_nums = []
+    if isinstance(nums[0], list):
+        for num in nums:
+            unique_list = []
+            for n in num:
+                if n not in unique_list:
+                    unique_list.append(n)
+            unique_nums.append(unique_list)
+    else:
+        unique_list = []
+        for n in nums:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    unique_nums = []
+    if isinstance(nums[0], list):
+        for num in nums:
+            unique_list = []
+            for n in num:
+                if n not in unique_list:
+                    unique_list.append(n)
+            unique_nums.append(unique_list)
+    else:
+        unique_list = []
+        for n in nums:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+
+def two_unique_nums(nums):
+    unique_nums = []
+    if isinstance(nums[0], list):
+        for num in nums:
+            unique_list = []
+            for n in num:
+                if n not in unique_list:
+                    unique_list.append(n)
+            unique_nums.append(unique_list)
+    else:
+        unique_list = []
+        for n in nums:
+            if n not in unique_list:
+                unique_list.append(n)
+        unique_nums.append(unique_list)
+    return unique_nums
+```

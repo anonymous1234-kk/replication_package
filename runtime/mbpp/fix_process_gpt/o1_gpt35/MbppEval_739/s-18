@@ -1,0 +1,103 @@
+task_id:MbppEval/739
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+import math 
+def find_Index(n): 
+    '''
+    Write a python function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+import math 
+def find_Index(n): 
+    '''
+    Write a python function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/
+    '''
+ 
+    index = 1
+    while True:
+        # Calculate the current triangular number 
+        triangular_num = (index*(index+1))//2
+        
+        # Count the number of digits in the current triangular number
+        digits = int(math.log10(triangular_num))+1
+        
+        # If the number of digits is equal to the given n, return the index
+        if digits == n:
+            return index
+        
+        # If the number of digits is greater than the given n, no need to check further
+        if digits > n:
+            return -1
+        
+        # Increment the index for the next triangular number
+        index += 1
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-39<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_Index(math.pi) == 17
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+assert find_Index(4) == 45
+assert find_Index(3) == 14
+assert find_Index(2) == 4
+assert find_Index(5) == 141
+assert find_Index(6) == 447
+assert find_Index(7) == 1414
+assert find_Index(8) == 4472
+assert find_Index(9) == 14142
+assert find_Index(10) == 44721
+assert find_Index(11) == 141421
+assert find_Index(2) == 4
+assert find_Index(3) == 14
+assert find_Index(4) == 45
+assert find_Index(5) == 141
+assert find_Index(6) == 447
+assert find_Index(7) == 1414
+assert find_Index(8) == 4472
+assert find_Index(9) == 14142
+assert find_Index(10) == 44721
+assert find_Index(11) == 141421
+assert find_Index(12) == 447214
+assert find_Index(13) == 1414214
+assert find_Index(3) == 14
+assert find_Index(4) == 45
+assert find_Index(5) == 141
+assert find_Index(2) == 4
+assert find_Index(6) == 447
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+import math
+
+def find_Index(n):
+    index = 1
+    while True:
+        triangular_num = (index*(index+1))//2
+        digits = int(math.log10(triangular_num))+1
+
+        if math.isclose(digits, n):
+            return index
+        
+        if digits > n:
+            return -1
+        
+        index += 1
+```

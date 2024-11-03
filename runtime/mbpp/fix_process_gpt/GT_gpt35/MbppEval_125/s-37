@@ -1,0 +1,89 @@
+task_id:MbppEval/125
+----------------------System Message----------------------
+You are a helpful AI assistant.
+----------------------User Message----------------------
+I want you to act like a Python programmer. I will give you the declaration of a function and comments about its property. You need to implement the body of the function in the code block. Do not modify any code I provide.
+
+----------------------Assistant Message----------------------
+OK, I'm ready to help.
+----------------------User Message----------------------
+Here is the question.
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+```
+
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count_zero = 0
+    count_one = 0
+    max_diff = -1
+    
+    for i in range(n):
+        if string[i] == '0':
+            count_zero += 1
+        else:
+            count_one += 1
+        
+        diff = count_zero - count_one
+        if diff > max_diff:
+            max_diff = diff
+        
+        if count_zero < 0:
+            count_zero = 0
+        if count_one < 0:
+            count_one = 0
+    
+    return max_diff
+
+```
+
+>>>>>>>>>>>>>>>>>>>>>>fix test id: t-10<<<<<<<<<<<<<<<<<<<<<<
+----------------------User Message----------------------
+The generated code is not correct on the following test case, please fix the code to pass it and return the complete fixed code.
+```python
+assert find_length('11001110101011') == 2
+```
+ Besides the above test case, the code should also pass the following test cases, which are already passed previously:
+```python
+
+```
+.
+ You only need to generate the fixed code, do not provide any assert statements or explanations.
+----------------------Assistant Message----------------------
+```python
+def find_length(string): 
+    '''
+    Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.
+    '''
+
+    n = len(string)
+    count_zero = 0
+    count_one = 0
+    max_diff = -1
+    
+    for i in range(n):
+        if string[i] == '0':
+            count_zero += 1
+        else:
+            count_one += 1
+        
+        diff = count_zero - count_one
+        if diff > max_diff:
+            max_diff = diff
+        
+        if count_zero < count_one:
+            count_zero = 0
+        if count_one < count_zero:
+            count_one = 0
+    
+    return max_diff
+```
