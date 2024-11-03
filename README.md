@@ -21,8 +21,7 @@ In our experiments, we implement the code in Python. Before running the experime
     |-- execution.py, _execution.py # the programs to execute the codes
     |-- contested_gt.py, contested_o1.py # the entry point of our apporaches
 ```
-"benchmark" represents human_eval, human_eval_plus, or mbpp.
-
+"benchmark" represents human_eval, human_eval_plus, or mbpp; since the size of HumanEvalPlus is big and you can download in from [HuggingFace](https://huggingface.co/datasets/evalplus/humanevalplus) by your self and put it into `data`.
 ## Reproduction
 
 - Generate multiple code candidates
