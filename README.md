@@ -34,7 +34,7 @@ In our experiments, we implement the code in Python. Before running the experime
     ```python
     python contested_gt.py data_type gen_model
     ```
-    This program is the entry point of our approach, which will save the results to  `"benchmark"/total_results`, and save the fix process to `"benchmark"fix_process_gpt/`
+    This program is the entry point of our approach, which will save the results to  `"benchmark"/total_results`, and save the fix process to `"benchmark"/fix_process_gpt/`
 
     ```python
     python contested_o1.py data_type gen_model
@@ -46,3 +46,7 @@ In our experiments, we implement the code in Python. Before running the experime
     python evaluation.py data_type gen_model type isplus
     ```
     where data_type represents the type of benchmark, gen_model represents the model you use, type represents the type of our approach (GT, or o1), isplus means when using the dataset HumanEval, whether it is HumanEvalPlus or not. We provide the results obtained from our experiments in `"benchmark"/total_results`, and you can directly evaluate them.
+
+### User Study
+
+ In the file `assign_problem.csv`, we list the assignment of problems to users. The "User ID" represents the unique identifier for each user, and there are 12 users in total. The "Problem Index" indicates the position of each problem assigned to the user, with each user being assigned 20 problems. The "Problem ID" refers to the identifier of the specific problem, and there are 40 problems in total. The "Setting" refers to the task the user needs to solve for the problem.
